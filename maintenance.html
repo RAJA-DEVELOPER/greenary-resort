@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Under Maintenance — TERRAVANA WILDS</title>
+  <meta name="description"
+    content="Terravana Wilds is currently undergoing scheduled maintenance. We'll be back shortly." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    html,
+    body {
+      height: 100%;
+      background: var(--coal);
+      overflow-x: hidden;
+    }
+
+    /* ── Subtle animated grid background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212, 168, 83, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 168, 83, 0.03) 1px, transparent 1px);
+      background-size: 70px 70px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Ambient glows ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 80%, rgba(45, 106, 79, 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 20%, rgba(212, 168, 83, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Page wrapper ── */
+    .maint-page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    /* ── Logo top ── */
+    .maint-logo {
+      position: fixed;
+      top: 2.25rem;
+      left: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      text-decoration: none;
+      z-index: 10;
+      animation: fadeIn 0.6s ease both;
+    }
+
+    .maint-logo-main {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .maint-logo-sub {
+      font-family: var(--font-ui);
+      font-size: 0.48rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── Eco badge top-right ── */
+    .maint-eco {
+      position: fixed;
+      top: 2.25rem;
+      right: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(212, 168, 83, 0.08);
+      border: 1px solid rgba(212, 168, 83, 0.18);
+      border-radius: 40px;
+      padding: 0.45rem 1rem;
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      z-index: 10;
+      animation: fadeIn 0.6s ease 0.2s both;
+    }
+
+    /* ═══════════════════════════════════════
+       SVG VECTOR ILLUSTRATION
+    ═══════════════════════════════════════ */
+    .maint-svg-wrap {
+      width: min(520px, 90vw);
+      margin: 0 auto 2.5rem;
+      animation: fadeUp 0.9s var(--ease-expo) 0.2s both;
+      filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.6));
+    }
+
+    /* ── Twinkling stars ── */
+    .star {
+      animation: twinkle ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.9;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.3;
+        transform: scale(0.6);
+      }
+    }
+
+    /* ── Smoke puffs from campfire ── */
+    .smoke {
+      transform-origin: center bottom;
+      animation: smokeRise 3s ease-out infinite;
+    }
+
+    .smoke:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .smoke:nth-child(3) {
+      animation-delay: 2s;
+    }
+
+    @keyframes smokeRise {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+      }
+
+      30% {
+        opacity: 0.5;
+        transform: translateY(-12px) scale(0.8);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(1.6);
+      }
+    }
+
+    /* ── Gear spinning ── */
+    .gear-spin {
+      transform-origin: center;
+      animation: gearTurn 6s linear infinite;
+    }
+
+    .gear-spin-rev {
+      transform-origin: center;
+      animation: gearTurn 4s linear infinite reverse;
+    }
+
+    @keyframes gearTurn {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ── Moon gentle float ── */
+    .moon-float {
+      animation: moonFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes moonFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    /* ── Tent gentle breathe ── */
+    .tent-breathe {
+      transform-origin: center bottom;
+      animation: tentBreath 4s ease-in-out infinite;
+    }
+
+    @keyframes tentBreath {
+
+      0%,
+      100% {
+        transform: scaleX(1);
+      }
+
+      50% {
+        transform: scaleX(1.012);
+      }
+    }
+
+    /* ── Firefly dots ── */
+    .firefly {
+      animation: fireflyBlink ease-in-out infinite alternate;
+    }
+
+    @keyframes fireflyBlink {
+      from {
+        opacity: 0.1;
+      }
+
+      to {
+        opacity: 0.9;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       CONTENT BELOW SVG
+    ═══════════════════════════════════════ */
+    .maint-content {
+      animation: fadeUp 0.9s var(--ease-expo) 0.4s both;
+    }
+
+    .maint-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .maint-eyebrow-line {
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.65;
+    }
+
+    .maint-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--ivory);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .maint-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .maint-desc {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(232, 224, 213, 0.6);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    /* ── Countdown ── */
+    .countdown {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.75rem;
+      animation: fadeUp 0.9s var(--ease-expo) 0.6s both;
+    }
+
+    .cd-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      min-width: 72px;
+    }
+
+    .cd-box {
+      background: rgba(212, 168, 83, 0.06);
+      border: 1px solid rgba(212, 168, 83, 0.18);
+      border-radius: 10px;
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .cd-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(212, 168, 83, 0.04) 0%, transparent 100%);
+    }
+
+    .cd-label {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.35);
+    }
+
+    .cd-sep {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: rgba(212, 168, 83, 0.3);
+      align-self: center;
+      margin-bottom: 1.4rem;
+    }
+
+    /* ── Progress bar ── */
+    .maint-progress-wrap {
+      max-width: 420px;
+      margin: 0 auto 2.5rem;
+      animation: fadeUp 0.9s var(--ease-expo) 0.7s both;
+    }
+
+    .maint-progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.35);
+    }
+
+    .maint-progress-track {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .maint-progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+      box-shadow: 0 0 12px rgba(212, 168, 83, 0.5);
+      transition: width 2s var(--ease-expo);
+    }
+
+    /* ── Notify form ── */
+    .maint-notify {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 420px;
+      margin: 0 auto;
+      animation: fadeUp 0.9s var(--ease-expo) 0.8s both;
+    }
+
+    .maint-input {
+      flex: 1;
+      min-width: 200px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(232, 224, 213, 0.1);
+      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--ivory);
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .maint-input::placeholder {
+      color: rgba(232, 224, 213, 0.25);
+    }
+
+    .maint-input:focus {
+      border-color: rgba(212, 168, 83, 0.45);
+      box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.08);
+    }
+
+    .maint-notify-btn {
+      padding: 0.85rem 1.6rem;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: var(--coal);
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .maint-notify-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(212, 168, 83, 0.4);
+    }
+
+    /* ── Notify success state ── */
+    .maint-notify-success {
+      display: none;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(45, 106, 79, 1);
+      background: rgba(45, 106, 79, 0.12);
+      border: 1px solid rgba(45, 106, 79, 0.25);
+      border-radius: 8px;
+      padding: 0.85rem 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Social ── */
+    .maint-social {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2.75rem;
+      animation: fadeUp 0.9s var(--ease-expo) 0.9s both;
+    }
+
+    .maint-social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 168, 83, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(232, 224, 213, 0.4);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .maint-social-link:hover {
+      border-color: rgba(212, 168, 83, 0.5);
+      color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(212, 168, 83, 0.15);
+    }
+
+    /* ── Footer note ── */
+    .maint-footer {
+      position: fixed;
+      bottom: 1.75rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.2);
+      animation: fadeIn 1s ease 1s both;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      :root {
+        --maint-mobile-w: min(calc(100vw - 2.3rem), 342px);
+      }
+
+      .maint-logo {
+        left: 1.5rem;
+      }
+
+      .maint-eco {
+        right: 1.5rem;
+        display: none;
+      }
+
+      .cd-box {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+      }
+
+      .cd-unit {
+        min-width: 60px;
+      }
+
+      .maint-page {
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 6.75rem 1.15rem 3rem;
+      }
+
+      .maint-content,
+      .countdown,
+      .maint-progress-wrap,
+      .maint-notify,
+      .maint-notify-success {
+        width: var(--maint-mobile-w);
+        max-width: var(--maint-mobile-w);
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .maint-svg-wrap {
+        width: var(--maint-mobile-w);
+        margin-bottom: 1.5rem;
+      }
+
+      .maint-eyebrow {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .maint-title {
+        font-size: clamp(2rem, 12vw, 3rem);
+      }
+
+      .countdown {
+        gap: 0.65rem;
+        margin-bottom: 2rem;
+      }
+
+      .cd-sep {
+        display: none;
+      }
+
+      .maint-progress-wrap,
+      .maint-notify {
+        width: 100%;
+        max-width: 360px;
+      }
+
+      .maint-input,
+      .maint-notify-btn {
+        width: 100%;
+      }
+
+      .maint-footer {
+        position: static;
+        padding: 0 1rem 1.5rem;
+        line-height: 1.6;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .countdown {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .cd-box {
+        width: 100%;
+      }
+
+      .maint-logo-main {
+        font-size: 1rem;
+      }
+
+      .maint-logo-sub {
+        font-size: 0.4rem;
+        letter-spacing: 0.22em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Logo -->
+  <a href="index.html" class="maint-logo" aria-label="Terravana Wilds Home">
+    <span class="maint-logo-main">Terravana Wilds</span>
+    <span class="maint-logo-sub">Eco &middot; Adventure &middot; Resort</span>
+  </a>
+
+  <!-- Eco badge -->
+  <div class="maint-eco" aria-hidden="true">
+    <i class="fa-solid fa-leaf"></i> Carbon Neutral Resort
+  </div>
+
+  <!-- ═══════════════════════════════════
+       MAIN PAGE
+  ═══════════════════════════════════ -->
+  <main class="maint-page" role="main">
+
+    <!-- ══════════════════════════════
+         INLINE SVG VECTOR ILLUSTRATION
+         Mountain campsite under starry sky
+         with gears representing maintenance
+    ══════════════════════════════ -->
+    <div class="maint-svg-wrap" aria-hidden="true">
+      <svg viewBox="0 0 520 340" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="Illustration of a wilderness campsite at night with maintenance gears">
+
+        <!-- ── Sky gradient ── -->
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#060810" />
+            <stop offset="100%" stop-color="#0F1520" />
+          </linearGradient>
+          <linearGradient id="mtGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1A2235" />
+            <stop offset="100%" stop-color="#0D1019" />
+          </linearGradient>
+          <linearGradient id="mtGrad2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#131A26" />
+            <stop offset="100%" stop-color="#080D14" />
+          </linearGradient>
+          <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1B2030" />
+            <stop offset="100%" stop-color="#0A0E15" />
+          </linearGradient>
+          <linearGradient id="tentGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#D4A853" />
+            <stop offset="100%" stop-color="#8B7335" />
+          </linearGradient>
+          <linearGradient id="fireGrad" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#E8643C" />
+            <stop offset="60%" stop-color="#D4A853" />
+            <stop offset="100%" stop-color="#FAF0C0" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="gearGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#D4A853" />
+            <stop offset="100%" stop-color="#8B7335" />
+          </linearGradient>
+          <radialGradient id="fireGlow" cx="50%" cy="100%" r="50%">
+            <stop offset="0%" stop-color="#E8643C" stop-opacity="0.35" />
+            <stop offset="100%" stop-color="#E8643C" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#F0E6C8" stop-opacity="0.18" />
+            <stop offset="100%" stop-color="#F0E6C8" stop-opacity="0" />
+          </radialGradient>
+          <filter id="blur4">
+            <feGaussianBlur stdDeviation="4" />
+          </filter>
+          <filter id="blur8">
+            <feGaussianBlur stdDeviation="8" />
+          </filter>
+          <clipPath id="svgClip">
+            <rect width="520" height="340" rx="16" />
+          </clipPath>
+        </defs>
+
+        <g clip-path="url(#svgClip)">
+
+          <!-- Sky -->
+          <rect width="520" height="340" fill="url(#skyGrad)" />
+
+          <!-- Moon glow halo -->
+          <circle cx="400" cy="55" r="55" fill="url(#moonGlow)" filter="url(#blur8)" />
+
+          <!-- Moon -->
+          <g class="moon-float">
+            <circle cx="400" cy="55" r="26" fill="#F0E6C8" opacity="0.9" />
+            <!-- Moon craters -->
+            <circle cx="393" cy="48" r="4.5" fill="#D8CEAC" opacity="0.5" />
+            <circle cx="408" cy="60" r="3" fill="#D8CEAC" opacity="0.4" />
+            <circle cx="397" cy="63" r="2" fill="#D8CEAC" opacity="0.3" />
+            <!-- Crescent shadow -->
+            <circle cx="408" cy="52" r="22" fill="#0F1520" opacity="0.45" />
+          </g>
+
+          <!-- Stars (twinkle animations staggered) -->
+          <circle class="star" cx="30" cy="18" r="1.2" fill="#FAF8F5" opacity="0.85"
+            style="animation-duration:2.1s; animation-delay:0s" />
+          <circle class="star" cx="75" cy="10" r="1" fill="#FAF8F5" opacity="0.7"
+            style="animation-duration:3.4s; animation-delay:0.5s" />
+          <circle class="star" cx="120" cy="22" r="1.5" fill="#FAF8F5" opacity="0.9"
+            style="animation-duration:2.7s; animation-delay:1s" />
+          <circle class="star" cx="160" cy="8" r="1" fill="#FAF8F5" opacity="0.6"
+            style="animation-duration:4s; animation-delay:0.3s" />
+          <circle class="star" cx="200" cy="18" r="1.3" fill="#FAF8F5" opacity="0.8"
+            style="animation-duration:2.5s; animation-delay:1.5s" />
+          <circle class="star" cx="240" cy="6" r="1" fill="#FAF8F5" opacity="0.65"
+            style="animation-duration:3.1s; animation-delay:0.8s" />
+          <circle class="star" cx="280" cy="14" r="1.6" fill="#FAF8F5" opacity="0.9"
+            style="animation-duration:2.2s; animation-delay:0.2s" />
+          <circle class="star" cx="320" cy="9" r="1.1" fill="#D4A853" opacity="0.8"
+            style="animation-duration:3.8s; animation-delay:1.2s" />
+          <circle class="star" cx="355" cy="22" r="1" fill="#FAF8F5" opacity="0.7"
+            style="animation-duration:2.9s; animation-delay:0.6s" />
+          <circle class="star" cx="440" cy="15" r="1.3" fill="#FAF8F5" opacity="0.75"
+            style="animation-duration:3.3s; animation-delay:1.8s" />
+          <circle class="star" cx="475" cy="30" r="1" fill="#FAF8F5" opacity="0.6"
+            style="animation-duration:4.2s; animation-delay:0.4s" />
+          <circle class="star" cx="500" cy="10" r="1.4" fill="#FAF8F5" opacity="0.85"
+            style="animation-duration:2.4s; animation-delay:1.1s" />
+          <circle class="star" cx="55" cy="40" r="1" fill="#FAF8F5" opacity="0.55"
+            style="animation-duration:3.6s; animation-delay:0.9s" />
+          <circle class="star" cx="98" cy="55" r="1.2" fill="#D4A853" opacity="0.7"
+            style="animation-duration:2.8s; animation-delay:1.4s" />
+          <circle class="star" cx="180" cy="45" r="1" fill="#FAF8F5" opacity="0.6"
+            style="animation-duration:3.9s; animation-delay:0.7s" />
+          <circle class="star" cx="460" cy="48" r="1.1" fill="#FAF8F5" opacity="0.65"
+            style="animation-duration:2.6s; animation-delay:1.6s" />
+
+          <!-- Shooting star -->
+          <line x1="60" y1="35" x2="110" y2="20" stroke="#FAF8F5" stroke-width="0.6" opacity="0.35"
+            stroke-linecap="round" />
+
+          <!-- Far mountains (distant range) -->
+          <path
+            d="M0 200 L40 130 L80 155 L130 90 L180 130 L220 105 L260 135 L300 100 L340 125 L390 80 L430 115 L470 90 L520 118 L520 200 Z"
+            fill="url(#mtGrad)" opacity="0.5" />
+
+          <!-- Mid mountains -->
+          <path
+            d="M0 240 L60 160 L110 195 L160 140 L210 175 L260 148 L310 178 L360 145 L410 172 L460 150 L520 165 L520 240 Z"
+            fill="url(#mtGrad2)" opacity="0.75" />
+
+          <!-- Snow caps on mid mountains -->
+          <path d="M160 140 L175 160 L145 160 Z" fill="#E8E4D8" opacity="0.25" />
+          <path d="M360 145 L373 163 L347 163 Z" fill="#E8E4D8" opacity="0.2" />
+          <path d="M260 148 L271 165 L249 165 Z" fill="#E8E4D8" opacity="0.2" />
+
+          <!-- Foreground ground -->
+          <path d="M0 270 Q130 255 260 262 Q390 268 520 260 L520 340 L0 340 Z" fill="url(#groundGrad)" />
+
+          <!-- Ground shading layer -->
+          <path d="M0 285 Q130 275 260 278 Q390 282 520 276 L520 340 L0 340 Z" fill="#080D14" opacity="0.6" />
+
+          <!-- Forest silhouette left -->
+          <!-- Tree 1 -->
+          <polygon points="22,270 34,230 46,270" fill="#0D1219" opacity="0.9" />
+          <polygon points="26,258 34,222 42,258" fill="#111820" opacity="0.8" />
+          <rect x="32" y="268" width="4" height="12" fill="#0A0D12" opacity="0.8" />
+          <!-- Tree 2 -->
+          <polygon points="50,272 65,225 80,272" fill="#0D1219" opacity="0.85" />
+          <polygon points="55,258 65,218 75,258" fill="#111820" opacity="0.75" />
+          <rect x="62" y="270" width="5" height="14" fill="#0A0D12" opacity="0.8" />
+          <!-- Tree 3 (small) -->
+          <polygon points="8,275 17,250 26,275" fill="#0D1219" opacity="0.8" />
+
+          <!-- Forest silhouette right -->
+          <!-- Tree 4 -->
+          <polygon points="440,272 455,228 470,272" fill="#0D1219" opacity="0.9" />
+          <polygon points="445,258 455,220 465,258" fill="#111820" opacity="0.8" />
+          <rect x="452" y="270" width="5" height="14" fill="#0A0D12" opacity="0.8" />
+          <!-- Tree 5 -->
+          <polygon points="468,274 480,232 492,274" fill="#0D1219" opacity="0.85" />
+          <polygon points="472,260 480,224 488,260" fill="#111820" opacity="0.75" />
+          <rect x="477" y="272" width="5" height="13" fill="#0A0D12" opacity="0.8" />
+          <!-- Tree 6 (small) -->
+          <polygon points="494,277 503,252 512,277" fill="#0D1219" opacity="0.8" />
+
+          <!-- ── TENT ── -->
+          <g class="tent-breathe">
+            <!-- Tent body -->
+            <path d="M185 275 L260 215 L335 275 Z" fill="url(#tentGrad)" opacity="0.92" />
+            <!-- Tent darker left face -->
+            <path d="M185 275 L260 215 L260 275 Z" fill="#6B5226" opacity="0.5" />
+            <!-- Tent door outline -->
+            <path d="M240 275 Q260 250 280 275 Z" fill="#0A0C0E" opacity="0.5" />
+            <path d="M240 275 Q260 248 280 275" stroke="#D4A853" stroke-width="1" fill="none" opacity="0.6" />
+            <!-- Tent ridge lines -->
+            <line x1="260" y1="215" x2="260" y2="275" stroke="#D4A853" stroke-width="0.8" opacity="0.35" />
+            <!-- Tent stake lines -->
+            <line x1="185" y1="275" x2="165" y2="285" stroke="#8B7335" stroke-width="1" opacity="0.5" />
+            <line x1="335" y1="275" x2="355" y2="285" stroke="#8B7335" stroke-width="1" opacity="0.5" />
+            <!-- Stakes -->
+            <line x1="163" y1="283" x2="167" y2="289" stroke="#8B7335" stroke-width="2" stroke-linecap="round"
+              opacity="0.6" />
+            <line x1="353" y1="283" x2="357" y2="289" stroke="#8B7335" stroke-width="2" stroke-linecap="round"
+              opacity="0.6" />
+          </g>
+
+          <!-- ── CAMPFIRE ── -->
+          <!-- Fire glow on ground -->
+          <ellipse cx="260" cy="295" rx="30" ry="10" fill="url(#fireGlow)" filter="url(#blur4)" />
+          <!-- Logs -->
+          <ellipse cx="255" cy="295" rx="16" ry="4" fill="#2A1A0A" transform="rotate(-15 255 295)" />
+          <ellipse cx="265" cy="295" rx="16" ry="4" fill="#1E1208" transform="rotate(15 265 295)" />
+          <!-- Log highlight -->
+          <ellipse cx="252" cy="293" rx="12" ry="2" fill="#3D2510" opacity="0.6" transform="rotate(-15 252 293)" />
+          <!-- Smoke puffs -->
+          <g style="transform-origin:260px 278px;">
+            <circle class="smoke" cx="260" cy="278" r="5" fill="#4A5260" opacity="0" />
+            <circle class="smoke" cx="255" cy="278" r="4" fill="#3A404D" opacity="0" style="animation-delay:1s" />
+            <circle class="smoke" cx="265" cy="278" r="3.5" fill="#4A5260" opacity="0" style="animation-delay:2s" />
+          </g>
+          <!-- Flames -->
+          <path d="M255 290 Q252 280 258 272 Q255 285 264 278 Q260 287 268 280 Q265 288 260 272 Q265 282 263 290 Z"
+            fill="url(#fireGrad)" opacity="0.95" />
+          <!-- Ember dots -->
+          <circle class="firefly" cx="248" cy="282" r="1.5" fill="#E8643C" opacity="0.7"
+            style="animation-duration:0.8s" />
+          <circle class="firefly" cx="272" cy="278" r="1" fill="#D4A853" opacity="0.8"
+            style="animation-duration:1.2s; animation-delay:0.4s" />
+          <circle class="firefly" cx="258" cy="268" r="1.2" fill="#FAF0C0" opacity="0.6"
+            style="animation-duration:0.9s; animation-delay:0.2s" />
+
+          <!-- Firefly dots in forest -->
+          <circle class="firefly" cx="95" cy="258" r="1.5" fill="#D4A853" opacity="0.5"
+            style="animation-duration:1.4s; animation-delay:0.6s" />
+          <circle class="firefly" cx="420" cy="252" r="1.2" fill="#D4A853" opacity="0.5"
+            style="animation-duration:1.8s; animation-delay:0.9s" />
+
+          <!-- ══════════════════════
+             GEAR / MAINTENANCE ICONS
+             Overlaid in sky area
+        ══════════════════════ -->
+
+          <!-- Large Gear (top-left area) -->
+          <g class="gear-spin" style="transform-origin:110px 95px;">
+            <!-- Gear teeth via polygon - 8-tooth gear -->
+            <path d="
+            M110,65 L115,72 L124,68 L124,76 L133,78 L130,86
+            L138,92 L133,99 L136,108 L128,110 L127,119 L119,117
+            L113,124 L107,119 L98,122 L94,114 L85,112 L87,103
+            L79,98 L84,91 L80,82 L88,80 L90,71 L99,73 Z" fill="url(#gearGold)" opacity="0.18" />
+            <!-- Gear inner circle -->
+            <circle cx="110" cy="95" r="17" fill="#0F1520" opacity="0.9" />
+            <circle cx="110" cy="95" r="13" fill="none" stroke="#D4A853" stroke-width="1" opacity="0.2" />
+            <!-- Gear center dot -->
+            <circle cx="110" cy="95" r="4" fill="#D4A853" opacity="0.3" />
+          </g>
+
+          <!-- Small Gear (meshing with large, top-left) -->
+          <g class="gear-spin-rev" style="transform-origin:143px 75px;">
+            <path d="
+            M143,58 L146,63 L152,61 L152,66 L158,68 L156,73
+            L161,77 L158,81 L161,86 L156,88 L155,94 L150,93
+            L147,98 L143,95 L138,97 L136,92 L130,90 L132,85
+            L127,81 L131,77 L128,72 L134,70 L135,64 L140,66 Z" fill="url(#gearGold)" opacity="0.14" />
+            <circle cx="143" cy="75" r="12" fill="#0F1520" opacity="0.9" />
+            <circle cx="143" cy="75" r="9" fill="none" stroke="#D4A853" stroke-width="0.8" opacity="0.18" />
+            <circle cx="143" cy="75" r="3" fill="#D4A853" opacity="0.25" />
+          </g>
+
+          <!-- Medium gear (right area) -->
+          <g class="gear-spin" style="transform-origin:415px 85px; animation-duration:9s;">
+            <path d="
+            M415,60 L419,66 L427,63 L428,70 L436,73 L433,80
+            L440,86 L436,92 L440,99 L433,102 L433,110 L425,110
+            L421,117 L415,114 L408,117 L405,110 L397,109
+            L397,101 L390,97 L394,91 L390,84 L397,81 L397,73
+            L405,71 L406,63 Z" fill="url(#gearGold)" opacity="0.15" />
+            <circle cx="415" cy="85" r="15" fill="#0F1520" opacity="0.9" />
+            <circle cx="415" cy="85" r="11" fill="none" stroke="#D4A853" stroke-width="0.8" opacity="0.18" />
+            <circle cx="415" cy="85" r="3.5" fill="#D4A853" opacity="0.28" />
+          </g>
+
+          <!-- Wrench icon (above tent, sky) -->
+          <g transform="translate(232,162) rotate(-30)" opacity="0.22">
+            <rect x="-3" y="-18" width="6" height="36" rx="3" fill="#D4A853" />
+            <ellipse cx="0" cy="-18" rx="9" ry="6" fill="#D4A853" />
+            <ellipse cx="0" cy="18" rx="9" ry="6" fill="#D4A853" />
+            <ellipse cx="0" cy="-18" rx="5" ry="3" fill="#0F1520" />
+            <ellipse cx="0" cy="18" rx="5" ry="3" fill="#0F1520" />
+          </g>
+
+          <!-- Spanner dots — connection between gears -->
+          <circle cx="128" cy="82" r="2" fill="#D4A853" opacity="0.15" />
+
+          <!-- Ground glow from fire -->
+          <ellipse cx="260" cy="310" rx="60" ry="15" fill="#E8643C" opacity="0.07" filter="url(#blur8)" />
+
+          <!-- Foreground rocks -->
+          <ellipse cx="155" cy="300" rx="18" ry="8" fill="#111820" opacity="0.9" />
+          <ellipse cx="165" cy="298" rx="12" ry="6" fill="#191F2C" opacity="0.8" />
+          <ellipse cx="365" cy="298" rx="16" ry="7" fill="#111820" opacity="0.9" />
+          <ellipse cx="375" cy="300" rx="10" ry="5" fill="#191F2C" opacity="0.8" />
+
+          <!-- Star reflections on ground (subtle) -->
+          <ellipse cx="200" cy="310" rx="1.5" ry="0.5" fill="#FAF8F5" opacity="0.12" />
+          <ellipse cx="320" cy="312" rx="1" ry="0.4" fill="#FAF8F5" opacity="0.1" />
+
+        </g><!-- end clip -->
+      </svg>
+    </div>
+    <!-- ═══════════════════════════════════════ -->
+
+    <!-- Content -->
+    <div class="maint-content">
+      <div class="maint-eyebrow">
+        <span class="maint-eyebrow-line"></span>
+        <span class="t-label">Scheduled Maintenance</span>
+        <span class="maint-eyebrow-line"></span>
+      </div>
+
+      <h1 class="maint-title">
+        We're Setting Up<br /><em>Base Camp</em>
+      </h1>
+
+      <p class="maint-desc">
+        Our team is deep in the wilderness, upgrading the trails. Terravana Wilds
+        will be back shortly — better, faster, and more spectacular than ever.
+      </p>
+    </div>
+
+    <!-- ── Countdown Timer ── -->
+    <div class="countdown" role="timer" aria-label="Time remaining">
+      <div class="cd-unit">
+        <div class="cd-box" id="cd-hours">08</div>
+        <div class="cd-label">Hours</div>
+      </div>
+      <span class="cd-sep" aria-hidden="true">:</span>
+      <div class="cd-unit">
+        <div class="cd-box" id="cd-mins">00</div>
+        <div class="cd-label">Minutes</div>
+      </div>
+      <span class="cd-sep" aria-hidden="true">:</span>
+      <div class="cd-unit">
+        <div class="cd-box" id="cd-secs">00</div>
+        <div class="cd-label">Seconds</div>
+      </div>
+    </div>
+
+    <!-- ── Progress bar ── -->
+    <div class="maint-progress-wrap">
+      <div class="maint-progress-label">
+        <span>Restoration Progress</span>
+        <span id="progress-pct">78%</span>
+      </div>
+      <div class="maint-progress-track">
+        <div class="maint-progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- ── Notify form ── -->
+    <div style="animation: fadeUp 0.9s var(--ease-expo) 0.8s both;">
+      <p
+        style="font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(232,224,213,0.3);margin-bottom:0.85rem;">
+        Notify me when we're back
+      </p>
+      <div class="maint-notify" id="notify-form-wrap">
+        <input type="email" class="maint-input" id="notify-email" placeholder="your@email.com"
+          aria-label="Email for notification" />
+        <button class="maint-notify-btn" id="notify-btn" type="button">
+          <i class="fa-solid fa-bell" style="margin-right:0.4rem;font-size:0.75rem;"></i>Notify Me
+        </button>
+      </div>
+      <div class="maint-notify-success" id="notify-success">
+        <i class="fa-solid fa-circle-check"></i>
+        You're on the list! We'll alert you the moment trails open.
+      </div>
+    </div>
+
+    <!-- Social -->
+    <div class="maint-social" aria-label="Social links">
+      <a href="#" class="maint-social-link" aria-label="Instagram"><i class="fa-solid fa-camera"></i></a>
+      <a href="#" class="maint-social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="maint-social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" class="maint-social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+    </div>
+
+  </main>
+
+  <!-- Footer note -->
+  <div class="maint-footer" aria-hidden="true">
+    © 2025 Terravana Wilds · Eco &middot; Adventure &middot; Resort · Est. 2008
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // ── Countdown — targets 8 hours from now ──
+    (function () {
+      var target = new Date();
+      target.setHours(target.getHours() + 8);
+
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+      function tick() {
+        var now = new Date();
+        var diff = Math.max(0, target - now);
+
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+
+        document.getElementById('cd-hours').textContent = pad(h);
+        document.getElementById('cd-mins').textContent = pad(m);
+        document.getElementById('cd-secs').textContent = pad(s);
+
+        if (diff > 0) setTimeout(tick, 1000);
+      }
+
+      tick();
+    })();
+
+    // ── Progress bar animate in ──
+    (function () {
+      var pct = 78;
+      setTimeout(function () {
+        document.getElementById('progress-fill').style.width = pct + '%';
+      }, 800);
+    })();
+
+    // ── Notify button ──
+    document.getElementById('notify-btn').addEventListener('click', function () {
+      var email = document.getElementById('notify-email').value.trim();
+      var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(email)) {
+        var inp = document.getElementById('notify-email');
+        inp.style.borderColor = '#E8643C';
+        inp.style.boxShadow = '0 0 0 3px rgba(232,100,60,0.15)';
+        inp.focus();
+        return;
+      }
+      document.getElementById('notify-form-wrap').style.display = 'none';
+      var suc = document.getElementById('notify-success');
+      suc.style.display = 'flex';
+      suc.style.animation = 'fadeUp 0.5s ease both';
+    });
+  </script>
+</body>
+
+</html>

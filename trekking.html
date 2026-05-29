@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trekking — TERRAVANA WILDS</title>
+  <meta name="description"
+    content="Explore summit treks, ridge traverses, and ancient forest trails at Terravana Wilds. From beginner walks to challenging multi-day alpine expeditions." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .trail-card {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      background: rgba(27, 29, 31, 0.7);
+      border: 1px solid rgba(198, 169, 114, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all var(--dur-base) var(--ease-smooth);
+      min-height: 400px;
+    }
+
+    .trail-card:nth-child(even) {
+      direction: rtl;
+    }
+
+    .trail-card:nth-child(even)>* {
+      direction: ltr;
+    }
+
+    .trail-card:hover {
+      border-color: rgba(198, 169, 114, 0.3);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .trail-card-img {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .trail-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--dur-slow) var(--ease-smooth);
+    }
+
+    .trail-card:hover .trail-card-img img {
+      transform: scale(1.05);
+    }
+
+    .trail-card-body {
+      padding: clamp(2rem, 4vw, 3.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .trail-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .trail-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.55);
+    }
+
+    .trail-meta-icon {
+      color: var(--gold);
+    }
+
+    .trail-highlights {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .trail-highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: rgba(232, 224, 213, 0.7);
+    }
+
+    .trail-highlight-item::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .elevation-bar {
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(180deg, rgba(198, 169, 114, 0.08) 0%, rgba(198, 169, 114, 0.02) 100%);
+      border: 1px solid rgba(198, 169, 114, 0.15);
+      border-radius: 3px;
+      margin-top: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .elevation-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: linear-gradient(0deg, rgba(198, 169, 114, 0.3) 0%, transparent 100%);
+      clip-path: polygon(0 80%, 10% 60%, 25% 50%, 40% 30%, 55% 40%, 70% 10%, 85% 25%, 100% 15%, 100% 100%, 0 100%);
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .trail-card {
+        grid-template-columns: 1fr;
+      }
+
+      .trail-card:nth-child(even) {
+        direction: ltr;
+      }
+
+      .trail-card-img {
+        height: 300px;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="upgrade.css" />
+</head>
+
+<body>
+  <div id="page-loader" aria-hidden="true">
+    <div class="loader-logo">Trekking</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+  <div id="page-transition"
+    style="position:fixed;inset:0;background:var(--coal);z-index:9998;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.4s ease;pointer-events:none;"
+    aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <button id="back-to-top" aria-label="Back to top"
+    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">↑</button>
+
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="nav-logo-main">Terravana Wilds</span><span
+          class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span></a>
+      <div class="nav-links" role="list" style="gap: clamp(0.5rem, 1.2vw, 1.2rem);">
+        <a href="index.html" class="nav-link" role="listitem">Home</a>
+        <a href="adventures.html" class="nav-link" role="listitem">Adventures</a>
+        <a href="trekking.html" class="nav-link" role="listitem">Trekking</a>
+        <a href="wildlife.html" class="nav-link" role="listitem">Wildlife</a>
+        <a href="waterfalls.html" class="nav-link" role="listitem">Waterfalls</a>
+        <a href="campfire.html" class="nav-link" role="listitem">Campfire</a>
+        <a href="ecoresorts.html" class="nav-link" role="listitem">Resorts</a>
+        <a href="seasonal.html" class="nav-link" role="listitem">Seasons</a>
+        <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
+        <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
+        <a href="about.html" class="nav-link" role="listitem">About</a>
+        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:1rem;">
+        <a href="booking.html" class="nav-cta">Book Now</a>
+        <div class="nav-profile-dropdown" id="nav-profile-dropdown">
+          <button id="nav-profile-btn" aria-label="User Profile">
+            <i class="fa-solid fa-user-circle"></i>
+          </button>
+          <div id="nav-profile-menu" class="nav-profile-menu">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div id="nav-mobile" class="nav-mobile">
+    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a><a
+      href="trekking.html" class="nav-link">Trekking</a><a href="wildlife.html" class="nav-link">Wildlife</a><a
+      href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html" class="nav-link">Waterfalls</a><a
+      href="ecoresorts.html" class="nav-link">Eco Resorts</a><a href="seasonal.html" class="nav-link">Seasons</a><a
+      href="gallery.html" class="nav-link">Gallery</a><a href="reviews.html" class="nav-link">Reviews</a><a
+      href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a>
+    <a href="booking.html" class="nav-cta">Book Your Journey</a>
+  </div>
+
+  <main>
+
+    <!-- SECTION 1: HERO -->
+    <section class="hero" id="hero" aria-label="Trekking hero">
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1920&q=80"
+          alt="Trekker on ridge trail at sunrise with mountain panorama" class="hero-bg" loading="eager"
+          fetchpriority="high" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="breadcrumb" style="animation:fadeUp 0.6s ease 0.3s both;">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">›</span>
+            <a href="adventures.html">Adventures</a>
+            <span class="breadcrumb-sep">›</span>
+            <span class="breadcrumb-current">Trekking</span>
+          </div>
+          <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">18 Trekking Routes ·
+              All Difficulties</span></div>
+          <h1 class="hero-title">Trek Into the<br /><em>Infinite</em></h1>
+          <p class="hero-subtitle">Ancient paths through cloud forests, alpine meadows, and river valleys — each trail a
+            story written by the earth itself.</p>
+          <div class="hero-actions">
+            <a href="#trails" class="btn btn-primary" id="trek-hero-browse">Browse Trails</a>
+            <a href="booking.html" class="btn btn-ghost" id="trek-hero-book">Book a Trek</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-number">18</div>
+              <div class="hero-stat-label">Unique Trails</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">3,500m</div>
+              <div class="hero-stat-label">Max Elevation</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">15km</div>
+              <div class="hero-stat-label">Longest Route</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true"><span class="hero-scroll-text">Ascend</span><span
+          class="hero-scroll-line"></span></div>
+    </section>
+
+    <!-- SECTION 2: MARQUEE -->
+    <div class="marquee-wrap bg-graphite" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Cloud Forest Walks <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Alpine Ridge Routes <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Valley Floor Trails <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Summit Expeditions <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Glacier Moraines <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Night Sky Camps <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Dawn Ridge Walks <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Jungle Immersion <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Cloud Forest Walks <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Alpine Ridge Routes <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Valley Floor Trails <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Summit Expeditions <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Glacier Moraines <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Night Sky Camps <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Dawn Ridge Walks <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Jungle Immersion <span class="marquee-dot"></span></span>
+      </div>
+    </div>
+
+    <!-- SECTION 3: INTRO -->
+    <section class="section bg-coal bg-texture" id="trek-intro">
+      <div class="container">
+        <div class="grid-2" style="align-items:center;gap:6rem;">
+          <div class="reveal-left">
+            <div class="section-label">Trekking at Terravana</div>
+            <h2 class="section-title fs-h2">The Mountain <em>Remembers</em> Every Step</h2>
+            <div class="divider"></div>
+            <p class="section-desc">Our trekking routes were mapped over 16 years of forest exploration — some following
+              ancient trade paths, others carved by wildlife, a few discovered by our guides through seasons of patient
+              observation.</p>
+            <p class="section-desc mt-sm" style="margin-top:1.25rem;">From a morning forest stroll to a five-day alpine
+              traverse, every trail is graded, maintained, and led by a certified guide who knows every bend by memory.
+            </p>
+            <div style="display:flex;gap:1.25rem;margin-top:2.5rem;flex-wrap:wrap;">
+              <a href="booking.html" class="btn btn-primary" id="trek-intro-book">Reserve a Trail</a>
+              <a href="contact.html" class="btn btn-ghost" id="trek-intro-ask">Ask Our Guides</a>
+            </div>
+          </div>
+          <div class="reveal-right">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=80"
+              alt="Dramatic mountain trail through pine forest"
+              style="width:100%;height:520px;object-fit:cover;border-radius:4px;" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: STATS -->
+    <section class="section-sm bg-graphite" id="trek-stats">
+      <div class="container">
+        <div class="stats-row reveal">
+          <div class="stat-item"><span class="stat-number" data-counter="18">18</span><span
+              class="stat-label">Trails</span></div>
+          <div class="stat-item"><span class="stat-number" data-counter="3500" data-suffix="m">3500m</span><span
+              class="stat-label">Max Elevation</span></div>
+          <div class="stat-item"><span class="stat-number" data-counter="5" data-suffix=" days">5 days</span><span
+              class="stat-label">Longest Trek</span></div>
+          <div class="stat-item"><span class="stat-number" data-counter="6">6</span><span class="stat-label">Summit
+              Routes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FEATURED TRAILS -->
+    <section class="section bg-coal bg-texture" id="trails">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <div class="section-label section-label-center">Featured Routes</div>
+          <h2 class="section-title fs-h2 text-center">Our <em>Signature</em> Trails</h2>
+          <div class="divider divider-center"></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:2rem;">
+
+          <div class="trail-card reveal">
+            <div class="trail-card-img">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80"
+                alt="Grand Ridge Traverse" loading="lazy" />
+            </div>
+            <div class="trail-card-body">
+              <div class="breadcrumb" style="margin-bottom:0.75rem;"><span class="diff-badge diff-hard">●
+                  Challenging</span></div>
+              <div class="trail-meta">
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i
+                      class="fa-solid fa-location-dot"></i></span>3 Days</span>
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i
+                      class="fa-solid fa-ruler"></i></span>42km</span>
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i
+                      class="fa-solid fa-arrow-up"></i></span>3,200m</span>
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i class="fa-solid fa-users"></i></span>Max
+                  8</span>
+              </div>
+              <h3 class="section-title fs-h3">The Grand Ridge Traverse</h3>
+              <p class="section-desc" style="font-size:0.95rem;">Three days above the treeline, crossing glacial streams
+                and sleeping on ridge camps with 360° views. The defining Terravana experience.</p>
+              <div class="trail-highlights">
+                <div class="trail-highlight-item">Overnight ridge camps at 3,000m</div>
+                <div class="trail-highlight-item">Cross 4 distinct alpine ecosystems</div>
+                <div class="trail-highlight-item">Encounter endemic bird species</div>
+              </div>
+              <div class="elevation-bar">
+                <div class="elevation-fill"></div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;">
+                <div class="price-tag"><span class="price-from">From</span><span class="price-amount">$380</span><span
+                    class="price-unit">/person</span></div>
+                <a href="booking.html" class="btn btn-primary" id="trail1-book">Book This Trail</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="trail-card reveal">
+            <div class="trail-card-img">
+              <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&q=80" alt="Cloud Forest Loop"
+                loading="lazy" />
+            </div>
+            <div class="trail-card-body">
+              <div class="breadcrumb" style="margin-bottom:0.75rem;"><span class="diff-badge diff-easy">● Easy</span>
+              </div>
+              <div class="trail-meta">
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i
+                      class="fa-solid fa-location-dot"></i></span>Half Day</span>
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i
+                      class="fa-solid fa-ruler"></i></span>8km</span>
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i
+                      class="fa-solid fa-arrow-up"></i></span>600m</span>
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i class="fa-solid fa-users"></i></span>Max
+                  12</span>
+              </div>
+              <h3 class="section-title fs-h3">Cloud Forest Immersion Walk</h3>
+              <p class="section-desc" style="font-size:0.95rem;">A gentle half-day walk through ancient moss-draped
+                trees and drifting cloud banks. Perfect for first-time trekkers and families.</p>
+              <div class="trail-highlights">
+                <div class="trail-highlight-item">Orchid-rich forest understory</div>
+                <div class="trail-highlight-item">Misty cloud formations at ridge</div>
+                <div class="trail-highlight-item">Family-friendly, children 7+</div>
+              </div>
+              <div class="elevation-bar">
+                <div class="elevation-fill"
+                  style="clip-path:polygon(0 90%, 15% 80%, 35% 60%, 55% 55%, 75% 50%, 90% 55%, 100% 60%, 100% 100%, 0 100%);">
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;">
+                <div class="price-tag"><span class="price-from">From</span><span class="price-amount">$65</span><span
+                    class="price-unit">/person</span></div>
+                <a href="booking.html" class="btn btn-primary" id="trail2-book">Book This Trail</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="trail-card reveal">
+            <div class="trail-card-img">
+              <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=900&q=80" alt="Valley of Echoes"
+                loading="lazy" />
+            </div>
+            <div class="trail-card-body">
+              <div class="breadcrumb" style="margin-bottom:0.75rem;"><span class="diff-badge diff-mod">● Moderate</span>
+              </div>
+              <div class="trail-meta">
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i
+                      class="fa-solid fa-location-dot"></i></span>Full Day</span>
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i
+                      class="fa-solid fa-ruler"></i></span>18km</span>
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i
+                      class="fa-solid fa-arrow-up"></i></span>1,400m</span>
+                <span class="trail-meta-item"><span class="trail-meta-icon"><i class="fa-solid fa-users"></i></span>Max
+                  10</span>
+              </div>
+              <h3 class="section-title fs-h3">Valley of Echoes — Full Day</h3>
+              <p class="section-desc" style="font-size:0.95rem;">Descend into the ancient river valley, following a
+                network of paths used by indigenous communities for centuries. Lunch by a glacial stream included.</p>
+              <div class="trail-highlights">
+                <div class="trail-highlight-item">Ancient stone trail segments</div>
+                <div class="trail-highlight-item">Glacial stream lunch stop</div>
+                <div class="trail-highlight-item">Indigenous cultural storytelling</div>
+              </div>
+              <div class="elevation-bar">
+                <div class="elevation-fill"
+                  style="clip-path:polygon(0 40%, 20% 55%, 40% 70%, 60% 65%, 80% 45%, 100% 30%, 100% 100%, 0 100%);">
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;">
+                <div class="price-tag"><span class="price-from">From</span><span class="price-amount">$145</span><span
+                    class="price-unit">/person</span></div>
+                <a href="booking.html" class="btn btn-primary" id="trail3-book">Book This Trail</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: TRAIL COMPARISON -->
+    <section class="section bg-graphite" id="trail-compare">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <div class="section-label section-label-center">Choose Your Level</div>
+          <h2 class="section-title fs-h2 text-center">Find Your <em>Perfect</em> Trail</h2>
+        </div>
+        <div class="tabs" role="tablist">
+          <button class="tab-btn active" data-tab="tab-easy" role="tab" aria-selected="true" id="tab-easy-btn">Easy
+            Trails</button>
+          <button class="tab-btn" data-tab="tab-mod" role="tab" aria-selected="false" id="tab-mod-btn">Moderate</button>
+          <button class="tab-btn" data-tab="tab-hard" role="tab" aria-selected="false"
+            id="tab-hard-btn">Challenging</button>
+          <button class="tab-btn" data-tab="tab-multi" role="tab" aria-selected="false"
+            id="tab-multi-btn">Multi-Day</button>
+        </div>
+        <div id="tab-easy" class="tab-pane active" role="tabpanel">
+          <div class="grid-3">
+            <div class="exp-card reveal"><span class="exp-card-icon"><i class="fa-solid fa-leaf"></i></span>
+              <div class="exp-card-title">Moss Grove Stroll — 4km · 2hrs</div>
+              <p class="exp-card-text">A meditative walk through cathedral-like moss gardens. Open to all ages and
+                fitness levels.</p>
+            </div>
+            <div class="exp-card reveal reveal-delay-1"><span class="exp-card-icon"><i
+                  class="fa-solid fa-bug"></i></span>
+              <div class="exp-card-title">Butterfly Meadow Path — 6km · 3hrs</div>
+              <p class="exp-card-text">Spring and summer trail through wildflower meadows visited by over 80 butterfly
+                species.</p>
+            </div>
+            <div class="exp-card reveal reveal-delay-2"><span class="exp-card-icon"><i
+                  class="fa-solid fa-sun"></i></span>
+              <div class="exp-card-title">Sunrise Point Walk — 5km · 2.5hrs</div>
+              <p class="exp-card-text">An early morning ascent to a viewpoint with unobstructed 180° sunrise panoramas.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="tab-mod" class="tab-pane" role="tabpanel">
+          <div class="grid-3">
+            <div class="exp-card"><span class="exp-card-icon"><i class="fa-solid fa-mountain"></i></span>
+              <div class="exp-card-title">Valley of Echoes — 18km · Full Day</div>
+              <p class="exp-card-text">Riverside trails and cultural stories through an ancient river valley ecosystem.
+              </p>
+            </div>
+            <div class="exp-card"><span class="exp-card-icon"><i class="fa-solid fa-water"></i></span>
+              <div class="exp-card-title">Seven Falls Loop — 12km · 6hrs</div>
+              <p class="exp-card-text">A spectacular circuit visiting all seven major waterfalls in the eastern valley
+                drainage.</p>
+            </div>
+            <div class="exp-card"><span class="exp-card-icon"><i class="fa-solid fa-crow"></i></span>
+              <div class="exp-card-title">Eagle's Eyrie Trail — 14km · 7hrs</div>
+              <p class="exp-card-text">Reach the famous Eagle's Eyrie rock formation with panoramic views over three
+                valleys.</p>
+            </div>
+          </div>
+        </div>
+        <div id="tab-hard" class="tab-pane" role="tabpanel">
+          <div class="grid-3">
+            <div class="exp-card"><span class="exp-card-icon"><i class="fa-solid fa-mountain"></i></span>
+              <div class="exp-card-title">North Face Climb — 22km · 2 Days</div>
+              <p class="exp-card-text">A demanding technical ascent of the northern massif with exposed ridge sections.
+              </p>
+            </div>
+            <div class="exp-card"><span class="exp-card-icon"><i class="fa-solid fa-volcano"></i></span>
+              <div class="exp-card-title">Volcanic Rim Trail — 25km · 2 Days</div>
+              <p class="exp-card-text">Traverse the ancient caldera rim above the clouds with primitive overnight
+                camping.</p>
+            </div>
+            <div class="exp-card"><span class="exp-card-icon"><i class="fa-solid fa-mountain-sun"></i></span>
+              <div class="exp-card-title">Grand Ridge Traverse — 42km · 3 Days</div>
+              <p class="exp-card-text">Our signature multi-day high alpine expedition. The pinnacle of Terravana
+                trekking.</p>
+            </div>
+          </div>
+        </div>
+        <div id="tab-multi" class="tab-pane" role="tabpanel">
+          <div class="grid-3">
+            <div class="exp-card"><span class="exp-card-icon"><i class="fa-solid fa-map"></i></span>
+              <div class="exp-card-title">Wild South Circuit — 5 Days</div>
+              <p class="exp-card-text">A 65km loop connecting all southern ecosystems — the complete Terravana
+                wilderness experience.</p>
+            </div>
+            <div class="exp-card"><span class="exp-card-icon"><i class="fa-solid fa-campground"></i></span>
+              <div class="exp-card-title">Traverse & Camp — 4 Days</div>
+              <p class="exp-card-text">Four days of trekking with three nights of primitive camping in the high
+                wilderness.</p>
+            </div>
+            <div class="exp-card"><span class="exp-card-icon"><i class="fa-solid fa-globe"></i></span>
+              <div class="exp-card-title">Grand Terravana Tour — 7 Days</div>
+              <p class="exp-card-text">The complete Terravana experience. All five ecosystems, three altitude zones, two
+                summit reaches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: GUIDE TEAM -->
+    <section class="section bg-coal" id="trek-guides">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <div class="section-label section-label-center">Who Leads the Way</div>
+          <h2 class="section-title fs-h2 text-center">Our <em>Master</em> Guides</h2>
+          <div class="divider divider-center"></div>
+          <p class="section-desc text-center" style="margin:0 auto;">Every Terravana guide is a certified wilderness
+            expert, born and raised in these mountains.</p>
+        </div>
+        <div class="grid-3">
+          <div class="exp-card reveal" style="text-align:center;">
+            <div
+              style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--sienna),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--coal);margin:0 auto 1.5rem;">
+              AR</div>
+            <div class="exp-card-title">Arjun Rao</div>
+            <div class="t-label" style="justify-content:center;margin-bottom:0.75rem;">Lead Summit Guide · 18 yrs</div>
+            <p class="exp-card-text">Born in the mountain village of Thachram, Arjun has summited the Grand Ridge over
+              400 times. He knows every stone.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-2" style="text-align:center;">
+            <div
+              style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#5E6B75,#9A6B4A);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--ivory);margin:0 auto 1.5rem;">
+              MB</div>
+            <div class="exp-card-title">Maya Bravo</div>
+            <div class="t-label" style="justify-content:center;margin-bottom:0.75rem;">Forest Ecologist · 12 yrs</div>
+            <p class="exp-card-text">A trained forest ecologist and certified wilderness medic, Maya specializes in
+              cloud forest ecosystems and botanical identification.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-3" style="text-align:center;">
+            <div
+              style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#D4BB8A);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--coal);margin:0 auto 1.5rem;">
+              KS</div>
+            <div class="exp-card-title">Kiran Suresh</div>
+            <div class="t-label" style="justify-content:center;margin-bottom:0.75rem;">Night Trek Specialist · 9 yrs
+            </div>
+            <p class="exp-card-text">Kiran leads all nocturnal trail experiences and is an award-winning
+              astrophotographer who reveals the sky above as much as the forest below.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: PREPARATION TIMELINE -->
+    <section class="section bg-graphite" id="trek-prep">
+      <div class="container">
+        <div class="grid-2" style="gap:6rem;align-items:start;">
+          <div class="reveal-left">
+            <div class="section-label">Before Your Trek</div>
+            <h2 class="section-title fs-h2">How to <em>Prepare</em></h2>
+            <div class="divider"></div>
+            <div class="timeline" style="margin-top:2.5rem;">
+              <div class="timeline-item">
+                <div class="timeline-label">4 Weeks Out</div>
+                <div class="timeline-title">Physical Conditioning</div>
+                <div class="timeline-text">Begin daily 30-minute walks, gradually increasing distance and elevation.
+                  Practice with a loaded pack 2 weeks before departure.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-label">2 Weeks Out</div>
+                <div class="timeline-title">Gear Preparation</div>
+                <div class="timeline-text">Break in your boots. Confirm kit list with your guide. Arrange travel
+                  insurance with adventure activity coverage.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-label">1 Week Out</div>
+                <div class="timeline-title">Altitude Acclimatisation</div>
+                <div class="timeline-text">For high-altitude routes: arrive 2–3 days early. Stay hydrated. Avoid
+                  alcohol. Rest and gentle walks at base elevation.</div>
+              </div>
+              <div class="timeline-item" style="padding-bottom:0;">
+                <div class="timeline-label">Arrival Day</div>
+                <div class="timeline-title">Expert Briefing</div>
+                <div class="timeline-text">Meet your guide team, review the route, check gear, and enjoy a hearty base
+                  camp dinner before an early start.</div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal-right">
+            <div class="section-label" style="margin-bottom:1.5rem;">Essential Gear</div>
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+              <div class="exp-card"
+                style="padding:1.5rem;flex-direction:row;align-items:center;gap:1.5rem;display:flex;">
+                <span style="font-size:1.75rem;"><i class="fa-solid fa-circle-dot"
+                    style="font-size: 0.8em; opacity: 0.5;"></i></span>
+                <div>
+                  <div class="exp-card-title" style="font-size:0.95rem;margin-bottom:0.25rem;">Waterproof Boots</div>
+                  <p class="exp-card-text" style="font-size:0.8rem;">Ankle support, waterproof membrane, broken in for
+                    comfort.</p>
+                </div>
+              </div>
+              <div class="exp-card"
+                style="padding:1.5rem;flex-direction:row;align-items:center;gap:1.5rem;display:flex;">
+                <span style="font-size:1.75rem;"><i class="fa-solid fa-circle-dot"
+                    style="font-size: 0.8em; opacity: 0.5;"></i></span>
+                <div>
+                  <div class="exp-card-title" style="font-size:0.95rem;margin-bottom:0.25rem;">30L Daypack</div>
+                  <p class="exp-card-text" style="font-size:0.8rem;">Lightweight, with rain cover, hip belt and chest
+                    strap.</p>
+                </div>
+              </div>
+              <div class="exp-card"
+                style="padding:1.5rem;flex-direction:row;align-items:center;gap:1.5rem;display:flex;">
+                <span style="font-size:1.75rem;"><i class="fa-solid fa-shirt"></i></span>
+                <div>
+                  <div class="exp-card-title" style="font-size:0.95rem;margin-bottom:0.25rem;">Layered Clothing</div>
+                  <p class="exp-card-text" style="font-size:0.8rem;">Moisture-wicking base layer, fleece mid-layer,
+                    windproof outer.</p>
+                </div>
+              </div>
+              <div class="exp-card"
+                style="padding:1.5rem;flex-direction:row;align-items:center;gap:1.5rem;display:flex;">
+                <span style="font-size:1.75rem;"><i class="fa-solid fa-droplet"></i></span>
+                <div>
+                  <div class="exp-card-title" style="font-size:0.95rem;margin-bottom:0.25rem;">2L Hydration System</div>
+                  <p class="exp-card-text" style="font-size:0.8rem;">Reservoir or water bottles. Purification tablets
+                    for longer routes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: PHOTO STRIP -->
+    <section class="section-sm bg-coal" id="trek-gallery-strip">
+      <div class="container">
+        <div class="section-label" style="margin-bottom:2rem;">From the Trails</div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;overflow:hidden;border-radius:4px;">
+          <div style="aspect-ratio:2/3;overflow:hidden;"><img
+              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=70" alt=""
+              style="width:100%;height:100%;object-fit:cover;transition:transform var(--dur-slow) var(--ease-smooth);"
+              loading="lazy" onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'" /></div>
+          <div style="aspect-ratio:2/3;overflow:hidden;"><img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70" alt=""
+              style="width:100%;height:100%;object-fit:cover;transition:transform var(--dur-slow) var(--ease-smooth);"
+              loading="lazy" onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'" /></div>
+          <div style="aspect-ratio:2/3;overflow:hidden;"><img
+              src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=70" alt=""
+              style="width:100%;height:100%;object-fit:cover;transition:transform var(--dur-slow) var(--ease-smooth);"
+              loading="lazy" onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'" /></div>
+          <div style="aspect-ratio:2/3;overflow:hidden;"><img
+              src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=400&q=70" alt=""
+              style="width:100%;height:100%;object-fit:cover;transition:transform var(--dur-slow) var(--ease-smooth);"
+              loading="lazy" onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'" /></div>
+          <div style="aspect-ratio:2/3;overflow:hidden;"><img
+              src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&q=70" alt=""
+              style="width:100%;height:100%;object-fit:cover;transition:transform var(--dur-slow) var(--ease-smooth);"
+              loading="lazy" onmouseover="this.style.transform='scale(1.06)'"
+              onmouseout="this.style.transform='scale(1)'" /></div>
+        </div>
+        <div style="text-align:center;margin-top:2rem;"><a href="gallery.html" class="btn btn-ghost"
+            id="trek-gallery-btn">View Full Gallery</a></div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: TESTIMONIAL -->
+    <section class="section bg-graphite" id="trek-testimonial">
+      <div class="container-sm">
+        <blockquote class="pull-quote reveal">
+          "Day three of the Grand Ridge Traverse — standing above the clouds at 3,100 metres — I understood why people
+          return here year after year. The mountain speaks."
+        </blockquote>
+        <div style="text-align:center;margin-top:2rem;">
+          <div class="review-stars" style="justify-content:center;" aria-label="5 stars"><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.5);margin-top:0.75rem;">— Priya
+            S. · Wildlife Photographer · Singapore</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: TREKKING TIPS -->
+    <section class="section bg-coal bg-texture" id="trek-tips">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <div class="section-label section-label-center">Expert Advice</div>
+          <h2 class="section-title fs-h2 text-center">Trekker's <em>Wisdom</em></h2>
+        </div>
+        <div class="tips-grid">
+          <div class="exp-card reveal"><span class="exp-card-icon"><i class="fa-solid fa-sun"></i></span>
+            <div class="exp-card-title">Start at Dawn</div>
+            <p class="exp-card-text">Begin before 6am. The forest is most alive at dawn — and you'll avoid afternoon
+              heat and possible afternoon rain at altitude.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-1"><span class="exp-card-icon"><i
+                class="fa-solid fa-droplet"></i></span>
+            <div class="exp-card-title">Hydrate Ahead</div>
+            <p class="exp-card-text">Drink before you feel thirsty. At altitude, dehydration accelerates. Carry at least
+              2L per person for every 6 hours of trekking.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-2"><span class="exp-card-icon"><i
+                class="fa-solid fa-camera"></i></span>
+            <div class="exp-card-title">Pause and Observe</div>
+            <p class="exp-card-text">The best moments happen when you stop. Allow silence. Your guide knows when to
+              pause — trust them, and let the forest reveal itself.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12: ALTITUDE PROTOCOL -->
+    <section class="section bg-graphite" id="trek-altitude">
+      <div class="container">
+        <div class="grid-2" style="gap:4rem;align-items:center;">
+          <div class="reveal-left">
+            <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&q=80"
+              alt="Mountain summit ridge" style="width:100%;height:350px;object-fit:cover;border-radius:4px;"
+              loading="lazy" />
+          </div>
+          <div class="reveal-right">
+            <div class="section-label">Medical Safety</div>
+            <h2 class="section-title fs-h2">Altitude <em>Protocol</em></h2>
+            <div class="divider"></div>
+            <p class="section-desc">For our summit treks reaching above 2,500m, acclimatisation is critical. Our guides
+              monitor blood oxygen levels twice daily and employ a strict 'climb high, sleep low' philosophy on all
+              multi-day traverses to ensure optimal physiological adaptation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 13: FLORA & FAUNA -->
+    <section class="section bg-coal" id="trek-flora">
+      <div class="container">
+        <div class="section-header section-header-center" style="margin-bottom:3rem;">
+          <div class="section-label section-label-center">Trail Sightings</div>
+          <h2 class="section-title fs-h2 text-center">Life on the <em>Path</em></h2>
+          <div class="divider divider-center"></div>
+        </div>
+        <div class="grid-3" style="gap:1.5rem;">
+          <div class="exp-card reveal" style="padding:2rem;">
+            <div style="font-size:2rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-crow"></i></div>
+            <div class="exp-card-title">Avian Encounters</div>
+            <p class="exp-card-text" style="font-size:0.85rem;">High ridge trails offer unique opportunities to spot
+              majestic raptors riding the thermals, as well as colourful endemic species in the cloud forests.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-1" style="padding:2rem;">
+            <div style="font-size:2rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-spa"></i></div>
+            <div class="exp-card-title">Alpine Botanicals</div>
+            <p class="exp-card-text" style="font-size:0.85rem;">Above 2,000m, the landscape transforms. Rare orchids,
+              medicinal herbs, and resilient alpine shrubs decorate the rocky outcrops.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-2" style="padding:2rem;">
+            <div style="font-size:2rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-paw"></i></div>
+            <div class="exp-card-title">Tracking Mammals</div>
+            <p class="exp-card-text" style="font-size:0.85rem;">Our guides will teach you to read the trail—identifying
+              leopard pugmarks, deer scat, and bear scratchings on ancient tree trunks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 14: NAVIGATION & RESCUE -->
+    <section class="section bg-graphite bg-texture" id="trek-safety">
+      <div class="container">
+        <div class="featured-story reveal"
+          style="min-height:300px;background:rgba(27,29,31,0.8);border:1px solid rgba(198,169,114,0.15);">
+          <div class="fs-content" style="text-align:center;padding:3rem;">
+            <div class="section-label section-label-center" style="margin-bottom:1rem;">Zero Compromise</div>
+            <h3
+              style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--ivory);line-height:1.2;margin-bottom:1rem;">
+              Navigation & Safety Protocol</h3>
+            <p style="font-size:0.9rem;color:rgba(232,224,213,0.7);max-width:600px;margin:0 auto;">While you experience
+              absolute wilderness, our invisible safety net is always active. Every guide carries a satellite
+              communicator, comprehensive medical kit, and GPS tracking device. Our base camp operations team monitors
+              all deep-wilderness expeditions in real-time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 15: CTA -->
+    <section class="section-sm bg-coal" id="trek-cta">
+      <div class="container">
+        <div class="cta-banner reveal" style="text-align:center;display:block;">
+          <div class="section-label section-label-center" style="margin-bottom:1rem;">The Summit Waits</div>
+          <h2 class="section-title fs-h2 text-center">Take the <em>First Step</em></h2>
+          <p class="section-desc text-center" style="margin:1.5rem auto 2.5rem;">Treks depart weekly with limited
+            spaces. Reserve early to secure your preferred route and dates.</p>
+          <div style="display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;">
+            <a href="booking.html" class="btn btn-primary" id="trek-cta-book">Book a Trek</a>
+            <a href="adventures.html" class="btn btn-ghost" id="trek-cta-all">All Adventures</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">Terravana Wilds</div>
+          <div class="footer-logo-sub">Eco &middot; Adventure &middot; Resort</div>
+          <p class="footer-tagline">"Where wilderness speaks and every trail tells a story."</p>
+          <div class="eco-badge" style="margin-top:1rem;"><i class="fa-solid fa-leaf"></i> Certified Carbon Neutral
+            Resort</div>
+          <div class="footer-social" aria-label="Social media links"><a href="https://www.instagram.com/" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a><a href="https://www.linkedin.com/" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.facebook.com/" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a><a href="https://x.com/" class="footer-social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a></div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Explore</h3>
+          <nav class="footer-links"><a href="adventures.html" class="footer-link">All Adventures</a><a
+              href="trekking.html" class="footer-link">Trekking Trails</a><a href="wildlife.html"
+              class="footer-link">Wildlife Safaris</a><a href="campfire.html" class="footer-link">Campfire Nights</a><a
+              href="waterfalls.html" class="footer-link">Waterfall Walks</a></nav>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Stay</h3>
+          <nav class="footer-links"><a href="ecoresorts.html" class="footer-link">Eco Resorts</a><a href="seasonal.html"
+              class="footer-link">Seasonal Guide</a><a href="booking.html" class="footer-link">Book Now</a><a
+              href="reviews.html" class="footer-link">Guest Reviews</a><a href="gallery.html" class="footer-link">Photo
+              Gallery</a></nav>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Connect</h3>
+          <nav class="footer-links"><a href="about.html" class="footer-link">About Us</a><a href="contact.html"
+              class="footer-link">Contact</a></nav><form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required><button class="footer-email-btn" type="submit">Submit</button></form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Terravana Wilds. All rights reserved.</p>
+        <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Eco Charter</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="upgrade_script.js"></script>
+</body>
+
+</html>

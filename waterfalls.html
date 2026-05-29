@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waterfalls — TERRAVANA WILDS</title>
+  <meta name="description"
+    content="Discover hidden cascades, sacred plunge pools, and misty river valleys on Terravana Wilds' waterfall trails. Seven falls, one unforgettable journey." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .waterfall-feature {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      cursor: pointer;
+    }
+
+    .waterfall-feature img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--dur-slow) var(--ease-smooth);
+    }
+
+    .waterfall-feature:hover img {
+      transform: scale(1.04);
+    }
+
+    .wf-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(17, 19, 21, 0.9) 0%, rgba(17, 19, 21, 0.1) 55%);
+    }
+
+    .wf-content {
+      position: relative;
+      z-index: 1;
+      padding: 3rem;
+      width: 100%;
+    }
+
+    .falls-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .fall-card {
+      background: rgba(27, 29, 31, 0.7);
+      border: 1px solid rgba(198, 169, 114, 0.12);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all var(--dur-base) var(--ease-smooth);
+    }
+
+    .fall-card:hover {
+      border-color: rgba(198, 169, 114, 0.35);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .fall-card-img {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .fall-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--dur-slow) var(--ease-smooth);
+    }
+
+    .fall-card:hover .fall-card-img img {
+      transform: scale(1.07);
+    }
+
+    .fall-card-body {
+      padding: 1.75rem;
+    }
+
+    .fall-card-height {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .fall-card-unit {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.4);
+    }
+
+    .water-activity {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(27, 29, 31, 0.6);
+      border: 1px solid rgba(198, 169, 114, 0.1);
+      border-radius: 3px;
+      transition: all var(--dur-base) var(--ease-smooth);
+    }
+
+    .water-activity:hover {
+      border-color: rgba(198, 169, 114, 0.3);
+      transform: translateX(6px);
+    }
+
+    .water-activity-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .safety-card {
+      background: rgba(27, 29, 31, 0.7);
+      border: 1px solid rgba(198, 169, 114, 0.1);
+      border-left: 3px solid var(--sienna);
+      border-radius: 0 4px 4px 0;
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .falls-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .falls-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="upgrade.css" />
+</head>
+
+<body>
+  <div id="page-loader" aria-hidden="true">
+    <div class="loader-logo">Waterfalls</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+  <div id="page-transition"
+    style="position:fixed;inset:0;background:var(--coal);z-index:9998;opacity:0;transition:opacity 0.4s ease;pointer-events:none;"
+    aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <button id="back-to-top" aria-label="Back to top"
+    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">↑</button>
+
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="nav-logo-main">Terravana Wilds</span><span
+          class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span></a>
+      <div class="nav-links" role="list" style="gap: clamp(0.5rem, 1.2vw, 1.2rem);">
+        <a href="index.html" class="nav-link" role="listitem">Home</a>
+        <a href="adventures.html" class="nav-link" role="listitem">Adventures</a>
+        <a href="trekking.html" class="nav-link" role="listitem">Trekking</a>
+        <a href="wildlife.html" class="nav-link" role="listitem">Wildlife</a>
+        <a href="waterfalls.html" class="nav-link" role="listitem">Waterfalls</a>
+        <a href="campfire.html" class="nav-link" role="listitem">Campfire</a>
+        <a href="ecoresorts.html" class="nav-link" role="listitem">Resorts</a>
+        <a href="seasonal.html" class="nav-link" role="listitem">Seasons</a>
+        <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
+        <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
+        <a href="about.html" class="nav-link" role="listitem">About</a>
+        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:1rem;">
+        <a href="booking.html" class="nav-cta">Book Now</a>
+        <div class="nav-profile-dropdown" id="nav-profile-dropdown">
+          <button id="nav-profile-btn" aria-label="User Profile">
+            <i class="fa-solid fa-user-circle"></i>
+          </button>
+          <div id="nav-profile-menu" class="nav-profile-menu">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div id="nav-mobile" class="nav-mobile">
+    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a><a
+      href="trekking.html" class="nav-link">Trekking</a><a href="wildlife.html" class="nav-link">Wildlife</a><a
+      href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html"
+      class="nav-link active">Waterfalls</a><a href="ecoresorts.html" class="nav-link">Eco Resorts</a><a
+      href="seasonal.html" class="nav-link">Seasons</a><a href="gallery.html" class="nav-link">Gallery</a><a
+      href="reviews.html" class="nav-link">Reviews</a><a href="about.html" class="nav-link">About</a><a
+      href="contact.html" class="nav-link">Contact</a>
+    <a href="booking.html" class="nav-cta">Book Your Journey</a>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO -->
+    <section class="hero" id="hero" aria-label="Waterfalls hero">
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=80"
+          alt="Majestic waterfall cascading through ancient rainforest" class="hero-bg" loading="eager"
+          fetchpriority="high" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="breadcrumb" style="animation:fadeUp 0.6s ease 0.3s both;"><a href="index.html">Home</a><span
+              class="breadcrumb-sep">›</span><a href="adventures.html">Adventures</a><span
+              class="breadcrumb-sep">›</span><span class="breadcrumb-current">Waterfalls</span></div>
+          <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">7 Sacred Falls · Hidden
+              Pools · River Trails</span></div>
+          <h1 class="hero-title">Where the<br /><em>Earth</em> Pours</h1>
+          <p class="hero-subtitle">Seven sacred cascades hidden within ancient river valleys — each one a secret the
+            forest has kept for centuries, waiting for you to discover it.</p>
+          <div class="hero-actions">
+            <a href="#seven-falls" class="btn btn-primary" id="wf-hero-browse">Discover the Falls</a>
+            <a href="booking.html" class="btn btn-ghost" id="wf-hero-book">Book a Trail</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-number">7</div>
+              <div class="hero-stat-label">Sacred Falls</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">60m</div>
+              <div class="hero-stat-label">Tallest Cascade</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">3</div>
+              <div class="hero-stat-label">Trail Grades</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true"><span class="hero-scroll-text">Flow</span><span
+          class="hero-scroll-line"></span></div>
+    </section>
+
+    <!-- SECTION 2: MARQUEE -->
+    <div class="marquee-wrap bg-graphite" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Sacred Plunge Pools <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Hidden Cascades <span class="marquee-dot"></span></span>
+        <span class="marquee-item">River Swimming <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Canyon Walks <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Misty Rainbows <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Rock Scrambles <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Ancient Gorges <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Moss-Draped Cliffs <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Sacred Plunge Pools <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Hidden Cascades <span class="marquee-dot"></span></span>
+        <span class="marquee-item">River Swimming <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Canyon Walks <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Misty Rainbows <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Rock Scrambles <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Ancient Gorges <span class="marquee-dot"></span></span>
+        <span class="marquee-item">Moss-Draped Cliffs <span class="marquee-dot"></span></span>
+      </div>
+    </div>
+
+    <!-- SECTION 3: INTRO -->
+    <section class="section bg-coal bg-texture" id="wf-intro">
+      <div class="container">
+        <div class="grid-2" style="gap:6rem;align-items:center;">
+          <div class="reveal-left">
+            <div class="section-label">Ancient Waters</div>
+            <h2 class="section-title fs-h2">The River Has<br /><em>Always Known</em> the Way</h2>
+            <div class="divider"></div>
+            <p class="section-desc">Long before trails were mapped, water found its own path through Terravana's ancient
+              rock — carving gorges, creating plunge pools, sculpting moss-covered amphitheatres of sound and mist.
+              These seven waterfalls are among the most beautiful secrets the forest holds.</p>
+            <p class="section-desc" style="margin-top:1.25rem;">Our waterfall guides combine geological knowledge,
+              ecological storytelling, and a deep reverence for these sacred sites — many of which hold ceremonial
+              significance for the local indigenous community.</p>
+          </div>
+          <div class="reveal-right">
+            <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=900&q=80"
+              alt="Waterfall hidden in jungle" style="width:100%;height:520px;object-fit:cover;border-radius:4px;"
+              loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: STATS -->
+    <section class="section-sm bg-graphite" id="wf-stats">
+      <div class="container">
+        <div class="stats-row reveal">
+          <div class="stat-item"><span class="stat-number" data-counter="7">7</span><span class="stat-label">Named
+              Waterfalls</span></div>
+          <div class="stat-item"><span class="stat-number" data-counter="60" data-suffix="m">60m</span><span
+              class="stat-label">Tallest Drop</span></div>
+          <div class="stat-item"><span class="stat-number" data-counter="12" data-suffix="°C">12°C</span><span
+              class="stat-label">Pool Temperature</span></div>
+          <div class="stat-item"><span class="stat-number" data-counter="42" data-suffix=" km">42km</span><span
+              class="stat-label">River Network</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FEATURED FALLS -->
+    <section class="section bg-coal" id="seven-falls">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <div class="section-label section-label-center">The Sacred Seven</div>
+          <h2 class="section-title fs-h2 text-center">Meet the <em>Falls</em></h2>
+          <div class="divider divider-center"></div>
+        </div>
+
+        <!-- Hero Fall -->
+        <div class="waterfall-feature reveal" style="margin-bottom:1.5rem;">
+          <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1400&q=80"
+            alt="Devakund — The Sacred Veil" loading="lazy" />
+          <div class="wf-overlay"></div>
+          <div class="wf-content">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
+              <div>
+                <span class="t-label" style="display:block;margin-bottom:0.75rem;">Fall I · The Crown Jewel</span>
+                <h3
+                  style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--ivory);line-height:1.1;margin-bottom:0.5rem;">
+                  Devakund — The Sacred Veil</h3>
+                <p style="font-size:0.95rem;color:rgba(232,224,213,0.7);max-width:520px;line-height:1.7;">At 60 metres,
+                  Devakund is Terravana's most spectacular waterfall. The water falls in a single unbroken veil into a
+                  15-metre deep emerald plunge pool. Considered sacred by the local Kanni tribe, the site is accessible
+                  only with a certified guide.</p>
+              </div>
+              <div style="flex-shrink:0;text-align:right;">
+                <div class="fall-card-height">60m</div>
+                <div class="fall-card-unit">Drop Height</div>
+                <a href="booking.html" class="btn btn-primary" style="margin-top:1rem;display:inline-flex;"
+                  id="wf-devakund-book">Book This Trail</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Falls Grid -->
+        <div class="falls-grid">
+          <div class="fall-card reveal">
+            <div class="fall-card-img"><img
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=75" alt="Twin Veils"
+                loading="lazy" /></div>
+            <div class="fall-card-body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;">
+                <span class="t-label">Fall II</span>
+                <div style="text-align:right;">
+                  <div class="fall-card-height">35m</div>
+                  <div class="fall-card-unit">Drop</div>
+                </div>
+              </div>
+              <h3 class="exp-card-title">Twin Veils</h3>
+              <p class="exp-card-text">Two parallel cascades separated by an ancient basalt dyke, creating a natural
+                curtain of mist. Accessible on the moderate half-day loop.</p>
+              <a href="booking.html" class="btn btn-outline-gold" id="wf-twin-book"
+                style="margin-top:1.25rem;padding:0.6rem 1.2rem;font-size:0.68rem;">Book Trail →</a>
+            </div>
+          </div>
+          <div class="fall-card reveal reveal-delay-1">
+            <div class="fall-card-img"><img
+                src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=75" alt="The Whispering Steps"
+                loading="lazy" /></div>
+            <div class="fall-card-body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;">
+                <span class="t-label">Fall III</span>
+                <div style="text-align:right;">
+                  <div class="fall-card-height">22m</div>
+                  <div class="fall-card-unit">Drop</div>
+                </div>
+              </div>
+              <h3 class="exp-card-title">The Whispering Steps</h3>
+              <p class="exp-card-text">A tiered cascade across six granite shelves, each step creating its own
+                micro-pool. Perfect for swimming and immersion photography.</p>
+              <a href="booking.html" class="btn btn-outline-gold" id="wf-steps-book"
+                style="margin-top:1.25rem;padding:0.6rem 1.2rem;font-size:0.68rem;">Book Trail →</a>
+            </div>
+          </div>
+          <div class="fall-card reveal reveal-delay-2">
+            <div class="fall-card-img"><img
+                src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=600&q=75" alt="Moonrise Pool"
+                loading="lazy" /></div>
+            <div class="fall-card-body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem;">
+                <span class="t-label">Fall IV</span>
+                <div style="text-align:right;">
+                  <div class="fall-card-height">18m</div>
+                  <div class="fall-card-unit">Drop</div>
+                </div>
+              </div>
+              <h3 class="exp-card-title">Moonrise Pool</h3>
+              <p class="exp-card-text">Best experienced at full moon when reflected moonlight creates a second waterfall
+                of light in the pool below. A truly ethereal experience.</p>
+              <a href="booking.html" class="btn btn-outline-gold" id="wf-moon-book"
+                style="margin-top:1.25rem;padding:0.6rem 1.2rem;font-size:0.68rem;">Book Trail →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: TRAIL OPTIONS -->
+    <section class="section bg-graphite" id="wf-trails">
+      <div class="container">
+        <div class="section-header flex-between" style="flex-wrap:wrap;gap:2rem;">
+          <div>
+            <div class="section-label">Trail Packages</div>
+            <h2 class="section-title fs-h2">Choose Your <em>Route</em></h2>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="exp-card reveal">
+            <span class="exp-card-icon"><i class="fa-solid fa-droplet"></i></span>
+            <div class="exp-card-title">Single Fall Experience</div>
+            <div class="t-label" style="margin:0.5rem 0 0.75rem;">2–3 Hours · All Levels</div>
+            <p class="exp-card-text">A guided visit to your chosen waterfall — including natural history briefing,
+              swimming time, and photography guidance. Ideal as a standalone or add-on experience.</p>
+            <div class="price-tag" style="margin-top:1.25rem;"><span class="price-from">From</span><span
+                class="price-amount">$55</span><span class="price-unit">/person</span></div>
+            <a href="booking.html" class="btn btn-outline-gold" id="wf-single-book"
+              style="margin-top:1rem;padding:0.65rem 1.25rem;font-size:0.68rem;display:inline-flex;">Book →</a>
+          </div>
+          <div class="exp-card reveal reveal-delay-1">
+            <span class="exp-card-icon"><i class="fa-solid fa-person-swimming"></i></span>
+            <div class="exp-card-title">Seven Falls Loop</div>
+            <div class="t-label" style="margin:0.5rem 0 0.75rem;">Full Day · Moderate</div>
+            <p class="exp-card-text">The signature Terravana waterfall experience — a full-day 12km circuit visiting all
+              seven named falls with swimming stops, a forest lunch, and cultural storytelling.</p>
+            <div class="price-tag" style="margin-top:1.25rem;"><span class="price-from">From</span><span
+                class="price-amount">$145</span><span class="price-unit">/person</span></div>
+            <a href="booking.html" class="btn btn-primary" id="wf-loop-book"
+              style="margin-top:1rem;padding:0.65rem 1.25rem;font-size:0.68rem;display:inline-flex;">Book →</a>
+          </div>
+          <div class="exp-card reveal reveal-delay-2">
+            <span class="exp-card-icon"><i class="fa-solid fa-moon"></i></span>
+            <div class="exp-card-title">Moonfall Night Walk</div>
+            <div class="t-label" style="margin:0.5rem 0 0.75rem;">Evening · Full Moon Only</div>
+            <p class="exp-card-text">A rare, monthly full-moon guided walk to the Moonrise Pool and Devakund. The falls
+              illuminated only by moonlight and bioluminescent organisms in the mist.</p>
+            <div class="price-tag" style="margin-top:1.25rem;"><span class="price-from">From</span><span
+                class="price-amount">$195</span><span class="price-unit">/person</span></div>
+            <a href="booking.html" class="btn btn-outline-gold" id="wf-moon-night-book"
+              style="margin-top:1rem;padding:0.65rem 1.25rem;font-size:0.68rem;display:inline-flex;">Book →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: SWIMMING GUIDE -->
+    <section class="section bg-coal bg-texture" id="wf-swimming">
+      <div class="container">
+        <div class="grid-2" style="gap:6rem;align-items:center;">
+          <div class="reveal-left">
+            <div class="section-label">Swim in the Wild</div>
+            <h2 class="section-title fs-h2">Plunge Into<br /><em>Crystal</em> Waters</h2>
+            <div class="divider"></div>
+            <p class="section-desc">Five of Terravana's seven waterfalls have designated swimming areas — naturally
+              formed pools of crystal-clear glacial water maintained at a refreshing 12–16°C year-round.</p>
+            <div style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem;">
+              <div class="water-activity">
+                <div class="water-activity-icon"><i class="fa-solid fa-person-swimming"></i></div>
+                <div>
+                  <div class="exp-card-title" style="font-size:1rem;margin-bottom:0.25rem;">Natural Plunge Pools</div>
+                  <p class="exp-card-text" style="font-size:0.82rem;">Naturally formed granite basins. Water tested
+                    weekly for purity. Crystal clarity guaranteed.</p>
+                </div>
+              </div>
+              <div class="water-activity">
+                <div class="water-activity-icon"><i class="fa-solid fa-life-ring"></i></div>
+                <div>
+                  <div class="exp-card-title" style="font-size:1rem;margin-bottom:0.25rem;">Safety Equipment Provided
+                  </div>
+                  <p class="exp-card-text" style="font-size:0.82rem;">Life vests available on request. Certified swim
+                    guides present at all designated areas.</p>
+                </div>
+              </div>
+              <div class="water-activity">
+                <div class="water-activity-icon"><i class="fa-solid fa-camera"></i></div>
+                <div>
+                  <div class="exp-card-title" style="font-size:1rem;margin-bottom:0.25rem;">Underwater Photography</div>
+                  <p class="exp-card-text" style="font-size:0.82rem;">Waterproof camera housings available for hire. Our
+                    guide captures your plunge professionally.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal-right">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=900&q=80"
+              alt="Crystal clear waterfall pool" style="width:100%;height:540px;object-fit:cover;border-radius:4px;"
+              loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: SEASONAL BEST TIME -->
+    <section class="section bg-graphite" id="wf-seasonal">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <div class="section-label section-label-center">When to Visit</div>
+          <h2 class="section-title fs-h2 text-center">Falls by <em>Season</em></h2>
+          <div class="divider divider-center"></div>
+        </div>
+        <div class="grid-4" style="gap:1rem;">
+          <div class="exp-card reveal" style="text-align:center;">
+            <span style="font-size:2.5rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-cloud-showers-heavy"></i>️</span>
+            <div class="exp-card-title">Monsoon</div>
+            <div class="t-label" style="justify-content:center;margin-bottom:0.75rem;">Jun – Sep</div>
+            <p class="exp-card-text">Maximum water volume — the falls roar at full power. Mist fills the valleys. Some
+              trails may be restricted. Most dramatic experience.</p>
+            <div
+              style="margin-top:1rem;padding:0.5rem;background:rgba(198,169,114,0.07);border-radius:3px;font-size:0.75rem;color:var(--gold);">
+              <i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i> Peak Flow</div>
+          </div>
+          <div class="exp-card reveal reveal-delay-1" style="text-align:center;">
+            <span style="font-size:2.5rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-brands fa-canadian-maple-leaf"></i></span>
+            <div class="exp-card-title">Post-Monsoon</div>
+            <div class="t-label" style="justify-content:center;margin-bottom:0.75rem;">Oct – Nov</div>
+            <p class="exp-card-text">Strong flow with clearer skies. Lush green forest at its peak. Ideal balance of
+              power and visibility. Best for photography.</p>
+            <div
+              style="margin-top:1rem;padding:0.5rem;background:rgba(94,158,107,0.07);border-radius:3px;font-size:0.75rem;color:#5E9E6B;">
+              <i class="fa-solid fa-star"></i> Recommended</div>
+          </div>
+          <div class="exp-card reveal reveal-delay-2" style="text-align:center;">
+            <span style="font-size:2.5rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-snowflake"></i>️</span>
+            <div class="exp-card-title">Winter</div>
+            <div class="t-label" style="justify-content:center;margin-bottom:0.75rem;">Dec – Feb</div>
+            <p class="exp-card-text">Moderate flow, crystal clarity, and still air. Swimming at its most refreshing. All
+              trails open and accessible. Quieter crowds.</p>
+            <div
+              style="margin-top:1rem;padding:0.5rem;background:rgba(94,107,117,0.07);border-radius:3px;font-size:0.75rem;color:var(--slate);">
+              <i class="fa-solid fa-person-swimming"></i> Best Swimming</div>
+          </div>
+          <div class="exp-card reveal reveal-delay-3" style="text-align:center;">
+            <span style="font-size:2.5rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-sun"></i>️</span>
+            <div class="exp-card-title">Summer</div>
+            <div class="t-label" style="justify-content:center;margin-bottom:0.75rem;">Mar – May</div>
+            <p class="exp-card-text">Lower flow creates more intimate falls and larger swimming areas. Rainbows visible
+              most mornings. Full seven-falls circuit most accessible.</p>
+            <div
+              style="margin-top:1rem;padding:0.5rem;background:rgba(198,100,30,0.07);border-radius:3px;font-size:0.75rem;color:#C6641E;">
+              <i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i> Rainbow Season</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: ECOLOGY -->
+    <section class="section bg-coal bg-texture" id="wf-ecology">
+      <div class="container">
+        <div class="grid-2" style="gap:6rem;align-items:center;">
+          <div class="reveal-left">
+            <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=900&q=80"
+              alt="River ecology and moss-covered rocks"
+              style="width:100%;height:480px;object-fit:cover;border-radius:4px;" loading="lazy" />
+          </div>
+          <div class="reveal-right">
+            <div class="section-label">River Ecology</div>
+            <h2 class="section-title fs-h2">Life at the<br /><em>Water's Edge</em></h2>
+            <div class="divider"></div>
+            <p class="section-desc">Terravana's waterfall corridors support an extraordinary concentration of
+              biodiversity — moisture-loving ferns, endemic amphibians, river otters, and kingfishers all depend on this
+              network of falls and pools.</p>
+            <div style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem;">
+              <div class="trail-highlight-item"
+                style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(232,224,213,0.75);"><span
+                  style="color:var(--gold);"><i class="fa-solid fa-sparkles"></i></span> 12 endemic fern species found
+                only in waterfall mist zones</div>
+              <div class="trail-highlight-item"
+                style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(232,224,213,0.75);"><span
+                  style="color:var(--gold);"><i class="fa-solid fa-sparkles"></i></span> 4 species of torrent ducks nest
+                behind the main falls</div>
+              <div class="trail-highlight-item"
+                style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(232,224,213,0.75);"><span
+                  style="color:var(--gold);"><i class="fa-solid fa-sparkles"></i></span> Asian small-clawed otters
+                resident in river pools</div>
+              <div class="trail-highlight-item"
+                style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:rgba(232,224,213,0.75);"><span
+                  style="color:var(--gold);"><i class="fa-solid fa-sparkles"></i></span> Bioluminescent organisms
+                visible in mist at night</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: SAFETY -->
+    <section class="section bg-graphite" id="wf-safety">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Your Safety</div>
+          <h2 class="section-title fs-h2">Adventure with <em>Confidence</em></h2>
+        </div>
+        <div class="grid-3">
+          <div class="safety-card reveal">
+            <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i>️</span>
+            <div class="exp-card-title">Certified Safety Guides</div>
+            <p class="exp-card-text">All waterfall guides hold Wilderness First Responder certification. Emergency
+              communication devices carried on every trail.</p>
+          </div>
+          <div class="safety-card reveal reveal-delay-1">
+            <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i>️</span>
+            <div class="exp-card-title">Water Level Monitoring</div>
+            <p class="exp-card-text">Real-time upstream rain gauges feed our trail management system. Routes are
+              adjusted automatically based on safe water-level thresholds.</p>
+          </div>
+          <div class="safety-card reveal reveal-delay-2">
+            <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span>
+            <div class="exp-card-title">Leave No Trace</div>
+            <p class="exp-card-text">No soap, chemicals, or sunscreen in any pool. Designated entry and exit points
+              only. Maximum group size 8 per waterfall zone.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: PULL QUOTE -->
+    <section class="section bg-coal"
+      style="background-image:url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=50');background-size:cover;background-attachment:fixed;position:relative;">
+      <div style="position:absolute;inset:0;background:rgba(17,19,21,0.85);"></div>
+      <div class="container" style="position:relative;z-index:1;">
+        <blockquote class="pull-quote reveal">"Standing under Devakund, the sound was total. The water drowned every
+          thought I'd carried in from the city. I wept and didn't know why — but it felt completely right."</blockquote>
+        <div style="text-align:center;margin-top:2rem;">
+          <div class="review-stars" style="justify-content:center;" aria-label="5 stars"><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.5);margin-top:0.75rem;">—
+            Thomas B. · Travel Writer · Berlin, Germany</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12: PHOTOGRAPHY GUIDE -->
+    <section class="section bg-graphite bg-texture" id="wf-photography">
+      <div class="container">
+        <div class="section-header section-header-center" style="margin-bottom:3rem;">
+          <div class="section-label section-label-center">Capture the Flow</div>
+          <h2 class="section-title fs-h2 text-center">Waterfall <em>Photography</em></h2>
+          <div class="divider divider-center"></div>
+        </div>
+        <div class="grid-3" style="gap:1.5rem;">
+          <div class="exp-card reveal" style="padding:2rem;">
+            <div style="font-size:2rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-camera"></i></div>
+            <div class="exp-card-title">Long Exposure</div>
+            <p class="exp-card-text" style="font-size:0.82rem;">To capture that silky water effect, bring an ND filter
+              (ND8 or ND64) and a sturdy tripod. Ideal shutter speed for our falls is between 0.5 to 2 seconds.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-1" style="padding:2rem;">
+            <div style="font-size:2rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i></div>
+            <div class="exp-card-title">Gear Protection</div>
+            <p class="exp-card-text" style="font-size:0.82rem;">The mist off Devakund and Twin Veils is intense. A rain
+              sleeve for your camera and microfibre cloths for constant lens wiping are essential.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-2" style="padding:2rem;">
+            <div style="font-size:2rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-sun"></i></div>
+            <div class="exp-card-title">Best Light</div>
+            <p class="exp-card-text" style="font-size:0.82rem;">Overcast days provide the best even lighting. On sunny
+              days, the golden hour (6:00 AM - 7:30 AM) prevents harsh contrast between the water and dark rock.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 13: PACKING FOR WATER TRAILS -->
+    <section class="section bg-coal" id="wf-packing">
+      <div class="container-sm">
+        <div class="section-header section-header-center" style="margin-bottom:2.5rem;">
+          <div class="section-label section-label-center">Be Prepared</div>
+          <h2 class="section-title fs-h2 text-center">What to <em>Bring</em></h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="exp-card reveal" style="display:flex;align-items:center;gap:1.5rem;padding:1.5rem 2rem;">
+            <span style="font-size:2rem;" aria-hidden="true"><i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i></span>
+            <div>
+              <div class="exp-card-title" style="margin-bottom:0.25rem;">Water Shoes or Amphibious Boots</div>
+              <p class="exp-card-text" style="font-size:0.82rem;">Wet basalt rock is extremely slippery. Shoes with
+                high-traction Vibram soles are highly recommended.</p>
+            </div>
+          </div>
+          <div class="exp-card reveal reveal-delay-1"
+            style="display:flex;align-items:center;gap:1.5rem;padding:1.5rem 2rem;">
+            <span style="font-size:2rem;" aria-hidden="true"><i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i></span>
+            <div>
+              <div class="exp-card-title" style="margin-bottom:0.25rem;">Dry Bag</div>
+              <p class="exp-card-text" style="font-size:0.82rem;">Essential for keeping your phone, camera, and dry
+                layers safe during river crossings and near the mist zones.</p>
+            </div>
+          </div>
+          <div class="exp-card reveal reveal-delay-2"
+            style="display:flex;align-items:center;gap:1.5rem;padding:1.5rem 2rem;">
+            <span style="font-size:2rem;" aria-hidden="true"><i class="fa-solid fa-shirt"></i></span>
+            <div>
+              <div class="exp-card-title" style="margin-bottom:0.25rem;">Quick-Dry Layers</div>
+              <p class="exp-card-text" style="font-size:0.82rem;">Avoid cotton. Bring synthetic or merino wool layers
+                that retain warmth even when damp.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 14: MYTHOLOGY & HISTORY -->
+    <section class="section bg-graphite" id="wf-mythology">
+      <div class="container">
+        <div class="grid-2" style="gap:4rem;align-items:center;">
+          <div class="reveal-left">
+            <div class="section-label">Ancient Stories</div>
+            <h2 class="section-title fs-h2">Myth of the <em>Seven Falls</em></h2>
+            <div class="divider"></div>
+            <p class="section-desc">According to the oral traditions of the Kanni community, the seven waterfalls were
+              not carved by rivers, but were tears wept by the Mountain Spirit when the first trees were cut. Today,
+              these sites remain deeply sacred. We ask all guests to respect these areas—keeping voices low and leaving
+              nothing behind.</p>
+          </div>
+          <div class="reveal-right">
+            <img src="https://images.unsplash.com/photo-1511497584788-876760111969?w=800&q=80"
+              alt="Ancient forest shrine near waterfall"
+              style="width:100%;height:400px;object-fit:cover;border-radius:4px;" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 15: CTA -->
+    <section class="section-sm bg-coal bg-texture" id="wf-cta">
+      <div class="container">
+        <div class="cta-banner reveal" style="text-align:center;display:block;">
+          <div class="section-label section-label-center" style="margin-bottom:1rem;">The Falls Are Calling</div>
+          <h2 class="section-title fs-h2 text-center">Reserve Your <em>Waterfall</em> Experience</h2>
+          <p class="section-desc text-center" style="margin:1.5rem auto 2.5rem;">Trail groups are capped at 8 to protect
+            these sacred sites. Book early for peak season dates.</p>
+          <div style="display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;">
+            <a href="booking.html" class="btn btn-primary" id="wf-cta-book">Book a Trail</a>
+            <a href="adventures.html" class="btn btn-ghost" id="wf-cta-all">All Adventures</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">Terravana Wilds</div>
+          <div class="footer-logo-sub">Eco &middot; Adventure &middot; Resort</div>
+          <p class="footer-tagline">"Where wilderness speaks and every trail tells a story."</p>
+          <div class="eco-badge" style="margin-top:1rem;"><i class="fa-solid fa-leaf"></i> Certified Carbon Neutral
+            Resort</div>
+          <div class="footer-social" aria-label="Social media links"><a href="https://www.instagram.com/" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a><a href="https://www.linkedin.com/" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.facebook.com/" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a><a href="https://x.com/" class="footer-social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a></div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Explore</h3>
+          <nav class="footer-links"><a href="adventures.html" class="footer-link">All Adventures</a><a
+              href="trekking.html" class="footer-link">Trekking Trails</a><a href="wildlife.html"
+              class="footer-link">Wildlife Safaris</a><a href="campfire.html" class="footer-link">Campfire Nights</a><a
+              href="waterfalls.html" class="footer-link">Waterfall Walks</a></nav>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Stay</h3>
+          <nav class="footer-links"><a href="ecoresorts.html" class="footer-link">Eco Resorts</a><a href="seasonal.html"
+              class="footer-link">Seasonal Guide</a><a href="booking.html" class="footer-link">Book Now</a><a
+              href="reviews.html" class="footer-link">Guest Reviews</a><a href="gallery.html" class="footer-link">Photo
+              Gallery</a></nav>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Connect</h3>
+          <nav class="footer-links"><a href="about.html" class="footer-link">About Us</a><a href="contact.html"
+              class="footer-link">Contact</a></nav><form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required><button class="footer-email-btn" type="submit">Submit</button></form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Terravana Wilds. All rights reserved.</p>
+        <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Eco Charter</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="upgrade_script.js"></script>
+</body>
+
+</html>

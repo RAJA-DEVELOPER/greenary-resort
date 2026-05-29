@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard — TERRAVANA WILDS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --coal: #0A0C0E;
+      --graphite: #141618;
+      --card: #1B1D20;
+      --card2: #1E2026;
+      --gold: #D4A853;
+      --gold-light: #E8C97A;
+      --gold-dim: #8B7335;
+      --ivory: #FAF8F5;
+      --linen: #EDE5DA;
+      --linen-dark: #CEC5B8;
+      --slate: #5E6B75;
+      --sienna: #9A6B4A;
+      --forest: #2D6A4F;
+      --ember: #E8643C;
+      --mist: #8EAFC2;
+      --dusk: #6B4D8A;
+      --border: rgba(212, 168, 83, 0.12);
+      --border-soft: rgba(255, 255, 255, 0.05);
+      --sidebar-w: 240px;
+      --topbar-h: 68px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-ui: 'Manrope', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+      --dur: 300ms;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--coal);
+      color: var(--linen);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--graphite);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold-dim);
+      border-radius: 10px;
+    }
+
+    ::selection {
+      background: rgba(212, 168, 83, 0.3);
+      color: var(--ivory);
+    }
+
+    /* ═══════════════ SIDEBAR ═══════════════ */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: var(--graphite);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      z-index: 200;
+      transition: transform var(--dur) var(--ease-smooth);
+      overflow-y: auto;
+    }
+
+    .sidebar-top {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo-main {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .sidebar-logo-sub {
+      font-family: var(--font-ui);
+      font-size: 0.44rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* User card in sidebar */
+    .sidebar-user {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .user-card {
+      background: linear-gradient(135deg, rgba(212, 168, 83, 0.08) 0%, rgba(45, 106, 79, 0.06) 100%);
+      border: 1px solid rgba(212, 168, 83, 0.15);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .user-avatar-lg {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--sienna));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--coal);
+      border: 2px solid rgba(212, 168, 83, 0.4);
+      box-shadow: 0 0 20px rgba(212, 168, 83, 0.2);
+    }
+
+    .user-name {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .user-level {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(212, 168, 83, 0.1);
+      border: 1px solid rgba(212, 168, 83, 0.2);
+      border-radius: 20px;
+      padding: 0.25rem 0.7rem;
+    }
+
+    .user-pts {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      color: rgba(232, 224, 213, 0.5);
+    }
+
+    /* Nav */
+    .sidebar-nav {
+      flex: 1;
+      padding: 1rem 0;
+    }
+
+    .nav-section-label {
+      font-family: var(--font-ui);
+      font-size: 0.52rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.28);
+      padding: 0.65rem 1.5rem 0.35rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 1.5rem;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(232, 224, 213, 0.5);
+      cursor: pointer;
+      border-left: 2px solid transparent;
+      letter-spacing: 0.03em;
+      transition: all var(--dur) var(--ease-smooth);
+    }
+
+    .nav-item i {
+      width: 16px;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    .nav-item:hover {
+      color: var(--ivory);
+      background: rgba(212, 168, 83, 0.05);
+      border-left-color: rgba(212, 168, 83, 0.25);
+    }
+
+    .nav-item.active {
+      color: var(--gold);
+      background: rgba(212, 168, 83, 0.08);
+      border-left-color: var(--gold);
+    }
+
+    .nav-badge-sm {
+      margin-left: auto;
+      background: var(--gold);
+      color: var(--coal);
+      border-radius: 20px;
+      padding: 0.12rem 0.45rem;
+      font-size: 0.58rem;
+      font-weight: 800;
+    }
+
+    .sidebar-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .sidebar-logout-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(232, 224, 213, 0.45);
+      transition: all var(--dur);
+      letter-spacing: 0.04em;
+    }
+
+    .sidebar-logout-btn:hover {
+      color: var(--ember);
+      border-color: rgba(232, 100, 60, 0.3);
+      background: rgba(232, 100, 60, 0.05);
+    }
+
+    /* ═══════════════ MAIN ═══════════════ */
+    #main {
+      margin-left: var(--sidebar-w);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── TOPBAR ─── */
+    #topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--topbar-h);
+      background: rgba(10, 12, 14, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 0 2rem;
+    }
+
+    #hamburger {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ivory);
+      font-size: 0.9rem;
+    }
+
+    .topbar-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-left: auto;
+    }
+
+    .topbar-clock {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(232, 224, 213, 0.5);
+      letter-spacing: 0.05em;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.38rem 0.8rem;
+    }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4CAF82;
+    }
+
+    .live-dot::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4CAF82;
+      box-shadow: 0 0 6px rgba(76, 175, 130, 0.8);
+      animation: livePulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(232, 224, 213, 0.55);
+      font-size: 0.85rem;
+      cursor: pointer;
+      position: relative;
+      transition: all var(--dur);
+    }
+
+    .icon-btn:hover {
+      border-color: rgba(212, 168, 83, 0.3);
+      color: var(--gold);
+    }
+
+    .icon-btn .badge-dot {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 14px;
+      height: 14px;
+      background: var(--ember);
+      border-radius: 50%;
+      border: 2px solid var(--coal);
+      font-size: 0.5rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .topbar-avatar-sm {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--sienna));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--coal);
+      cursor: pointer;
+    }
+
+    /* ═══════════════ CONTENT ═══════════════ */
+    #content {
+      padding: 2rem;
+      flex: 1;
+    }
+
+    /* ─── WELCOME BANNER ─── */
+    .welcome-banner {
+      background: linear-gradient(120deg, rgba(212, 168, 83, 0.1) 0%, rgba(45, 106, 79, 0.08) 50%, rgba(212, 168, 83, 0.05) 100%);
+      border: 1px solid rgba(212, 168, 83, 0.2);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome-banner::before {
+      content: '';
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 168, 83, 0.07) 0%, transparent 70%);
+    }
+
+    .welcome-banner::after {
+      content: '';
+      position: absolute;
+      left: -30px;
+      bottom: -40px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45, 106, 79, 0.07) 0%, transparent 70%);
+    }
+
+    .wb-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .wb-greeting {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .wb-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--ivory);
+      line-height: 1.15;
+    }
+
+    .wb-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .wb-sub {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: rgba(232, 224, 213, 0.55);
+      margin-top: 0.5rem;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    .wb-stats {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .wb-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(10, 12, 14, 0.35);
+      border: 1px solid rgba(212, 168, 83, 0.15);
+      border-radius: 10px;
+      padding: 0.85rem 1.25rem;
+      min-width: 80px;
+    }
+
+    .wb-stat-val {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .wb-stat-lbl {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.4);
+      margin-top: 0.3rem;
+    }
+
+    /* ─── GRID LAYOUTS ─── */
+    .grid-3-1 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .grid-3-eq {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .grid-2-eq {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .section-label {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .see-all {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0.4rem 0.85rem;
+      border: 1px solid rgba(212, 168, 83, 0.2);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all var(--dur);
+    }
+
+    .see-all:hover {
+      background: rgba(212, 168, 83, 0.08);
+      border-color: rgba(212, 168, 83, 0.4);
+    }
+
+    /* ─── PANEL ─── */
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    /* ─── BOOKING CARDS ─── */
+    .booking-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .booking-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      transition: all var(--dur);
+      cursor: pointer;
+    }
+
+    .booking-card:hover {
+      border-color: var(--border);
+      background: rgba(212, 168, 83, 0.04);
+      transform: translateX(3px);
+    }
+
+    .booking-card.upcoming {
+      border-left: 3px solid #4CAF82;
+    }
+
+    .booking-card.today {
+      border-left: 3px solid var(--gold);
+      animation: glowPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(212, 168, 83, 0.1);
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(212, 168, 83, 0.05);
+      }
+    }
+
+    .booking-card.past {
+      border-left: 3px solid var(--slate);
+      opacity: 0.75;
+    }
+
+    .booking-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .booking-img-placeholder {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .booking-trail {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ivory);
+      margin-bottom: 0.25rem;
+    }
+
+    .booking-meta {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      color: rgba(232, 224, 213, 0.45);
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .booking-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .booking-meta i {
+      color: var(--gold);
+      font-size: 0.65rem;
+    }
+
+    .booking-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.4rem;
+    }
+
+    .booking-status {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.6rem;
+      border-radius: 20px;
+    }
+
+    .st-upcoming {
+      background: rgba(76, 175, 130, 0.12);
+      color: #4CAF82;
+    }
+
+    .st-today {
+      background: rgba(212, 168, 83, 0.15);
+      color: var(--gold);
+    }
+
+    .st-completed {
+      background: rgba(94, 107, 117, 0.15);
+      color: var(--slate);
+    }
+
+    .booking-price {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .booking-countdown {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #4CAF82;
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── COUNTDOWN TO NEXT TREK ─── */
+    .trek-countdown {
+      background: linear-gradient(135deg, rgba(212, 168, 83, 0.08), rgba(45, 106, 79, 0.06));
+      border: 1px solid rgba(212, 168, 83, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .tcd-label {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .tcd-trail {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ivory);
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .tcd-units {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+
+    .tcd-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(212, 168, 83, 0.12);
+      border-radius: 8px;
+      padding: 0.7rem 0.5rem;
+    }
+
+    .tcd-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .tcd-lbl {
+      font-family: var(--font-ui);
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.3);
+    }
+
+    .tcd-map-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.7rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: var(--coal);
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--dur);
+    }
+
+    .tcd-map-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(212, 168, 83, 0.4);
+    }
+
+    /* ─── ECO POINTS ─── */
+    .eco-points-card {
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.1), rgba(212, 168, 83, 0.06));
+      border: 1px solid rgba(45, 106, 79, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .eco-pts-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .eco-pts-val {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #4CAF82;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .eco-pts-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(45, 106, 79, 0.15);
+      border: 1px solid rgba(45, 106, 79, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #4CAF82;
+    }
+
+    .eco-pts-label {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.4);
+      margin-top: 0.2rem;
+    }
+
+    .eco-prog-track {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0.85rem 0 0.5rem;
+    }
+
+    .eco-prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--forest), #4CAF82);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(45, 106, 79, 0.4);
+      transition: width 1.8s var(--ease-expo);
+    }
+
+    .eco-prog-info {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      color: rgba(232, 224, 213, 0.35);
+      font-weight: 600;
+    }
+
+    .eco-rewards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .eco-reward {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-soft);
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: rgba(232, 224, 213, 0.55);
+      cursor: pointer;
+      transition: all var(--dur);
+    }
+
+    .eco-reward:hover {
+      border-color: rgba(212, 168, 83, 0.25);
+      color: var(--ivory);
+    }
+
+    .eco-reward i {
+      color: var(--gold);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── TRAIL RECOMMENDATIONS ─── */
+    .trail-rec-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .trail-rec {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.8rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-soft);
+      cursor: pointer;
+      transition: all var(--dur);
+    }
+
+    .trail-rec:hover {
+      background: rgba(212, 168, 83, 0.04);
+      border-color: var(--border);
+      transform: translateX(3px);
+    }
+
+    .trail-rec-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .trail-rec-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .trail-rec-name {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ivory);
+      margin-bottom: 0.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .trail-rec-meta {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      color: rgba(232, 224, 213, 0.4);
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .trail-rec-avail {
+      flex-shrink: 0;
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .avail-open {
+      background: rgba(76, 175, 130, 0.12);
+      color: #4CAF82;
+    }
+
+    .avail-few {
+      background: rgba(212, 168, 83, 0.12);
+      color: var(--gold);
+    }
+
+    .avail-full {
+      background: rgba(232, 100, 60, 0.1);
+      color: var(--ember);
+    }
+
+    /* ─── WEATHER WIDGET ─── */
+    .weather-widget {
+      background: linear-gradient(135deg, rgba(142, 175, 194, 0.08), rgba(10, 12, 14, 0.5));
+      border: 1px solid rgba(142, 175, 194, 0.15);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .ww-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .ww-location {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.4);
+      margin-bottom: 0.25rem;
+    }
+
+    .ww-temp {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--ivory);
+      line-height: 1;
+    }
+
+    .ww-desc {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: rgba(232, 224, 213, 0.5);
+      margin-top: 0.2rem;
+    }
+
+    .ww-icon {
+      font-size: 2.5rem;
+      text-align: right;
+      line-height: 1;
+    }
+
+    .ww-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .ww-detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 0.5rem;
+    }
+
+    .ww-detail i {
+      color: var(--mist);
+      font-size: 0.8rem;
+    }
+
+    .ww-detail-val {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .ww-detail-lbl {
+      font-family: var(--font-ui);
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.3);
+    }
+
+    .ww-trail-tip {
+      margin-top: 0.85rem;
+      padding: 0.6rem;
+      border-radius: 8px;
+      background: rgba(45, 106, 79, 0.1);
+      border: 1px solid rgba(45, 106, 79, 0.2);
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #4CAF82;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ─── ACTIVITY CHART ─── */
+    #activity-chart {
+      width: 100%;
+      display: block;
+    }
+
+    /* ─── NOTIFICATIONS PANEL ─── */
+    .notif-panel {
+      position: fixed;
+      top: var(--topbar-h);
+      right: 0;
+      width: 320px;
+      background: var(--graphite);
+      border-left: 1px solid var(--border);
+      border-radius: 0 0 0 12px;
+      z-index: 150;
+      padding: 1rem;
+      transform: translateX(100%);
+      transition: transform var(--dur) var(--ease-expo);
+      max-height: calc(100vh - var(--topbar-h));
+      overflow-y: auto;
+    }
+
+    .notif-panel.open {
+      transform: translateX(0);
+    }
+
+    .notif-panel-hdr {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.35);
+      margin-bottom: 0.85rem;
+    }
+
+    .notif-item {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.65rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      margin-bottom: 0.45rem;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .notif-ico {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .notif-msg {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--ivory);
+      line-height: 1.4;
+    }
+
+    .notif-time {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      color: rgba(232, 224, 213, 0.28);
+      margin-top: 0.25rem;
+    }
+
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 140;
+      display: none;
+    }
+
+    #overlay.show {
+      display: block;
+    }
+
+    /* ─── RECENT ADVENTURES GRID ─── */
+    .adventures-grid-sm {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
+    }
+
+    .adv-thumb {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+    }
+
+    .adv-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .adv-thumb:hover img {
+      transform: scale(1.08);
+    }
+
+    .adv-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(10, 12, 14, 0.8) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.5rem;
+    }
+
+    .adv-thumb-name {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .adv-thumb-date {
+      font-family: var(--font-ui);
+      font-size: 0.5rem;
+      color: var(--gold);
+    }
+
+    .adv-thumb-rating {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.4rem;
+      background: rgba(10, 12, 14, 0.7);
+      border-radius: 6px;
+      padding: 0.15rem 0.4rem;
+      font-family: var(--font-ui);
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* ─── PROMO CARD ─── */
+    .promo-card {
+      background: linear-gradient(135deg, rgba(212, 168, 83, 0.12) 0%, rgba(232, 100, 60, 0.08) 100%);
+      border: 1px solid rgba(212, 168, 83, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .promo-card::before {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 168, 83, 0.08) 0%, transparent 70%);
+    }
+
+    .promo-eyebrow {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .promo-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .promo-desc {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: rgba(232, 224, 213, 0.5);
+      margin-top: 0.3rem;
+    }
+
+    .promo-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: var(--coal);
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--dur);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .promo-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(212, 168, 83, 0.4);
+    }
+
+    .grid-3-1>*,
+    .grid-3-eq>*,
+    .grid-2-eq>*,
+    .tcd-units>*,
+    .eco-rewards>*,
+    .ww-details>*,
+    .adventures-grid-sm>*,
+    .panel,
+    .booking-info,
+    .trail-rec-info {
+      min-width: 0;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:1200px) {
+      .grid-3-1 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3-eq {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .adventures-grid-sm {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media(max-width:900px) {
+      #sidebar {
+        transform: translateX(-100%);
+        width: min(var(--sidebar-w), 86vw);
+      }
+
+      #sidebar.mobile-open {
+        transform: translateX(0);
+      }
+
+      #main {
+        margin-left: 0;
+      }
+
+      #topbar {
+        padding: 0 1.25rem;
+        gap: 0.85rem;
+      }
+
+      #hamburger {
+        display: flex;
+      }
+
+      .topbar-clock,
+      .live-dot {
+        display: none;
+      }
+
+      .notif-panel {
+        width: min(100vw, 320px);
+      }
+
+      .grid-3-eq {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .grid-2-eq {
+        grid-template-columns: 1fr;
+      }
+
+      .wb-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media(max-width:600px) {
+      #content {
+        padding: 1.25rem;
+      }
+
+      .grid-3-eq {
+        grid-template-columns: 1fr;
+      }
+
+      .adventures-grid-sm {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tcd-units {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .welcome-banner {
+        padding: 1.5rem;
+      }
+
+      #topbar {
+        padding: 0 1rem;
+      }
+
+      .topbar-title {
+        font-size: 1rem;
+      }
+
+      .topbar-avatar-sm {
+        display: none;
+      }
+
+      .booking-card {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+      }
+
+      .booking-right {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .trail-rec {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .trail-rec-avail {
+        margin-left: 0;
+      }
+
+      .ww-details,
+      .eco-rewards {
+        grid-template-columns: 1fr;
+      }
+
+      .promo-cta {
+        width: 100%;
+        justify-content: center;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .panel,
+      .trek-countdown,
+      .eco-points-card,
+      .weather-widget,
+      .promo-card {
+        padding: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <aside id="sidebar">
+    <div class="sidebar-top">
+      <a href="index.html">
+        <span class="sidebar-logo-main">Terravana Wilds</span>
+        <span class="sidebar-logo-sub">Explorer Dashboard</span>
+      </a>
+    </div>
+
+    <div class="sidebar-user">
+      <div class="user-card">
+        <div class="user-avatar-lg">PS</div>
+        <div class="user-name">Priya Sharma</div>
+        <div class="user-level"><i class="fa-solid fa-mountain" style="font-size:0.55rem;"></i> Summit Explorer</div>
+        <div class="user-pts"><i class="fa-solid fa-leaf"
+            style="color:#4CAF82;margin-right:0.3rem;font-size:0.7rem;"></i>2,840 Eco Points</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Navigation</div>
+      <div class="nav-item active" data-page="overview"><i class="fa-solid fa-house"></i> Overview</div>
+      <div class="nav-item" data-page="bookings"><i class="fa-solid fa-calendar-check"></i> My Bookings <span
+          class="nav-badge-sm">3</span></div>
+      <div class="nav-item" data-page="trails"><i class="fa-solid fa-person-hiking"></i> Trails</div>
+      <div class="nav-item" data-page="wildlife"><i class="fa-solid fa-paw"></i> Wildlife</div>
+      <div class="nav-item" data-page="rewards"><i class="fa-solid fa-leaf"></i> Eco Rewards</div>
+      <div class="nav-section-label">Account</div>
+      <div class="nav-item" data-page="profile"><i class="fa-solid fa-user"></i> Profile</div>
+      <div class="nav-item" data-page="settings"><i class="fa-solid fa-gear"></i> Settings</div>
+      <div class="nav-item" onclick="window.location='gallery.html'"><i class="fa-solid fa-images"></i> Gallery</div>
+      <div class="nav-item" onclick="window.location='contact.html'"><i class="fa-solid fa-envelope"></i> Contact</div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="sidebar-logout-btn"
+        onclick="localStorage.removeItem('currentUser'); window.location='login.html';">
+        <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- ═══════════════ MAIN ═══════════════ -->
+  <div id="main">
+
+    <!-- TOPBAR -->
+    <header id="topbar">
+      <button id="hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-title">My Dashboard</div>
+      <div class="topbar-right">
+        <div class="live-dot">Online</div>
+        <div class="topbar-clock" id="live-clock">--:--:--</div>
+        <div class="icon-btn" onclick="toggleNotif()" id="notif-btn" title="Notifications">
+          <i class="fa-solid fa-bell"></i>
+          <span class="badge-dot" id="notif-dot">3</span>
+        </div>
+        <a href="booking.html" class="icon-btn" title="New Booking"
+          style="color:var(--gold);border-color:rgba(212,168,83,0.25);">
+          <i class="fa-solid fa-plus"></i>
+        </a>
+        <div class="topbar-avatar-sm">PS</div>
+      </div>
+    </header>
+
+    <!-- NOTIFICATION PANEL -->
+    <div id="notif-panel" class="notif-panel">
+      <div class="notif-panel-hdr">Your Notifications</div>
+      <div class="notif-item">
+        <div class="notif-ico" style="background:rgba(212,168,83,0.12);color:var(--gold);"><i
+            class="fa-solid fa-calendar-check"></i></div>
+        <div class="notif-body">
+          <div class="notif-msg">Your Grand Ridge Trek starts in <strong>3 days</strong>. Pack check-list sent to your
+            email.</div>
+          <div class="notif-time">1 hour ago</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-ico" style="background:rgba(76,175,130,0.12);color:#4CAF82;"><i class="fa-solid fa-leaf"></i>
+        </div>
+        <div class="notif-body">
+          <div class="notif-msg">You earned <strong>+150 Eco Points</strong> from your Cloud Forest Walk!</div>
+          <div class="notif-time">Yesterday</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-ico" style="background:rgba(142,175,194,0.12);color:var(--mist);"><i
+            class="fa-solid fa-cloud-rain"></i></div>
+        <div class="notif-body">
+          <div class="notif-msg">Trail weather update: Clear skies expected for your Grand Ridge Traverse.</div>
+          <div class="notif-time">2 days ago</div>
+        </div>
+      </div>
+    </div>
+    <div id="overlay" onclick="closeNotif()"></div>
+
+    <!-- CONTENT -->
+    <div id="content">
+      <div id="page-overview">
+
+        <!-- WELCOME BANNER -->
+        <div class="welcome-banner">
+          <div class="wb-inner">
+            <div class="wb-text">
+              <div class="wb-greeting">Welcome back, Explorer</div>
+              <div class="wb-title">Ready for Your Next<br /><em>Adventure, Priya?</em></div>
+              <div class="wb-sub">You have 1 trek coming up in 3 days. The trails are calling.</div>
+            </div>
+            <div class="wb-stats">
+              <div class="wb-stat">
+                <div class="wb-stat-val" id="ws-treks">0</div>
+                <div class="wb-stat-lbl">Treks Done</div>
+              </div>
+              <div class="wb-stat">
+                <div class="wb-stat-val" id="ws-km">0</div>
+                <div class="wb-stat-lbl">KM Hiked</div>
+              </div>
+              <div class="wb-stat">
+                <div class="wb-stat-val" id="ws-pts" style="color:#4CAF82;">0</div>
+                <div class="wb-stat-lbl">Eco Points</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOOKINGS + COUNTDOWN -->
+        <div class="grid-3-1">
+          <!-- Bookings -->
+          <div class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Your Schedule</div>
+                <div class="section-title">Upcoming Bookings</div>
+              </div>
+              <a href="booking.html" class="see-all">+ New Booking</a>
+            </div>
+            <div class="booking-cards">
+
+              <div class="booking-card today">
+                <div class="booking-img-placeholder" style="background:rgba(212,168,83,0.1);">🏔️</div>
+                <div class="booking-info">
+                  <div class="booking-trail">Grand Ridge Traverse</div>
+                  <div class="booking-meta">
+                    <span><i class="fa-solid fa-calendar"></i> Jun 1, 2026</span>
+                    <span><i class="fa-solid fa-clock"></i> 05:30 AM</span>
+                    <span><i class="fa-solid fa-users"></i> Guide: Arjun R.</span>
+                  </div>
+                </div>
+                <div class="booking-right">
+                  <div class="booking-status st-today">In 3 Days</div>
+                  <div class="booking-price">$380</div>
+                  <div class="booking-countdown" id="trek-live-countdown">Loading…</div>
+                </div>
+              </div>
+
+              <div class="booking-card upcoming">
+                <div class="booking-img-placeholder" style="background:rgba(45,106,79,0.1);">🌿</div>
+                <div class="booking-info">
+                  <div class="booking-trail">Cloud Forest Immersion Walk</div>
+                  <div class="booking-meta">
+                    <span><i class="fa-solid fa-calendar"></i> Jun 14, 2026</span>
+                    <span><i class="fa-solid fa-clock"></i> 07:00 AM</span>
+                    <span><i class="fa-solid fa-users"></i> Guide: Maya B.</span>
+                  </div>
+                </div>
+                <div class="booking-right">
+                  <div class="booking-status st-upcoming">Upcoming</div>
+                  <div class="booking-price">$65</div>
+                </div>
+              </div>
+
+              <div class="booking-card upcoming">
+                <div class="booking-img-placeholder" style="background:rgba(142,175,194,0.1);">🌊</div>
+                <div class="booking-info">
+                  <div class="booking-trail">Valley of Echoes — Full Day</div>
+                  <div class="booking-meta">
+                    <span><i class="fa-solid fa-calendar"></i> Jul 3, 2026</span>
+                    <span><i class="fa-solid fa-clock"></i> 06:00 AM</span>
+                    <span><i class="fa-solid fa-users"></i> Guide: Kiran S.</span>
+                  </div>
+                </div>
+                <div class="booking-right">
+                  <div class="booking-status st-upcoming">Upcoming</div>
+                  <div class="booking-price">$145</div>
+                </div>
+              </div>
+
+              <div class="booking-card past">
+                <div class="booking-img-placeholder" style="background:rgba(94,107,117,0.1);">🦅</div>
+                <div class="booking-info">
+                  <div class="booking-trail">Eagle's Eyrie Trail</div>
+                  <div class="booking-meta">
+                    <span><i class="fa-solid fa-calendar"></i> May 12, 2026</span>
+                    <span><i class="fa-solid fa-star" style="color:var(--gold);"></i> You rated 5★</span>
+                  </div>
+                </div>
+                <div class="booking-right">
+                  <div class="booking-status st-completed">Completed</div>
+                  <div class="booking-price">$195</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right column -->
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+            <!-- Countdown to next trek -->
+            <div class="trek-countdown">
+              <div class="tcd-label">Next Trek Countdown</div>
+              <div class="tcd-trail">Grand Ridge Traverse</div>
+              <div class="tcd-units">
+                <div class="tcd-unit">
+                  <div class="tcd-num" id="cd-d">03</div>
+                  <div class="tcd-lbl">Days</div>
+                </div>
+                <div class="tcd-unit">
+                  <div class="tcd-num" id="cd-h">00</div>
+                  <div class="tcd-lbl">Hours</div>
+                </div>
+                <div class="tcd-unit">
+                  <div class="tcd-num" id="cd-m">00</div>
+                  <div class="tcd-lbl">Mins</div>
+                </div>
+                <div class="tcd-unit">
+                  <div class="tcd-num" id="cd-s">00</div>
+                  <div class="tcd-lbl">Secs</div>
+                </div>
+              </div>
+              <button class="tcd-map-btn" onclick="window.location='trekking.html'">
+                <i class="fa-solid fa-map-location-dot"></i> View Trail Map
+              </button>
+            </div>
+
+            <!-- Weather Widget -->
+            <div class="weather-widget">
+              <div class="ww-top">
+                <div>
+                  <div class="ww-location"><i class="fa-solid fa-location-dot" style="margin-right:0.3rem;"></i>Grand
+                    Ridge Base Camp</div>
+                  <div class="ww-temp" id="ww-temp">18°C</div>
+                  <div class="ww-desc" id="ww-desc">Partly Cloudy · Ideal for trekking</div>
+                </div>
+                <div class="ww-icon" id="ww-icon">⛅</div>
+              </div>
+              <div class="ww-details">
+                <div class="ww-detail"><i class="fa-solid fa-wind"></i>
+                  <div class="ww-detail-val" id="ww-wind">12 km/h</div>
+                  <div class="ww-detail-lbl">Wind</div>
+                </div>
+                <div class="ww-detail"><i class="fa-solid fa-droplet"></i>
+                  <div class="ww-detail-val" id="ww-hum">68%</div>
+                  <div class="ww-detail-lbl">Humidity</div>
+                </div>
+                <div class="ww-detail"><i class="fa-solid fa-eye"></i>
+                  <div class="ww-detail-val">18 km</div>
+                  <div class="ww-detail-lbl">Visibility</div>
+                </div>
+              </div>
+              <div class="ww-trail-tip"><i class="fa-solid fa-circle-check"></i> Conditions are excellent for your June
+                1st trek!</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ECO POINTS + TRAIL RECS -->
+        <div class="grid-3-eq">
+
+          <!-- Eco Points -->
+          <div class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Your Impact</div>
+                <div class="section-title">Eco Points</div>
+              </div>
+              <div class="see-all">Redeem</div>
+            </div>
+            <div class="eco-points-card">
+              <div class="eco-pts-top">
+                <div>
+                  <div class="eco-pts-val" id="eco-pts-display">0</div>
+                  <div class="eco-pts-label">Total Points</div>
+                </div>
+                <div class="eco-pts-icon"><i class="fa-solid fa-leaf"></i></div>
+              </div>
+              <div class="eco-prog-track">
+                <div class="eco-prog-fill" id="eco-fill" style="width:0%;"></div>
+              </div>
+              <div class="eco-prog-info">
+                <span>2,840 pts</span><span>Next tier at 3,000 pts</span>
+              </div>
+              <div class="eco-rewards">
+                <div class="eco-reward"><i class="fa-solid fa-tree"></i> Plant a Tree</div>
+                <div class="eco-reward"><i class="fa-solid fa-percent"></i> 10% Discount</div>
+                <div class="eco-reward"><i class="fa-solid fa-campground"></i> Free Night</div>
+                <div class="eco-reward"><i class="fa-solid fa-star"></i> VIP Upgrade</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trail Recommendations -->
+          <div class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Just For You</div>
+                <div class="section-title">Recommended</div>
+              </div>
+              <a href="trekking.html" class="see-all">All Trails</a>
+            </div>
+            <div class="trail-rec-cards">
+              <div class="trail-rec" onclick="window.location='trekking.html'">
+                <img class="trail-rec-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=120&q=70"
+                  alt="Grand Ridge" />
+                <div class="trail-rec-info">
+                  <div class="trail-rec-name">Volcanic Rim Trail</div>
+                  <div class="trail-rec-meta"><span>25km</span><span>2 Days</span><span>Challenging</span></div>
+                </div>
+                <div class="trail-rec-avail avail-few">3 Left</div>
+              </div>
+              <div class="trail-rec" onclick="window.location='trekking.html'">
+                <img class="trail-rec-img" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=120&q=70"
+                  alt="Cloud Forest" />
+                <div class="trail-rec-info">
+                  <div class="trail-rec-name">Wild South Circuit</div>
+                  <div class="trail-rec-meta"><span>65km</span><span>5 Days</span><span>Multi-Day</span></div>
+                </div>
+                <div class="trail-rec-avail avail-open">Open</div>
+              </div>
+              <div class="trail-rec" onclick="window.location='trekking.html'">
+                <img class="trail-rec-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=120&q=70"
+                  alt="Mountain" />
+                <div class="trail-rec-info">
+                  <div class="trail-rec-name">North Face Climb</div>
+                  <div class="trail-rec-meta"><span>22km</span><span>2 Days</span><span>Challenging</span></div>
+                </div>
+                <div class="trail-rec-avail avail-open">Open</div>
+              </div>
+              <div class="trail-rec" onclick="window.location='trekking.html'">
+                <img class="trail-rec-img" src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=120&q=70"
+                  alt="Valley" />
+                <div class="trail-rec-info">
+                  <div class="trail-rec-name">Sunrise Point Walk</div>
+                  <div class="trail-rec-meta"><span>5km</span><span>2.5 hrs</span><span>Easy</span></div>
+                </div>
+                <div class="trail-rec-avail avail-full">Full</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Chart -->
+          <div class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Your Activity</div>
+                <div class="section-title">Monthly Stats</div>
+              </div>
+            </div>
+            <canvas id="activity-chart" height="180"></canvas>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-top:1rem;">
+              <div
+                style="background:rgba(255,255,255,0.02);border:1px solid var(--border-soft);border-radius:8px;padding:0.7rem;text-align:center;">
+                <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--gold);"
+                  id="ac-km">0</div>
+                <div
+                  style="font-family:var(--font-ui);font-size:0.55rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(232,224,213,0.35);">
+                  KM This Month</div>
+              </div>
+              <div
+                style="background:rgba(255,255,255,0.02);border:1px solid var(--border-soft);border-radius:8px;padding:0.7rem;text-align:center;">
+                <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:#4CAF82;"
+                  id="ac-hrs">0</div>
+                <div
+                  style="font-family:var(--font-ui);font-size:0.55rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(232,224,213,0.35);">
+                  Hours Outdoors</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- PROMO BANNER -->
+        <div class="promo-card" style="margin-bottom:1.75rem;">
+          <div class="promo-text">
+            <div class="promo-eyebrow">🌟 Member Exclusive</div>
+            <div class="promo-title">Grand Terravana Tour — 7 Days</div>
+            <div class="promo-desc">All five ecosystems, three altitude zones, two summit reaches. 20% off for Summit
+              Explorer members this June.</div>
+          </div>
+          <button class="promo-cta" onclick="window.location='booking.html'">
+            <i class="fa-solid fa-bolt"></i> Book Now — Save 20%
+          </button>
+        </div>
+
+        <!-- RECENT ADVENTURES -->
+        <div class="panel" style="margin-bottom:1.75rem;">
+          <div class="section-header">
+            <div>
+              <div class="section-label">Your Journey</div>
+              <div class="section-title">Past Adventures</div>
+            </div>
+            <a href="gallery.html" class="see-all">View All</a>
+          </div>
+          <div class="adventures-grid-sm">
+            <div class="adv-thumb">
+              <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=300&q=70" alt="Eagle's Eyrie" />
+              <div class="adv-thumb-overlay">
+                <div class="adv-thumb-name">Eagle's Eyrie</div>
+                <div class="adv-thumb-date">May 12, 2026</div>
+              </div>
+              <div class="adv-thumb-rating">★ 5.0</div>
+            </div>
+            <div class="adv-thumb">
+              <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=300&q=70" alt="Cloud Forest" />
+              <div class="adv-thumb-overlay">
+                <div class="adv-thumb-name">Cloud Forest Walk</div>
+                <div class="adv-thumb-date">Apr 28, 2026</div>
+              </div>
+              <div class="adv-thumb-rating">★ 4.8</div>
+            </div>
+            <div class="adv-thumb">
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=300&q=70" alt="Valley" />
+              <div class="adv-thumb-overlay">
+                <div class="adv-thumb-name">Valley of Echoes</div>
+                <div class="adv-thumb-date">Mar 15, 2026</div>
+              </div>
+              <div class="adv-thumb-rating">★ 5.0</div>
+            </div>
+            <div class="adv-thumb">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&q=70" alt="Summit" />
+              <div class="adv-thumb-overlay">
+                <div class="adv-thumb-name">Moss Grove Stroll</div>
+                <div class="adv-thumb-date">Feb 8, 2026</div>
+              </div>
+              <div class="adv-thumb-rating">★ 4.9</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- #page-overview -->
+
+      <!-- Placeholder for other pages -->
+      <div id="page-placeholder"
+        style="display:none; text-align:center; padding: 6rem 2rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh;">
+        <i class="fa-solid fa-compass"
+          style="font-size: 3.5rem; color: var(--gold); margin-bottom: 1.5rem; opacity: 0.8;"></i>
+        <h2 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--ivory); margin-bottom: 0.75rem;"
+          id="page-placeholder-title">Exploring New Routes</h2>
+        <p
+          style="color: rgba(232,224,213,0.5); font-family: var(--font-body); font-size: 0.9rem; max-width: 400px; line-height: 1.6;">
+          This section of your dashboard is currently being mapped out. Return soon for new features and updates.</p>
+      </div>
+
+    </div><!-- #content -->
+  </div><!-- #main -->
+
+  <script>
+    // Check login state
+    (function () {
+      const userStr = localStorage.getItem('currentUser');
+      if (!userStr) {
+        window.location.href = 'login.html';
+        return;
+      }
+      try {
+        const user = JSON.parse(userStr);
+        if (user.role !== 'user') {
+          window.location.href = user.role === 'admin' ? 'admin-dashboard.html' : 'login.html';
+        }
+      } catch (err) {
+        localStorage.removeItem('currentUser');
+        window.location.href = 'login.html';
+      }
+    })();
+
+    // ═══════════════════════════════════════════════════════
+    //  TERRAVANA WILDS — USER DASHBOARD  (Real-time JS)
+    // ═══════════════════════════════════════════════════════
+
+    /* ── Live Clock ── */
+    function updateClock() {
+      const n = new Date();
+      document.getElementById('live-clock').textContent =
+        String(n.getHours()).padStart(2, '0') + ':' +
+        String(n.getMinutes()).padStart(2, '0') + ':' +
+        String(n.getSeconds()).padStart(2, '0');
+    }
+    setInterval(updateClock, 1000); updateClock();
+
+    /* ── Animated counter ── */
+    function animCount(el, target, suffix, dur) {
+      suffix = suffix || ''; const start = Date.now();
+      function step() {
+        const p = Math.min((Date.now() - start) / dur, 1);
+        const e = 1 - Math.pow(1 - p, 4);
+        el.textContent = Math.round(target * e).toLocaleString() + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    /* ── Welcome banner stats ── */
+    setTimeout(() => {
+      animCount(document.getElementById('ws-treks'), 12, '', 700);
+      animCount(document.getElementById('ws-km'), 248, '', 900);
+      animCount(document.getElementById('ws-pts'), 2840, '', 1000);
+    }, 200);
+
+    /* ── Eco Points ── */
+    setTimeout(() => {
+      animCount(document.getElementById('eco-pts-display'), 2840, '', 1000);
+      document.getElementById('eco-fill').style.width = '94.6%';
+    }, 400);
+
+    /* ── Activity chart stats ── */
+    setTimeout(() => {
+      animCount(document.getElementById('ac-km'), 42, '', 800);
+      animCount(document.getElementById('ac-hrs'), 28, '', 800);
+    }, 600);
+
+    /* ── Countdown to June 1, 2026 05:30 AM ── */
+    function updateCountdown() {
+      const target = new Date(2026, 5, 1, 5, 30, 0);
+      const now = new Date();
+      const diff = Math.max(0, target - now);
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const pad = n => String(n).padStart(2, '0');
+      document.getElementById('cd-d').textContent = pad(d);
+      document.getElementById('cd-h').textContent = pad(h);
+      document.getElementById('cd-m').textContent = pad(m);
+      document.getElementById('cd-s').textContent = pad(s);
+      const el = document.getElementById('trek-live-countdown');
+      if (el) el.textContent = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm';
+    }
+    setInterval(updateCountdown, 1000); updateCountdown();
+
+    /* ── Activity Chart (Canvas) ── */
+    function drawActivityChart() {
+      const canvas = document.getElementById('activity-chart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const days = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+      const km = [18, 32, 25, 40, 42, 8];
+      const hrs = [12, 22, 18, 26, 28, 5];
+      const dpr = window.devicePixelRatio || 1;
+      const W = canvas.offsetWidth || 340;
+      const H = 180;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+      ctx.scale(dpr, dpr);
+      const PAD = { top: 16, right: 16, bottom: 32, left: 36 };
+      const cW = W - PAD.left - PAD.right;
+      const cH = H - PAD.top - PAD.bottom;
+      const n = days.length;
+      const maxV = Math.max(...km, ...hrs) * 1.2;
+      ctx.clearRect(0, 0, W, H);
+
+      /* Grid */
+      ctx.strokeStyle = 'rgba(255,255,255,0.04)'; ctx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = PAD.top + cH - (cH / 4 * i);
+        ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left + cW, y); ctx.stroke();
+        ctx.fillStyle = 'rgba(232,224,213,0.22)'; ctx.font = '600 8px Manrope,sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(Math.round(maxV / 4 * i), PAD.left - 5, y + 3);
+      }
+
+      /* X labels */
+      ctx.fillStyle = 'rgba(232,224,213,0.35)'; ctx.font = '600 9px Manrope,sans-serif'; ctx.textAlign = 'center';
+      days.forEach((d, i) => ctx.fillText(d, PAD.left + (i / (n - 1)) * cW, H - PAD.bottom + 13));
+
+      function px(i) { return PAD.left + (i / (n - 1)) * cW; }
+      function py(v) { return PAD.top + cH - (v / maxV) * cH; }
+
+      /* KM bars */
+      const bw = cW / (n * 2.5);
+      km.forEach((v, i) => {
+        const x = px(i) - bw / 2;
+        const h = Math.max(1, (v / maxV) * cH);
+        const y = PAD.top + cH - h;
+        const g = ctx.createLinearGradient(0, y, 0, y + h);
+        g.addColorStop(0, 'rgba(212,168,83,0.9)');
+        g.addColorStop(1, 'rgba(212,168,83,0.2)');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(x, y, bw, h, 3) : ctx.rect(x, y, bw, h);
+        ctx.fill();
+      });
+
+      /* Hours line */
+      ctx.strokeStyle = '#4CAF82'; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+      ctx.beginPath();
+      hrs.forEach((v, i) => i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v)));
+      ctx.stroke();
+      hrs.forEach((v, i) => {
+        ctx.beginPath(); ctx.arc(px(i), py(v), 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#0A0C0E'; ctx.fill();
+        ctx.strokeStyle = '#4CAF82'; ctx.lineWidth = 2; ctx.stroke();
+      });
+    }
+    window.addEventListener('load', drawActivityChart);
+    window.addEventListener('resize', drawActivityChart);
+
+    /* ── Weather simulation (updates every 5 min) ── */
+    const weatherStates = [
+      { t: '18°C', d: 'Partly Cloudy · Ideal for trekking', i: '⛅', w: '12 km/h', h: '68%' },
+      { t: '16°C', d: 'Clear skies · Perfect summit conditions', i: '☀️', w: '8 km/h', h: '55%' },
+      { t: '14°C', d: 'Light breeze · Comfortable hiking', i: '🌤️', w: '15 km/h', h: '72%' },
+    ];
+    let wIdx = 0;
+    function updateWeather() {
+      const s = weatherStates[wIdx % weatherStates.length];
+      document.getElementById('ww-temp').textContent = s.t;
+      document.getElementById('ww-desc').textContent = s.d;
+      document.getElementById('ww-icon').textContent = s.i;
+      document.getElementById('ww-wind').textContent = s.w;
+      document.getElementById('ww-hum').textContent = s.h;
+      wIdx++;
+    }
+    setInterval(updateWeather, 300000); // every 5 min
+
+    /* ── Sidebar nav ── */
+    document.querySelectorAll('.nav-item[data-page]').forEach(item => {
+      item.addEventListener('click', function () {
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        this.classList.add('active');
+
+        const pageName = this.textContent.trim().replace(/\d+$/, '').trim();
+        const t = document.querySelector('#topbar .topbar-title');
+        if (t) t.textContent = pageName;
+
+        const pageId = this.getAttribute('data-page');
+        const overview = document.getElementById('page-overview');
+        const placeholder = document.getElementById('page-placeholder');
+
+        if (overview && placeholder) {
+          if (pageId === 'overview') {
+            overview.style.display = 'block';
+            placeholder.style.display = 'none';
+          } else {
+            overview.style.display = 'none';
+            placeholder.style.display = 'flex';
+            const pTitle = document.getElementById('page-placeholder-title');
+            if (pTitle) pTitle.textContent = pageName;
+          }
+        }
+
+        if (window.innerWidth <= 900) {
+          document.getElementById('sidebar').classList.remove('mobile-open');
+        }
+      });
+    });
+
+    /* ── Notification panel ── */
+    function toggleNotif() {
+      document.getElementById('notif-panel').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('show');
+      document.getElementById('notif-dot').style.display = 'none';
+    }
+    function closeNotif() {
+      document.getElementById('notif-panel').classList.remove('open');
+      document.getElementById('overlay').classList.remove('show');
+    }
+    document.getElementById('notif-btn').addEventListener('click', toggleNotif);
+
+    /* ── Mobile sidebar ── */
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('mobile-open');
+    }
+
+    /* ── Eco point live simulation (gains point every 45s) ── */
+    let ecoPoints = 2840;
+    setInterval(() => {
+      ecoPoints += Math.floor(Math.random() * 5) + 1;
+      document.getElementById('eco-pts-display').textContent = ecoPoints.toLocaleString();
+      document.getElementById('ws-pts').textContent = ecoPoints.toLocaleString();
+      const pct = Math.min(100, (ecoPoints / 3000) * 100).toFixed(1);
+      document.getElementById('eco-fill').style.width = pct + '%';
+    }, 45000);
+  </script>
+</body>
+
+</html>

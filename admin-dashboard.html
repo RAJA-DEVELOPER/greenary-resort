@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — TERRAVANA WILDS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --coal: #0A0C0E;
+      --graphite: #141618;
+      --card: #1B1D20;
+      --gold: #D4A853;
+      --gold-light: #E8C97A;
+      --gold-dim: #8B7335;
+      --ivory: #FAF8F5;
+      --linen: #EDE5DA;
+      --linen-dark: #CEC5B8;
+      --slate: #5E6B75;
+      --sienna: #9A6B4A;
+      --forest: #2D6A4F;
+      --ember: #E8643C;
+      --mist: #8EAFC2;
+      --dusk: #6B4D8A;
+      --border: rgba(212, 168, 83, 0.12);
+      --border-hover: rgba(212, 168, 83, 0.3);
+      --sidebar-w: 256px;
+      --topbar-h: 68px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-ui: 'Manrope', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+      --dur: 300ms;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--coal);
+      color: var(--linen);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--graphite);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold-dim);
+      border-radius: 10px;
+    }
+
+    ::selection {
+      background: rgba(212, 168, 83, 0.3);
+      color: var(--ivory);
+    }
+
+    /* ─── SIDEBAR ─── */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: var(--graphite);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      z-index: 200;
+      transition: transform var(--dur) var(--ease-smooth);
+    }
+
+    .sidebar-logo {
+      padding: 1.5rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo-main {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .sidebar-logo-sub {
+      font-family: var(--font-ui);
+      font-size: 0.45rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-top: 3px;
+    }
+
+    .sidebar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.75rem;
+      background: rgba(232, 100, 60, 0.12);
+      border: 1px solid rgba(232, 100, 60, 0.25);
+      border-radius: 20px;
+      padding: 0.25rem 0.7rem;
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ember);
+    }
+
+    .sidebar-badge i {
+      font-size: 0.55rem;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 0;
+    }
+
+    .nav-section-label {
+      font-family: var(--font-ui);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.3);
+      padding: 0.75rem 1.5rem 0.4rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.7rem 1.5rem;
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(232, 224, 213, 0.55);
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      position: relative;
+      transition: all var(--dur) var(--ease-smooth);
+      border-left: 2px solid transparent;
+    }
+
+    .nav-item i {
+      width: 18px;
+      text-align: center;
+      font-size: 0.85rem;
+      transition: color var(--dur);
+    }
+
+    .nav-item:hover {
+      color: var(--ivory);
+      background: rgba(212, 168, 83, 0.05);
+      border-left-color: rgba(212, 168, 83, 0.3);
+    }
+
+    .nav-item.active {
+      color: var(--gold);
+      background: rgba(212, 168, 83, 0.08);
+      border-left-color: var(--gold);
+    }
+
+    .nav-item.active i {
+      color: var(--gold);
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: var(--ember);
+      color: #fff;
+      border-radius: 20px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .sidebar-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .admin-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .admin-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--sienna));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--coal);
+      flex-shrink: 0;
+    }
+
+    .admin-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .admin-name {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ivory);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .admin-role {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 1px;
+    }
+
+    .sidebar-logout {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(232, 224, 213, 0.35);
+      font-size: 0.8rem;
+      transition: all var(--dur);
+      cursor: pointer;
+    }
+
+    .sidebar-logout:hover {
+      color: var(--ember);
+      background: rgba(232, 100, 60, 0.1);
+    }
+
+    /* ─── MAIN AREA ─── */
+    #main {
+      margin-left: var(--sidebar-w);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── TOPBAR ─── */
+    #topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--topbar-h);
+      background: rgba(10, 12, 14, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 2rem;
+    }
+
+    .topbar-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .topbar-search {
+      flex: 1;
+      max-width: 320px;
+      position: relative;
+    }
+
+    .topbar-search input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.55rem 1rem 0.55rem 2.4rem;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--ivory);
+      outline: none;
+      transition: border-color var(--dur);
+    }
+
+    .topbar-search input:focus {
+      border-color: rgba(212, 168, 83, 0.4);
+    }
+
+    .topbar-search input::placeholder {
+      color: rgba(232, 224, 213, 0.25);
+    }
+
+    .topbar-search i {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(232, 224, 213, 0.3);
+      font-size: 0.78rem;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto;
+    }
+
+    .topbar-clock {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(232, 224, 213, 0.5);
+      letter-spacing: 0.05em;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 0.85rem;
+    }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--forest);
+    }
+
+    .live-dot::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--forest);
+      box-shadow: 0 0 8px rgba(45, 106, 79, 0.8);
+      animation: livePulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
+    }
+
+    .notif-btn {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(232, 224, 213, 0.6);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all var(--dur);
+    }
+
+    .notif-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--gold);
+    }
+
+    .notif-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--ember);
+      color: #fff;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      font-size: 0.55rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--coal);
+    }
+
+    .topbar-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--sienna));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--coal);
+      cursor: pointer;
+    }
+
+    /* ─── CONTENT ─── */
+    #content {
+      padding: 2rem;
+      flex: 1;
+    }
+
+    /* ─── KPI CARDS ─── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--dur), transform var(--dur);
+      cursor: default;
+    }
+
+    .kpi-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity var(--dur);
+    }
+
+    .kpi-card:hover::before {
+      opacity: 1;
+    }
+
+    .kpi-glow-gold::before {
+      background: radial-gradient(circle at 80% 20%, rgba(212, 168, 83, 0.06) 0%, transparent 60%);
+    }
+
+    .kpi-glow-green::before {
+      background: radial-gradient(circle at 80% 20%, rgba(45, 106, 79, 0.08) 0%, transparent 60%);
+    }
+
+    .kpi-glow-ember::before {
+      background: radial-gradient(circle at 80% 20%, rgba(232, 100, 60, 0.07) 0%, transparent 60%);
+    }
+
+    .kpi-glow-mist::before {
+      background: radial-gradient(circle at 80% 20%, rgba(142, 175, 194, 0.08) 0%, transparent 60%);
+    }
+
+    .kpi-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .kpi-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .kpi-icon-gold {
+      background: rgba(212, 168, 83, 0.12);
+      color: var(--gold);
+    }
+
+    .kpi-icon-green {
+      background: rgba(45, 106, 79, 0.12);
+      color: #4CAF82;
+    }
+
+    .kpi-icon-ember {
+      background: rgba(232, 100, 60, 0.12);
+      color: var(--ember);
+    }
+
+    .kpi-icon-mist {
+      background: rgba(142, 175, 194, 0.12);
+      color: var(--mist);
+    }
+
+    .kpi-delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 0.2rem 0.55rem;
+    }
+
+    .delta-up {
+      background: rgba(45, 106, 79, 0.15);
+      color: #4CAF82;
+    }
+
+    .delta-down {
+      background: rgba(232, 100, 60, 0.15);
+      color: var(--ember);
+    }
+
+    .kpi-value {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ivory);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .kpi-label {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.4);
+      margin-top: 0.35rem;
+    }
+
+    .kpi-bar {
+      height: 3px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 3px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+
+    .kpi-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1.5s var(--ease-expo);
+    }
+
+    /* ─── SECTION TITLE ─── */
+    .section-label {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .view-all-btn {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(212, 168, 83, 0.2);
+      border-radius: 6px;
+      transition: all var(--dur);
+      cursor: pointer;
+    }
+
+    .view-all-btn:hover {
+      background: rgba(212, 168, 83, 0.08);
+      border-color: var(--border-hover);
+    }
+
+    /* ─── GRID LAYOUTS ─── */
+    .grid-2-3 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .grid-3-eq {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .grid-1-2 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ─── PANEL ─── */
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ─── CHART ─── */
+    #revenue-chart {
+      width: 100%;
+      display: block;
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      color: rgba(232, 224, 213, 0.5);
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── LIVE FEED ─── */
+    .live-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      max-height: 280px;
+      overflow-y: auto;
+      padding-right: 0.25rem;
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all var(--dur);
+      animation: slideInFeed 0.4s var(--ease-expo) both;
+    }
+
+    @keyframes slideInFeed {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .feed-item:hover {
+      background: rgba(212, 168, 83, 0.04);
+      border-color: var(--border);
+    }
+
+    .feed-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .feed-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .feed-name {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .feed-detail {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      color: rgba(232, 224, 213, 0.45);
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .feed-time {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      color: rgba(232, 224, 213, 0.3);
+      flex-shrink: 0;
+    }
+
+    .feed-badge {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 20px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+    }
+
+    .badge-new {
+      background: rgba(45, 106, 79, 0.18);
+      color: #4CAF82;
+    }
+
+    .badge-trail {
+      background: rgba(212, 168, 83, 0.15);
+      color: var(--gold);
+    }
+
+    .badge-cancel {
+      background: rgba(232, 100, 60, 0.15);
+      color: var(--ember);
+    }
+
+    /* ─── TRAIL STATUS ─── */
+    .trail-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .trail-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.7rem 0.75rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all var(--dur);
+    }
+
+    .trail-row:hover {
+      background: rgba(212, 168, 83, 0.04);
+      border-color: var(--border);
+    }
+
+    .trail-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-open {
+      background: #4CAF82;
+      box-shadow: 0 0 6px rgba(76, 175, 130, 0.6);
+    }
+
+    .dot-full {
+      background: var(--gold);
+      box-shadow: 0 0 6px rgba(212, 168, 83, 0.6);
+    }
+
+    .dot-closed {
+      background: var(--ember);
+      box-shadow: 0 0 6px rgba(232, 100, 60, 0.6);
+    }
+
+    .trail-name {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--ivory);
+      flex: 1;
+    }
+
+    .trail-cap {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      color: rgba(232, 224, 213, 0.4);
+    }
+
+    .trail-status-label {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+    }
+
+    .status-open {
+      background: rgba(76, 175, 130, 0.12);
+      color: #4CAF82;
+    }
+
+    .status-full {
+      background: rgba(212, 168, 83, 0.12);
+      color: var(--gold);
+    }
+
+    .status-closed {
+      background: rgba(232, 100, 60, 0.12);
+      color: var(--ember);
+    }
+
+    .trail-toggle {
+      width: 36px;
+      height: 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      position: relative;
+      cursor: pointer;
+      transition: background var(--dur);
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .trail-toggle.on {
+      background: rgba(76, 175, 130, 0.5);
+      border-color: rgba(76, 175, 130, 0.4);
+    }
+
+    .trail-toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      transition: left var(--dur);
+    }
+
+    .trail-toggle.on::after {
+      left: 19px;
+    }
+
+    /* ─── DATA TABLE ─── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .data-table th {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.35);
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .data-table td {
+      padding: 0.75rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: rgba(232, 224, 213, 0.75);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all var(--dur);
+    }
+
+    .data-table tr:hover td {
+      background: rgba(212, 168, 83, 0.03);
+      color: var(--ivory);
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .guest-name {
+      font-weight: 600;
+      color: var(--ivory);
+    }
+
+    .amount-cell {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ─── PROGRESS BARS ─── */
+    .prog-wrap {
+      margin-bottom: 1rem;
+    }
+
+    .prog-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: rgba(232, 224, 213, 0.55);
+      margin-bottom: 0.4rem;
+    }
+
+    .prog-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .prog-fill {
+      height: 100%;
+      border-radius: 6px;
+      transition: width 1.5s var(--ease-expo);
+    }
+
+    /* ─── QUICK ACTIONS ─── */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+    }
+
+    .qa-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+      cursor: pointer;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(232, 224, 213, 0.7);
+      letter-spacing: 0.04em;
+      transition: all var(--dur);
+    }
+
+    .qa-btn i {
+      font-size: 1rem;
+      width: 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .qa-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--ivory);
+      background: rgba(212, 168, 83, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .qa-btn.qa-gold {
+      border-color: rgba(212, 168, 83, 0.25);
+      color: var(--gold);
+    }
+
+    .qa-btn.qa-gold:hover {
+      background: rgba(212, 168, 83, 0.1);
+    }
+
+    /* ─── NOTIFICATION PANEL ─── */
+    .notif-panel {
+      position: fixed;
+      top: var(--topbar-h);
+      right: 0;
+      width: 340px;
+      background: var(--graphite);
+      border-left: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: 0 0 0 12px;
+      z-index: 150;
+      padding: 1rem;
+      transform: translateX(100%);
+      transition: transform var(--dur) var(--ease-expo);
+      max-height: calc(100vh - var(--topbar-h));
+      overflow-y: auto;
+    }
+
+    .notif-panel.open {
+      transform: translateX(0);
+    }
+
+    .notif-panel-title {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.4);
+      margin-bottom: 0.85rem;
+    }
+
+    .notif-item {
+      display: flex;
+      gap: 0.65rem;
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      margin-bottom: 0.5rem;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .notif-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .notif-body {
+      flex: 1;
+    }
+
+    .notif-msg {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--ivory);
+      line-height: 1.4;
+    }
+
+    .notif-time {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      color: rgba(232, 224, 213, 0.3);
+      margin-top: 0.3rem;
+    }
+
+    /* ─── OVERLAY ─── */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 140;
+      display: none;
+    }
+
+    #overlay.show {
+      display: block;
+    }
+
+    /* ─── STAT MINI ─── */
+    .mini-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.85rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .mini-stat-val {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .mini-stat-lbl {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.35);
+      text-align: center;
+    }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .page-greeting {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--ivory);
+      margin-bottom: 0.25rem;
+    }
+
+    .page-greeting em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .page-sub {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: rgba(232, 224, 213, 0.45);
+    }
+
+    /* ─── HAMBURGER ─── */
+    #hamburger {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ivory);
+      font-size: 0.9rem;
+    }
+
+    .kpi-grid>*,
+    .grid-2-3>*,
+    .grid-3-eq>*,
+    .grid-1-2>*,
+    .quick-actions>*,
+    .panel,
+    .topbar-search,
+    .feed-info {
+      min-width: 0;
+    }
+
+    .panel:has(.data-table) {
+      overflow-x: auto;
+    }
+
+    .data-table {
+      min-width: 680px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:1200px) {
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-2-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3-eq {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:900px) {
+      #sidebar {
+        transform: translateX(-100%);
+        width: min(var(--sidebar-w), 86vw);
+      }
+
+      #sidebar.mobile-open {
+        transform: translateX(0);
+      }
+
+      #main {
+        margin-left: 0;
+      }
+
+      #topbar {
+        padding: 0 1.25rem;
+        gap: 0.85rem;
+      }
+
+      #hamburger {
+        display: flex;
+      }
+
+      .topbar-search {
+        max-width: none;
+      }
+
+      .topbar-clock,
+      .live-dot {
+        display: none;
+      }
+
+      .notif-panel {
+        width: min(100vw, 340px);
+      }
+
+      .grid-3-eq {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-1-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .feed-item,
+      .trail-row {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media(max-width:500px) {
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-actions {
+        grid-template-columns: 1fr;
+      }
+
+      #content {
+        padding: 1.25rem;
+      }
+
+      #topbar {
+        padding: 0 1rem;
+      }
+
+      .topbar-search {
+        display: none;
+      }
+
+      .topbar-title {
+        font-size: 1rem;
+      }
+
+      .page-greeting {
+        font-size: 1.35rem;
+      }
+
+      .panel,
+      .kpi-card {
+        padding: 1.1rem;
+      }
+
+      .kpi-value {
+        font-size: 1.8rem;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <aside id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html">
+        <span class="sidebar-logo-main">Terravana Wilds</span>
+        <span class="sidebar-logo-sub">Admin Control Panel</span>
+      </a>
+      <div class="sidebar-badge"><i class="fa-solid fa-shield-halved"></i> Super Admin</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item active" data-section="overview"><i class="fa-solid fa-gauge-high"></i> Dashboard</div>
+      <div class="nav-item" data-section="bookings"><i class="fa-solid fa-calendar-check"></i> Bookings <span
+          class="nav-badge" id="nb-bookings">12</span></div>
+      <div class="nav-item" data-section="guests"><i class="fa-solid fa-users"></i> Guests</div>
+      <div class="nav-item" data-section="trails"><i class="fa-solid fa-person-hiking"></i> Trails</div>
+      <div class="nav-section-label">Finance</div>
+      <div class="nav-item" data-section="revenue"><i class="fa-solid fa-chart-line"></i> Revenue</div>
+      <div class="nav-item" data-section="reports"><i class="fa-solid fa-file-chart-column"></i> Reports</div>
+      <div class="nav-section-label">System</div>
+      <div class="nav-item" data-section="gallery"><i class="fa-solid fa-images"></i> Gallery</div>
+      <div class="nav-item" data-section="settings"><i class="fa-solid fa-gear"></i> Settings</div>
+      <div class="nav-item" onclick="window.location='index.html'"><i class="fa-solid fa-globe"></i> View Site</div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="admin-profile">
+        <div class="admin-avatar">AR</div>
+        <div class="admin-info">
+          <div class="admin-name">Arjun Rao</div>
+          <div class="admin-role">Administrator</div>
+        </div>
+        <div class="sidebar-logout" onclick="localStorage.removeItem('currentUser'); window.location='login.html';"
+          title="Logout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══════════════ MAIN ═══════════════ -->
+  <div id="main">
+
+    <!-- TOPBAR -->
+    <header id="topbar">
+      <button id="hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-title">Dashboard</div>
+      <div class="topbar-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search bookings, guests, trails…" id="global-search" />
+      </div>
+      <div class="topbar-right">
+        <div class="live-dot">Live</div>
+        <div class="topbar-clock" id="live-clock">--:--:--</div>
+        <div class="notif-btn" id="notif-toggle" onclick="toggleNotif()">
+          <i class="fa-solid fa-bell"></i>
+          <span class="notif-count" id="notif-count">5</span>
+        </div>
+        <div class="topbar-avatar">AR</div>
+      </div>
+    </header>
+
+    <!-- NOTIFICATION PANEL -->
+    <div id="notif-panel" class="notif-panel">
+      <div class="notif-panel-title">Notifications</div>
+      <div class="notif-item">
+        <div class="notif-icon" style="background:rgba(76,175,130,0.12);color:#4CAF82;"><i
+            class="fa-solid fa-calendar-check"></i></div>
+        <div class="notif-body">
+          <div class="notif-msg">New booking: Grand Ridge Traverse by Priya S.</div>
+          <div class="notif-time">2 min ago</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-icon" style="background:rgba(232,100,60,0.12);color:var(--ember);"><i
+            class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="notif-body">
+          <div class="notif-msg">Trail "Volcanic Rim" capacity at 95%</div>
+          <div class="notif-time">14 min ago</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-icon" style="background:rgba(212,168,83,0.12);color:var(--gold);"><i
+            class="fa-solid fa-star"></i></div>
+        <div class="notif-body">
+          <div class="notif-msg">New 5-star review from James T.</div>
+          <div class="notif-time">1 hr ago</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-icon" style="background:rgba(142,175,194,0.12);color:var(--mist);"><i
+            class="fa-solid fa-cloud-rain"></i></div>
+        <div class="notif-body">
+          <div class="notif-msg">Weather alert: Heavy rain forecast on North Face route tomorrow</div>
+          <div class="notif-time">3 hr ago</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-icon" style="background:rgba(45,106,79,0.12);color:#4CAF82;"><i
+            class="fa-solid fa-indian-rupee-sign"></i></div>
+        <div class="notif-body">
+          <div class="notif-msg">Daily revenue target reached: $4,200</div>
+          <div class="notif-time">5 hr ago</div>
+        </div>
+      </div>
+    </div>
+    <div id="overlay" onclick="closeNotif()"></div>
+
+    <!-- CONTENT -->
+    <div id="content">
+      <div id="section-overview">
+
+        <!-- Page Header -->
+        <div class="page-header">
+          <div class="page-greeting">Good <em id="greeting-time">Morning</em>, Arjun 👋</div>
+          <div class="page-sub">Here's what's happening at Terravana Wilds today · <span id="today-date"></span></div>
+        </div>
+
+        <!-- KPI CARDS -->
+        <div class="kpi-grid">
+          <div class="kpi-card kpi-glow-gold">
+            <div class="kpi-header">
+              <div class="kpi-icon kpi-icon-gold"><i class="fa-solid fa-calendar-check"></i></div>
+              <div class="kpi-delta delta-up"><i class="fa-solid fa-arrow-up"></i> +14%</div>
+            </div>
+            <div class="kpi-value" id="kpi-bookings">0</div>
+            <div class="kpi-label">Bookings Today</div>
+            <div class="kpi-bar">
+              <div class="kpi-bar-fill" id="kpi-b-bar" style="background:var(--gold);width:0%;"></div>
+            </div>
+          </div>
+          <div class="kpi-card kpi-glow-green">
+            <div class="kpi-header">
+              <div class="kpi-icon kpi-icon-green"><i class="fa-solid fa-dollar-sign"></i></div>
+              <div class="kpi-delta delta-up"><i class="fa-solid fa-arrow-up"></i> +22%</div>
+            </div>
+            <div class="kpi-value" id="kpi-revenue">$0</div>
+            <div class="kpi-label">Revenue Today</div>
+            <div class="kpi-bar">
+              <div class="kpi-bar-fill" id="kpi-r-bar" style="background:#4CAF82;width:0%;"></div>
+            </div>
+          </div>
+          <div class="kpi-card kpi-glow-ember">
+            <div class="kpi-header">
+              <div class="kpi-icon kpi-icon-ember"><i class="fa-solid fa-person-hiking"></i></div>
+              <div class="kpi-delta delta-up"><i class="fa-solid fa-arrow-up"></i> +8%</div>
+            </div>
+            <div class="kpi-value" id="kpi-guests">0</div>
+            <div class="kpi-label">Active Guests</div>
+            <div class="kpi-bar">
+              <div class="kpi-bar-fill" id="kpi-g-bar" style="background:var(--ember);width:0%;"></div>
+            </div>
+          </div>
+          <div class="kpi-card kpi-glow-mist">
+            <div class="kpi-header">
+              <div class="kpi-icon kpi-icon-mist"><i class="fa-solid fa-route"></i></div>
+              <div class="kpi-delta delta-down"><i class="fa-solid fa-arrow-down"></i> -2</div>
+            </div>
+            <div class="kpi-value" id="kpi-trails">0</div>
+            <div class="kpi-label">Open Trails</div>
+            <div class="kpi-bar">
+              <div class="kpi-bar-fill" id="kpi-t-bar" style="background:var(--mist);width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHART + LIVE FEED -->
+        <div class="grid-2-3">
+          <div class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Revenue Analytics</div>
+                <div class="section-title">Weekly Overview</div>
+              </div>
+              <div style="display:flex;gap:0.5rem;">
+                <button class="view-all-btn" id="chart-week" onclick="switchChart('week')">Week</button>
+                <button class="view-all-btn" id="chart-month" onclick="switchChart('month')">Month</button>
+              </div>
+            </div>
+            <canvas id="revenue-chart" height="200"></canvas>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <div class="legend-dot" style="background:var(--gold);"></div> Revenue
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background:#4CAF82;"></div> Bookings
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot" style="background:var(--mist);"></div> Target
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Real-time</div>
+                <div class="section-title">Live Activity</div>
+              </div>
+              <div class="live-dot">Live</div>
+            </div>
+            <div class="live-feed" id="live-feed"></div>
+          </div>
+        </div>
+
+        <!-- TRAIL STATUS + BOOKINGS TABLE + QUICK ACTIONS -->
+        <div class="grid-3-eq">
+
+          <!-- Trail Status -->
+          <div class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Real-time Status</div>
+                <div class="section-title">Trail Overview</div>
+              </div>
+            </div>
+            <div class="trail-list" id="trail-list"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin-top:1.25rem;">
+              <div class="mini-stat">
+                <div class="mini-stat-val" id="ms-open">14</div>
+                <div class="mini-stat-lbl">Open</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-stat-val" style="color:var(--gold);" id="ms-full">3</div>
+                <div class="mini-stat-lbl">Full</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-stat-val" style="color:var(--ember);" id="ms-closed">1</div>
+                <div class="mini-stat-lbl">Closed</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Bookings -->
+          <div class="panel">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Today</div>
+                <div class="section-title">Recent Bookings</div>
+              </div>
+              <div class="view-all-btn">View All</div>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Guest</th>
+                    <th>Trail</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="bookings-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Quick Actions + Occupancy -->
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div class="panel">
+              <div class="section-label" style="margin-bottom:0.85rem;">Quick Actions</div>
+              <div class="quick-actions">
+                <button class="qa-btn qa-gold" onclick="alert('Add booking form')"><i class="fa-solid fa-plus"></i> New
+                  Booking</button>
+                <button class="qa-btn" onclick="alert('Trail manager')"><i class="fa-solid fa-route"></i> Add
+                  Trail</button>
+                <button class="qa-btn" onclick="alert('Export report')"><i class="fa-solid fa-file-export"></i>
+                  Export</button>
+                <button class="qa-btn" onclick="alert('Send announcement')"><i class="fa-solid fa-bullhorn"></i>
+                  Announce</button>
+                <button class="qa-btn" onclick="window.location='gallery.html'"><i class="fa-solid fa-images"></i>
+                  Gallery</button>
+                <button class="qa-btn" onclick="window.location='contact.html'"><i class="fa-solid fa-envelope"></i>
+                  Contact</button>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="section-label" style="margin-bottom:1rem;">Resort Occupancy</div>
+              <div class="prog-wrap">
+                <div class="prog-label"><span>Eco Lodges</span><span id="occ-lodge">78%</span></div>
+                <div class="prog-track">
+                  <div class="prog-fill" id="pf-lodge" style="background:var(--gold);width:0%;"></div>
+                </div>
+              </div>
+              <div class="prog-wrap">
+                <div class="prog-label"><span>Trail Capacity</span><span id="occ-trail">62%</span></div>
+                <div class="prog-track">
+                  <div class="prog-fill" id="pf-trail" style="background:#4CAF82;width:0%;"></div>
+                </div>
+              </div>
+              <div class="prog-wrap">
+                <div class="prog-label"><span>Campfire Spots</span><span id="occ-camp">91%</span></div>
+                <div class="prog-track">
+                  <div class="prog-fill" id="pf-camp" style="background:var(--ember);width:0%;"></div>
+                </div>
+              </div>
+              <div class="prog-wrap" style="margin-bottom:0;">
+                <div class="prog-label"><span>Dining</span><span id="occ-dining">45%</span></div>
+                <div class="prog-track">
+                  <div class="prog-fill" id="pf-dining" style="background:var(--mist);width:0%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- #section-overview -->
+
+      <!-- Placeholder for other sections -->
+      <div id="section-placeholder"
+        style="display:none; text-align:center; padding: 6rem 2rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh;">
+        <i class="fa-solid fa-person-digging"
+          style="font-size: 3.5rem; color: var(--gold); margin-bottom: 1.5rem; opacity: 0.8;"></i>
+        <h2 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--ivory); margin-bottom: 0.75rem;"
+          id="placeholder-title">Under Construction</h2>
+        <p
+          style="color: rgba(232,224,213,0.5); font-family: var(--font-body); font-size: 0.9rem; max-width: 400px; line-height: 1.6;">
+          We're currently building out this module to bring you more powerful tools. Please check back later.</p>
+      </div>
+
+    </div><!-- #content -->
+  </div><!-- #main -->
+
+  <script>
+    // Check login state
+    (function () {
+      const userStr = localStorage.getItem('currentUser');
+      if (!userStr) {
+        window.location.href = 'login.html';
+        return;
+      }
+      try {
+        const user = JSON.parse(userStr);
+        if (user.role !== 'admin') {
+          window.location.href = user.role === 'user' ? 'user-dashboard.html' : 'login.html';
+        }
+      } catch (err) {
+        localStorage.removeItem('currentUser');
+        window.location.href = 'login.html';
+      }
+    })();
+
+    // ═══════════════════════════════════════════════════════
+    //  TERRAVANA WILDS — ADMIN DASHBOARD  (Real-time JS)
+    // ═══════════════════════════════════════════════════════
+
+    /* ── Live Clock & Greeting ── */
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('live-clock').textContent = h + ':' + m + ':' + s;
+      const hr = now.getHours();
+      const gt = document.getElementById('greeting-time');
+      if (gt) gt.textContent = hr < 12 ? 'Morning' : hr < 17 ? 'Afternoon' : 'Evening';
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    /* ── Today Date ── */
+    const td = document.getElementById('today-date');
+    if (td) {
+      const d = new Date();
+      td.textContent = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    /* ── Animated Counter ── */
+    function animateCounter(el, target, prefix, suffix, duration) {
+      prefix = prefix || ''; suffix = suffix || '';
+      const start = Date.now(); const from = 0;
+      function step() {
+        const elapsed = Date.now() - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 4);
+        el.textContent = prefix + Math.round(from + (target - from) * ease).toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    /* ── KPI Data (live simulation) ── */
+    let kpiData = { bookings: 47, revenue: 6840, guests: 124, trails: 16 };
+    function renderKPIs() {
+      animateCounter(document.getElementById('kpi-bookings'), kpiData.bookings, '', '', 900);
+      animateCounter(document.getElementById('kpi-revenue'), kpiData.revenue, '$', '', 900);
+      animateCounter(document.getElementById('kpi-guests'), kpiData.guests, '', '', 900);
+      animateCounter(document.getElementById('kpi-trails'), kpiData.trails, '', '', 900);
+      setTimeout(() => {
+        document.getElementById('kpi-b-bar').style.width = '74%';
+        document.getElementById('kpi-r-bar').style.width = '68%';
+        document.getElementById('kpi-g-bar').style.width = '82%';
+        document.getElementById('kpi-t-bar').style.width = '89%';
+      }, 300);
+    }
+    renderKPIs();
+
+    /* ── Simulate live KPI updates every 30s ── */
+    setInterval(() => {
+      kpiData.bookings += Math.floor(Math.random() * 2) + 1;
+      kpiData.revenue += Math.floor(Math.random() * 180) + 80;
+      kpiData.guests += Math.floor(Math.random() * 3) - 1;
+      renderKPIs();
+    }, 30000);
+
+    /* ── Occupancy Bars ── */
+    setTimeout(() => {
+      document.getElementById('pf-lodge').style.width = '78%';
+      document.getElementById('pf-trail').style.width = '62%';
+      document.getElementById('pf-camp').style.width = '91%';
+      document.getElementById('pf-dining').style.width = '45%';
+    }, 600);
+
+    /* ── Revenue Chart (Canvas) ── */
+    const chartData = {
+      week: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        revenue: [3200, 2800, 4100, 3700, 5200, 6800, 6400],
+        bookings: [28, 24, 35, 31, 44, 58, 52],
+        target: [4000, 4000, 4000, 4000, 4000, 4000, 4000]
+      },
+      month: {
+        labels: ['W1', 'W2', 'W3', 'W4'],
+        revenue: [22000, 27500, 31200, 24800],
+        bookings: [180, 210, 245, 198],
+        target: [25000, 25000, 25000, 25000]
+      }
+    };
+    let currentChart = 'week';
+
+    function drawChart(mode) {
+      const canvas = document.getElementById('revenue-chart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const data = chartData[mode];
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      const W = rect.width || canvas.offsetWidth || 600;
+      const H = 200;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+      ctx.scale(dpr, dpr);
+
+      const PAD = { top: 20, right: 20, bottom: 36, left: 55 };
+      const cW = W - PAD.left - PAD.right;
+      const cH = H - PAD.top - PAD.bottom;
+      const n = data.labels.length;
+
+      const maxRev = Math.max(...data.revenue) * 1.15;
+      const minRev = 0;
+
+      ctx.clearRect(0, 0, W, H);
+
+      /* Grid lines */
+      ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = PAD.top + cH - (cH / 4 * i);
+        ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left + cW, y); ctx.stroke();
+        ctx.fillStyle = 'rgba(232,224,213,0.25)';
+        ctx.font = '600 9px Manrope,sans-serif';
+        ctx.textAlign = 'right';
+        const val = Math.round((maxRev / 4) * i);
+        ctx.fillText('$' + val.toLocaleString(), PAD.left - 6, y + 3);
+      }
+
+      /* X labels */
+      ctx.fillStyle = 'rgba(232,224,213,0.4)';
+      ctx.font = '600 10px Manrope,sans-serif';
+      ctx.textAlign = 'center';
+      data.labels.forEach((lbl, i) => {
+        const x = PAD.left + (i / (n - 1)) * cW;
+        ctx.fillText(lbl, x, H - PAD.bottom + 14);
+      });
+
+      /* Helper: point coords */
+      function px(i) { return PAD.left + (i / (n - 1)) * cW; }
+      function py(v) { return PAD.top + cH - ((v - minRev) / (maxRev - minRev)) * cH; }
+
+      /* Target line (dashed) */
+      ctx.save();
+      ctx.strokeStyle = 'rgba(142,175,194,0.35)';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([5, 4]);
+      ctx.beginPath();
+      data.target.forEach((v, i) => {
+        i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v));
+      });
+      ctx.stroke();
+      ctx.restore();
+
+      /* Revenue gradient area */
+      const grad = ctx.createLinearGradient(0, PAD.top, 0, PAD.top + cH);
+      grad.addColorStop(0, 'rgba(212,168,83,0.3)');
+      grad.addColorStop(1, 'rgba(212,168,83,0)');
+      ctx.beginPath();
+      data.revenue.forEach((v, i) => {
+        i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v));
+      });
+      ctx.lineTo(px(n - 1), PAD.top + cH); ctx.lineTo(px(0), PAD.top + cH); ctx.closePath();
+      ctx.fillStyle = grad; ctx.fill();
+
+      /* Revenue line */
+      ctx.strokeStyle = '#D4A853'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+      ctx.beginPath();
+      data.revenue.forEach((v, i) => {
+        i === 0 ? ctx.moveTo(px(i), py(v)) : ctx.lineTo(px(i), py(v));
+      });
+      ctx.stroke();
+
+      /* Revenue dots */
+      data.revenue.forEach((v, i) => {
+        ctx.beginPath(); ctx.arc(px(i), py(v), 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#0A0C0E'; ctx.fill();
+        ctx.strokeStyle = '#D4A853'; ctx.lineWidth = 2; ctx.stroke();
+      });
+
+      /* Bookings line (secondary axis shown as scaled) */
+      const maxBk = Math.max(...data.bookings);
+      function pyBk(v) { return PAD.top + cH - (v / maxBk) * cH * 0.55; }
+      ctx.strokeStyle = 'rgba(76,175,130,0.7)'; ctx.lineWidth = 1.8; ctx.lineJoin = 'round';
+      ctx.setLineDash([]);
+      ctx.beginPath();
+      data.bookings.forEach((v, i) => {
+        i === 0 ? ctx.moveTo(px(i), pyBk(v)) : ctx.lineTo(px(i), pyBk(v));
+      });
+      ctx.stroke();
+      data.bookings.forEach((v, i) => {
+        ctx.beginPath(); ctx.arc(px(i), pyBk(v), 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#4CAF82'; ctx.fill();
+      });
+    }
+
+    function switchChart(mode) {
+      currentChart = mode;
+      document.getElementById('chart-week').style.color = mode === 'week' ? 'var(--gold)' : '';
+      document.getElementById('chart-month').style.color = mode === 'month' ? 'var(--gold)' : '';
+      drawChart(mode);
+    }
+
+    window.addEventListener('load', () => drawChart('week'));
+    window.addEventListener('resize', () => drawChart(currentChart));
+
+    /* ── Live Activity Feed ── */
+    const feedNames = ['Priya S.', 'James T.', 'Akira M.', 'Sara L.', 'Ravi K.', 'Elena V.', 'Omar F.', 'Nadia B.'];
+    const feedTrails = ['Grand Ridge Traverse', 'Cloud Forest Walk', 'Valley of Echoes', 'North Face Climb', 'Moss Grove Stroll', 'Eagle\'s Eyrie', 'Wild South Circuit', 'Sunrise Point'];
+    const feedTypes = ['Booking', 'Review', 'Check-in', 'Cancellation', 'Enquiry'];
+    const feedColors = ['#4CAF82', '#D4A853', '#8EAFC2', '#E8643C', '#9A6B4A'];
+    const feedBadges = ['badge-new', 'badge-trail', 'badge-new', 'badge-cancel', 'badge-trail'];
+    const feedAvatarBg = ['rgba(76,175,130,0.15)', 'rgba(212,168,83,0.15)', 'rgba(142,175,194,0.15)', 'rgba(232,100,60,0.15)', 'rgba(154,107,74,0.15)'];
+    let feedItems = [];
+
+    function addFeedItem() {
+      const ni = Math.floor(Math.random() * feedNames.length);
+      const ti = Math.floor(Math.random() * feedTrails.length);
+      const ai = Math.floor(Math.random() * feedTypes.length);
+      const item = {
+        name: feedNames[ni], trail: feedTrails[ti],
+        type: feedTypes[ai], color: feedColors[ai],
+        bg: feedAvatarBg[ai], badge: feedBadges[ai],
+        time: 'just now'
+      };
+      feedItems.unshift(item);
+      if (feedItems.length > 12) feedItems.pop();
+      renderFeed();
+    }
+
+    function renderFeed() {
+      const feed = document.getElementById('live-feed');
+      if (!feed) return;
+      feed.innerHTML = '';
+      feedItems.forEach((item, idx) => {
+        const el = document.createElement('div');
+        el.className = 'feed-item';
+        el.style.animationDelay = (idx === 0 ? '0ms' : '50ms');
+        el.innerHTML = `
+      <div class="feed-avatar" style="background:${item.bg};color:${item.color};">
+        ${item.name.split(' ').map(w => w[0]).join('')}
+      </div>
+      <div class="feed-info">
+        <div class="feed-name">${item.name}</div>
+        <div class="feed-detail">${item.type} · ${item.trail}</div>
+      </div>
+      <span class="feed-badge ${item.badge}">${item.type}</span>
+      <div class="feed-time">${idx === 0 ? 'now' : idx + 'm ago'}</div>
+    `;
+        feed.appendChild(el);
+      });
+    }
+
+    /* Seed initial feed */
+    for (let i = 0; i < 7; i++) feedItems.push({
+      name: feedNames[i % feedNames.length], trail: feedTrails[i % feedTrails.length],
+      type: feedTypes[i % feedTypes.length], color: feedColors[i % feedTypes.length],
+      bg: feedAvatarBg[i % feedAvatarBg.length], badge: feedBadges[i % feedBadges.length],
+      time: ''
+    });
+    renderFeed();
+    /* New item every 6–12 seconds */
+    function scheduleNext() { setTimeout(() => { addFeedItem(); scheduleNext(); }, Math.random() * 6000 + 6000); }
+    scheduleNext();
+
+    /* ── Trail Status Data ── */
+    const trailsData = [
+      { name: 'Grand Ridge Traverse', cap: '7/8', status: 'full' },
+      { name: 'Cloud Forest Walk', cap: '9/12', status: 'open' },
+      { name: 'Valley of Echoes', cap: '6/10', status: 'open' },
+      { name: 'North Face Climb', cap: '0/6', status: 'closed' },
+      { name: 'Moss Grove Stroll', cap: '11/15', status: 'open' },
+      { name: 'Eagle\'s Eyrie', cap: '8/10', status: 'full' },
+    ];
+
+    function renderTrails() {
+      const list = document.getElementById('trail-list');
+      if (!list) return;
+      list.innerHTML = '';
+      trailsData.forEach((t, i) => {
+        const el = document.createElement('div');
+        el.className = 'trail-row';
+        const isOn = t.status !== 'closed';
+        el.innerHTML = `
+      <div class="trail-dot dot-${t.status}"></div>
+      <div class="trail-name">${t.name}</div>
+      <div class="trail-cap">${t.cap}</div>
+      <div class="trail-status-label status-${t.status}">${t.status}</div>
+      <div class="trail-toggle ${isOn ? 'on' : ''}" data-idx="${i}" onclick="toggleTrail(this,${i})" title="Toggle trail"></div>
+    `;
+        list.appendChild(el);
+      });
+    }
+
+    function toggleTrail(el, idx) {
+      el.classList.toggle('on');
+      const trail = trailsData[idx];
+      trail.status = el.classList.contains('on') ? 'open' : 'closed';
+      renderTrails();
+      updateMiniStats();
+    }
+
+    function updateMiniStats() {
+      const open = trailsData.filter(t => t.status === 'open').length;
+      const full = trailsData.filter(t => t.status === 'full').length;
+      const closed = trailsData.filter(t => t.status === 'closed').length;
+      document.getElementById('ms-open').textContent = open + 8;
+      document.getElementById('ms-full').textContent = full + 1;
+      document.getElementById('ms-closed').textContent = closed;
+    }
+    renderTrails();
+
+    /* ── Recent Bookings Table ── */
+    const bookingsData = [
+      { guest: 'Priya Sharma', trail: 'Grand Ridge', amount: '$380', 'status': 'confirmed' },
+      { guest: 'James Turner', trail: 'Cloud Forest', amount: '$65', 'status': 'confirmed' },
+      { guest: 'Akira Matsui', trail: 'Valley Echoes', amount: '$145', 'status': 'pending' },
+      { guest: 'Sara Lopez', trail: 'North Face', amount: '$280', 'status': 'confirmed' },
+      { guest: 'Ravi Kumar', trail: 'Moss Grove', amount: '$45', 'status': 'cancelled' },
+      { guest: 'Elena Volkov', trail: 'Eagle\'s Eyrie', amount: '$195', 'status': 'confirmed' },
+    ];
+    const statusStyle = {
+      confirmed: '<span style="background:rgba(76,175,130,0.12);color:#4CAF82;border-radius:20px;padding:0.15rem 0.55rem;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Confirmed</span>',
+      pending: '<span style="background:rgba(212,168,83,0.12);color:var(--gold);border-radius:20px;padding:0.15rem 0.55rem;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Pending</span>',
+      cancelled: '<span style="background:rgba(232,100,60,0.12);color:var(--ember);border-radius:20px;padding:0.15rem 0.55rem;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Cancelled</span>',
+    };
+    function renderBookingsTable() {
+      const tbody = document.getElementById('bookings-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      bookingsData.forEach(b => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td class="guest-name">${b.guest}</td><td>${b.trail}</td><td class="amount-cell">${b.amount}</td><td>${statusStyle[b.status] || ''}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+    renderBookingsTable();
+
+    /* Randomly update a booking status every 20s */
+    setInterval(() => {
+      const statuses = ['confirmed', 'pending', 'cancelled'];
+      const idx = Math.floor(Math.random() * bookingsData.length);
+      bookingsData[idx].status = statuses[Math.floor(Math.random() * statuses.length)];
+      renderBookingsTable();
+    }, 20000);
+
+    /* ── Sidebar nav switching ── */
+    document.querySelectorAll('.nav-item[data-section]').forEach(item => {
+      item.addEventListener('click', function () {
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        this.classList.add('active');
+
+        const sectionName = this.textContent.trim().replace(/\d+$/, '').trim();
+        const t = document.getElementById('topbar')?.querySelector('.topbar-title');
+        if (t) t.textContent = sectionName;
+
+        const sectionId = this.getAttribute('data-section');
+        const overview = document.getElementById('section-overview');
+        const placeholder = document.getElementById('section-placeholder');
+
+        if (overview && placeholder) {
+          if (sectionId === 'overview') {
+            overview.style.display = 'block';
+            placeholder.style.display = 'none';
+          } else {
+            overview.style.display = 'none';
+            placeholder.style.display = 'flex';
+            const pTitle = document.getElementById('placeholder-title');
+            if (pTitle) pTitle.textContent = sectionName;
+          }
+        }
+
+        if (window.innerWidth <= 900) {
+          document.getElementById('sidebar').classList.remove('mobile-open');
+        }
+      });
+    });
+
+    /* ── Notifications ── */
+    function toggleNotif() {
+      const p = document.getElementById('notif-panel');
+      const o = document.getElementById('overlay');
+      p.classList.toggle('open');
+      o.classList.toggle('show');
+    }
+    function closeNotif() {
+      document.getElementById('notif-panel').classList.remove('open');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    /* ── Mobile sidebar ── */
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('mobile-open');
+    }
+
+    /* ── Reduce notif count on open ── */
+    document.getElementById('notif-toggle').addEventListener('click', () => {
+      document.getElementById('notif-count').textContent = '0';
+      document.getElementById('notif-count').style.display = 'none';
+    });
+  </script>
+</body>
+
+</html>

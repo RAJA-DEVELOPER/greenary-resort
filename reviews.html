@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guest Reviews — TERRAVANA WILDS</title>
+  <meta name="description"
+    content="Read authentic guest reviews of Terravana Wilds — 4.9 stars from 800+ verified stays. Real stories from explorers, families, photographers, and wildlife lovers worldwide." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .review-card {
+      background: rgba(27, 29, 31, 0.7);
+      border: 1px solid rgba(198, 169, 114, 0.1);
+      border-radius: 4px;
+      padding: 2.25rem;
+      transition: all var(--dur-base) var(--ease-smooth);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .review-card:hover {
+      border-color: rgba(198, 169, 114, 0.28);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .review-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .reviewer-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .reviewer-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ivory);
+      line-height: 1.2;
+    }
+
+    .reviewer-meta {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.4);
+      margin-top: 0.2rem;
+    }
+
+    .review-stars-sm {
+      display: flex;
+      gap: 2px;
+      font-size: 0.85rem;
+      color: var(--gold);
+    }
+
+    .review-text {
+      font-size: 0.92rem;
+      color: rgba(232, 224, 213, 0.7);
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .review-text::before {
+      content: '"';
+      color: var(--gold);
+      font-size: 1.5rem;
+      font-family: var(--font-display);
+      line-height: 0;
+      vertical-align: -0.3em;
+      margin-right: 0.2em;
+    }
+
+    .review-text::after {
+      content: '"';
+      color: var(--gold);
+      font-size: 1.5rem;
+      font-family: var(--font-display);
+      line-height: 0;
+      vertical-align: -0.3em;
+      margin-left: 0.2em;
+    }
+
+    .review-tag {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(198, 169, 114, 0.7);
+      background: rgba(198, 169, 114, 0.07);
+      border: 1px solid rgba(198, 169, 114, 0.15);
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+    }
+
+    .review-date {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      color: rgba(232, 224, 213, 0.3);
+    }
+
+    /* Score bar */
+    .score-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.82rem;
+    }
+
+    .score-bar-label {
+      min-width: 130px;
+      color: rgba(232, 224, 213, 0.6);
+    }
+
+    .score-bar-track {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sienna), var(--gold));
+      border-radius: 2px;
+    }
+
+    .score-bar-num {
+      min-width: 32px;
+      text-align: right;
+      color: var(--gold);
+      font-weight: 700;
+      font-family: var(--font-display);
+    }
+
+    /* Overall rating display */
+    .rating-big {
+      font-family: var(--font-display);
+      font-size: 6rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .rating-stars-big {
+      font-size: 1.5rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    /* Platform badges */
+    .platform-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      background: rgba(27, 29, 31, 0.7);
+      border: 1px solid rgba(198, 169, 114, 0.12);
+      border-radius: 3px;
+    }
+
+    .platform-name {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ivory);
+    }
+
+    .platform-score {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* Featured review */
+    .featured-review {
+      background: linear-gradient(135deg, rgba(27, 29, 31, 0.95) 0%, rgba(17, 19, 21, 0.98) 100%);
+      border: 1px solid rgba(198, 169, 114, 0.2);
+      border-radius: 4px;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-review::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem;
+      left: 1.5rem;
+      font-family: var(--font-display);
+      font-size: 12rem;
+      color: rgba(198, 169, 114, 0.06);
+      line-height: 1;
+      pointer-events: none;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="upgrade.css" />
+</head>
+
+<body>
+  <div id="page-loader" aria-hidden="true">
+    <div class="loader-logo">Reviews</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+  <div id="page-transition"
+    style="position:fixed;inset:0;background:var(--coal);z-index:9998;opacity:0;transition:opacity 0.4s ease;pointer-events:none;"
+    aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <button id="back-to-top" aria-label="Back to top"
+    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">↑</button>
+
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="nav-logo-main">Terravana Wilds</span><span
+          class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span></a>
+      <div class="nav-links" role="list" style="gap: clamp(0.5rem, 1.2vw, 1.2rem);">
+        <a href="index.html" class="nav-link" role="listitem">Home</a>
+        <a href="adventures.html" class="nav-link" role="listitem">Adventures</a>
+        <a href="trekking.html" class="nav-link" role="listitem">Trekking</a>
+        <a href="wildlife.html" class="nav-link" role="listitem">Wildlife</a>
+        <a href="waterfalls.html" class="nav-link" role="listitem">Waterfalls</a>
+        <a href="campfire.html" class="nav-link" role="listitem">Campfire</a>
+        <a href="ecoresorts.html" class="nav-link" role="listitem">Resorts</a>
+        <a href="seasonal.html" class="nav-link" role="listitem">Seasons</a>
+        <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
+        <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
+        <a href="about.html" class="nav-link" role="listitem">About</a>
+        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:1rem;">
+        <a href="booking.html" class="nav-cta">Book Now</a>
+        <div class="nav-profile-dropdown" id="nav-profile-dropdown">
+          <button id="nav-profile-btn" aria-label="User Profile">
+            <i class="fa-solid fa-user-circle"></i>
+          </button>
+          <div id="nav-profile-menu" class="nav-profile-menu">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div id="nav-mobile" class="nav-mobile">
+    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a><a
+      href="trekking.html" class="nav-link">Trekking</a><a href="wildlife.html" class="nav-link">Wildlife</a><a
+      href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html" class="nav-link">Waterfalls</a><a
+      href="ecoresorts.html" class="nav-link">Eco Resorts</a><a href="seasonal.html" class="nav-link">Seasons</a><a
+      href="gallery.html" class="nav-link">Gallery</a><a href="reviews.html" class="nav-link active">Reviews</a><a
+      href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a>
+    <a href="booking.html" class="nav-cta">Book Your Journey</a>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO -->
+    <section class="hero hero-sm" id="hero" aria-label="Reviews hero">
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
+          alt="Happy explorers at Terravana Wilds summit" class="hero-bg" loading="eager" fetchpriority="high" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">4.9 Stars · 800+
+              Verified Reviews</span></div>
+          <h1 class="hero-title">Voices from<br />the <em>Wild</em></h1>
+          <p class="hero-subtitle">What happens when people step into the wilderness here — told in their own words,
+            from their own hearts.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: OVERALL RATING -->
+    <section class="section-sm bg-graphite" id="overall-rating">
+      <div class="container">
+        <div class="grid-2" style="gap:5rem;align-items:center;">
+          <div class="reveal-left" style="text-align:center;">
+            <div class="rating-big" aria-label="4.9 out of 5 stars">4.9</div>
+            <div class="rating-stars-big" aria-hidden="true"><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i></div>
+            <p
+              style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.4);margin-top:1rem;letter-spacing:0.08em;text-transform:uppercase;">
+              Based on 847 verified guest reviews</p>
+            <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:2rem;">
+              <div class="platform-badge"><span style="font-size:1.5rem;" aria-hidden="true"><i
+                    class="fa-solid fa-globe"></i></span>
+                <div>
+                  <div class="platform-name">TripAdvisor</div>
+                </div>
+                <div class="platform-score" style="margin-left:auto;">4.9</div>
+              </div>
+              <div class="platform-badge"><span style="font-size:1.5rem;" aria-hidden="true"><i
+                    class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span>
+                <div>
+                  <div class="platform-name">Booking.com</div>
+                </div>
+                <div class="platform-score" style="margin-left:auto;">9.8</div>
+              </div>
+              <div class="platform-badge"><span style="font-size:1.5rem;" aria-hidden="true"><i
+                    class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span>
+                <div>
+                  <div class="platform-name">Google Reviews</div>
+                </div>
+                <div class="platform-score" style="margin-left:auto;">4.9</div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal-right">
+            <div class="section-label" style="margin-bottom:1.5rem;">Category Scores</div>
+            <div style="display:flex;flex-direction:column;gap:1.25rem;">
+              <div class="score-bar">
+                <div class="score-bar-label">Wildlife Experience</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill" style="width:98%;"></div>
+                </div>
+                <div class="score-bar-num">9.8</div>
+              </div>
+              <div class="score-bar">
+                <div class="score-bar-label">Guide Quality</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill" style="width:98%;"></div>
+                </div>
+                <div class="score-bar-num">9.8</div>
+              </div>
+              <div class="score-bar">
+                <div class="score-bar-label">Lodge Comfort</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill" style="width:95%;"></div>
+                </div>
+                <div class="score-bar-num">9.5</div>
+              </div>
+              <div class="score-bar">
+                <div class="score-bar-label">Food & Dining</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill" style="width:96%;"></div>
+                </div>
+                <div class="score-bar-num">9.6</div>
+              </div>
+              <div class="score-bar">
+                <div class="score-bar-label">Eco Credentials</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill" style="width:100%;"></div>
+                </div>
+                <div class="score-bar-num">10</div>
+              </div>
+              <div class="score-bar">
+                <div class="score-bar-label">Value for Money</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill" style="width:93%;"></div>
+                </div>
+                <div class="score-bar-num">9.3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FEATURED REVIEW -->
+    <section class="section bg-coal bg-texture" id="featured-review">
+      <div class="container">
+        <div class="section-header section-header-center" style="margin-bottom:3rem;">
+          <div class="section-label section-label-center">Review of the Month</div>
+          <h2 class="section-title fs-h2 text-center">A Story Worth <em>Reading</em></h2>
+        </div>
+        <div class="featured-review reveal">
+          <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem;flex-wrap:wrap;">
+            <div class="reviewer-avatar"
+              style="width:70px;height:70px;font-size:1.5rem;background:linear-gradient(135deg,var(--sienna),var(--gold));">
+              SC</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--ivory);">Sarah
+                Chen</div>
+              <div class="reviewer-meta">Wildlife Biologist · California, USA</div>
+              <div class="review-stars-sm" aria-label="5 stars"><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i></div>
+            </div>
+            <div style="margin-left:auto;text-align:right;">
+              <div class="review-tag" style="font-size:0.7rem;padding:0.3rem 0.8rem;">Grand Ridge Traverse + Canopy
+                Treehouse</div>
+              <div class="review-date" style="margin-top:0.5rem;">October 2024 · 5 Nights</div>
+            </div>
+          </div>
+          <p
+            style="font-family:var(--font-serif);font-size:1.15rem;line-height:1.9;color:rgba(232,224,213,0.8);font-style:italic;position:relative;z-index:1;">
+            "I study ecosystems professionally. I have worked in the Serengeti, the Amazon, and the Himalayas. I say
+            this not to boast but to provide context for what follows: Terravana Wilds is the single most profound
+            wildlife and wilderness experience I have ever had. The guides don't just know the animals — they know their
+            individual stories. On day two of the Ridge Traverse, our guide stopped and pointed to a set of tracks.
+            'That's the female we call Asha,' he said quietly. 'She's been using this trail since 2018.' Forty minutes
+            later, Asha the leopard walked past us at fifteen metres, looked directly into our eyes, and continued into
+            the undergrowth. I sat down on a rock and couldn't speak for ten minutes. That is Terravana."
+          </p>
+          <div
+            style="display:flex;align-items:center;justify-content:space-between;margin-top:2rem;flex-wrap:wrap;gap:1rem;">
+            <div style="display:flex;gap:0.5rem;"><span class="review-tag">Wildlife Encounter</span><span
+                class="review-tag">Trekking</span><span class="review-tag">Lodge</span></div>
+            <div style="font-family:var(--font-ui);font-size:0.72rem;color:rgba(232,224,213,0.3);">Verified via
+              TripAdvisor · Stayed October 2024</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: STATS -->
+    <section class="section-sm bg-graphite" id="review-stats">
+      <div class="container">
+        <div class="stats-row reveal">
+          <div class="stat-item"><span class="stat-number" data-counter="847">847</span><span
+              class="stat-label">Verified Reviews</span></div>
+          <div class="stat-item"><span class="stat-number">4.9/5</span><span class="stat-label">Average Rating</span>
+          </div>
+          <div class="stat-item"><span class="stat-number" data-counter="96" data-suffix="%">96%</span><span
+              class="stat-label">Would Return</span></div>
+          <div class="stat-item"><span class="stat-number" data-counter="78" data-suffix="%">78%</span><span
+              class="stat-label">Referred a Friend</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: REVIEW GRID -->
+    <section class="section bg-coal bg-texture" id="review-grid">
+      <div class="container">
+        <div class="section-header section-header-center" style="margin-bottom:3rem;">
+          <div class="section-label section-label-center">Guest Stories</div>
+          <h2 class="section-title fs-h2 text-center">From Our <em>Community</em></h2>
+          <div class="divider divider-center"></div>
+        </div>
+        <div class="grid-3">
+
+          <div class="review-card reveal">
+            <div class="review-card-header">
+              <div class="reviewer-avatar"
+                style="background:linear-gradient(135deg,var(--gold),#D4BB8A);color:var(--coal);">TB</div>
+              <div>
+                <div class="reviewer-name">Thomas B.</div>
+                <div class="reviewer-meta">Travel Writer · Berlin</div>
+              </div>
+              <div class="review-stars-sm" style="margin-left:auto;" aria-label="5 stars"><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="review-tag" style="align-self:flex-start;">Devakund Waterfall Trail</div>
+            <div class="review-text">Standing under Devakund, the sound was total. The water drowned every thought I'd
+              carried in from the city. I wept and didn't know why — but it felt completely right.</div>
+            <div class="review-date">November 2024 · Verified Stay</div>
+          </div>
+
+          <div class="review-card reveal reveal-delay-1">
+            <div class="review-card-header">
+              <div class="reviewer-avatar"
+                style="background:linear-gradient(135deg,var(--slate),var(--sienna));color:var(--ivory);">AK</div>
+              <div>
+                <div class="reviewer-name">Dr. Anna K.</div>
+                <div class="reviewer-meta">Environmental Scientist · Stockholm</div>
+              </div>
+              <div class="review-stars-sm" style="margin-left:auto;" aria-label="5 stars"><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="review-tag" style="align-self:flex-start;">Campfire Astronomer Night</div>
+            <div class="review-text">I have sat around fires on five continents. None of them felt like this. The
+              combination of the stories, the sky, and the forest breathing around us — it changed something fundamental
+              inside me.</div>
+            <div class="review-date">September 2024 · Verified Stay</div>
+          </div>
+
+          <div class="review-card reveal reveal-delay-2">
+            <div class="review-card-header">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#5E9E6B,#3A7A4A);color:white;">JN
+              </div>
+              <div>
+                <div class="reviewer-name">Kenji Nakamura</div>
+                <div class="reviewer-meta">Family Trip · Tokyo</div>
+              </div>
+              <div class="review-stars-sm" style="margin-left:auto;" aria-label="5 stars"><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="review-tag" style="align-self:flex-start;">Family Package — 6 Nights</div>
+            <div class="review-text">We returned to Terravana in October after visiting in June. It was like visiting
+              two different forests on two different planets. Both utterly magnificent. My children now want to be
+              wildlife guides.</div>
+            <div class="review-date">October 2024 · Verified Stay</div>
+          </div>
+
+          <div class="review-card reveal">
+            <div class="review-card-header">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#9A4A1A,#C6641E);color:white;">ID
+              </div>
+              <div>
+                <div class="reviewer-name">Isabelle D.</div>
+                <div class="reviewer-meta">Architect · Paris</div>
+              </div>
+              <div class="review-stars-sm" style="margin-left:auto;" aria-label="5 stars"><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="review-tag" style="align-self:flex-start;">Canopy Treehouse · 4 Nights</div>
+            <div class="review-text">The Canopy Treehouse is the single most extraordinary place I have ever slept. At
+              3am, an owl landed on the balcony railing. We stared at each other for four minutes. That's Terravana.
+            </div>
+            <div class="review-date">December 2024 · Verified Stay</div>
+          </div>
+
+          <div class="review-card reveal reveal-delay-1">
+            <div class="review-card-header">
+              <div class="reviewer-avatar"
+                style="background:linear-gradient(135deg,#C6A972,#9A6B4A);color:var(--coal);">PS</div>
+              <div>
+                <div class="reviewer-name">Priya S.</div>
+                <div class="reviewer-meta">Wildlife Photographer · Singapore</div>
+              </div>
+              <div class="review-stars-sm" style="margin-left:auto;" aria-label="5 stars"><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="review-tag" style="align-self:flex-start;">Grand Ridge Traverse · 3 Days</div>
+            <div class="review-text">Day three of the Grand Ridge Traverse — standing above the clouds at 3,100 metres —
+              I understood why people return here year after year. The mountain speaks, and it speaks directly to you.
+            </div>
+            <div class="review-date">August 2024 · Verified Stay</div>
+          </div>
+
+          <div class="review-card reveal reveal-delay-2">
+            <div class="review-card-header">
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#2A3A4A,#5E6B75);color:white;">MR
+              </div>
+              <div>
+                <div class="reviewer-name">Marcus R.</div>
+                <div class="reviewer-meta">Corporate Director · London</div>
+              </div>
+              <div class="review-stars-sm" style="margin-left:auto;" aria-label="5 stars"><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="review-tag" style="align-self:flex-start;">Corporate Retreat · 12 Guests</div>
+            <div class="review-text">We brought our senior leadership team for a 4-day retreat. What happened in that
+              forest — around campfires, on trails, staring at wildlife — connected us more deeply than any boardroom
+              session ever could.</div>
+            <div class="review-date">July 2024 · Verified Stay</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: VIDEO REVIEW -->
+    <section class="section bg-graphite" id="video-review">
+      <div class="container">
+        <div class="grid-2" style="gap:5rem;align-items:center;">
+          <div class="reveal-left">
+            <div class="section-label">Watch</div>
+            <h2 class="section-title fs-h2">A Guest's <em>Story</em><br />in Their Words</h2>
+            <div class="divider"></div>
+            <p class="section-desc">"After 14 years of adventure travel, I thought I had experienced everything.
+              Terravana proved me beautifully wrong." — Mika L., Tokyo</p>
+            <div style="display:flex;align-items:center;gap:1.5rem;margin-top:2rem;flex-wrap:wrap;">
+              <div class="review-stars" style="font-size:1.1rem;" aria-label="5 stars"><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <span style="font-size:0.82rem;color:rgba(232,224,213,0.5);">Mika L. · Adventure Travel Blogger ·
+                Tokyo</span>
+            </div>
+          </div>
+          <div class="reveal-right"
+            style="position:relative;aspect-ratio:16/9;background:rgba(27,29,31,0.8);border:1px solid rgba(198,169,114,0.15);border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=70"
+              alt="Video review thumbnail"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4;" loading="lazy" />
+            <div style="position:relative;z-index:1;text-align:center;">
+              <div
+                style="width:70px;height:70px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--coal);margin:0 auto;cursor:pointer;box-shadow:0 0 40px rgba(198,169,114,0.4);"
+                id="review-video-play" role="button" aria-label="Play video review">▶</div>
+              <p
+                style="font-family:var(--font-serif);font-size:0.9rem;font-style:italic;color:rgba(232,224,213,0.6);margin-top:1rem;">
+                3:45 · Guest Story</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: GUEST TYPES -->
+    <section class="section bg-coal bg-texture" id="guest-types">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <div class="section-label section-label-center">Who Visits Terravana</div>
+          <h2 class="section-title fs-h2 text-center">Our <em>Guest</em> Community</h2>
+          <div class="divider divider-center"></div>
+        </div>
+        <div class="grid-4" style="gap:1.25rem;">
+          <div class="exp-card reveal" style="text-align:center;"><span
+              style="font-size:2.5rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span>
+            <div class="exp-card-title">Couples</div>
+            <p class="exp-card-text" style="font-size:0.8rem;">38% of our guests. The wilderness creates an intimacy
+              that no city can manufacture.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-1" style="text-align:center;"><span
+              style="font-size:2.5rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-user"></i>‍<i class="fa-solid fa-user"></i>‍<i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i>‍<i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i></span>
+            <div class="exp-card-title">Families</div>
+            <p class="exp-card-text" style="font-size:0.8rem;">24% of guests. Children who visit Terravana often return
+              as young adults who love wild places.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-2" style="text-align:center;"><span
+              style="font-size:2.5rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-camera"></i></span>
+            <div class="exp-card-title">Photographers</div>
+            <p class="exp-card-text" style="font-size:0.8rem;">22% of guests. Terravana consistently produces
+              award-winning wildlife and landscape images.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-3" style="text-align:center;"><span
+              style="font-size:2.5rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i
+                class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span>
+            <div class="exp-card-title">Corporate Groups</div>
+            <p class="exp-card-text" style="font-size:0.8rem;">16% of guests. Leadership teams discover in nature what
+              meeting rooms cannot teach.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: LEAVE A REVIEW -->
+    <section class="section bg-graphite" id="leave-review">
+      <div class="container-sm">
+        <div class="section-header section-header-center" style="margin-bottom:2.5rem;">
+          <div class="section-label section-label-center">Your Voice Matters</div>
+          <h2 class="section-title fs-h2 text-center">Share Your <em>Story</em></h2>
+          <div class="divider divider-center"></div>
+          <p class="section-desc text-center" style="margin:0 auto;">Already visited? We'd love to hear about your
+            Terravana experience. Your story helps others find their own wild moment.</p>
+        </div>
+        <div class="exp-card reveal" style="padding:3rem;text-align:center;">
+          <span style="font-size:3rem;display:block;margin-bottom:1.5rem;" aria-hidden="true"><i
+              class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i>️</span>
+          <div class="exp-card-title" style="font-size:1.2rem;margin-bottom:0.75rem;">Write a Review</div>
+          <p class="exp-card-text" style="margin-bottom:2rem;">Review us on TripAdvisor or Google, or email your story
+            directly to <a href="mailto:stories@terravanawilds.com"
+              style="color:var(--gold);">stories@terravanawilds.com</a> — we personally read every message.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="#" class="btn btn-primary" id="review-trip-btn">TripAdvisor Review</a>
+            <a href="#" class="btn btn-ghost" id="review-google-btn">Google Review</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: MEDIA COVERAGE -->
+    <section class="section bg-coal bg-texture" id="media-coverage">
+      <div class="container">
+        <div class="section-header section-header-center" style="margin-bottom:3rem;">
+          <div class="section-label section-label-center">As Featured In</div>
+          <h2 class="section-title fs-h2 text-center">The World <em>Is Watching</em></h2>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;opacity:0.6;">
+          <div
+            style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--ivory);letter-spacing:0.05em;">
+            National Geographic</div>
+          <div
+            style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--ivory);letter-spacing:0.05em;">
+            Condé Nast Traveller</div>
+          <div
+            style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--ivory);letter-spacing:0.05em;">
+            BBC Earth</div>
+          <div
+            style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ivory);letter-spacing:0.05em;">
+            Travel + Leisure</div>
+          <div
+            style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--ivory);letter-spacing:0.05em;">
+            The Guardian</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: EXPEDITION PHOTO WALL -->
+    <section class="section bg-graphite" id="reviews-photo-wall">
+      <div class="container">
+        <div class="section-header flex-between" style="flex-wrap:wrap;gap:2rem;margin-bottom:3rem;">
+          <div>
+            <div class="section-label">Guest Lenses</div>
+            <h2 class="section-title fs-h2">The Wild, <em>Captured</em></h2>
+          </div>
+          <p class="section-desc" style="max-width:400px;margin:0;">Real moments caught by our guests. No filters, no
+            stock photography. Just raw Terravana.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+          <div style="position:relative;border-radius:4px;overflow:hidden;aspect-ratio:1/1;" class="reveal">
+            <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=400&q=80"
+              alt="Leopard spotted by guest" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"
+              loading="lazy" />
+            <div
+              style="position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(0deg,rgba(17,19,21,0.8),transparent);">
+              <div
+                style="font-family:var(--font-ui);font-size:0.65rem;color:var(--ivory);text-transform:uppercase;letter-spacing:0.1em;">
+                <i class="fa-solid fa-camera"></i> @johndoeswild</div>
+            </div>
+          </div>
+          <div style="position:relative;border-radius:4px;overflow:hidden;aspect-ratio:1/1;"
+            class="reveal reveal-delay-1">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&q=80"
+              alt="Guest at Devakund falls" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"
+              loading="lazy" />
+            <div
+              style="position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(0deg,rgba(17,19,21,0.8),transparent);">
+              <div
+                style="font-family:var(--font-ui);font-size:0.65rem;color:var(--ivory);text-transform:uppercase;letter-spacing:0.1em;">
+                <i class="fa-solid fa-camera"></i> @sarah_explores</div>
+            </div>
+          </div>
+          <div style="position:relative;border-radius:4px;overflow:hidden;aspect-ratio:1/1;"
+            class="reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80"
+              alt="Canopy treehouse morning" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"
+              loading="lazy" />
+            <div
+              style="position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(0deg,rgba(17,19,21,0.8),transparent);">
+              <div
+                style="font-family:var(--font-ui);font-size:0.65rem;color:var(--ivory);text-transform:uppercase;letter-spacing:0.1em;">
+                <i class="fa-solid fa-camera"></i> @the_green_nomad</div>
+            </div>
+          </div>
+          <div style="position:relative;border-radius:4px;overflow:hidden;aspect-ratio:1/1;"
+            class="reveal reveal-delay-3">
+            <img src="https://images.unsplash.com/photo-1455763916899-e8b50eca9967?w=400&q=80" alt="Campfire group shot"
+              style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"
+              loading="lazy" />
+            <div
+              style="position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(0deg,rgba(17,19,21,0.8),transparent);">
+              <div
+                style="font-family:var(--font-ui);font-size:0.65rem;color:var(--ivory);text-transform:uppercase;letter-spacing:0.1em;">
+                <i class="fa-solid fa-camera"></i> @trekkingfam</div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:2.5rem;"><a href="gallery.html" class="btn btn-ghost"
+            id="reviews-view-gallery">View Full Gallery →</a></div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: STAFF SHOUTOUTS -->
+    <section class="section bg-coal" id="reviews-staff">
+      <div class="container">
+        <div class="section-header section-header-center" style="margin-bottom:3rem;">
+          <div class="section-label section-label-center">The Heroes Behind the Magic</div>
+          <h2 class="section-title fs-h2 text-center">Most Mentioned <em>Guides</em></h2>
+          <div class="divider divider-center"></div>
+        </div>
+        <div class="grid-3" style="gap:1.5rem;">
+          <div class="exp-card reveal" style="text-align:center;padding:2.5rem 1.5rem;">
+            <div
+              style="width:80px;height:80px;border-radius:50%;background:rgba(198,169,114,0.1);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:2rem;"
+              aria-hidden="true"><i class="fa-solid fa-user"></i><i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i>‍<i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i></div>
+            <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--gold);">Karthik
+            </div>
+            <div
+              style="font-family:var(--font-ui);font-size:0.75rem;color:rgba(232,224,213,0.5);margin:0.25rem 0 1rem;letter-spacing:0.1em;text-transform:uppercase;">
+              Head Naturalist</div>
+            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.6;font-style:italic;">"Karthik doesn't
+              just spot animals; he reads the forest like a book. He showed us a world we would have walked blindly
+              past."</p>
+            <div
+              style="margin-top:1rem;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);font-weight:700;">
+              Mentioned in 142 Reviews</div>
+          </div>
+          <div class="exp-card reveal reveal-delay-1" style="text-align:center;padding:2.5rem 1.5rem;">
+            <div
+              style="width:80px;height:80px;border-radius:50%;background:rgba(198,169,114,0.1);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:2rem;"
+              aria-hidden="true"><i class="fa-solid fa-user"></i><i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i>‍<i class="fa-solid fa-wheat-awn"></i></div>
+            <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--gold);">Deepa</div>
+            <div
+              style="font-family:var(--font-ui);font-size:0.75rem;color:rgba(232,224,213,0.5);margin:0.25rem 0 1rem;letter-spacing:0.1em;text-transform:uppercase;">
+              Foraging Expert</div>
+            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.6;font-style:italic;">"Deepa's wild
+              herb tea by the campfire... I can still taste it. She taught my kids the names of ten local plants."</p>
+            <div
+              style="margin-top:1rem;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);font-weight:700;">
+              Mentioned in 98 Reviews</div>
+          </div>
+          <div class="exp-card reveal reveal-delay-2" style="text-align:center;padding:2.5rem 1.5rem;">
+            <div
+              style="width:80px;height:80px;border-radius:50%;background:rgba(198,169,114,0.1);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:2rem;"
+              aria-hidden="true"><i class="fa-solid fa-user"></i><i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i>‍<i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i></div>
+            <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--gold);">Chef Raj
+            </div>
+            <div
+              style="font-family:var(--font-ui);font-size:0.75rem;color:rgba(232,224,213,0.5);margin:0.25rem 0 1rem;letter-spacing:0.1em;text-transform:uppercase;">
+              Forest Kitchen</div>
+            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.6;font-style:italic;">"I don't know
+              how he bakes fresh bread at 2,000 meters in an eco-kitchen, but it's the best I've ever eaten."</p>
+            <div
+              style="margin-top:1rem;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);font-weight:700;">
+              Mentioned in 115 Reviews</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12: COMMUNITY LEADERBOARD -->
+    <section class="section bg-graphite bg-texture" id="reviews-leaderboard">
+      <div class="container">
+        <div class="grid-2" style="gap:5rem;align-items:center;">
+          <div class="reveal-left">
+            <div class="section-label">Loyalty</div>
+            <h2 class="section-title fs-h2">Our Most Frequent <em>Explorers</em></h2>
+            <div class="divider"></div>
+            <p class="section-desc">The highest compliment we receive isn't a five-star review — it's when a guest
+              returns. Meet the people who consider Terravana their second home.</p>
+          </div>
+          <div class="reveal-right" style="display:flex;flex-direction:column;gap:1rem;">
+            <div class="exp-card"
+              style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2rem;">
+              <div style="display:flex;align-items:center;gap:1.5rem;">
+                <div
+                  style="font-family:var(--font-display);font-size:2rem;color:var(--gold);font-weight:800;width:30px;">
+                  #1</div>
+                <div>
+                  <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--ivory);font-weight:700;">The
+                    Sharma Family</div>
+                  <div style="font-size:0.75rem;color:rgba(232,224,213,0.5);margin-top:0.2rem;">Bangalore</div>
+                </div>
+              </div>
+              <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--gold);font-weight:700;">12 Visits
+              </div>
+            </div>
+            <div class="exp-card"
+              style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2rem;">
+              <div style="display:flex;align-items:center;gap:1.5rem;">
+                <div
+                  style="font-family:var(--font-display);font-size:2rem;color:rgba(198,169,114,0.7);font-weight:800;width:30px;">
+                  #2</div>
+                <div>
+                  <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--ivory);font-weight:700;">
+                    David & Elena G.</div>
+                  <div style="font-size:0.75rem;color:rgba(232,224,213,0.5);margin-top:0.2rem;">London</div>
+                </div>
+              </div>
+              <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--gold);font-weight:700;">9 Visits
+              </div>
+            </div>
+            <div class="exp-card"
+              style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2rem;">
+              <div style="display:flex;align-items:center;gap:1.5rem;">
+                <div
+                  style="font-family:var(--font-display);font-size:2rem;color:rgba(198,169,114,0.5);font-weight:800;width:30px;">
+                  #3</div>
+                <div>
+                  <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--ivory);font-weight:700;">Dr.
+                    Anil V.</div>
+                  <div style="font-size:0.75rem;color:rgba(232,224,213,0.5);margin-top:0.2rem;">Mumbai</div>
+                </div>
+              </div>
+              <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--gold);font-weight:700;">8 Visits
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 13: REVIEW FAQS -->
+    <section class="section bg-coal" id="reviews-faq">
+      <div class="container-sm">
+        <div class="section-header section-header-center" style="margin-bottom:3rem;">
+          <div class="section-label section-label-center">Authenticity</div>
+          <h2 class="section-title fs-h2 text-center">About Our <em>Reviews</em></h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div class="exp-card reveal" style="padding:2rem;">
+            <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--ivory);margin-bottom:0.75rem;">Are
+              these reviews verified?</h3>
+            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.7;">Yes. Every review labeled
+              "Verified Stay" is cross-checked against our booking database. We do not publish unverified reviews on our
+              direct site.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-1" style="padding:2rem;">
+            <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--ivory);margin-bottom:0.75rem;">Do
+              you delete negative reviews?</h3>
+            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.7;">No. We display our direct feed
+              from TripAdvisor and Google, which we cannot edit. We respond to all feedback publicly and use criticism
+              to improve the lodge.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-2" style="padding:2rem;">
+            <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--ivory);margin-bottom:0.75rem;">Can I
+              contact a past guest?</h3>
+            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.7;">For privacy reasons, we cannot
+              share guest contact info. However, many of our guests are active in our Terravana Community Facebook
+              group, where you can ask questions directly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 14: TRUST BADGES -->
+    <section class="section-sm bg-graphite" id="reviews-trust">
+      <div class="container">
+        <div style="display:flex;justify-content:center;gap:4rem;flex-wrap:wrap;align-items:center;" class="reveal">
+          <div style="text-align:center;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;" aria-hidden="true"><i class="fa-solid fa-trophy"></i>
+            </div>
+            <div
+              style="font-family:var(--font-ui);font-size:0.7rem;color:var(--ivory);letter-spacing:0.1em;text-transform:uppercase;font-weight:700;">
+              TripAdvisor<br />Traveler's Choice 2024</div>
+          </div>
+          <div style="width:1px;height:40px;background:rgba(198,169,114,0.2);"></div>
+          <div style="text-align:center;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;" aria-hidden="true"><i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i></div>
+            <div
+              style="font-family:var(--font-ui);font-size:0.7rem;color:var(--ivory);letter-spacing:0.1em;text-transform:uppercase;font-weight:700;">
+              Eco-Tourism<br />Excellence Award</div>
+          </div>
+          <div style="width:1px;height:40px;background:rgba(198,169,114,0.2);"></div>
+          <div style="text-align:center;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;" aria-hidden="true"><i class="fa-solid fa-circle-dot"
+                style="font-size: 0.8em; opacity: 0.5;"></i></div>
+            <div
+              style="font-family:var(--font-ui);font-size:0.7rem;color:var(--ivory);letter-spacing:0.1em;text-transform:uppercase;font-weight:700;">
+              100% Verified<br />Guest Reviews</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 15: CTA -->
+    <section class="section-sm bg-coal bg-texture" id="reviews-cta">
+      <div class="container">
+        <div class="cta-banner reveal" style="text-align:center;display:block;">
+          <div class="section-label section-label-center" style="margin-bottom:1rem;">Join the Community</div>
+          <h2 class="section-title fs-h2 text-center">Add Your <em>Story</em> to Ours</h2>
+          <p class="section-desc text-center" style="margin:1.5rem auto 2.5rem;">847 guests have already discovered that
+            Terravana changes you. When will your story begin?</p>
+          <div style="display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;">
+            <a href="booking.html" class="btn btn-primary" id="reviews-cta-book">Book Your Experience</a>
+            <a href="adventures.html" class="btn btn-ghost" id="reviews-cta-adv">Explore Adventures</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">Terravana Wilds</div>
+          <div class="footer-logo-sub">Eco &middot; Adventure &middot; Resort</div>
+          <p class="footer-tagline">"Where wilderness speaks and every trail tells a story."</p>
+          <div class="eco-badge" style="margin-top:1rem;"><i class="fa-solid fa-leaf"></i> Certified Carbon Neutral
+            Resort</div>
+          <div class="footer-social" aria-label="Social media links"><a href="https://www.instagram.com/" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a><a href="https://www.linkedin.com/" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.facebook.com/" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a><a href="https://x.com/" class="footer-social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a></div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Explore</h3>
+          <nav class="footer-links"><a href="adventures.html" class="footer-link">All Adventures</a><a
+              href="trekking.html" class="footer-link">Trekking Trails</a><a href="wildlife.html"
+              class="footer-link">Wildlife Safaris</a><a href="campfire.html" class="footer-link">Campfire Nights</a><a
+              href="waterfalls.html" class="footer-link">Waterfall Walks</a></nav>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Stay</h3>
+          <nav class="footer-links"><a href="ecoresorts.html" class="footer-link">Eco Resorts</a><a href="seasonal.html"
+              class="footer-link">Seasonal Guide</a><a href="booking.html" class="footer-link">Book Now</a><a
+              href="reviews.html" class="footer-link">Guest Reviews</a><a href="gallery.html" class="footer-link">Photo
+              Gallery</a></nav>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Connect</h3>
+          <nav class="footer-links"><a href="about.html" class="footer-link">About Us</a><a href="contact.html"
+              class="footer-link">Contact</a></nav><form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required><button class="footer-email-btn" type="submit">Submit</button></form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Terravana Wilds. All rights reserved.</p>
+        <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Eco Charter</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="upgrade_script.js"></script>
+</body>
+
+</html>

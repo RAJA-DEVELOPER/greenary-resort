@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery - TERRAVANA WILDS</title>
+  <meta name="description" content="Explore Terravana Wilds gallery with forest videos, wildlife images, lodges, waterfalls, campfires, and trekking views.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="upgrade.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    .page-hero { min-height: 72vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+    .page-hero .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .page-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,12,14,0.88), rgba(10,12,14,0.45), rgba(10,12,14,0.82)); }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-kicker { font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 800; margin-bottom: 1rem; }
+    .page-title { max-width: 820px; font-family: var(--font-display); font-size: clamp(3rem, 8vw, 7rem); line-height: 0.95; color: var(--ivory); }
+    .page-title em { color: var(--gold); font-style: italic; }
+    .page-subtitle { max-width: 720px; margin-top: 1.5rem; color: rgba(237,229,218,0.78); font-size: clamp(1rem, 1.6vw, 1.25rem); }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+    .feature-card { border: 1px solid rgba(212,168,83,0.18); background: rgba(250,248,245,0.035); padding: 2rem; border-radius: 6px; min-height: 250px; }
+    .feature-icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; background: rgba(212,168,83,0.1); color: var(--gold); font-size: 1.35rem; margin-bottom: 1.25rem; }
+    .feature-title { font-family: var(--font-display); color: var(--ivory); font-size: 1.55rem; margin-bottom: 0.75rem; }
+    .feature-text { color: rgba(237,229,218,0.68); font-size: 0.95rem; }
+    .split-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: center; }
+    .split-section img, .split-section video { width: 100%; height: 520px; object-fit: cover; border-radius: 6px; border: 1px solid rgba(212,168,83,0.15); }
+    .quiet-list { display: grid; gap: 0.85rem; margin-top: 1.5rem; }
+    .quiet-list li { color: rgba(237,229,218,0.72); padding-left: 1.25rem; position: relative; }
+    .quiet-list li::before { content: ""; position: absolute; left: 0; top: 0.75rem; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .gallery-grid img, .gallery-grid video { width: 100%; height: 320px; object-fit: cover; border-radius: 5px; border: 1px solid rgba(212,168,83,0.15); }
+    .contact-panel { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: stretch; }
+    .contact-form { border: 1px solid rgba(212,168,83,0.18); background: rgba(250,248,245,0.035); padding: 2rem; border-radius: 6px; display: grid; gap: 1rem; }
+    .contact-form input, .contact-form textarea, .contact-form select { width: 100%; color: var(--ivory); background: rgba(250,248,245,0.06); border: 1px solid rgba(212,168,83,0.16); border-radius: 4px; padding: 0.95rem 1rem; }
+    .contact-form textarea { min-height: 150px; resize: vertical; }
+    .not-found { min-height: 100vh; display: grid; place-items: center; text-align: center; background: radial-gradient(circle at center, rgba(212,168,83,0.1), transparent 45%), var(--coal); }
+    .not-found-code { font-family: var(--font-display); font-size: clamp(7rem, 22vw, 18rem); line-height: 0.8; color: var(--gold); opacity: 0.9; }
+    @media (max-width: 900px) {
+      .feature-grid, .split-section, .gallery-grid, .contact-panel { grid-template-columns: 1fr; }
+      .split-section img, .split-section video, .gallery-grid img, .gallery-grid video { height: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <button id="back-to-top" aria-label="Back to top" style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Terravana Wilds Home">
+        <span class="nav-logo-main">Terravana Wilds</span>
+        <span class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span>
+      </a>
+      <div class="nav-links" role="list" style="gap: clamp(0.5rem, 1.2vw, 1.2rem);">
+        <a href="index.html" class="nav-link" role="listitem">Home</a>
+        <a href="adventures.html" class="nav-link" role="listitem">Adventures</a>
+        <a href="trekking.html" class="nav-link" role="listitem">Trekking</a>
+        <a href="wildlife.html" class="nav-link" role="listitem">Wildlife</a>
+        <a href="waterfalls.html" class="nav-link" role="listitem">Waterfalls</a>
+        <a href="campfire.html" class="nav-link" role="listitem">Campfire</a>
+        <a href="ecoresorts.html" class="nav-link" role="listitem">Resorts</a>
+        <a href="seasonal.html" class="nav-link" role="listitem">Seasons</a>
+        <a href="gallery.html" class="nav-link active" role="listitem">Gallery</a>
+        <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
+        <a href="about.html" class="nav-link" role="listitem">About</a>
+        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:1rem;">
+        <a href="booking.html" class="nav-cta">Book Now</a>
+        <div class="nav-profile-dropdown" id="nav-profile-dropdown">
+          <button id="nav-profile-btn" aria-label="User Profile"><i class="fa-solid fa-user-circle"></i></button>
+          <div id="nav-profile-menu" class="nav-profile-menu"></div>
+        </div>
+      </div>
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Mobile navigation">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="adventures.html" class="nav-link">Adventures</a>
+    <a href="trekking.html" class="nav-link">Trekking</a>
+    <a href="wildlife.html" class="nav-link">Wildlife</a>
+    <a href="waterfalls.html" class="nav-link">Waterfalls</a>
+    <a href="campfire.html" class="nav-link">Campfire</a>
+    <a href="ecoresorts.html" class="nav-link">Resorts</a>
+    <a href="seasonal.html" class="nav-link">Seasons</a>
+    <a href="gallery.html" class="nav-link active">Gallery</a>
+    <a href="reviews.html" class="nav-link">Reviews</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="booking.html" class="nav-cta">Book Your Journey</a>
+  </div>
+
+  <main>
+    <section class="page-hero" id="hero" aria-label="Gallery">
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=80" alt="Gallery at Terravana Wilds" class="hero-bg" loading="eager" fetchpriority="high">
+      <div class="container">
+        <div class="page-kicker">Gallery</div>
+        <h1 class="page-title">Moments From The <em>Wild</em></h1>
+        <p class="page-subtitle">A visual walk through Terravana: trails, lodges, waterfalls, birds, campfire evenings, and forest light.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+          <a href="booking.html" class="btn btn-primary">Book Now</a>
+          <a href="#details" class="btn btn-ghost">Explore</a>
+        </div>
+      </div>
+    </section>
+    <div id="details">
+      <section class="section bg-coal">
+        <div class="container">
+          <div class="gallery-grid">
+            <video controls playsinline poster="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=900&q=80">
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+            </video>
+            <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=900&q=80" alt="Wild deer in forest light" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1511497584788-876760111969?w=900&q=80" alt="Great hornbill habitat in dense forest canopy" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80" alt="Eco lodge at golden hour" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=80" alt="Mountain trail viewpoint" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1504851149312-7a075b496cc7?w=900&q=80" alt="Campfire evening" loading="lazy">
+          </div>
+        </div>
+      </section></div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">Terravana Wilds</div>
+          <div class="footer-logo-sub">Eco &middot; Adventure &middot; Resort</div>
+          <p class="footer-tagline">"Where wilderness speaks and every trail tells a story."</p>
+          <div class="eco-badge" style="margin-top:1rem;"><i class="fa-solid fa-leaf"></i> Certified Carbon Neutral Resort</div>
+
+          <div class="footer-social" aria-label="Social media links">
+            <a href="https://www.instagram.com/" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://x.com/" class="footer-social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Explore</h3>
+          <nav class="footer-links" aria-label="Explore links">
+            <a href="adventures.html" class="footer-link">All Adventures</a>
+            <a href="trekking.html" class="footer-link">Trekking Trails</a>
+            <a href="wildlife.html" class="footer-link">Wildlife Safaris</a>
+            <a href="campfire.html" class="footer-link">Campfire Nights</a>
+            <a href="waterfalls.html" class="footer-link">Waterfall Walks</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Stay</h3>
+          <nav class="footer-links" aria-label="Stay links">
+            <a href="ecoresorts.html" class="footer-link">Eco Resorts</a>
+            <a href="seasonal.html" class="footer-link">Seasonal Guide</a>
+            <a href="booking.html" class="footer-link">Book Now</a>
+            <a href="reviews.html" class="footer-link">Guest Reviews</a>
+            <a href="gallery.html" class="footer-link">Photo Gallery</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Connect</h3>
+          <nav class="footer-links" aria-label="Connect links">
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </nav>
+          <form class="footer-email-form" action="#" method="post">
+            <input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required>
+            <button class="footer-email-btn" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 Terravana Wilds. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Eco Charter</a>
+          <a href="#">Cookie Policy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="upgrade_script.js"></script>
+</body>
+</html>

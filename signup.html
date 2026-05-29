@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — TERRAVANA WILDS</title>
+  <meta name="description"
+    content="Create your Terravana Wilds account and unlock access to exclusive trail bookings, wildlife expeditions, and eco-resort stays." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* ── Auth Page Layout ── */
+    .auth-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    /* ── Left Panel — Cinematic Visual ── */
+    .auth-visual {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-visual-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.08);
+      animation: subtleZoom 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes subtleZoom {
+      from {
+        transform: scale(1.08);
+      }
+
+      to {
+        transform: scale(1.0);
+      }
+    }
+
+    .auth-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(10, 12, 14, 0.75) 0%, rgba(10, 12, 14, 0.4) 60%, transparent 100%),
+        linear-gradient(0deg, rgba(10, 12, 14, 0.9) 0%, transparent 40%);
+    }
+
+    .auth-visual-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 3rem;
+    }
+
+    .auth-visual-logo {
+      position: absolute;
+      top: 3rem;
+      left: 3rem;
+    }
+
+    .auth-visual-logo a {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      text-decoration: none;
+    }
+
+    .auth-logo-main {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .auth-logo-sub {
+      font-family: var(--font-ui);
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .auth-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1.4;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .auth-quote-attr {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Perks list on visual side */
+    .auth-perks {
+      position: absolute;
+      top: 50%;
+      left: 3rem;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .auth-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .auth-perk-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(212, 168, 83, 0.15);
+      border: 1px solid rgba(212, 168, 83, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .auth-perk-text {
+      flex: 1;
+    }
+
+    .auth-perk-title {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .auth-perk-desc {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: rgba(232, 224, 213, 0.5);
+      line-height: 1.5;
+    }
+
+    /* ── Right Panel — Form ── */
+    .auth-form-panel {
+      background: var(--coal);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(2rem, 5vw, 5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-form-panel::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 168, 83, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .auth-form-panel::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(45, 106, 79, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .auth-form-wrap {
+      width: 100%;
+      max-width: 440px;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.7s var(--ease-expo) both;
+    }
+
+    .auth-form-header {
+      margin-bottom: 2rem;
+    }
+
+    .auth-form-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .auth-form-eyebrow-line {
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+
+    .auth-form-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--ivory);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+    }
+
+    .auth-form-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .auth-form-sub {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: rgba(232, 224, 213, 0.5);
+      line-height: 1.6;
+    }
+
+    /* ── Form Fields ── */
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      min-width: 0;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .form-label {
+      font-family: var(--font-ui);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.6);
+      transition: color 0.2s ease;
+    }
+
+    .form-field:focus-within .form-label {
+      color: var(--gold);
+    }
+
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      color: rgba(212, 168, 83, 0.4);
+      font-size: 0.85rem;
+      transition: color 0.2s ease;
+      pointer-events: none;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(232, 224, 213, 0.1);
+      border-radius: 8px;
+      padding: 0.85rem 1rem 0.85rem 2.75rem;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--ivory);
+      transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      outline: none;
+    }
+
+    .form-input::placeholder {
+      color: rgba(232, 224, 213, 0.25);
+    }
+
+    .form-input:focus {
+      border-color: rgba(212, 168, 83, 0.5);
+      background: rgba(212, 168, 83, 0.04);
+      box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.08), 0 2px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-field:focus-within .input-icon {
+      color: rgba(212, 168, 83, 0.8);
+    }
+
+    /* Password eye toggle */
+    .pw-toggle {
+      position: absolute;
+      right: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(232, 224, 213, 0.3);
+      font-size: 0.9rem;
+      padding: 0.25rem;
+      border-radius: 4px;
+      transition: color 0.2s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pw-toggle:hover {
+      color: var(--gold);
+      transform: scale(1.15);
+    }
+
+    .input-wrap.has-toggle .form-input {
+      padding-right: 3rem;
+    }
+
+    /* Password strength meter */
+    .pw-strength {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .pw-strength-bars {
+      display: flex;
+      gap: 4px;
+    }
+
+    .pw-bar {
+      flex: 1;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.08);
+      transition: background 0.3s ease;
+    }
+
+    .pw-bar.active-weak {
+      background: #E8643C;
+    }
+
+    .pw-bar.active-fair {
+      background: #D4A853;
+    }
+
+    .pw-bar.active-strong {
+      background: #2D6A4F;
+    }
+
+    .pw-bar.active-great {
+      background: #D4A853;
+      box-shadow: 0 0 8px rgba(212, 168, 83, 0.4);
+    }
+
+    .pw-strength-label {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: rgba(232, 224, 213, 0.4);
+      letter-spacing: 0.08em;
+      transition: color 0.3s ease;
+    }
+
+    /* ── Terms checkbox ── */
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      cursor: pointer;
+      margin-top: 0.25rem;
+    }
+
+    .form-check input[type="checkbox"] {
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      min-width: 17px;
+      border: 1px solid rgba(232, 224, 213, 0.2);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      margin-top: 1px;
+    }
+
+    .form-check input[type="checkbox"]:checked {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .form-check input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 5px;
+      width: 4px;
+      height: 7px;
+      border: 2px solid var(--coal);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    .form-check-label {
+      font-family: var(--font-ui);
+      font-size: 0.73rem;
+      color: rgba(232, 224, 213, 0.5);
+      line-height: 1.5;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .form-check-label a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .form-check-label a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Submit Button ── */
+    .auth-submit {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: var(--coal);
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+      position: relative;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .auth-submit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--gold-light) 0%, #F0D98A 100%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .auth-submit:hover::before {
+      opacity: 1;
+    }
+
+    .auth-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212, 168, 83, 0.4), 0 0 50px rgba(212, 168, 83, 0.12);
+    }
+
+    .auth-submit:active {
+      transform: translateY(0);
+    }
+
+    .auth-submit span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Divider ── */
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0.25rem 0;
+    }
+
+    .auth-divider-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(232, 224, 213, 0.1);
+    }
+
+    .auth-divider-text {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.3);
+    }
+
+    /* ── Social Login ── */
+    .social-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-width: 0;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid rgba(232, 224, 213, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(232, 224, 213, 0.65);
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      border-color: rgba(212, 168, 83, 0.3);
+      color: var(--ivory);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .social-btn i {
+      font-size: 0.95rem;
+    }
+
+    /* ── Switch Link ── */
+    .auth-switch {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: rgba(232, 224, 213, 0.4);
+    }
+
+    .auth-switch a {
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 0.3rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .auth-switch a:hover {
+      opacity: 0.75;
+    }
+
+    /* ── Decorative grid ── */
+    .auth-form-panel .grid-deco {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212, 168, 83, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 168, 83, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      .auth-page {
+        display: block;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .auth-visual {
+        display: none;
+      }
+
+      .auth-form-panel {
+        min-height: 100vh;
+        width: 100%;
+        max-width: 100vw;
+        padding: 3rem 1.5rem 4rem;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding-top: 4rem;
+      }
+
+      .auth-form-wrap {
+        width: calc(100vw - 3rem);
+        max-width: 440px;
+        margin: 0 auto;
+      }
+
+      .auth-form-sub,
+      .auth-divider-text,
+      .auth-switch,
+      .form-check-label {
+        overflow-wrap: anywhere;
+      }
+
+      .form-row-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .social-btns {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .auth-form-wrap {
+        width: min(100%, 330px);
+        max-width: 330px;
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .auth-form-panel {
+        padding: 3.25rem 1.15rem 3rem;
+      }
+
+      .auth-form-wrap {
+        width: min(100%, 330px);
+      }
+
+      .auth-form-header {
+        margin-bottom: 1.6rem;
+      }
+
+      .auth-submit {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <div class="auth-page">
+
+    <!-- ═══════════════════════════════════
+         LEFT — CINEMATIC VISUAL
+    ═══════════════════════════════════ -->
+    <div class="auth-visual" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80"
+        alt="Epic alpine summit at golden hour" class="auth-visual-img" />
+      <div class="auth-visual-overlay"></div>
+
+      <!-- Logo -->
+      <div class="auth-visual-logo">
+        <a href="index.html">
+          <span class="auth-logo-main">Terravana Wilds</span>
+          <span class="auth-logo-sub">Eco &middot; Adventure &middot; Resort</span>
+        </a>
+      </div>
+
+      <!-- Member perks -->
+      <div class="auth-perks">
+        <div class="auth-perk">
+          <div class="auth-perk-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <div class="auth-perk-text">
+            <div class="auth-perk-title">Exclusive Trail Access</div>
+            <div class="auth-perk-desc">Members unlock private routes not listed publicly</div>
+          </div>
+        </div>
+        <div class="auth-perk">
+          <div class="auth-perk-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <div class="auth-perk-text">
+            <div class="auth-perk-title">Priority Booking</div>
+            <div class="auth-perk-desc">Reserve spots 48 hours before public availability</div>
+          </div>
+        </div>
+        <div class="auth-perk">
+          <div class="auth-perk-icon"><i class="fa-solid fa-leaf"></i></div>
+          <div class="auth-perk-text">
+            <div class="auth-perk-title">Eco Points Rewards</div>
+            <div class="auth-perk-desc">Earn points with every booking, redeemable for stays</div>
+          </div>
+        </div>
+        <div class="auth-perk">
+          <div class="auth-perk-icon"><i class="fa-solid fa-binoculars"></i></div>
+          <div class="auth-perk-text">
+            <div class="auth-perk-title">Wildlife Alerts</div>
+            <div class="auth-perk-desc">Real-time sighting notifications from our naturalists</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <div class="auth-visual-content">
+        <p class="auth-quote">"The mountains are calling, and I must go — join us."</p>
+        <div class="auth-quote-attr">— Terravana Wilds Community</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         RIGHT — SIGNUP FORM
+    ═══════════════════════════════════ -->
+    <div class="auth-form-panel">
+      <div class="grid-deco" aria-hidden="true"></div>
+
+      <div class="auth-form-wrap">
+
+        <!-- Header -->
+        <div class="auth-form-header">
+          <div class="auth-form-eyebrow">
+            <span class="auth-form-eyebrow-line"></span>
+            <span class="t-label">Free · No Credit Card Required</span>
+          </div>
+          <h1 class="auth-form-title">Join <em>Terravana</em></h1>
+          <p class="auth-form-sub">Create your explorer account and unlock the wilderness.</p>
+        </div>
+
+        <!-- Social Sign Up -->
+        <div class="social-btns" style="margin-bottom:1.25rem;">
+          <a href="index.html" class="social-btn" id="google-signup">
+            <i class="fa-brands fa-google"></i> Google
+          </a>
+          <a href="index.html" class="social-btn" id="facebook-signup">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+        </div>
+
+        <div class="auth-divider">
+          <span class="auth-divider-line"></span>
+          <span class="auth-divider-text">or register with email</span>
+          <span class="auth-divider-line"></span>
+        </div>
+
+        <!-- Form -->
+        <form class="auth-form" id="signup-form" novalidate>
+
+          <!-- Name row -->
+          <div class="form-row-2">
+            <div class="form-field">
+              <label class="form-label" for="signup-firstname">First Name</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-user input-icon"></i>
+                <input class="form-input" type="text" id="signup-firstname" name="firstname" placeholder="Alex"
+                  autocomplete="given-name" required />
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="signup-lastname">Last Name</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-user input-icon"></i>
+                <input class="form-input" type="text" id="signup-lastname" name="lastname" placeholder="Rivers"
+                  autocomplete="family-name" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-field">
+            <label class="form-label" for="signup-email">Email Address</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-envelope input-icon"></i>
+              <input class="form-input" type="email" id="signup-email" name="email" placeholder="you@example.com"
+                autocomplete="email" required />
+            </div>
+          </div>
+
+          <!-- Phone (optional) -->
+          <div class="form-field">
+            <label class="form-label" for="signup-phone">Phone <span
+                style="opacity:0.45;font-weight:400;letter-spacing:0;">(Optional)</span></label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-phone input-icon"></i>
+              <input class="form-input" type="tel" id="signup-phone" name="phone" placeholder="+1 (555) 000-0000"
+                autocomplete="tel" />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-field">
+            <label class="form-label" for="signup-password">Password</label>
+            <div class="input-wrap has-toggle">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input class="form-input" type="password" id="signup-password" name="password"
+                placeholder="Create a strong password" autocomplete="new-password" required />
+              <button type="button" class="pw-toggle" id="signup-pw-toggle" aria-label="Toggle password visibility">
+                <i class="fa-regular fa-eye" id="signup-pw-icon"></i>
+              </button>
+            </div>
+            <!-- Strength meter -->
+            <div class="pw-strength" id="pw-strength-wrap" style="display:none;">
+              <div class="pw-strength-bars">
+                <div class="pw-bar" id="bar1"></div>
+                <div class="pw-bar" id="bar2"></div>
+                <div class="pw-bar" id="bar3"></div>
+                <div class="pw-bar" id="bar4"></div>
+              </div>
+              <span class="pw-strength-label" id="pw-strength-label">Strength: —</span>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-field">
+            <label class="form-label" for="signup-confirm">Confirm Password</label>
+            <div class="input-wrap has-toggle">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input class="form-input" type="password" id="signup-confirm" name="confirm"
+                placeholder="Re-enter your password" autocomplete="new-password" required />
+              <button type="button" class="pw-toggle" id="confirm-pw-toggle"
+                aria-label="Toggle confirm password visibility">
+                <i class="fa-regular fa-eye" id="confirm-pw-icon"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <label class="form-check">
+            <input type="checkbox" id="signup-terms" name="terms" required />
+            <span class="form-check-label">
+              I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I consent to receiving
+              occasional trail updates and adventure offers.
+            </span>
+          </label>
+
+          <!-- Submit -->
+          <button type="submit" class="auth-submit" id="signup-submit">
+            <span>Create My Account</span>
+          </button>
+
+        </form>
+
+        <!-- Switch to Login -->
+        <div class="auth-switch">
+          Already have an account?
+          <a href="login.html" id="go-to-login">Sign in</a>
+        </div>
+
+        <!-- Back to site -->
+        <div style="text-align:center;margin-top:1.25rem;">
+          <a href="index.html"
+            style="font-family:var(--font-ui);font-size:0.7rem;color:rgba(232,224,213,0.35);text-decoration:none;transition:color 0.2s ease;"
+            onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(232,224,213,0.35)'">
+            <i class="fa-solid fa-arrow-left" style="margin-right:0.3rem;"></i> Back to Terravana Wilds
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // ── Password eye toggle — signup ──
+    (function () {
+      const toggle = document.getElementById('signup-pw-toggle');
+      const input = document.getElementById('signup-password');
+      const icon = document.getElementById('signup-pw-icon');
+
+      toggle.addEventListener('click', function () {
+        const isHidden = input.type === 'password';
+        input.type = isHidden ? 'text' : 'password';
+        icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+        toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+      });
+    })();
+
+    // ── Password eye toggle — confirm ──
+    (function () {
+      const toggle = document.getElementById('confirm-pw-toggle');
+      const input = document.getElementById('signup-confirm');
+      const icon = document.getElementById('confirm-pw-icon');
+
+      toggle.addEventListener('click', function () {
+        const isHidden = input.type === 'password';
+        input.type = isHidden ? 'text' : 'password';
+        icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+        toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+      });
+    })();
+
+    // ── Password strength meter ──
+    (function () {
+      const input = document.getElementById('signup-password');
+      const wrap = document.getElementById('pw-strength-wrap');
+      const label = document.getElementById('pw-strength-label');
+      const bars = [
+        document.getElementById('bar1'),
+        document.getElementById('bar2'),
+        document.getElementById('bar3'),
+        document.getElementById('bar4'),
+      ];
+
+      const levels = [
+        { label: 'Weak', cls: 'active-weak', count: 1, color: '#E8643C' },
+        { label: 'Fair', cls: 'active-fair', count: 2, color: '#D4A853' },
+        { label: 'Strong', cls: 'active-strong', count: 3, color: '#2D6A4F' },
+        { label: 'Great', cls: 'active-great', count: 4, color: '#D4A853' },
+      ];
+
+      function getStrength(pw) {
+        let score = 0;
+        if (pw.length >= 8) score++;
+        if (/[A-Z]/.test(pw)) score++;
+        if (/[0-9]/.test(pw)) score++;
+        if (/[^A-Za-z0-9]/.test(pw)) score++;
+        return score;
+      }
+
+      input.addEventListener('input', function () {
+        const val = input.value;
+        if (!val) { wrap.style.display = 'none'; return; }
+        wrap.style.display = 'flex';
+
+        const score = Math.max(1, getStrength(val));
+        const level = levels[score - 1];
+
+        bars.forEach(function (b, i) {
+          b.className = 'pw-bar';
+          if (i < score) b.classList.add(level.cls);
+        });
+
+        label.textContent = 'Strength: ' + level.label;
+        label.style.color = level.color;
+      });
+    })();
+
+    // ── Signup form submit (demo) ──
+    document.getElementById('signup-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const pw = document.getElementById('signup-password').value;
+      const cpw = document.getElementById('signup-confirm').value;
+      const email = document.getElementById('signup-email').value || 'explorer@terravana.com';
+
+      if (pw !== cpw) {
+        const confirmInput = document.getElementById('signup-confirm');
+        confirmInput.style.borderColor = '#E8643C';
+        confirmInput.style.boxShadow = '0 0 0 3px rgba(232,100,60,0.15)';
+        confirmInput.focus();
+        return;
+      }
+
+      const btn = document.getElementById('signup-submit');
+      btn.innerHTML = '<span><i class="fa-solid fa-circle-notch fa-spin" style="margin-right:0.5rem;"></i>Creating account…</span>';
+      btn.disabled = true;
+      setTimeout(function () {
+        localStorage.setItem('currentUser', JSON.stringify({ role: 'user', email: email }));
+        window.location.href = 'index.html';
+      }, 1800);
+    });
+
+    // ── Social Signups ──
+    const handleSocialSignup = (e) => {
+      e.preventDefault();
+      const isGoogle = e.currentTarget.id.includes('google');
+      localStorage.setItem('currentUser', JSON.stringify({
+        role: 'user',
+        email: isGoogle ? 'google.explorer@terravana.com' : 'facebook.explorer@terravana.com'
+      }));
+      window.location.href = 'index.html';
+    };
+
+    document.getElementById('google-signup')?.addEventListener('click', handleSocialSignup);
+    document.getElementById('facebook-signup')?.addEventListener('click', handleSocialSignup);
+  </script>
+</body>
+
+</html>
