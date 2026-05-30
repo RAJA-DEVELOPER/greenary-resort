@@ -757,25 +757,57 @@ const initGlobalMotion = () => {
   const sectionTargets = document.querySelectorAll('main > section, main > div > section');
   const imageTargets = document.querySelectorAll('main img:not(.hero-bg)');
   const magneticTargets = document.querySelectorAll('.btn, .nav-cta, #back-to-top, .footer-social-link');
+  const viewportH = () => window.innerHeight || document.documentElement.clientHeight || 800;
+  const isInViewport = el => {
+    const rect = el.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < viewportH();
+  };
+  const revealTarget = el => {
+    el.classList.add('motion-visible');
+  };
 
-  sectionTargets.forEach(section => section.classList.add('motion-section'));
-  imageTargets.forEach(img => img.classList.add('motion-image'));
+  sectionTargets.forEach(section => {
+    section.classList.add('motion-section');
+    if (section.offsetHeight > viewportH() * 1.15 || isInViewport(section)) {
+      revealTarget(section);
+    }
+  });
+
+  imageTargets.forEach(img => {
+    img.classList.add('motion-image');
+    if (isInViewport(img)) {
+      revealTarget(img);
+    }
+  });
+
   magneticTargets.forEach(el => el.classList.add('magnetic-ready'));
 
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add('motion-visible');
+      revealTarget(entry.target);
       revealObserver.unobserve(entry.target);
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -70px 0px'
+    threshold: 0.01,
+    rootMargin: '120px 0px 120px 0px'
   });
 
   document.querySelectorAll('.motion-section, .motion-image').forEach(el => {
+    if (el.classList.contains('motion-visible')) return;
     revealObserver.observe(el);
   });
+
+  const revealVisibleTargets = () => {
+    document.querySelectorAll('.motion-section:not(.motion-visible), .motion-image:not(.motion-visible)').forEach(el => {
+      if (isInViewport(el)) revealTarget(el);
+    });
+  };
+
+  window.addEventListener('load', revealVisibleTargets, { once: true });
+  window.addEventListener('pageshow', revealVisibleTargets);
+  window.addEventListener('scroll', revealVisibleTargets, { passive: true });
+  setTimeout(revealVisibleTargets, 700);
 
   magneticTargets.forEach(el => {
     el.addEventListener('mousemove', event => {
