@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login — TERRAVANA WILDS</title>
+  <title>Login - TERRAVANA WILDS</title>
   <meta name="description"
     content="Sign in to your Terravana Wilds account to manage your bookings, trails, and wilderness experiences." />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* ── Auth Page Layout ── */
+    /* -- Auth Page Layout -- */
     .auth-page {
       min-height: 100vh;
       display: grid;
@@ -18,7 +18,7 @@
       position: relative;
     }
 
-    /* ── Left Panel — Cinematic Visual ── */
+    /* -- Left Panel - Cinematic Visual -- */
     .auth-visual {
       position: relative;
       overflow: hidden;
@@ -141,7 +141,7 @@
       font-size: 0.7rem;
     }
 
-    /* ── Right Panel — Form ── */
+    /* -- Right Panel - Form -- */
     .auth-form-panel {
       background: var(--coal);
       display: flex;
@@ -224,7 +224,7 @@
       line-height: 1.6;
     }
 
-    /* ── Form Fields ── */
+    /* -- Form Fields -- */
     .auth-form {
       display: flex;
       flex-direction: column;
@@ -321,7 +321,7 @@
       padding-right: 3rem;
     }
 
-    /* ── Form Extras ── */
+    /* -- Form Extras -- */
     .form-row {
       display: flex;
       align-items: center;
@@ -388,7 +388,7 @@
       opacity: 0.75;
     }
 
-    /* ── Submit Button ── */
+    /* -- Submit Button -- */
     .auth-submit {
       width: 100%;
       padding: 1rem;
@@ -435,7 +435,7 @@
       z-index: 1;
     }
 
-    /* ── Divider ── */
+    /* -- Divider -- */
     .auth-divider {
       display: flex;
       align-items: center;
@@ -458,7 +458,7 @@
       color: rgba(232, 224, 213, 0.3);
     }
 
-    /* ── Social Login ── */
+    /* -- Social Login -- */
     .social-btns {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -496,7 +496,7 @@
       font-size: 0.95rem;
     }
 
-    /* ── Switch Link ── */
+    /* -- Switch Link -- */
     .auth-switch {
       text-align: center;
       margin-top: 2rem;
@@ -517,7 +517,7 @@
       opacity: 0.75;
     }
 
-    /* ── Decorative grid lines ── */
+    /* -- Decorative grid lines -- */
     .auth-form-panel .grid-deco {
       position: absolute;
       inset: 0;
@@ -528,7 +528,7 @@
       pointer-events: none;
     }
 
-    /* ── Animations ── */
+    /* -- Animations -- */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -541,7 +541,7 @@
       }
     }
 
-    /* ── Responsive ── */
+    /* -- Responsive -- */
     @media (max-width: 900px) {
 
       html,
@@ -631,9 +631,9 @@
 
   <div class="auth-page">
 
-    <!-- ═══════════════════════════════════
-         LEFT — CINEMATIC VISUAL
-    ═══════════════════════════════════ -->
+    <!-- ===================================
+         LEFT - CINEMATIC VISUAL
+    =================================== -->
     <div class="auth-visual" aria-hidden="true">
       <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80"
         alt="Dramatic mountain ridge at sunrise" class="auth-visual-img" />
@@ -656,13 +656,13 @@
       <!-- Quote -->
       <div class="auth-visual-content">
         <p class="auth-quote">"Every summit holds a secret only those who climb can know."</p>
-        <div class="auth-quote-attr">— Terravana Wilds, Est. 2008</div>
+        <div class="auth-quote-attr">- Terravana Wilds, Est. 2008</div>
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════
-         RIGHT — LOGIN FORM
-    ═══════════════════════════════════ -->
+    <!-- ===================================
+         RIGHT - LOGIN FORM
+    =================================== -->
     <div class="auth-form-panel">
       <div class="grid-deco" aria-hidden="true"></div>
 
@@ -738,7 +738,7 @@
               <input type="checkbox" id="remember-me" name="remember" />
               <span class="form-check-label">Remember me</span>
             </label>
-            <a href="#" class="form-link" id="forgot-password-link">Forgot password?</a>
+            <a href="#" class="form-link" id="forgot-password-link">Forgot password</a>
           </div>
 
           <!-- Submit -->
@@ -750,7 +750,7 @@
 
         <!-- Switch to Signup -->
         <div class="auth-switch">
-          Don't have an account?
+          Don't have an account
           <a href="signup.html" id="go-to-signup">Create one free</a>
         </div>
 
@@ -767,7 +767,7 @@
 
   <script src="script.js"></script>
   <script>
-    // ── Password visibility toggle ──
+    // -- Password visibility toggle --
     (function () {
       const toggle = document.getElementById('login-pw-toggle');
       const input = document.getElementById('login-password');
@@ -775,20 +775,20 @@
 
       toggle.addEventListener('click', function () {
         const isHidden = input.type === 'password';
-        input.type = isHidden ? 'text' : 'password';
-        icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
-        toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+      input.type = isHidden ? 'text' : 'password';
+      icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+      toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
       });
     })();
 
-    // ── Login form submit (demo) ──
+    // -- Login form submit (demo) --
     document.getElementById('login-form').addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('login-email').value || 'explorer@terravana.com';
       const role = email.toLowerCase().includes('admin') ? 'admin' : 'user';
 
       const btn = document.getElementById('login-submit');
-      btn.innerHTML = '<span><i class="fa-solid fa-circle-notch fa-spin" style="margin-right:0.5rem;"></i>Signing in…</span>';
+      btn.innerHTML = '<span><i class="fa-solid fa-circle-notch fa-spin" style="margin-right:0.5rem;"></i>Signing in...</span>';
       btn.disabled = true;
 
       setTimeout(function () {
@@ -797,7 +797,7 @@
       }, 1500);
     });
 
-    // ── Social Logins ──
+    // -- Social Logins --
     const handleSocialLogin = (e) => {
       e.preventDefault();
       const isGoogle = e.currentTarget.id.includes('google');
@@ -808,10 +808,10 @@
       window.location.href = 'index.html';
     };
 
-    document.getElementById('google-login')?.addEventListener('click', handleSocialLogin);
-    document.getElementById('facebook-login')?.addEventListener('click', handleSocialLogin);
+    document.getElementById('google-login').addEventListener('click', handleSocialLogin);
+    document.getElementById('facebook-login').addEventListener('click', handleSocialLogin);
 
-    // ── Mobile logo show/hide ──
+    // -- Mobile logo show/hide --
     if (window.innerWidth <= 900) {
       document.getElementById('mobile-logo').style.display = 'block';
     }

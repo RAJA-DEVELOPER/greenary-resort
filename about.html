@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    html, body { overflow-x: hidden; }
     .page-hero { min-height: 72vh; display: flex; align-items: center; position: relative; overflow: hidden; }
     .page-hero .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .page-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,12,14,0.88), rgba(10,12,14,0.45), rgba(10,12,14,0.82)); }
@@ -47,10 +48,52 @@
     .team-card-body { padding: 1.35rem; }
     .team-role { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.45rem; }
     .team-name { font-family: var(--font-display); font-size: 1.45rem; color: var(--ivory); margin-bottom: 0.55rem; }
+    .page-title, .page-subtitle, .section-title, .section-desc { max-width: 100%; overflow-wrap: break-word; white-space: normal !important; }
+    .about-animated { position: relative; overflow: hidden; }
+    .about-animated::before { content: ""; position: absolute; inset: auto -10% 10% -10%; height: 220px; pointer-events: none; background: radial-gradient(ellipse at center, rgba(236,186,69,0.06), transparent 62%); animation: aboutGlow 8s ease-in-out infinite alternate; }
+    .about-animated > .container { position: relative; z-index: 1; }
+    .about-float { animation: aboutFloat 7s ease-in-out infinite; }
+    .about-card-rise { transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+    .about-card-rise:hover { transform: translateY(-8px); border-color: rgba(236,186,69,0.42); box-shadow: 0 18px 70px rgba(0,0,0,0.55), 0 0 38px rgba(236,186,69,0.1); }
+    .about-scene { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.25rem; align-items: stretch; }
+    .scene-panel { position: relative; min-height: 560px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(212,168,83,0.16); }
+    .scene-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.12) contrast(1.05); transform: scale(1.02); }
+    .scene-panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,6,8,0.08), rgba(3,6,8,0.86)); }
+    .scene-copy { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: clamp(1.5rem, 4vw, 3rem); }
+    .scene-copy h3 { font-family: var(--font-display); color: var(--ivory); font-size: clamp(2rem, 4.8vw, 4rem); line-height: 0.98; margin-bottom: 1rem; }
+    .scene-copy p { color: rgba(237,229,218,0.72); max-width: 560px; }
+    .belief-grid, .ritual-grid, .impact-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .belief-card, .ritual-card, .impact-card { border: 1px solid rgba(212,168,83,0.14); border-radius: 6px; background: rgba(250,248,245,0.032); padding: 1.5rem; min-height: 250px; }
+    .belief-card i, .ritual-card i, .impact-card i { color: var(--gold); font-size: 1.9rem; margin-bottom: 1rem; }
+    .belief-card h3, .ritual-card h3, .impact-card h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.35rem; margin-bottom: 0.6rem; }
+    .belief-card p, .ritual-card p, .impact-card p { color: rgba(237,229,218,0.66); font-size: 0.92rem; }
+    .impact-card strong { display: block; font-family: var(--font-display); font-size: 2.4rem; line-height: 1; color: var(--gold); margin-bottom: 0.8rem; }
+    .lab-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: stretch; }
+    .lab-image { min-height: 500px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(212,168,83,0.14); }
+    .lab-image img { width: 100%; height: 100%; object-fit: cover; }
+    .lab-notes { display: grid; gap: 1rem; }
+    .lab-note { padding: 1.4rem; border-radius: 6px; border: 1px solid rgba(212,168,83,0.14); background: linear-gradient(135deg, rgba(23,42,30,0.72), rgba(3,6,8,0.82)); }
+    .lab-note h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.25rem; margin-bottom: 0.45rem; }
+    .lab-note p { color: rgba(237,229,218,0.65); font-size: 0.9rem; }
+    .partner-strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; }
+    .partner-tile { min-height: 150px; display: grid; place-items: center; text-align: center; padding: 1rem; border: 1px solid rgba(212,168,83,0.14); border-radius: 6px; background: rgba(250,248,245,0.03); font-family: var(--font-ui); font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,229,218,0.72); }
+    .about-cta { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: center; padding: clamp(2rem, 5vw, 4rem); border-radius: 6px; border: 1px solid rgba(212,168,83,0.18); background: linear-gradient(135deg, rgba(3,6,8,0.18), rgba(12,24,18,0.95)), url("https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=1600&q=80") center/cover; }
+    .about-cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    @keyframes aboutFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    @keyframes aboutGlow { from { opacity: 0.35; transform: translateX(-4%); } to { opacity: 1; transform: translateX(4%); } }
     @media (max-width: 900px) {
-      .feature-grid, .split-section, .gallery-grid, .contact-panel, .team-grid { grid-template-columns: 1fr; }
+      .feature-grid, .split-section, .gallery-grid, .contact-panel, .team-grid, .about-scene, .belief-grid, .ritual-grid, .impact-grid, .lab-layout, .partner-strip, .about-cta { grid-template-columns: 1fr; }
       .split-section img, .split-section video, .gallery-grid img, .gallery-grid video { height: 320px; }
       .timeline-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .scene-panel, .lab-image { min-height: 380px; }
+    }
+    @media (max-width: 600px) {
+      .page-hero { min-height: 82vh; }
+      .page-title { font-size: clamp(2.3rem, 10vw, 2.8rem); line-height: 1.06; }
+      .about-quote { font-size: clamp(1.8rem, 9vw, 2.55rem); }
+      .section-title { font-size: clamp(1.85rem, 8vw, 2.35rem) !important; line-height: 1.14; }
+      .scene-copy h3 { font-size: clamp(1.9rem, 9vw, 2.55rem); }
+      .about-cta-actions .btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -77,8 +120,7 @@
         <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
         <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
         <a href="about.html" class="nav-link active" role="listitem">About</a>
-        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
-      </div>
+        </div>
       <div style="display:flex; align-items:center; gap:1rem;">
         <a href="booking.html" class="nav-cta">Book Now</a>
         <div class="nav-profile-dropdown" id="nav-profile-dropdown">
@@ -101,7 +143,6 @@
     <a href="gallery.html" class="nav-link">Gallery</a>
     <a href="reviews.html" class="nav-link">Reviews</a>
     <a href="about.html" class="nav-link active">About</a>
-    <a href="contact.html" class="nav-link">Contact</a>
     <a href="booking.html" class="nav-cta">Book Your Journey</a>
   </div>
 
@@ -119,15 +160,15 @@
       </div>
     </section>
     <div id="details">
-      <section class="section bg-coal">
+      <section class="section bg-coal about-animated">
         <div class="container">
-          <p class="about-quote">We did not build a resort in the forest. We built a quieter way to <em>belong</em> to it.</p>
+          <p class="about-quote reveal">We did not build a resort in the forest. We built a quieter way to <em>belong</em> to it.</p>
         </div>
       </section>
 
-      <section class="section bg-graphite">
+      <section class="section bg-graphite about-animated">
         <div class="container split-section">
-          <div>
+          <div class="reveal-left">
             <div class="section-label">Who We Are</div>
             <h2 class="section-title fs-h2">A forest-first eco retreat shaped by people who know this land.</h2>
             <p class="section-desc">Terravana Wilds began as a small conservation camp on the edge of an old rainforest corridor. Today it is an immersive eco-adventure resort where lodges, trails, kitchens, and guide teams are designed around the rhythms of the land.</p>
@@ -139,33 +180,22 @@
               <li>Revenue shared with community education and conservation programmes.</li>
             </ul>
           </div>
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000&q=80" alt="Terravana forest lodge at golden hour" loading="lazy">
+          <img class="about-float reveal-right" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000&q=80" alt="Terravana forest lodge at golden hour" loading="lazy">
         </div>
       </section>
 
-      <section class="section bg-coal">
-        <div class="container">
-          <div class="stats-row">
-            <div class="stat-item"><span class="stat-number">42</span><span class="stat-label">Local Team Members</span></div>
-            <div class="stat-item"><span class="stat-number">18</span><span class="stat-label">Guided Trails</span></div>
-            <div class="stat-item"><span class="stat-number">31%</span><span class="stat-label">Revenue To Community</span></div>
-            <div class="stat-item"><span class="stat-number">0</span><span class="stat-label">Single-Use Plastic</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section bg-graphite">
+      <section class="section bg-graphite about-animated">
         <div class="container feature-grid">
-          <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-leaf"></i></div><h3 class="feature-title">Ecology First</h3><p class="feature-text">Routes, lodges, and guest numbers are planned around wildlife movement, water sensitivity, and seasonal restoration windows.</p></div>
-          <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-people-group"></i></div><h3 class="feature-title">Local Partnership</h3><p class="feature-text">Guides, cooks, craftspeople, drivers, and storytellers from nearby villages shape the Terravana experience every day.</p></div>
-          <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-compass"></i></div><h3 class="feature-title">Real Wilderness</h3><p class="feature-text">No staged wildlife. No scripted forest. Some mornings are dramatic, some are silent, and both are part of the truth.</p></div>
+          <div class="feature-card about-card-rise reveal"><div class="feature-icon"><i class="fa-solid fa-leaf"></i></div><h3 class="feature-title">Ecology First</h3><p class="feature-text">Routes, lodges, and guest numbers are planned around wildlife movement, water sensitivity, and seasonal restoration windows.</p></div>
+          <div class="feature-card about-card-rise reveal reveal-delay-2"><div class="feature-icon"><i class="fa-solid fa-people-group"></i></div><h3 class="feature-title">Local Partnership</h3><p class="feature-text">Guides, cooks, craftspeople, drivers, and storytellers from nearby villages shape the Terravana experience every day.</p></div>
+          <div class="feature-card about-card-rise reveal reveal-delay-3"><div class="feature-icon"><i class="fa-solid fa-compass"></i></div><h3 class="feature-title">Real Wilderness</h3><p class="feature-text">No staged wildlife. No scripted forest. Some mornings are dramatic, some are silent, and both are part of the truth.</p></div>
         </div>
       </section>
 
-      <section class="section bg-coal">
+      <section class="section bg-coal about-animated">
         <div class="container split-section">
-          <img src="https://images.unsplash.com/photo-1511497584788-876760111969?w=1000&q=80" alt="Dense rainforest canopy protected by Terravana Wilds" loading="lazy">
-          <div>
+          <img class="about-float reveal-left" src="https://images.unsplash.com/photo-1511497584788-876760111969?w=1000&q=80" alt="Dense rainforest canopy protected by Terravana Wilds" loading="lazy">
+          <div class="reveal-right">
             <div class="section-label">Our Journey</div>
             <h2 class="section-title fs-h2">From field camp to conscious wilderness hospitality.</h2>
             <div class="timeline-list">
@@ -178,32 +208,100 @@
         </div>
       </section>
 
-      <section class="section bg-graphite">
-        <div class="container">
-          <div class="section-label section-label-center">People Behind Terravana</div>
-          <h2 class="section-title fs-h2 text-center" style="margin-bottom:2.5rem;">Guides, hosts, naturalists, and makers.</h2>
-          <div class="team-grid">
-            <div class="team-card"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Karthik, head naturalist" loading="lazy"><div class="team-card-body"><div class="team-role">Head Naturalist</div><h3 class="team-name">Karthik</h3><p class="feature-text">Tracks birds, elephants, and weather patterns with the patience of someone raised by the hills.</p></div></div>
-            <div class="team-card"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Deepa, forest kitchen lead" loading="lazy"><div class="team-card-body"><div class="team-role">Forest Kitchen</div><h3 class="team-name">Deepa</h3><p class="feature-text">Builds seasonal menus from local grain, herbs, smoked vegetables, and quiet fire.</p></div></div>
-            <div class="team-card"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80" alt="Arun, trail lead" loading="lazy"><div class="team-card-body"><div class="team-role">Trail Lead</div><h3 class="team-name">Arun</h3><p class="feature-text">Designs routes that protect fragile zones while still giving guests a sense of discovery.</p></div></div>
-            <div class="team-card"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80" alt="Meera, guest experience host" loading="lazy"><div class="team-card-body"><div class="team-role">Guest Experience</div><h3 class="team-name">Meera</h3><p class="feature-text">Shapes arrivals, celebrations, and quiet details so every stay feels personal.</p></div></div>
+      <section class="section bg-graphite about-animated">
+        <div class="container about-scene">
+          <div class="reveal-left">
+            <div class="section-label">Living Design</div>
+            <h2 class="section-title fs-h2">Architecture that listens before it speaks.</h2>
+            <p class="section-desc">Our spaces are designed around shade, wind, water, and silence. Rooflines follow canopy movement, paths curve around root systems, and every viewing deck is placed where guests can pause without disturbing the habitat.</p>
+            <div class="belief-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:2rem;">
+              <div class="belief-card about-card-rise"><i class="fa-solid fa-wind"></i><h3>Passive Cool</h3><p>Cross-ventilation, shaded walls, and natural materials reduce mechanical cooling needs.</p></div>
+              <div class="belief-card about-card-rise"><i class="fa-solid fa-droplet"></i><h3>Water Wise</h3><p>Rain capture, greywater reuse, and low-flow systems protect dry-season supply.</p></div>
+            </div>
+          </div>
+          <div class="scene-panel about-float reveal-right">
+            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80" alt="Eco resort architecture surrounded by garden greenery" loading="lazy">
+            <div class="scene-copy">
+              <h3>Rooms tucked into green.</h3>
+              <p>Luxury here means waking to leaves, walking barefoot on cool stone, and feeling the day arrive slowly.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section bg-coal">
-        <div class="container split-section">
-          <div>
+      <section class="section bg-coal about-animated">
+        <div class="container">
+          <div class="section-header section-header-center" style="margin-bottom:3rem;">
+            <div class="section-label section-label-center">What We Believe</div>
+            <h2 class="section-title fs-h2">Four principles guide every guest experience.</h2>
+          </div>
+          <div class="belief-grid">
+            <div class="belief-card about-card-rise reveal"><i class="fa-solid fa-seedling"></i><h3>Regenerate</h3><p>Every trail, menu, and lodge choice should support the land that hosts it.</p></div>
+            <div class="belief-card about-card-rise reveal reveal-delay-1"><i class="fa-solid fa-hand-holding-heart"></i><h3>Respect</h3><p>Guests, guides, wildlife, and communities deserve care without performance.</p></div>
+            <div class="belief-card about-card-rise reveal reveal-delay-2"><i class="fa-solid fa-mountain-sun"></i><h3>Reveal</h3><p>We help guests notice the quiet details: tracks, calls, light, water, and time.</p></div>
+            <div class="belief-card about-card-rise reveal reveal-delay-3"><i class="fa-solid fa-mug-hot"></i><h3>Restore</h3><p>Adventure should leave people energized, not extracted from themselves.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-graphite about-animated">
+        <div class="container">
+          <div class="section-label section-label-center">People Behind Terravana</div>
+          <h2 class="section-title fs-h2 text-center" style="margin-bottom:2.5rem;">Guides, hosts, naturalists, and makers.</h2>
+          <div class="team-grid">
+            <div class="team-card about-card-rise reveal"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Karthik, head naturalist" loading="lazy"><div class="team-card-body"><div class="team-role">Head Naturalist</div><h3 class="team-name">Karthik</h3><p class="feature-text">Tracks birds, elephants, and weather patterns with the patience of someone raised by the hills.</p></div></div>
+            <div class="team-card about-card-rise reveal reveal-delay-1"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Deepa, forest kitchen lead" loading="lazy"><div class="team-card-body"><div class="team-role">Forest Kitchen</div><h3 class="team-name">Deepa</h3><p class="feature-text">Builds seasonal menus from local grain, herbs, smoked vegetables, and quiet fire.</p></div></div>
+            <div class="team-card about-card-rise reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80" alt="Arun, trail lead" loading="lazy"><div class="team-card-body"><div class="team-role">Trail Lead</div><h3 class="team-name">Arun</h3><p class="feature-text">Designs routes that protect fragile zones while still giving guests a sense of discovery.</p></div></div>
+            <div class="team-card about-card-rise reveal reveal-delay-3"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80" alt="Meera, guest experience host" loading="lazy"><div class="team-card-body"><div class="team-role">Guest Experience</div><h3 class="team-name">Meera</h3><p class="feature-text">Shapes arrivals, celebrations, and quiet details so every stay feels personal.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-coal about-animated">
+        <div class="container lab-layout">
+          <div class="lab-image about-float reveal-left">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1100&q=80" alt="Rainforest conservation research canopy" loading="lazy">
+          </div>
+          <div class="lab-notes reveal-right">
+            <div>
+              <div class="section-label">Conservation Lab</div>
+              <h2 class="section-title fs-h2">The forest teaches, we document.</h2>
+              <p class="section-desc">Behind the guest experience is a quieter layer of research, maintenance, and protection work that keeps Terravana honest.</p>
+            </div>
+            <div class="lab-note about-card-rise"><h3>Camera Trap Monitoring</h3><p>Seasonal wildlife movement is documented with non-invasive field cameras and guide observations.</p></div>
+            <div class="lab-note about-card-rise"><h3>Water Watch</h3><p>Streams and waterfall-fed pools are checked through the year to guide route closures and guest limits.</p></div>
+            <div class="lab-note about-card-rise"><h3>Habitat Days</h3><p>Guests can join planting, nursery care, seed collection, and trail restoration on selected mornings.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-graphite about-animated">
+        <div class="container">
+          <div class="section-header section-header-center" style="margin-bottom:3rem;">
+            <div class="section-label section-label-center">Guest Rituals</div>
+            <h2 class="section-title fs-h2">Beautiful moments woven into every stay.</h2>
+          </div>
+          <div class="ritual-grid">
+            <div class="ritual-card about-card-rise reveal"><i class="fa-solid fa-mug-saucer"></i><h3>Dawn Tea</h3><p>Wake with herbal tea, warm towels, and the day's trail notes before the valley brightens.</p></div>
+            <div class="ritual-card about-card-rise reveal reveal-delay-1"><i class="fa-solid fa-binoculars"></i><h3>Slow Sighting</h3><p>Naturalists teach guests how to wait, listen, and observe without chasing the forest.</p></div>
+            <div class="ritual-card about-card-rise reveal reveal-delay-2"><i class="fa-solid fa-fire-flame-curved"></i><h3>Fire Table</h3><p>Dinners end around open flame, local stories, smoked vegetables, and star maps.</p></div>
+            <div class="ritual-card about-card-rise reveal reveal-delay-3"><i class="fa-solid fa-spa"></i><h3>Trail Recovery</h3><p>Foot soaks, quiet rooms, forest oils, and slow afternoons bring the body back down.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-sm bg-graphite about-animated">
+        <div class="container about-cta">
+          <div class="reveal-left">
             <div class="section-label">Our Promise</div>
             <h2 class="section-title fs-h2">Luxury can be gentle.</h2>
             <p class="section-desc">For us, luxury is not excess. It is clean air, careful food, guides who remember your name, rooms that sleep cool without waste, and mornings where the forest decides the pace.</p>
             <p class="section-desc">When you leave Terravana, we want you rested, amazed, and more protective of wild places than when you arrived.</p>
-            <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
-              <a href="booking.html" class="btn btn-primary">Book Your Stay</a>
-              <a href="contact.html" class="btn btn-ghost">Talk To Our Team</a>
-            </div>
           </div>
-          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1000&q=80" alt="Terravana valley trail at sunset" loading="lazy">
+          <div class="about-cta-actions reveal-right">
+            <a href="booking.html" class="btn btn-primary">Book Your Stay</a>
+            <a href="booking.html" class="btn btn-ghost">Talk To Our Team</a>
+          </div>
         </div>
       </section>
     </div>
@@ -249,8 +347,7 @@
           <h3 class="footer-col-title">Connect</h3>
           <nav class="footer-links" aria-label="Connect links">
             <a href="about.html" class="footer-link">About Us</a>
-            <a href="contact.html" class="footer-link">Contact</a>
-          </nav>
+            </nav>
           <form class="footer-email-form" action="#" method="post">
             <input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required>
             <button class="footer-email-btn" type="submit">Submit</button>

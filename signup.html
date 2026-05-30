@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up — TERRAVANA WILDS</title>
+  <title>Sign Up - TERRAVANA WILDS</title>
   <meta name="description"
     content="Create your Terravana Wilds account and unlock access to exclusive trail bookings, wildlife expeditions, and eco-resort stays." />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* ── Auth Page Layout ── */
+    /* -- Auth Page Layout -- */
     .auth-page {
       min-height: 100vh;
       display: grid;
@@ -18,7 +18,7 @@
       position: relative;
     }
 
-    /* ── Left Panel — Cinematic Visual ── */
+    /* -- Left Panel - Cinematic Visual -- */
     .auth-visual {
       position: relative;
       overflow: hidden;
@@ -160,7 +160,7 @@
       line-height: 1.5;
     }
 
-    /* ── Right Panel — Form ── */
+    /* -- Right Panel - Form -- */
     .auth-form-panel {
       background: var(--coal);
       display: flex;
@@ -243,7 +243,7 @@
       line-height: 1.6;
     }
 
-    /* ── Form Fields ── */
+    /* -- Form Fields -- */
     .auth-form {
       display: flex;
       flex-direction: column;
@@ -393,7 +393,7 @@
       transition: color 0.3s ease;
     }
 
-    /* ── Terms checkbox ── */
+    /* -- Terms checkbox -- */
     .form-check {
       display: flex;
       align-items: flex-start;
@@ -452,7 +452,7 @@
       text-decoration: underline;
     }
 
-    /* ── Submit Button ── */
+    /* -- Submit Button -- */
     .auth-submit {
       width: 100%;
       padding: 1rem;
@@ -499,7 +499,7 @@
       z-index: 1;
     }
 
-    /* ── Divider ── */
+    /* -- Divider -- */
     .auth-divider {
       display: flex;
       align-items: center;
@@ -522,7 +522,7 @@
       color: rgba(232, 224, 213, 0.3);
     }
 
-    /* ── Social Login ── */
+    /* -- Social Login -- */
     .social-btns {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -560,7 +560,7 @@
       font-size: 0.95rem;
     }
 
-    /* ── Switch Link ── */
+    /* -- Switch Link -- */
     .auth-switch {
       text-align: center;
       margin-top: 1.5rem;
@@ -581,7 +581,7 @@
       opacity: 0.75;
     }
 
-    /* ── Decorative grid ── */
+    /* -- Decorative grid -- */
     .auth-form-panel .grid-deco {
       position: absolute;
       inset: 0;
@@ -592,7 +592,7 @@
       pointer-events: none;
     }
 
-    /* ── Animations ── */
+    /* -- Animations -- */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -605,7 +605,7 @@
       }
     }
 
-    /* ── Responsive ── */
+    /* -- Responsive -- */
     @media (max-width: 900px) {
 
       html,
@@ -693,9 +693,9 @@
 
   <div class="auth-page">
 
-    <!-- ═══════════════════════════════════
-         LEFT — CINEMATIC VISUAL
-    ═══════════════════════════════════ -->
+    <!-- ===================================
+         LEFT - CINEMATIC VISUAL
+    =================================== -->
     <div class="auth-visual" aria-hidden="true">
       <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80"
         alt="Epic alpine summit at golden hour" class="auth-visual-img" />
@@ -743,14 +743,14 @@
 
       <!-- Quote -->
       <div class="auth-visual-content">
-        <p class="auth-quote">"The mountains are calling, and I must go — join us."</p>
-        <div class="auth-quote-attr">— Terravana Wilds Community</div>
+        <p class="auth-quote">"The mountains are calling, and I must go - join us."</p>
+        <div class="auth-quote-attr">- Terravana Wilds Community</div>
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════
-         RIGHT — SIGNUP FORM
-    ═══════════════════════════════════ -->
+    <!-- ===================================
+         RIGHT - SIGNUP FORM
+    =================================== -->
     <div class="auth-form-panel">
       <div class="grid-deco" aria-hidden="true"></div>
 
@@ -760,7 +760,7 @@
         <div class="auth-form-header">
           <div class="auth-form-eyebrow">
             <span class="auth-form-eyebrow-line"></span>
-            <span class="t-label">Free · No Credit Card Required</span>
+            <span class="t-label">Free &middot; No Credit Card Required</span>
           </div>
           <h1 class="auth-form-title">Join <em>Terravana</em></h1>
           <p class="auth-form-sub">Create your explorer account and unlock the wilderness.</p>
@@ -845,7 +845,7 @@
                 <div class="pw-bar" id="bar3"></div>
                 <div class="pw-bar" id="bar4"></div>
               </div>
-              <span class="pw-strength-label" id="pw-strength-label">Strength: —</span>
+              <span class="pw-strength-label" id="pw-strength-label">Strength: -</span>
             </div>
           </div>
 
@@ -881,7 +881,7 @@
 
         <!-- Switch to Login -->
         <div class="auth-switch">
-          Already have an account?
+          Already have an account
           <a href="login.html" id="go-to-login">Sign in</a>
         </div>
 
@@ -900,7 +900,7 @@
 
   <script src="script.js"></script>
   <script>
-    // ── Password eye toggle — signup ──
+    // -- Password eye toggle - signup --
     (function () {
       const toggle = document.getElementById('signup-pw-toggle');
       const input = document.getElementById('signup-password');
@@ -908,13 +908,13 @@
 
       toggle.addEventListener('click', function () {
         const isHidden = input.type === 'password';
-        input.type = isHidden ? 'text' : 'password';
-        icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
-        toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+      input.type = isHidden ? 'text' : 'password';
+      icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+      toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
       });
     })();
 
-    // ── Password eye toggle — confirm ──
+    // -- Password eye toggle - confirm --
     (function () {
       const toggle = document.getElementById('confirm-pw-toggle');
       const input = document.getElementById('signup-confirm');
@@ -922,13 +922,13 @@
 
       toggle.addEventListener('click', function () {
         const isHidden = input.type === 'password';
-        input.type = isHidden ? 'text' : 'password';
-        icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
-        toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+      input.type = isHidden ? 'text' : 'password';
+      icon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+      toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
       });
     })();
 
-    // ── Password strength meter ──
+    // -- Password strength meter --
     (function () {
       const input = document.getElementById('signup-password');
       const wrap = document.getElementById('pw-strength-wrap');
@@ -974,7 +974,7 @@
       });
     })();
 
-    // ── Signup form submit (demo) ──
+    // -- Signup form submit (demo) --
     document.getElementById('signup-form').addEventListener('submit', function (e) {
       e.preventDefault();
       const pw = document.getElementById('signup-password').value;
@@ -990,7 +990,7 @@
       }
 
       const btn = document.getElementById('signup-submit');
-      btn.innerHTML = '<span><i class="fa-solid fa-circle-notch fa-spin" style="margin-right:0.5rem;"></i>Creating account…</span>';
+      btn.innerHTML = '<span><i class="fa-solid fa-circle-notch fa-spin" style="margin-right:0.5rem;"></i>Creating account...</span>';
       btn.disabled = true;
       setTimeout(function () {
         localStorage.setItem('currentUser', JSON.stringify({ role: 'user', email: email }));
@@ -998,7 +998,7 @@
       }, 1800);
     });
 
-    // ── Social Signups ──
+    // -- Social Signups --
     const handleSocialSignup = (e) => {
       e.preventDefault();
       const isGoogle = e.currentTarget.id.includes('google');
@@ -1009,8 +1009,8 @@
       window.location.href = 'index.html';
     };
 
-    document.getElementById('google-signup')?.addEventListener('click', handleSocialSignup);
-    document.getElementById('facebook-signup')?.addEventListener('click', handleSocialSignup);
+    document.getElementById('google-signup').addEventListener('click', handleSocialSignup);
+    document.getElementById('facebook-signup').addEventListener('click', handleSocialSignup);
   </script>
 </body>
 

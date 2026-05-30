@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Your Journey — TERRAVANA WILDS</title>
-  <meta name="description" content="Reserve your Terravana Wilds eco-adventure experience. Trekking trails, wildlife safaris, eco-lodges, campfire nights, and waterfall walks — all bookable online." />
+  <title>Book Your Journey - TERRAVANA WILDS</title>
+  <meta name="description" content="Reserve your Terravana Wilds eco-adventure experience. Trekking trails, wildlife safaris, eco-lodges, campfire nights, and waterfall walks - all bookable online." />
   <link rel="stylesheet" href="style.css" />
   <style>
     .booking-layout { display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: start; }
@@ -57,8 +57,14 @@
     .booking-steps { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
     .booking-step { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-ui); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,224,213,0.35); }
     .booking-step.active { color: var(--gold); }
+    .booking-step.complete { color: rgba(94,158,107,0.95); }
     .booking-step-num { width: 28px; height: 28px; border-radius: 50%; border: 2px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
     .booking-step-sep { width: 40px; height: 1px; background: rgba(198,169,114,0.15); }
+    .form-input.is-invalid, .form-select.is-invalid { border-color: rgba(220,80,60,0.85); box-shadow: 0 0 0 3px rgba(220,80,60,0.1); }
+    .form-error { color: rgba(255,130,110,0.92); font-size: 0.76rem; line-height: 1.4; }
+    .accordion-btn { width: 100%; display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1.25rem 0; color: var(--ivory); background: transparent; border: 0; text-align: left; cursor: pointer; font-family: var(--font-display); font-size: 1.1rem; }
+    .accordion-panel { max-height: 0; overflow: hidden; color: rgba(232,224,213,0.68); font-size: 0.9rem; line-height: 1.7; transition: max-height 0.35s ease, padding-bottom 0.35s ease; }
+    .accordion-item.open .accordion-panel { padding-bottom: 1.25rem; }
     @media (max-width: 1050px) { .booking-layout { grid-template-columns: 1fr; } .booking-sidebar { position: static; } }
     @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
   </style>
@@ -86,8 +92,7 @@
         <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
         <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
         <a href="about.html" class="nav-link" role="listitem">About</a>
-        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
-      </div>
+        </div>
 
       <div style="display:flex; align-items:center; gap:1rem;">
         <a href="booking.html" class="nav-cta">Book Now</a>
@@ -107,8 +112,7 @@
     </div>
   </nav>
   <div id="nav-mobile" class="nav-mobile">
-    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a><a href="trekking.html" class="nav-link">Trekking</a><a href="wildlife.html" class="nav-link">Wildlife</a><a href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html" class="nav-link">Waterfalls</a><a href="ecoresorts.html" class="nav-link">Eco Resorts</a><a href="seasonal.html" class="nav-link">Seasons</a><a href="gallery.html" class="nav-link">Gallery</a><a href="reviews.html" class="nav-link">Reviews</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a>
-    <a href="booking.html" class="nav-cta">Book Your Journey</a>
+    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a><a href="trekking.html" class="nav-link">Trekking</a><a href="wildlife.html" class="nav-link">Wildlife</a><a href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html" class="nav-link">Waterfalls</a><a href="ecoresorts.html" class="nav-link">Eco Resorts</a><a href="seasonal.html" class="nav-link">Seasons</a><a href="gallery.html" class="nav-link">Gallery</a><a href="reviews.html" class="nav-link">Reviews</a><a href="about.html" class="nav-link">About</a><a href="booking.html" class="nav-cta">Book Your Journey</a>
   </div>
 
   <main>
@@ -122,7 +126,7 @@
         <div class="hero-content">
           <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">Reserve Your Place in the Wild</span></div>
           <h1 class="hero-title">Book Your<br/><em>Journey</em></h1>
-          <p class="hero-subtitle">Secure your Terravana experience — lodges, adventures, and safari slots are limited. Reserve now to avoid disappointment.</p>
+          <p class="hero-subtitle">Secure your Terravana experience - lodges, adventures, and safari slots are limited. Reserve now to avoid disappointment.</p>
         </div>
       </div>
     </section>
@@ -147,36 +151,36 @@
           <!-- Left: Form -->
           <div>
             <!-- Package Selection -->
-            <div class="section-label" style="margin-bottom:1.5rem;">Step 1 — Choose Your Experience</div>
+            <div class="section-label" style="margin-bottom:1.5rem;">Step 1 - Choose Your Experience</div>
             <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
 
               <div class="pkg-card selected reveal" id="pkg-trekking" role="radio" aria-checked="true" tabindex="0">
-                <div class="pkg-card-check" aria-hidden="true">✓</div>
+                <div class="pkg-card-check" aria-hidden="true">&#10003;</div>
                 <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;"><span style="font-size:1.75rem;" aria-hidden="true"><i class="fa-solid fa-mountain-sun"></i></span><div><div class="exp-card-title" style="font-size:1.05rem;">Trekking Experience</div><div class="t-label">Half-day to 5-day trail options</div></div></div>
                 <p class="exp-card-text" style="font-size:0.82rem;">Select from 18 trails across all difficulty levels. Price from $65/person.</p>
               </div>
 
               <div class="pkg-card reveal reveal-delay-1" id="pkg-wildlife" role="radio" aria-checked="false" tabindex="0">
-                <div class="pkg-card-check" aria-hidden="true">✓</div>
-                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;"><span style="font-size:1.75rem;" aria-hidden="true"><i class="fa-solid fa-paw"></i></span><div><div class="exp-card-title" style="font-size:1.05rem;">Wildlife Safari</div><div class="t-label">Dawn · Night · Birding</div></div></div>
+                <div class="pkg-card-check" aria-hidden="true">&#10003;</div>
+                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;"><span style="font-size:1.75rem;" aria-hidden="true"><i class="fa-solid fa-paw"></i></span><div><div class="exp-card-title" style="font-size:1.05rem;">Wildlife Safari</div><div class="t-label">Dawn &middot; Night &middot; Birding</div></div></div>
                 <p class="exp-card-text" style="font-size:0.82rem;">Expert-guided safari experiences from $95/person. Groups max 8.</p>
               </div>
 
               <div class="pkg-card reveal reveal-delay-2" id="pkg-lodge" role="radio" aria-checked="false" tabindex="0">
-                <div class="pkg-card-check" aria-hidden="true">✓</div>
-                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;"><span style="font-size:1.75rem;" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span><div><div class="exp-card-title" style="font-size:1.05rem;">Eco Lodge Stay</div><div class="t-label">Treehouse · Villa · Cabin · Glamping</div></div></div>
+                <div class="pkg-card-check" aria-hidden="true">&#10003;</div>
+                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;"><span style="font-size:1.75rem;" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span><div><div class="exp-card-title" style="font-size:1.05rem;">Eco Lodge Stay</div><div class="t-label">Treehouse &middot; Villa &middot; Cabin &middot; Glamping</div></div></div>
                 <p class="exp-card-text" style="font-size:0.82rem;">Choose from 4 lodge types. From $220/night. All inclusive breakfast.</p>
               </div>
 
               <div class="pkg-card reveal reveal-delay-3" id="pkg-campfire" role="radio" aria-checked="false" tabindex="0">
-                <div class="pkg-card-check" aria-hidden="true">✓</div>
-                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;"><span style="font-size:1.75rem;" aria-hidden="true"><i class="fa-solid fa-fire"></i></span><div><div class="exp-card-title" style="font-size:1.05rem;">Campfire Night</div><div class="t-label">Classic · Astronomer · Private</div></div></div>
+                <div class="pkg-card-check" aria-hidden="true">&#10003;</div>
+                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;"><span style="font-size:1.75rem;" aria-hidden="true"><i class="fa-solid fa-fire"></i></span><div><div class="exp-card-title" style="font-size:1.05rem;">Campfire Night</div><div class="t-label">Classic &middot; Astronomer &middot; Private</div></div></div>
                 <p class="exp-card-text" style="font-size:0.82rem;">Evening campfire experiences from $75/person. Nightly, weather permitting.</p>
               </div>
 
               <div class="pkg-card reveal reveal-delay-4" id="pkg-custom" role="radio" aria-checked="false" tabindex="0">
-                <div class="pkg-card-check" aria-hidden="true">✓</div>
-                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;"><span style="font-size:1.75rem;" aria-hidden="true"><i class="fa-solid fa-wand-magic-sparkles"></i></span><div><div class="exp-card-title" style="font-size:1.05rem;">Full Terravana Package</div><div class="t-label">Lodge + Adventures + Dining — All Inclusive</div></div></div>
+                <div class="pkg-card-check" aria-hidden="true">&#10003;</div>
+                <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;"><span style="font-size:1.75rem;" aria-hidden="true"><i class="fa-solid fa-wand-magic-sparkles"></i></span><div><div class="exp-card-title" style="font-size:1.05rem;">Full Terravana Package</div><div class="t-label">Lodge + Adventures + Dining - All Inclusive</div></div></div>
                 <p class="exp-card-text" style="font-size:0.82rem;">Our most popular package. Lodge + 3 adventure days + all meals from $690/person.</p>
               </div>
             </div>
@@ -184,7 +188,7 @@
             <!-- Main Booking Form -->
             <div class="booking-form reveal">
               <form id="booking-form-main" novalidate>
-                <div class="form-section-title">Step 2 — Travel Dates & Party</div>
+                <div class="form-section-title">Step 2 - Travel Dates & Party</div>
                 <div class="form-row">
                   <div class="form-group">
                     <label class="form-label" for="booking-arrival">Arrival Date</label>
@@ -226,11 +230,11 @@
                     <option value="villa"><i class="fa-solid fa-mountain"></i> Ridge Villa (from $480/night)</option>
                     <option value="glamping"><i class="fa-solid fa-campground"></i> Luxury Glamping (from $220/night)</option>
                     <option value="riverside"><i class="fa-solid fa-water"></i> Riverside Cabin (from $280/night)</option>
-                    <option value="no-pref">No preference — best available</option>
+                    <option value="no-pref">No preference - best available</option>
                   </select>
                 </div>
 
-                <div class="form-section-title">Step 3 — Your Details</div>
+                <div class="form-section-title">Step 3 - Your Details</div>
                 <div class="form-row">
                   <div class="form-group">
                     <label class="form-label" for="booking-first">First Name</label>
@@ -276,7 +280,7 @@
                   </label>
                 </div>
 
-                <button type="submit" class="btn btn-primary" id="booking-submit-btn" style="margin-top:2.5rem;width:100%;justify-content:center;font-size:1rem;padding:1.1rem 2rem;">Confirm Booking Request →</button>
+                <button type="submit" class="btn btn-primary" id="booking-submit-btn" style="margin-top:2.5rem;width:100%;justify-content:center;font-size:1rem;padding:1.1rem 2rem;">Confirm Booking Request &rarr;</button>
                 <p style="text-align:center;font-size:0.78rem;color:rgba(232,224,213,0.35);margin-top:1rem;">No payment required today. Our team will confirm availability and send you a detailed quote within 24 hours.</p>
               </form>
             </div>
@@ -286,29 +290,29 @@
           <div class="booking-sidebar">
             <div class="booking-summary reveal">
               <div class="section-label" style="margin-bottom:1.5rem;">Your Summary</div>
-              <div class="summary-line"><span>Experience</span><span style="color:var(--ivory);font-weight:600;">Trekking</span></div>
-              <div class="summary-line"><span>Guests</span><span style="color:var(--ivory);font-weight:600;">2 Adults</span></div>
-              <div class="summary-line"><span>Nights</span><span style="color:var(--ivory);font-weight:600;">3 Nights</span></div>
-              <div class="summary-line"><span>Lodge</span><span style="color:var(--ivory);font-weight:600;">Canopy Treehouse</span></div>
+              <div class="summary-line"><span>Experience</span><span id="summary-experience" style="color:var(--ivory);font-weight:600;">Trekking</span></div>
+              <div class="summary-line"><span>Guests</span><span id="summary-guests" style="color:var(--ivory);font-weight:600;">2 Adults</span></div>
+              <div class="summary-line"><span>Nights</span><span id="summary-nights" style="color:var(--ivory);font-weight:600;">Choose Dates</span></div>
+              <div class="summary-line"><span>Lodge</span><span id="summary-lodge" style="color:var(--ivory);font-weight:600;">Best Available</span></div>
               <div class="summary-line" style="border-top:1px solid rgba(198,169,114,0.2);margin-top:0.5rem;padding-top:1.25rem;">
                 <span style="font-size:0.85rem;color:var(--gold);font-weight:600;">Estimated Total</span>
-                <span class="summary-total">From $1,890</span>
+                <span class="summary-total" id="summary-total" aria-live="polite">From $130</span>
               </div>
               <p style="font-size:0.75rem;color:rgba(232,224,213,0.35);margin-top:0.75rem;">Final pricing confirmed after availability check. No payment required today.</p>
             </div>
 
             <div class="trust-badges" style="margin-top:1.5rem;">
-              <div class="trust-badge"><div class="trust-badge-icon"><i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></div><span>Secure, encrypted booking form</span></div>
-              <div class="trust-badge"><div class="trust-badge-icon"><i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></div><span>Confirmation within 24 hours</span></div>
-              <div class="trust-badge"><div class="trust-badge-icon">↩️</div><span>Free cancellation up to 21 days before</span></div>
+              <div class="trust-badge"><div class="trust-badge-icon"><i class="fa-solid fa-lock"></i></div><span>Secure, encrypted booking form</span></div>
+              <div class="trust-badge"><div class="trust-badge-icon"><i class="fa-solid fa-clock"></i></div><span>Confirmation within 24 hours</span></div>
+              <div class="trust-badge"><div class="trust-badge-icon"><i class="fa-solid fa-rotate-left"></i></div><span>Free cancellation up to 21 days before</span></div>
               <div class="trust-badge"><div class="trust-badge-icon"><i class="fa-solid fa-leaf"></i></div><span>Every booking plants 5 native trees</span></div>
             </div>
 
             <div style="margin-top:2rem;padding:2rem;background:rgba(27,29,31,0.7);border:1px solid rgba(198,169,114,0.12);border-radius:4px;">
-              <div class="section-label" style="margin-bottom:1rem;">Need Help?</div>
-              <p style="font-size:0.85rem;color:rgba(232,224,213,0.6);line-height:1.7;margin-bottom:1.25rem;">Our reservations team is available 9am–6pm IST, Monday–Sunday.</p>
+              <div class="section-label" style="margin-bottom:1rem;">Need Help</div>
+              <p style="font-size:0.85rem;color:rgba(232,224,213,0.6);line-height:1.7;margin-bottom:1.25rem;">Our reservations team is available 9am-6pm IST, Monday-Sunday.</p>
               <a href="tel:+919876543210" class="btn btn-ghost" style="width:100%;justify-content:center;font-size:0.8rem;" id="booking-call-btn"><i class="fa-solid fa-phone"></i> Call Us</a>
-              <a href="contact.html" class="btn btn-ghost" style="width:100%;justify-content:center;font-size:0.8rem;margin-top:0.75rem;" id="booking-msg-btn"><i class="fa-solid fa-envelope"></i>️ Send a Message</a>
+              <a href="booking.html" class="btn btn-ghost" style="width:100%;justify-content:center;font-size:0.8rem;margin-top:0.75rem;" id="booking-msg-btn"><i class="fa-solid fa-envelope"></i> Send a Message</a>
             </div>
 
             <div style="margin-top:2rem;">
@@ -318,7 +322,7 @@
                   <span>21+ days before</span><span style="color:#5E9E6B;font-weight:600;">Full refund</span>
                 </div>
                 <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:rgba(232,224,213,0.6);padding:0.6rem 0;border-bottom:1px solid rgba(198,169,114,0.07);">
-                  <span>8–20 days before</span><span style="color:var(--gold);font-weight:600;">50% refund</span>
+                  <span>8-20 days before</span><span style="color:var(--gold);font-weight:600;">50% refund</span>
                 </div>
                 <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:rgba(232,224,213,0.6);padding:0.6rem 0;">
                   <span>Within 7 days</span><span style="color:rgba(220,80,60,0.9);font-weight:600;">No refund</span>
@@ -340,8 +344,8 @@
           <div class="divider divider-center"></div>
         </div>
         <div class="grid-4" style="gap:1.25rem;">
-          <div class="exp-card reveal" style="text-align:center;"><span style="font-size:2rem;display:block;margin-bottom:0.75rem;" aria-hidden="true"><i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span><div class="exp-card-title" style="font-size:0.95rem;">Best Rate Guaranteed</div><p class="exp-card-text" style="font-size:0.78rem;">No OTA fees or markups. You pay the real price — and we can offer better value.</p></div>
-          <div class="exp-card reveal reveal-delay-1" style="text-align:center;"><span style="font-size:2rem;display:block;margin-bottom:0.75rem;" aria-hidden="true"><i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span><div class="exp-card-title" style="font-size:0.95rem;">Welcome Gift</div><p class="exp-card-text" style="font-size:0.78rem;">Every direct booking receives a curated welcome package on arrival.</p></div>
+          <div class="exp-card reveal" style="text-align:center;"><span style="font-size:2rem;display:block;margin-bottom:0.75rem;" aria-hidden="true"><i class="fa-solid fa-tag"></i></span><div class="exp-card-title" style="font-size:0.95rem;">Best Rate Guaranteed</div><p class="exp-card-text" style="font-size:0.78rem;">No OTA fees or markups. You pay the real price - and we can offer better value.</p></div>
+          <div class="exp-card reveal reveal-delay-1" style="text-align:center;"><span style="font-size:2rem;display:block;margin-bottom:0.75rem;" aria-hidden="true"><i class="fa-solid fa-gift"></i></span><div class="exp-card-title" style="font-size:0.95rem;">Welcome Gift</div><p class="exp-card-text" style="font-size:0.78rem;">Every direct booking receives a curated welcome package on arrival.</p></div>
           <div class="exp-card reveal reveal-delay-2" style="text-align:center;"><span style="font-size:2rem;display:block;margin-bottom:0.75rem;" aria-hidden="true"><i class="fa-solid fa-compass"></i></span><div class="exp-card-title" style="font-size:0.95rem;">Bespoke Planning</div><p class="exp-card-text" style="font-size:0.78rem;">Our team personalises your itinerary based on your interests and fitness level.</p></div>
           <div class="exp-card reveal reveal-delay-3" style="text-align:center;"><span style="font-size:2rem;display:block;margin-bottom:0.75rem;" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span><div class="exp-card-title" style="font-size:0.95rem;">10% to Conservation</div><p class="exp-card-text" style="font-size:0.78rem;">10% of every direct booking fee goes directly to our wildlife conservation fund.</p></div>
         </div>
@@ -357,23 +361,23 @@
         </div>
         <div class="accordion" style="max-width:760px;margin:0 auto;">
           <div class="accordion-item reveal">
-            <button class="accordion-btn" id="faq1-btn" aria-expanded="false" aria-controls="faq1">How far in advance should I book?<span class="accordion-icon">+</span></button>
-            <div class="accordion-panel" id="faq1" role="region" aria-labelledby="faq1-btn">We recommend booking at least 4–6 weeks in advance for standard stays, and 8–12 weeks for peak season (October–February). The Canopy Treehouses and Ridge Villas sell out earliest.</div>
+            <button class="accordion-btn" id="faq1-btn" aria-expanded="false" aria-controls="faq1">How far in advance should I book<span class="accordion-icon">+</span></button>
+            <div class="accordion-panel" id="faq1" role="region" aria-labelledby="faq1-btn">We recommend booking at least 4-6 weeks in advance for standard stays, and 8-12 weeks for peak season (October-February). The Canopy Treehouses and Ridge Villas sell out earliest.</div>
           </div>
           <div class="accordion-item reveal reveal-delay-1">
-            <button class="accordion-btn" id="faq2-btn" aria-expanded="false" aria-controls="faq2">What is included in the Full Package?<span class="accordion-icon">+</span></button>
+            <button class="accordion-btn" id="faq2-btn" aria-expanded="false" aria-controls="faq2">What is included in the Full Package<span class="accordion-icon">+</span></button>
             <div class="accordion-panel" id="faq2" role="region" aria-labelledby="faq2-btn">The Full Terravana Package includes lodge accommodation, all breakfasts, 3 guided adventure days (choice of trail/safari/waterfall), daily forest herb tea, one campfire night, and a welcome gift. Flights and travel insurance are not included.</div>
           </div>
           <div class="accordion-item reveal reveal-delay-2">
-            <button class="accordion-btn" id="faq3-btn" aria-expanded="false" aria-controls="faq3">Can children participate in all activities?<span class="accordion-icon">+</span></button>
+            <button class="accordion-btn" id="faq3-btn" aria-expanded="false" aria-controls="faq3">Can children participate in all activities<span class="accordion-icon">+</span></button>
             <div class="accordion-panel" id="faq3" role="region" aria-labelledby="faq3-btn">Children aged 7+ are welcome on easy and moderate trails, campfire nights, and the birding experience. High-altitude and challenging treks are recommended for ages 14+. Wildlife safaris welcome all ages. Our team will advise on the best programme for your family.</div>
           </div>
           <div class="accordion-item reveal reveal-delay-3">
-            <button class="accordion-btn" id="faq4-btn" aria-expanded="false" aria-controls="faq4">What happens after I submit this form?<span class="accordion-icon">+</span></button>
+            <button class="accordion-btn" id="faq4-btn" aria-expanded="false" aria-controls="faq4">What happens after I submit this form<span class="accordion-icon">+</span></button>
             <div class="accordion-panel" id="faq4" role="region" aria-labelledby="faq4-btn">Our reservations team will review your request and send a detailed quote to your email within 24 hours (usually much sooner). No payment is required until you confirm the booking via our secure payment link. We'll also call to discuss your itinerary preferences.</div>
           </div>
           <div class="accordion-item reveal">
-            <button class="accordion-btn" id="faq5-btn" aria-expanded="false" aria-controls="faq5">Do I need travel insurance?<span class="accordion-icon">+</span></button>
+            <button class="accordion-btn" id="faq5-btn" aria-expanded="false" aria-controls="faq5">Do I need travel insurance<span class="accordion-icon">+</span></button>
             <div class="accordion-panel" id="faq5" role="region" aria-labelledby="faq5-btn">We strongly recommend travel insurance with adventure activity coverage for all guests. This should cover emergency medical evacuation, trip cancellation, and any outdoor activities. We can recommend providers if needed.</div>
           </div>
         </div>
@@ -415,7 +419,7 @@
             <div style="position:absolute;bottom:1.5rem;left:1.5rem;"><span class="adventure-card-tag">Campfire</span><div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--ivory);margin-top:0.4rem;">Astronomer Night</div></div>
           </div>
         </div>
-        <div style="text-align:center;margin-top:2.5rem;"><a href="gallery.html" class="btn btn-ghost" id="booking-view-gallery">View Full Gallery →</a></div>
+        <div style="text-align:center;margin-top:2.5rem;"><a href="gallery.html" class="btn btn-ghost" id="booking-view-gallery">View Full Gallery &rarr;</a></div>
       </div>
     </section>
 
@@ -433,12 +437,12 @@
             <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-mountain-sun"></i></span>
             <div class="exp-card-title">Trekking</div>
             <div style="font-family:var(--font-display);font-size:2rem;color:var(--gold);font-weight:700;margin:0.75rem 0;">From $65</div>
-            <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:1.25rem;">Per person · Half-day to 5-day options. Includes certified guide, safety equipment, and trail snacks.</p>
+            <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:1.25rem;">Per person &middot; Half-day to 5-day options. Includes certified guide, safety equipment, and trail snacks.</p>
             <ul style="display:flex;flex-direction:column;gap:0.5rem;">
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>Certified wilderness guide</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>Safety & first-aid equipment</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>Trail snacks & herbal tea</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>Max 8 per group</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>Certified wilderness guide</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>Safety & first-aid equipment</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>Trail snacks & herbal tea</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>Max 8 per group</li>
             </ul>
           </div>
           <div class="exp-card reveal reveal-delay-1" style="border-top:3px solid var(--gold);position:relative;">
@@ -446,24 +450,24 @@
             <span style="font-size:2rem;display:block;margin-bottom:1rem;margin-top:1rem;" aria-hidden="true"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
             <div class="exp-card-title">Full Package</div>
             <div style="font-family:var(--font-display);font-size:2rem;color:var(--gold);font-weight:700;margin:0.75rem 0;">From $690</div>
-            <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:1.25rem;">Per person · Lodge + 3 adventure days + all meals. The complete Terravana experience.</p>
+            <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:1.25rem;">Per person &middot; Lodge + 3 adventure days + all meals. The complete Terravana experience.</p>
             <ul style="display:flex;flex-direction:column;gap:0.5rem;">
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>Eco lodge accommodation</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>3 guided adventure days</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>All meals & forest herb teas</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>Welcome gift & campfire night</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>Eco lodge accommodation</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>3 guided adventure days</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>All meals & forest herb teas</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>Welcome gift & campfire night</li>
             </ul>
           </div>
           <div class="exp-card reveal reveal-delay-2" style="border-top:3px solid var(--gold);">
             <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
             <div class="exp-card-title">Lodge Only</div>
             <div style="font-family:var(--font-display);font-size:2rem;color:var(--gold);font-weight:700;margin:0.75rem 0;">From $220</div>
-            <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:1.25rem;">Per night · Eco-lodge accommodation with breakfast. Add adventure experiences à la carte.</p>
+            <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:1.25rem;">Per night &middot; Eco-lodge accommodation with breakfast. Add adventure experiences &agrave; la carte.</p>
             <ul style="display:flex;flex-direction:column;gap:0.5rem;">
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>4 lodge types available</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>Forest-to-table breakfast</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>Add-on adventures available</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">✓</span>Minimum 2 nights</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>4 lodge types available</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>Forest-to-table breakfast</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>Add-on adventures available</li>
+              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span style="color:var(--gold);">&#10003;</span>Minimum 2 nights</li>
             </ul>
           </div>
         </div>
@@ -478,7 +482,7 @@
             <div class="section-label">Your Home in the Wild</div>
             <h2 class="section-title fs-h2">Choose Your <em>Lodge</em></h2>
           </div>
-          <a href="ecoresorts.html" class="btn btn-ghost" id="booking-view-lodges">View All Lodges →</a>
+          <a href="ecoresorts.html" class="btn btn-ghost" id="booking-view-lodges">View All Lodges &rarr;</a>
         </div>
         <div class="grid-2" style="gap:1.5rem;">
           <div class="glass-card reveal" style="display:grid;grid-template-columns:180px 1fr;gap:0;">
@@ -532,19 +536,19 @@
             <p class="section-desc">From honeymoon getaways to 40-person corporate retreats, Terravana can be privately reserved for your group. We design bespoke wilderness programmes that create real transformation.</p>
             <div style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem;">
               <div class="exp-card" style="padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-                <span style="font-size:1.75rem;flex-shrink:0;" aria-hidden="true"><i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span>
+                <span style="font-size:1.75rem;flex-shrink:0;" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
                 <div><div class="exp-card-title" style="font-size:0.95rem;margin-bottom:0.25rem;">Honeymoons & Couples</div><p class="exp-card-text" style="font-size:0.8rem;">Private lodge, candlelit forest dinners, dawn wildlife walks for two.</p></div>
               </div>
               <div class="exp-card" style="padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-                <span style="font-size:1.75rem;flex-shrink:0;" aria-hidden="true"><i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span>
-                <div><div class="exp-card-title" style="font-size:0.95rem;margin-bottom:0.25rem;">Corporate Retreats</div><p class="exp-card-text" style="font-size:0.8rem;">Leadership programmes, team-building expeditions, strategy offsites — all in the wild.</p></div>
+                <span style="font-size:1.75rem;flex-shrink:0;" aria-hidden="true"><i class="fa-solid fa-briefcase"></i></span>
+                <div><div class="exp-card-title" style="font-size:0.95rem;margin-bottom:0.25rem;">Corporate Retreats</div><p class="exp-card-text" style="font-size:0.8rem;">Leadership programmes, team-building expeditions, strategy offsites - all in the wild.</p></div>
               </div>
               <div class="exp-card" style="padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-                <span style="font-size:1.75rem;flex-shrink:0;" aria-hidden="true"><i class="fa-solid fa-user"></i>‍<i class="fa-solid fa-user"></i>‍<i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span>
+                <span style="font-size:1.75rem;flex-shrink:0;" aria-hidden="true"><i class="fa-solid fa-people-roof"></i></span>
                 <div><div class="exp-card-title" style="font-size:0.95rem;margin-bottom:0.25rem;">Family Expeditions</div><p class="exp-card-text" style="font-size:0.8rem;">Multi-generational packages with age-appropriate trails, nature school, and campfire nights.</p></div>
               </div>
             </div>
-            <a href="contact.html" class="btn btn-primary" style="margin-top:2rem;" id="booking-group-enquiry">Enquire About Groups</a>
+            <a href="booking.html" class="btn btn-primary" style="margin-top:2rem;" id="booking-group-enquiry">Enquire About Groups</a>
           </div>
           <div class="reveal-right">
             <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=900&q=80" alt="Group expedition in the forest" style="width:100%;height:580px;object-fit:cover;border-radius:4px;" loading="lazy"/>
@@ -563,31 +567,31 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(198,169,114,0.1);border-radius:4px;overflow:hidden;">
           <div style="padding:2.5rem 2rem;border-right:1px solid rgba(198,169,114,0.1);transition:background 0.3s;">
-            <div style="font-size:2.5rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-cloud-showers-heavy"></i>️</div>
+            <div style="font-size:2.5rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
             <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ivory);margin-bottom:0.35rem;">Monsoon</div>
-            <div style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">Jun – Sep</div>
+            <div style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">Jun - Sep</div>
             <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Dramatic mist, roaring waterfalls, emerald trails. Best for waterfall treks. Lodge prices at seasonal low.</p>
           </div>
           <div style="padding:2.5rem 2rem;border-right:1px solid rgba(198,169,114,0.1);">
             <div style="font-size:2.5rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-brands fa-canadian-maple-leaf"></i></div>
             <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ivory);margin-bottom:0.35rem;">Autumn</div>
-            <div style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">Oct – Nov</div>
-            <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Peak wildlife sightings. Golden canopies, clear skies. <strong style="color:var(--gold);">Most popular</strong> — book well in advance.</p>
+            <div style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">Oct - Nov</div>
+            <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Peak wildlife sightings. Golden canopies, clear skies. <strong style="color:var(--gold);">Most popular</strong> - book well in advance.</p>
           </div>
           <div style="padding:2.5rem 2rem;border-right:1px solid rgba(198,169,114,0.1);">
-            <div style="font-size:2.5rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-snowflake"></i>️</div>
+            <div style="font-size:2.5rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-snowflake"></i></div>
             <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ivory);margin-bottom:0.35rem;">Winter</div>
-            <div style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">Dec – Feb</div>
-            <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Crisp air, frost on the ridges. Perfect for stargazing. Night temperature drops to 8°C — bring layers.</p>
+            <div style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">Dec - Feb</div>
+            <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Crisp air, frost on the ridges. Perfect for stargazing. Night temperature drops to 8&deg;C - bring layers.</p>
           </div>
           <div style="padding:2.5rem 2rem;">
-            <div style="font-size:2.5rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-sun"></i>️</div>
+            <div style="font-size:2.5rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-sun"></i></div>
             <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ivory);margin-bottom:0.35rem;">Summer</div>
-            <div style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">Mar – May</div>
+            <div style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">Mar - May</div>
             <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Long trekking days, river swimming, peak trail conditions. Wildflowers in full bloom across the meadows.</p>
           </div>
         </div>
-        <div style="text-align:center;margin-top:2.5rem;"><a href="seasonal.html" class="btn btn-ghost" id="booking-seasonal-guide">Full Seasonal Guide →</a></div>
+        <div style="text-align:center;margin-top:2.5rem;"><a href="seasonal.html" class="btn btn-ghost" id="booking-seasonal-guide">Full Seasonal Guide &rarr;</a></div>
       </div>
     </section>
 
@@ -643,11 +647,11 @@
           </div>
           <div class="exp-card reveal" style="display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;">
             <div style="text-align:center;padding-top:0.25rem;"><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--gold);">04</div><div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">Day</div></div>
-            <div><div class="exp-card-title" style="margin-bottom:0.5rem;">Free Exploration & Astronomer Night</div><p class="exp-card-text" style="font-size:0.82rem;">Morning at your own pace — birdwatching, forest journaling, or spa treatment. Evening: Astronomer's Campfire with our resident dark-sky specialist.</p></div>
+            <div><div class="exp-card-title" style="margin-bottom:0.5rem;">Free Exploration & Astronomer Night</div><p class="exp-card-text" style="font-size:0.82rem;">Morning at your own pace - birdwatching, forest journaling, or spa treatment. Evening: Astronomer's Campfire with our resident dark-sky specialist.</p></div>
           </div>
           <div class="exp-card reveal reveal-delay-1" style="display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;">
             <div style="text-align:center;padding-top:0.25rem;"><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--gold);">05</div><div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">Day</div></div>
-            <div><div class="exp-card-title" style="margin-bottom:0.5rem;">Departure & Conservation Walk</div><p class="exp-card-text" style="font-size:0.82rem;">Final morning guided walk through the rewilding zone — see the trees your booking planted. Departure by noon with forest-sourced gifts and your personal trail map.</p></div>
+            <div><div class="exp-card-title" style="margin-bottom:0.5rem;">Departure & Conservation Walk</div><p class="exp-card-text" style="font-size:0.82rem;">Final morning guided walk through the rewilding zone - see the trees your booking planted. Departure by noon with forest-sourced gifts and your personal trail map.</p></div>
           </div>
         </div>
       </div>
@@ -663,7 +667,7 @@
         <div class="grid-3" style="gap:1.5rem;">
           <div class="review-card reveal">
             <div class="review-stars" aria-label="5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-            <p class="review-text">"The booking process was personal and warm — they actually called us to discuss what we were hoping for. That set the tone for everything that followed."</p>
+            <p class="review-text">"The booking process was personal and warm - they actually called us to discuss what we were hoping for. That set the tone for everything that followed."</p>
             <div class="review-author"><div class="review-avatar" aria-hidden="true">MH</div><div><div class="review-name">Marcus H.</div><div class="review-location">Amsterdam, Netherlands</div></div></div>
           </div>
           <div class="review-card reveal reveal-delay-1">
@@ -688,13 +692,13 @@
           <div class="section-label section-label-center">Prepare Well</div>
           <h2 class="section-title fs-h2 text-center">What to <em>Bring</em></h2>
           <div class="divider divider-center"></div>
-          <p class="section-desc text-center" style="margin:0 auto;">Pack light — the forest provides the rest. Below is our recommended packing list for a 3–5 day visit.</p>
+          <p class="section-desc text-center" style="margin:0 auto;">Pack light - the forest provides the rest. Below is our recommended packing list for a 3-5 day visit.</p>
         </div>
         <div class="grid-4" style="gap:1.25rem;">
           <div class="exp-card reveal" style="text-align:center;">
-            <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i></span>
+            <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-shoe-prints"></i></span>
             <div class="exp-card-title" style="font-size:0.95rem;">Footwear</div>
-            <p class="exp-card-text" style="font-size:0.78rem;">Sturdy ankle-support hiking boots. One pair of camp sandals. Waterproof if visiting June–September.</p>
+            <p class="exp-card-text" style="font-size:0.78rem;">Sturdy ankle-support hiking boots. One pair of camp sandals. Waterproof if visiting June-September.</p>
           </div>
           <div class="exp-card reveal reveal-delay-1" style="text-align:center;">
             <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-shirt"></i></span>
@@ -704,7 +708,7 @@
           <div class="exp-card reveal reveal-delay-2" style="text-align:center;">
             <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-camera"></i></span>
             <div class="exp-card-title" style="font-size:0.95rem;">Photography</div>
-            <p class="exp-card-text" style="font-size:0.78rem;">Camera with telephoto lens (200mm+ for wildlife). Portable charger. All batteries charged before arrival — no mains in the forest.</p>
+            <p class="exp-card-text" style="font-size:0.78rem;">Camera with telephoto lens (200mm+ for wildlife). Portable charger. All batteries charged before arrival - no mains in the forest.</p>
           </div>
           <div class="exp-card reveal reveal-delay-3" style="text-align:center;">
             <span style="font-size:2rem;display:block;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
@@ -725,11 +729,11 @@
         </div>
         <div style="display:flex;flex-direction:column;gap:1rem;max-width:680px;margin:0 auto;">
           <div class="exp-card reveal" style="display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;padding:2rem;">
-            <div><div class="exp-card-title" style="font-size:1rem;margin-bottom:0.4rem;">21+ Days Before Arrival</div><p class="exp-card-text" style="font-size:0.82rem;">Cancel with full confidence — no questions asked.</p></div>
+            <div><div class="exp-card-title" style="font-size:1rem;margin-bottom:0.4rem;">21+ Days Before Arrival</div><p class="exp-card-text" style="font-size:0.82rem;">Cancel with full confidence - no questions asked.</p></div>
             <div style="font-family:var(--font-display);font-size:1.5rem;color:#5E9E6B;font-weight:700;flex-shrink:0;">Full Refund</div>
           </div>
           <div class="exp-card reveal reveal-delay-1" style="display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;padding:2rem;">
-            <div><div class="exp-card-title" style="font-size:1rem;margin-bottom:0.4rem;">8–20 Days Before Arrival</div><p class="exp-card-text" style="font-size:0.82rem;">Partial refund or full credit towards a future booking.</p></div>
+            <div><div class="exp-card-title" style="font-size:1rem;margin-bottom:0.4rem;">8-20 Days Before Arrival</div><p class="exp-card-text" style="font-size:0.82rem;">Partial refund or full credit towards a future booking.</p></div>
             <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--gold);font-weight:700;flex-shrink:0;">50% Refund</div>
           </div>
           <div class="exp-card reveal reveal-delay-2" style="display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;padding:2rem;">
@@ -751,16 +755,16 @@
             <div class="section-label">Your Journey Begins Here</div>
             <h2 class="section-title fs-h2">The Wild is <em>Waiting</em></h2>
             <div class="divider"></div>
-            <p class="section-desc">Spaces at Terravana are intentionally limited. We host a maximum of 40 guests at any time to ensure each person receives the undivided attention of the forest — and our team.</p>
+            <p class="section-desc">Spaces at Terravana are intentionally limited. We host a maximum of 40 guests at any time to ensure each person receives the undivided attention of the forest - and our team.</p>
             <div style="display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:2.5rem;">
-              <a href="#booking-form-section" class="btn btn-primary" id="booking-scroll-to-form">Reserve Your Spot →</a>
-              <a href="contact.html" class="btn btn-ghost" id="booking-cta-contact">Talk to Us First</a>
+              <a href="#booking-form-section" class="btn btn-primary" id="booking-scroll-to-form">Reserve Your Spot &rarr;</a>
+              <a href="booking.html" class="btn btn-ghost" id="booking-cta-contact">Talk to Us First</a>
             </div>
           </div>
           <div style="position:relative;">
             <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt="The view that awaits at Terravana Wilds" style="width:100%;height:480px;object-fit:cover;border-radius:4px;" loading="lazy"/>
             <div style="position:absolute;bottom:2rem;left:2rem;background:var(--glass-bg);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:3px;padding:1.25rem;">
-              <div style="font-family:var(--font-ui);font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.35rem;">4.9 Stars · 847 Reviews</div>
+              <div style="font-family:var(--font-ui);font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.35rem;">4.9 Stars &middot; 847 Reviews</div>
               <div style="font-family:var(--font-display);font-size:1rem;color:var(--ivory);font-weight:700;">World's Best Eco Resort 2024</div>
             </div>
           </div>
@@ -775,30 +779,240 @@
         <div class="footer-brand"><div class="footer-logo">Terravana Wilds</div><div class="footer-logo-sub">Eco &middot; Adventure &middot; Resort</div><p class="footer-tagline">"Where wilderness speaks and every trail tells a story."</p><div class="eco-badge" style="margin-top:1rem;"><i class="fa-solid fa-leaf"></i> Certified Carbon Neutral Resort</div><div class="footer-social" aria-label="Social media links"><a href="https://www.instagram.com/" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a><a href="https://www.linkedin.com/" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.facebook.com/" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a><a href="https://x.com/" class="footer-social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a></div></div>
         <div><h3 class="footer-col-title">Explore</h3><nav class="footer-links"><a href="adventures.html" class="footer-link">All Adventures</a><a href="trekking.html" class="footer-link">Trekking Trails</a><a href="wildlife.html" class="footer-link">Wildlife Safaris</a><a href="campfire.html" class="footer-link">Campfire Nights</a><a href="waterfalls.html" class="footer-link">Waterfall Walks</a></nav></div>
         <div><h3 class="footer-col-title">Stay</h3><nav class="footer-links"><a href="ecoresorts.html" class="footer-link">Eco Resorts</a><a href="seasonal.html" class="footer-link">Seasonal Guide</a><a href="booking.html" class="footer-link">Book Now</a><a href="reviews.html" class="footer-link">Guest Reviews</a><a href="gallery.html" class="footer-link">Photo Gallery</a></nav></div>
-        <div><h3 class="footer-col-title">Connect</h3><nav class="footer-links"><a href="about.html" class="footer-link">About Us</a><a href="contact.html" class="footer-link">Contact</a></nav><form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required><button class="footer-email-btn" type="submit">Submit</button></form></div>
+        <div><h3 class="footer-col-title">Connect</h3><nav class="footer-links"><a href="about.html" class="footer-link">About Us</a></nav><form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required><button class="footer-email-btn" type="submit">Submit</button></form></div>
       </div>
-      <div class="footer-bottom"><p class="footer-copy">© 2025 Terravana Wilds. All rights reserved.</p><nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Eco Charter</a></nav></div>
+      <div class="footer-bottom"><p class="footer-copy">&copy; 2025 Terravana Wilds. All rights reserved.</p><nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Eco Charter</a></nav></div>
     </div>
   </footer>
 
   <script src="script.js"></script>
   <script>
-    // Package card selection
-    document.querySelectorAll('.pkg-card').forEach(card => {
-      card.addEventListener('click', () => {
-        document.querySelectorAll('.pkg-card').forEach(c => { c.classList.remove('selected'); c.setAttribute('aria-checked','false'); });
-        card.classList.add('selected'); card.setAttribute('aria-checked','true');
+    (() => {
+      const packageData = {
+        'pkg-trekking': { label: 'Trekking', base: 65, unit: 'person', lodge: '' },
+        'pkg-wildlife': { label: 'Wildlife Safari', base: 95, unit: 'person', lodge: '' },
+        'pkg-lodge': { label: 'Eco Lodge Stay', base: 220, unit: 'night', lodge: 'glamping' },
+        'pkg-campfire': { label: 'Campfire Night', base: 75, unit: 'person', lodge: '' },
+        'pkg-custom': { label: 'Full Terravana Package', base: 690, unit: 'person', lodge: 'no-pref' }
+      };
+
+      const lodgeData = {
+        treehouse: { label: 'Canopy Treehouse', nightly: 380 },
+        villa: { label: 'Ridge Villa', nightly: 480 },
+        glamping: { label: 'Luxury Glamping', nightly: 220 },
+        riverside: { label: 'Riverside Cabin', nightly: 280 },
+        'no-pref': { label: 'Best Available', nightly: 280 },
+        '': { label: 'Best Available', nightly: 0 }
+      };
+
+      const form = document.getElementById('booking-form-main');
+      const cards = Array.from(document.querySelectorAll('.pkg-card'));
+      const steps = Array.from(document.querySelectorAll('.booking-step'));
+      const arrival = document.getElementById('booking-arrival');
+      const departure = document.getElementById('booking-departure');
+      const adults = document.getElementById('booking-adults');
+      const children = document.getElementById('booking-children');
+      const lodge = document.getElementById('booking-lodge');
+      const requests = document.getElementById('booking-requests');
+      const country = document.getElementById('booking-country');
+      const summary = {
+        experience: document.getElementById('summary-experience'),
+        guests: document.getElementById('summary-guests'),
+        nights: document.getElementById('summary-nights'),
+        lodge: document.getElementById('summary-lodge'),
+        total: document.getElementById('summary-total')
+      };
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const toDateValue = date => date.toISOString().split('T')[0];
+      arrival.min = toDateValue(today);
+      departure.min = toDateValue(new Date(today.getTime() + 86400000));
+
+      const getSelectedPackage = () => {
+        const selected = document.querySelector('.pkg-card.selected') || cards[0];
+        return { id: selected.id, ...packageData[selected.id] };
+      };
+
+      const getNights = () => {
+        if (!arrival.value || !departure.value) return 0;
+        const start = new Date(`${arrival.value}T00:00:00`);
+        const end = new Date(`${departure.value}T00:00:00`);
+        return Math.max(0, Math.round((end - start) / 86400000));
+      };
+
+      const plural = (count, singular, pluralLabel = `${singular}s`) => `${count} ${count === 1 ? singular : pluralLabel}`;
+
+      const setStepState = () => {
+        const hasPackage = Boolean(document.querySelector('.pkg-card.selected'));
+        const hasDates = Boolean(arrival.value && departure.value && getNights() > 0);
+        const hasDetails = Boolean(document.getElementById('booking-first').value.trim() && document.getElementById('booking-last').value.trim() && document.getElementById('booking-email').validity.valid);
+        const hasTerms = document.getElementById('booking-terms').checked;
+        [hasPackage, hasDates, hasDetails, hasTerms].forEach((complete, index) => {
+          steps[index].classList.toggle('active', !complete);
+          steps[index].classList.toggle('complete', complete);
+        });
+      };
+
+      const updateDepartureMinimum = () => {
+        if (!arrival.value) return;
+        const start = new Date(`${arrival.value}T00:00:00`);
+        const minDepart = new Date(start.getTime() + 86400000);
+        departure.min = toDateValue(minDepart);
+        if (departure.value && new Date(`${departure.value}T00:00:00`) <= start) {
+          departure.value = toDateValue(minDepart);
+        }
+      };
+
+      const updateSummary = () => {
+        const selected = getSelectedPackage();
+        const adultCount = Number(adults.value);
+        const childCount = Number(children.value);
+        const guestCount = adultCount + childCount;
+        const nights = getNights();
+        const selectedLodge = lodgeData[lodge.value] || lodgeData[''];
+        const activitySubtotal = selected.base * (selected.unit === 'person' ? guestCount : Math.max(nights, 1));
+        const lodgeSubtotal = selectedLodge.nightly * nights;
+        const total = selected.id === 'pkg-lodge' ? lodgeSubtotal : activitySubtotal + lodgeSubtotal;
+
+        summary.experience.textContent = selected.label;
+        summary.guests.textContent = `${plural(adultCount, 'Adult')}${childCount ? `, ${plural(childCount, 'Child', 'Children')}` : ''}`;
+        summary.nights.textContent = nights ? plural(nights, 'Night') : 'Choose Dates';
+        summary.lodge.textContent = selectedLodge.label;
+        summary.total.textContent = `From $${Math.max(total, selected.base * guestCount).toLocaleString()}`;
+        setStepState();
+      };
+
+      const selectPackage = card => {
+        cards.forEach(item => {
+          item.classList.toggle('selected', item === card);
+          item.setAttribute('aria-checked', item === card ? 'true' : 'false');
+        });
+        const pkg = packageData[card.id];
+        if (pkg.lodge) lodge.value = pkg.lodge;
+        updateSummary();
+      };
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => selectPackage(card));
+        card.addEventListener('keydown', event => {
+          if (event.key === ' ' || event.key === 'Enter') {
+            event.preventDefault();
+            selectPackage(card);
+          }
+        });
       });
-      card.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); card.click(); } });
-    });
-    // Form submission placeholder
-    document.getElementById('booking-form-main').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('booking-submit-btn');
-      btn.textContent = '✓ Request Sent — We\'ll be in touch within 24 hours';
-      btn.disabled = true;
-      btn.style.background = '#5E9E6B';
-    });
+
+      [arrival, departure, adults, children, lodge, country].forEach(input => {
+        input.addEventListener('input', () => {
+          updateDepartureMinimum();
+          updateSummary();
+        });
+        input.addEventListener('change', () => {
+          updateDepartureMinimum();
+          updateSummary();
+        });
+      });
+
+      form.querySelectorAll('input, textarea, select').forEach(input => {
+        input.addEventListener('input', setStepState);
+        input.addEventListener('change', setStepState);
+      });
+
+      const clearErrors = () => {
+        form.querySelectorAll('.form-error').forEach(error => error.remove());
+        form.querySelectorAll('.is-invalid').forEach(input => input.classList.remove('is-invalid'));
+      };
+
+      const showError = (input, message) => {
+        input.classList.add('is-invalid');
+        const error = document.createElement('div');
+        error.className = 'form-error';
+        error.textContent = message;
+        input.closest('.form-group, .form-checkbox').appendChild(error);
+      };
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        clearErrors();
+
+        const errors = [];
+        if (!arrival.value) errors.push([arrival, 'Choose an arrival date.']);
+        if (!departure.value) errors.push([departure, 'Choose a departure date.']);
+        if (arrival.value && departure.value && getNights() <= 0) errors.push([departure, 'Departure must be after arrival.']);
+        ['booking-first', 'booking-last', 'booking-email'].forEach(id => {
+          const input = document.getElementById(id);
+          if (!input.validity.valid) errors.push([input, input.type === 'email' ? 'Enter a valid email address.' : 'This field is required.']);
+        });
+        const terms = document.getElementById('booking-terms');
+        if (!terms.checked) errors.push([terms, 'Please accept the booking terms before submitting.']);
+
+        if (errors.length) {
+          errors.forEach(([input, message]) => showError(input, message));
+          errors[0][0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          errors[0][0].focus({ preventScroll: true });
+          setStepState();
+          return;
+        }
+
+        const btn = document.getElementById('booking-submit-btn');
+        btn.textContent = 'Request Sent - We will be in touch within 24 hours';
+        btn.disabled = true;
+        btn.style.background = '#5E9E6B';
+        localStorage.setItem('lastBookingRequest', JSON.stringify({
+          package: getSelectedPackage().label,
+          arrival: arrival.value,
+          departure: departure.value,
+          adults: adults.value,
+          children: children.value,
+          lodge: summary.lodge.textContent,
+          total: summary.total.textContent
+        }));
+        setStepState();
+      });
+
+      document.querySelectorAll('.accordion-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.closest('.accordion-item');
+          const panel = document.getElementById(button.getAttribute('aria-controls'));
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('#booking-faq .accordion-item').forEach(other => {
+            other.classList.remove('open');
+            const otherButton = other.querySelector('.accordion-btn');
+            const otherPanel = other.querySelector('.accordion-panel');
+            otherButton.setAttribute('aria-expanded', 'false');
+            otherPanel.style.maxHeight = '0';
+          });
+          if (!isOpen) {
+            item.classList.add('open');
+            button.setAttribute('aria-expanded', 'true');
+            panel.style.maxHeight = `${panel.scrollHeight + 24}px`;
+          }
+        });
+      });
+
+      const scrollToForm = note => {
+        if (note && requests && !requests.value.trim()) requests.value = note;
+        document.getElementById('booking-form-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => requests.focus(), 450);
+      };
+
+      document.getElementById('booking-msg-btn').addEventListener('click', event => {
+        event.preventDefault();
+        scrollToForm('I would like the reservations team to contact me before I book.');
+      });
+      document.getElementById('booking-group-enquiry').addEventListener('click', event => {
+        event.preventDefault();
+        selectPackage(document.getElementById('pkg-custom'));
+        scrollToForm('I am planning a group or private retreat. Please help me design the programme.');
+      });
+      document.getElementById('booking-cta-contact').addEventListener('click', event => {
+        event.preventDefault();
+        scrollToForm('I would like to talk to the team before confirming my dates.');
+      });
+
+      updateSummary();
+    })();
   </script>
   <script src="upgrade_script.js"></script>
 </body>

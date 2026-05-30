@@ -12,9 +12,9 @@ const imgMap = {
 };
 
 const extraContent = `
-    <!-- ═══════════════════════════════════════
-         NEW SECTION — COMMITMENT
-    ═══════════════════════════════════════ -->
+    <!-- =======================================
+         NEW SECTION - COMMITMENT
+    ======================================= -->
     <section class="section bg-texture section-forest" style="padding-top: 4rem; padding-bottom: 4rem;">
       <div class="container text-center">
         <div class="section-label reveal"><i class="fa-solid fa-leaf"></i> Our Promise</div>
@@ -25,9 +25,9 @@ const extraContent = `
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════
-         NEW SECTION — EXPLORER STORIES
-    ═══════════════════════════════════════ -->
+    <!-- =======================================
+         NEW SECTION - EXPLORER STORIES
+    ======================================= -->
     <section class="section bg-coal section-dusk">
       <div class="container">
         <div class="section-header flex-between" style="margin-bottom: 3rem;">
@@ -42,21 +42,21 @@ const extraContent = `
             <p class="exp-card-text" style="font-style: italic; margin-bottom: 1.5rem;">
               "An absolutely life-changing experience. The guides were incredibly knowledgeable and the cinematic beauty of the environment was beyond words. Terravana is a true sanctuary."
             </p>
-            <div class="section-label" style="margin: 0; color: var(--gold); font-size: 0.7rem;">— Sarah Jenkins, UK</div>
+            <div class="section-label" style="margin: 0; color: var(--gold); font-size: 0.7rem;">- Sarah Jenkins, UK</div>
           </div>
           <div class="exp-card review-card reveal reveal-delay-1">
             <div class="review-stars" style="color: var(--gold); margin-bottom: 1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
             <p class="exp-card-text" style="font-style: italic; margin-bottom: 1.5rem;">
               "I've traveled all over the world, but the level of detail and eco-conscious luxury here is unmatched. The immersive nature walks felt like stepping into another world."
             </p>
-            <div class="section-label" style="margin: 0; color: var(--gold); font-size: 0.7rem;">— Michael Chen, Canada</div>
+            <div class="section-label" style="margin: 0; color: var(--gold); font-size: 0.7rem;">- Michael Chen, Canada</div>
           </div>
           <div class="exp-card review-card reveal reveal-delay-2">
             <div class="review-stars" style="color: var(--gold); margin-bottom: 1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
             <p class="exp-card-text" style="font-style: italic; margin-bottom: 1.5rem;">
               "If you want to disconnect from the noise of the city and reconnect with the raw pulse of the wild, this is the place. Stunning architecture blending perfectly with nature."
             </p>
-            <div class="section-label" style="margin: 0; color: var(--gold); font-size: 0.7rem;">— Emma Rossi, Italy</div>
+            <div class="section-label" style="margin: 0; color: var(--gold); font-size: 0.7rem;">- Emma Rossi, Italy</div>
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@ fs.readdirSync(dir).forEach(file => {
     }
     
     // Inject new sections before footer
-    if (!content.includes('NEW SECTION — EXPLORER STORIES')) {
+    if (!content.includes('NEW SECTION - EXPLORER STORIES')) {
       content = content.replace('<footer class="footer">', extraContent + '\n    <footer class="footer">');
     }
     

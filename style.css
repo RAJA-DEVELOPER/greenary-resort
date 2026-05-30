@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* -- Google Fonts -- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
 /* -- CSS Custom Properties -- */
 :root {
@@ -1584,7 +1584,7 @@ html {
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.6fr repeat(3, 1fr);
+  grid-template-columns: minmax(260px, 1.35fr) minmax(130px, 0.7fr) minmax(130px, 0.7fr) minmax(360px, 1.25fr);
   gap: 4rem;
   padding-bottom: 4rem;
   border-bottom: 1px solid rgba(198,169,114,0.08);
@@ -1592,7 +1592,7 @@ html {
 
 @media (min-width: 1201px) {
   .footer-top {
-    grid-template-columns: 2.15fr repeat(3, 1fr);
+    grid-template-columns: minmax(280px, 1.4fr) minmax(130px, 0.72fr) minmax(130px, 0.72fr) minmax(380px, 1.28fr);
   }
 
   .footer-top > div:not(.footer-brand) {
@@ -1673,21 +1673,24 @@ html {
 }
 
 .footer-email-form {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
-  max-width: 260px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 108px;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  max-width: 460px;
+  width: 100%;
 }
 
 .footer-email-input {
   min-width: 0;
-  flex: 1;
-  height: 40px;
+  width: 100%;
+  height: 44px;
   border: 1px solid rgba(198,169,114,0.18);
   border-radius: 4px;
   background: rgba(232,224,213,0.04);
   color: var(--ivory);
-  padding: 0 0.85rem;
+  padding: 0 1rem;
   font-family: var(--font-ui);
   font-size: 0.78rem;
   outline: none;
@@ -1704,12 +1707,17 @@ html {
 }
 
 .footer-email-btn {
-  height: 40px;
+  height: 44px;
+  width: 108px;
+  min-width: 0;
   border: 1px solid var(--gold);
   border-radius: 4px;
   background: var(--gold);
   color: var(--coal);
   padding: 0 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-ui);
   font-size: 0.68rem;
   font-weight: 800;
@@ -2324,7 +2332,7 @@ html {
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.footer-top { grid-template-columns: 1.9fr repeat(3, minmax(0, 1fr)); }
+.footer-top { grid-template-columns: minmax(260px, 1.35fr) minmax(130px, 0.7fr) minmax(130px, 0.7fr) minmax(360px, 1.25fr); }
 .footer-bottom { flex-direction: row; text-align: left; }
 .hero-scroll { display: flex; }
 .gallery-masonry { columns: 3; }
@@ -2472,6 +2480,7 @@ table {
   .grid-3,
   .grid-4 { grid-template-columns: minmax(0, 1fr); }
   .footer-top { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .footer-email-form { max-width: 100%; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .footer-legal { flex-wrap: wrap; justify-content: center; gap: 1rem 1.5rem; }
   .gallery-masonry { columns: 1; }
@@ -2550,6 +2559,8 @@ table {
   .stat-item:last-child { border-bottom: none; }
   .nav-logo-main { font-size: 0.95rem; }
   .nav-logo-sub { font-size: 0.4rem; letter-spacing: 0.2em; }
+  .footer-email-form { grid-template-columns: minmax(0, 1fr); }
+  .footer-email-btn { width: 100%; }
 }
 
 /* ============================================================
@@ -3029,5 +3040,101 @@ select {
 @media print {
   #navbar, #page-loader, #cursor-dot, #cursor-ring { display: none; }
   body { background: white; color: black; }
+}
+
+/* ============================================================
+   SITE-WIDE MOTION FOUNDATION
+   ============================================================ */
+
+.btn-primary,
+.nav-cta,
+#back-to-top,
+.footer-email-btn {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0) 42%),
+    linear-gradient(135deg, #DCA943 0%, #F0C865 56%, #C9922E 100%) !important;
+  color: #06100B !important;
+  border: 1px solid rgba(255,225,128,0.34) !important;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.24),
+    0 6px 18px rgba(220,169,67,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.34),
+    inset 0 -1px 0 rgba(87,57,11,0.22) !important;
+}
+
+.btn-primary:hover,
+.nav-cta:hover,
+#back-to-top:hover,
+.footer-email-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 26px rgba(0,0,0,0.28),
+    0 8px 22px rgba(220,169,67,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(87,57,11,0.24) !important;
+}
+
+@keyframes pageHeroDrift {
+  0% { transform: scale(1.04) translate3d(0, 0, 0); }
+  50% { transform: scale(1.09) translate3d(-1.2%, -0.8%, 0); }
+  100% { transform: scale(1.04) translate3d(0, 0, 0); }
+}
+
+@keyframes imageBloom {
+  from {
+    opacity: 0;
+    transform: scale(1.055);
+    filter: saturate(0.75) contrast(0.9) blur(7px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: saturate(1.04) contrast(1.02) blur(0);
+  }
+}
+
+.page-hero .hero-bg,
+.hero .hero-bg {
+  animation: pageHeroDrift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.motion-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-expo), transform 0.9s var(--ease-expo);
+}
+
+.motion-section.motion-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motion-image {
+  opacity: 0;
+  transform-origin: center;
+}
+
+.motion-image.motion-visible {
+  animation: imageBloom 1.05s var(--ease-expo) both;
+}
+
+.magnetic-ready {
+  transition: transform 0.18s ease-out, box-shadow 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero .hero-bg,
+  .hero .hero-bg,
+  .motion-image.motion-visible {
+    animation: none !important;
+  }
+
+  .motion-section,
+  .motion-image {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
 }
 

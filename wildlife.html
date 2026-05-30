@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wildlife — TERRAVANA WILDS</title>
+  <title>Wildlife - TERRAVANA WILDS</title>
   <meta name="description"
     content="Discover 320+ wildlife species through guided safaris, dawn expeditions, and nocturnal forest walks at Terravana Wilds Eco-Adventure Resort." />
   <link rel="stylesheet" href="style.css" />
@@ -104,6 +104,31 @@
       line-height: 1.6;
     }
 
+    /* Safari footer responsive */
+    .adv-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 600px) {
+      .adv-card-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .adv-card-footer .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .price-tag {
+        width: 100%;
+      }
+    }
+
     /* Safari cards */
     .safari-card {
       background: rgba(27, 29, 31, 0.7);
@@ -175,6 +200,80 @@
       text-align: center;
     }
 
+    .habitat-insight {
+      margin-top: 2.25rem;
+      border: 1px solid rgba(198, 169, 114, 0.16);
+      border-radius: 4px;
+      background: linear-gradient(145deg, rgba(27, 29, 31, 0.68), rgba(7, 10, 9, 0.92));
+      overflow: hidden;
+    }
+
+    .habitat-insight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 100px;
+      background: rgba(5, 6, 8, 0.72);
+      border: 1px solid rgba(198, 169, 114, 0.2);
+      color: var(--gold);
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .habitat-insight-body {
+      padding: 1.5rem;
+    }
+
+    .habitat-insight-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--ivory);
+      margin-bottom: 0.5rem;
+    }
+
+    .habitat-insight-text {
+      font-size: 0.84rem;
+      line-height: 1.7;
+      color: rgba(232, 224, 213, 0.62);
+      margin-bottom: 1.25rem;
+    }
+
+    .habitat-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .habitat-metric {
+      padding: 0.85rem;
+      border: 1px solid rgba(198, 169, 114, 0.1);
+      background: rgba(250, 248, 245, 0.035);
+    }
+
+    .habitat-metric strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .habitat-metric span {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      line-height: 1.35;
+      text-transform: uppercase;
+      color: rgba(232, 224, 213, 0.5);
+    }
+
     /* Conservation */
     .conservation-card {
       background: linear-gradient(135deg, rgba(27, 29, 31, 0.9) 0%, rgba(17, 19, 21, 0.95) 100%);
@@ -193,12 +292,17 @@
       .species-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .habitat-metrics {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 600px) {
       .species-grid {
         grid-template-columns: 1fr;
       }
+
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -218,7 +322,7 @@
   <div id="cursor-dot" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
   <button id="back-to-top" aria-label="Back to top"
-    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">↑</button>
+    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
 
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
@@ -236,8 +340,7 @@
         <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
         <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
         <a href="about.html" class="nav-link" role="listitem">About</a>
-        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
-      </div>
+        </div>
 
       <div style="display:flex; align-items:center; gap:1rem;">
         <a href="booking.html" class="nav-cta">Book Now</a>
@@ -262,8 +365,7 @@
       href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html" class="nav-link">Waterfalls</a><a
       href="ecoresorts.html" class="nav-link">Eco Resorts</a><a href="seasonal.html" class="nav-link">Seasons</a><a
       href="gallery.html" class="nav-link">Gallery</a><a href="reviews.html" class="nav-link">Reviews</a><a
-      href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a>
-    <a href="booking.html" class="nav-cta">Book Your Journey</a>
+      href="about.html" class="nav-link">About</a><a href="booking.html" class="nav-cta">Book Your Journey</a>
   </div>
 
   <main>
@@ -279,9 +381,9 @@
       <div class="container">
         <div class="hero-content">
           <div class="breadcrumb" style="animation:fadeUp 0.6s ease 0.3s both;"><a href="index.html">Home</a><span
-              class="breadcrumb-sep">›</span><a href="adventures.html">Adventures</a><span
-              class="breadcrumb-sep">›</span><span class="breadcrumb-current">Wildlife</span></div>
-          <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">320+ Species · 6 Safari
+              class="breadcrumb-sep">&rsaquo;</span><a href="adventures.html">Adventures</a><span
+              class="breadcrumb-sep">&rsaquo;</span><span class="breadcrumb-current">Wildlife</span></div>
+          <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">320+ Species &middot; 6 Safari
               Types</span></div>
           <h1 class="hero-title">Wild Eyes,<br /><em>Ancient</em> Souls</h1>
           <p class="hero-subtitle">Step into corridors where leopards move at dusk, elephants graze at dawn, and the
@@ -340,12 +442,12 @@
             <div class="section-label">A Living Wilderness</div>
             <h2 class="section-title fs-h2">Where Every <em>Shadow</em> Has a Name</h2>
             <div class="divider"></div>
-            <p class="section-desc">Terravana Wilds sits within one of the most biodiverse ecosystems in the region — a
+            <p class="section-desc">Terravana Wilds sits within one of the most biodiverse ecosystems in the region - a
               mosaic of tropical rainforest, cloud forest, and wetland habitats supporting over 320 documented species.
             </p>
             <p class="section-desc" style="margin-top:1.25rem;">Our naturalist team has spent years mapping wildlife
               corridors, identifying individual animals, and building the deepest possible knowledge of this living
-              system — so that when you visit, you step into a world already known and loved by your guide.</p>
+              system - so that when you visit, you step into a world already known and loved by your guide.</p>
           </div>
           <div class="reveal-right">
             <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=900&q=80"
@@ -388,11 +490,11 @@
                 src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=500&q=75" alt="Forest Leopard"
                 loading="lazy" /></div>
             <div class="species-card-body">
-              <span class="species-status status-vulnerable">● Vulnerable</span>
+              <span class="species-status status-vulnerable">&bull; Vulnerable</span>
               <div class="species-name">Forest Leopard</div>
               <div class="species-latin">Panthera pardus</div>
               <p class="species-desc">Our most elusive resident. Best spotted at dusk in the eastern corridors.
-                Approximately 6–8 individuals inhabit Terravana's core zone.</p>
+                Approximately 6-8 individuals inhabit Terravana's core zone.</p>
             </div>
           </div>
           <div class="species-card reveal reveal-delay-1">
@@ -400,10 +502,10 @@
                 src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=500&q=75" alt="Asian Elephant"
                 loading="lazy" /></div>
             <div class="species-card-body">
-              <span class="species-status status-endangered">● Endangered</span>
+              <span class="species-status status-endangered">&bull; Endangered</span>
               <div class="species-name">Asian Elephant</div>
               <div class="species-latin">Elephas maximus</div>
-              <p class="species-desc">A family group of 14–18 individuals moves through Terravana seasonally. Dawn
+              <p class="species-desc">A family group of 14-18 individuals moves through Terravana seasonally. Dawn
                 encounters at the salt lick are among our most treasured experiences.</p>
             </div>
           </div>
@@ -412,7 +514,7 @@
                 src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=500&q=75" alt="Giant Hornbill"
                 loading="lazy" /></div>
             <div class="species-card-body">
-              <span class="species-status status-vulnerable">● Vulnerable</span>
+              <span class="species-status status-vulnerable">&bull; Vulnerable</span>
               <div class="species-name">Great Hornbill</div>
               <div class="species-latin">Buceros bicornis</div>
               <p class="species-desc">The forest's most spectacular aviator. Nest monitoring of 3 pairs is part of our
@@ -424,11 +526,11 @@
                 src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=75" alt="Sun Bear"
                 loading="lazy" /></div>
             <div class="species-card-body">
-              <span class="species-status status-vulnerable">● Vulnerable</span>
+              <span class="species-status status-vulnerable">&bull; Vulnerable</span>
               <div class="species-name">Sun Bear</div>
               <div class="species-latin">Helarctos malayanus</div>
               <p class="species-desc">The world's smallest bear, shy and rarely seen. Camera trap evidence suggests a
-                thriving local population of 8–12 individuals in our western zone.</p>
+                thriving local population of 8-12 individuals in our western zone.</p>
             </div>
           </div>
         </div>
@@ -448,14 +550,14 @@
             <div class="safari-img">
               <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700&q=80" alt="Dawn Safari"
                 loading="lazy" />
-              <div class="safari-badge"><span class="diff-badge diff-easy">● Easy · All Ages</span></div>
+              <div class="safari-badge"><span class="diff-badge diff-easy">&bull; Easy &middot; All Ages</span></div>
             </div>
             <div class="safari-body">
               <h3 class="exp-card-title">Dawn Wildlife Safari</h3>
               <div class="safari-meta">
-                <span class="safari-feature"><i class="fa-solid fa-sun"></i> 5:30am – 10:30am</span>
+                <span class="safari-feature"><i class="fa-solid fa-sun"></i> 5:30am - 10:30am</span>
                 <span class="safari-feature"><i class="fa-solid fa-users"></i> Max 8 guests</span>
-                <span class="safari-feature"><i class="fa-solid fa-paw"></i> Mammals · Birds</span>
+                <span class="safari-feature"><i class="fa-solid fa-paw"></i> Mammals &middot; Birds</span>
               </div>
               <p class="exp-card-text">The forest comes alive before sunrise. This guided 5-hour expedition targets
                 prime wildlife corridors during peak activity hours with the best light for photography.</p>
@@ -464,7 +566,7 @@
                 <div class="price-tag"><span class="price-from">From</span><span class="price-amount">$145</span><span
                     class="price-unit">/person</span></div>
                 <a href="booking.html" class="btn btn-outline-gold" id="safari1-book"
-                  style="padding:0.65rem 1.25rem;font-size:0.68rem;">Book →</a>
+                  style="padding:0.65rem 1.25rem;font-size:0.68rem;">Book &rarr;</a>
               </div>
             </div>
           </div>
@@ -472,15 +574,14 @@
             <div class="safari-img">
               <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=700&q=80" alt="Night Safari"
                 loading="lazy" />
-              <div class="safari-badge"><span class="diff-badge diff-mod">● Moderate · 12+</span></div>
+              <div class="safari-badge"><span class="diff-badge diff-mod">&bull; Moderate &middot; 12+</span></div>
             </div>
             <div class="safari-body">
               <h3 class="exp-card-title">Nocturnal Forest Walk</h3>
               <div class="safari-meta">
-                <span class="safari-feature"><i class="fa-solid fa-moon"></i> 8pm – 12am</span>
+                <span class="safari-feature"><i class="fa-solid fa-moon"></i> 8pm - 12am</span>
                 <span class="safari-feature"><i class="fa-solid fa-users"></i> Max 6 guests</span>
-                <span class="safari-feature"><i class="fa-solid fa-circle-dot"
-                    style="font-size: 0.8em; opacity: 0.5;"></i> Nocturnal Species</span>
+                <span class="safari-feature"><i class="fa-solid fa-paw"></i> Nocturnal Species</span>
               </div>
               <p class="exp-card-text">Enter a completely different forest after dark. With specialist equipment and
                 expert guidance, discover owls, lorises, civets, and bioluminescent organisms.</p>
@@ -489,7 +590,7 @@
                 <div class="price-tag"><span class="price-from">From</span><span class="price-amount">$115</span><span
                     class="price-unit">/person</span></div>
                 <a href="booking.html" class="btn btn-outline-gold" id="safari2-book"
-                  style="padding:0.65rem 1.25rem;font-size:0.68rem;">Book →</a>
+                  style="padding:0.65rem 1.25rem;font-size:0.68rem;">Book &rarr;</a>
               </div>
             </div>
           </div>
@@ -497,13 +598,12 @@
             <div class="safari-img">
               <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=700&q=80" alt="Bird Walk"
                 loading="lazy" />
-              <div class="safari-badge"><span class="diff-badge diff-easy">● Easy · All Ages</span></div>
+              <div class="safari-badge"><span class="diff-badge diff-easy">&bull; Easy &middot; All Ages</span></div>
             </div>
             <div class="safari-body">
               <h3 class="exp-card-title">Birding Expedition</h3>
               <div class="safari-meta">
-                <span class="safari-feature"><i class="fa-solid fa-circle-dot"
-                    style="font-size: 0.8em; opacity: 0.5;"></i> 5am – 9am</span>
+                <span class="safari-feature"><i class="fa-solid fa-clock"></i> 5am - 9am</span>
                 <span class="safari-feature"><i class="fa-solid fa-users"></i> Max 6 guests</span>
                 <span class="safari-feature"><i class="fa-solid fa-dove"></i> 180+ Bird Species</span>
               </div>
@@ -514,7 +614,7 @@
                 <div class="price-tag"><span class="price-from">From</span><span class="price-amount">$95</span><span
                     class="price-unit">/person</span></div>
                 <a href="booking.html" class="btn btn-outline-gold" id="safari3-book"
-                  style="padding:0.65rem 1.25rem;font-size:0.68rem;">Book →</a>
+                  style="padding:0.65rem 1.25rem;font-size:0.68rem;">Book &rarr;</a>
               </div>
             </div>
           </div>
@@ -530,14 +630,28 @@
             <div class="section-label">Ecosystems</div>
             <h2 class="section-title fs-h2">Five <em>Habitats,</em><br />One Forest</h2>
             <div class="divider"></div>
-            <p class="section-desc">Terravana's unique geography creates a stacking of distinct ecological zones — each
+            <p class="section-desc">Terravana's unique geography creates a stacking of distinct ecological zones - each
               home to its own community of species.</p>
+            <div class="habitat-insight">
+              <div class="habitat-insight-body">
+                <div class="habitat-insight-badge"><i class="fa-solid fa-location-crosshairs"></i> Field Notes</div>
+                <div class="habitat-insight-title">How We Track Movement</div>
+                <p class="habitat-insight-text">Our guides read fresh prints, alarm calls, fruiting trees, and camera
+                  trap signals before each safari. Routes shift daily so guests follow real wildlife activity instead
+                  of fixed tourist circuits.</p>
+                <div class="habitat-metrics">
+                  <div class="habitat-metric"><strong>5</strong><span>Habitat bands</span></div>
+                  <div class="habitat-metric"><strong>60+</strong><span>Camera traps</span></div>
+                  <div class="habitat-metric"><strong>Dawn</strong><span>Best tracking window</span></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="reveal-right">
             <div class="habitat-zone">
               <div class="habitat-icon"><i class="fa-solid fa-tree"></i></div>
               <div>
-                <div class="timeline-title">Lowland Rainforest · 200–600m</div>
+                <div class="timeline-title">Lowland Rainforest &middot; 200-600m</div>
                 <div class="timeline-text">Primary forest floor with emergent giants, fig trees, and the highest mammal
                   density. Home to elephants, sambar deer, and porcupines.</div>
               </div>
@@ -545,15 +659,15 @@
             <div class="habitat-zone">
               <div class="habitat-icon"><i class="fa-solid fa-leaf"></i></div>
               <div>
-                <div class="timeline-title">Riparian Corridor · Riverbanks</div>
-                <div class="timeline-text">Linear forest along river channels — critical wildlife superhighways. Otters,
+                <div class="timeline-title">Riparian Corridor &middot; Riverbanks</div>
+                <div class="timeline-text">Linear forest along river channels - critical wildlife superhighways. Otters,
                   kingfishers, and elephant drinking sites.</div>
               </div>
             </div>
             <div class="habitat-zone">
               <div class="habitat-icon"><i class="fa-solid fa-cloud"></i></div>
               <div>
-                <div class="timeline-title">Cloud Forest · 1,200–2,200m</div>
+                <div class="timeline-title">Cloud Forest &middot; 1,200-2,200m</div>
                 <div class="timeline-text">Perpetually mist-draped and carpeted with moss. Home to the leopard, hornbill
                   colonies, and endemic orchid species.</div>
               </div>
@@ -561,8 +675,8 @@
             <div class="habitat-zone">
               <div class="habitat-icon"><i class="fa-solid fa-mountain-sun"></i></div>
               <div>
-                <div class="timeline-title">Alpine Shrubland · 2,200m+</div>
-                <div class="timeline-text">Windswept and spare. Rare raptors soar here — crested serpent eagles,
+                <div class="timeline-title">Alpine Shrubland &middot; 2,200m+</div>
+                <div class="timeline-text">Windswept and spare. Rare raptors soar here - crested serpent eagles,
                   mountain hawk-eagles, and during migration, steppe eagles.</div>
               </div>
             </div>
@@ -570,7 +684,7 @@
               <div class="habitat-icon"><i class="fa-solid fa-wheat-awn"></i></div>
               <div>
                 <div class="timeline-title">Grassland Clearings</div>
-                <div class="timeline-text">Open glades maintained by elephant browsing — prime locations for spotting
+                <div class="timeline-text">Open glades maintained by elephant browsing - prime locations for spotting
                   gaur, spotted deer, and resident leopards at dusk.</div>
               </div>
             </div>
@@ -637,13 +751,13 @@
             <div class="section-label">For Photographers</div>
             <h2 class="section-title fs-h2">The <em>Perfect</em> Shot Awaits</h2>
             <div class="divider"></div>
-            <p class="section-desc">Our dedicated Wildlife Photography Safari is designed with image-makers in mind —
+            <p class="section-desc">Our dedicated Wildlife Photography Safari is designed with image-makers in mind -
               from positioning to light prediction, our guide becomes your creative collaborator.</p>
             <div class="timeline" style="margin-top:2rem;">
               <div class="timeline-item">
                 <div class="timeline-label">Golden Hour</div>
                 <div class="timeline-title">Dawn & Dusk Positioning</div>
-                <div class="timeline-text">We position you at the optimal light angles — leopard watch points at dusk,
+                <div class="timeline-text">We position you at the optimal light angles - leopard watch points at dusk,
                   elephant crossings at dawn.</div>
               </div>
               <div class="timeline-item">
@@ -677,7 +791,7 @@
         <div class="grid-3">
           <div class="exp-card reveal" style="border-left:3px solid var(--gold);">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
-              <span class="chip"><i class="fa-solid fa-circle-dot" style="font-size: 0.8em; opacity: 0.5;"></i>
+              <span class="chip"><i class="fa-solid fa-paw"></i>
                 Leopard</span>
               <span style="font-size:0.72rem;color:rgba(232,224,213,0.4);">2 days ago</span>
             </div>
@@ -691,7 +805,7 @@
               <span style="font-size:0.72rem;color:rgba(232,224,213,0.4);">3 days ago</span>
             </div>
             <div class="exp-card-title">Northern River Corridor</div>
-            <p class="exp-card-text">Full family group of 18 crossed the river at dawn. One juvenile estimated 6–8
+            <p class="exp-card-text">Full family group of 18 crossed the river at dawn. One juvenile estimated 6-8
               months old.</p>
           </div>
           <div class="exp-card reveal reveal-delay-2" style="border-left:3px solid #5E6B75;">
@@ -700,7 +814,7 @@
               <span style="font-size:0.72rem;color:rgba(232,224,213,0.4);">Yesterday</span>
             </div>
             <div class="exp-card-title">Fig Tree Cluster, Zone 3</div>
-            <p class="exp-card-text">Pair at the ficus tree — possible nesting behaviour observed. Extraordinary close
+            <p class="exp-card-text">Pair at the ficus tree - possible nesting behaviour observed. Extraordinary close
               encounter at 30m distance.</p>
           </div>
         </div>
@@ -719,8 +833,8 @@
           the patience to truly witness it."
         </blockquote>
         <div style="text-align:center;margin-top:2rem;">
-          <p style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.5);">— Arjun Rao, Lead Wildlife
-            Naturalist · Terravana Wilds</p>
+          <p style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.5);">- Arjun Rao, Lead Wildlife
+            Naturalist &middot; Terravana Wilds</p>
         </div>
       </div>
     </section>
@@ -771,7 +885,7 @@
         </div>
         <div
           style="background:rgba(27,29,31,0.8);border:1px solid rgba(198,169,114,0.15);border-radius:4px;padding:3rem;">
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.5rem;">
+          <ul style="list-style:none;padding:0;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem;max-width:760px;">
             <li style="display:flex;align-items:flex-start;gap:1rem;">
               <span style="font-size:1.5rem;color:var(--gold);line-height:1;">1.</span>
               <div>
@@ -817,7 +931,7 @@
             <div class="section-label">Field Science</div>
             <h2 class="section-title fs-h2">Research <em>Internships</em></h2>
             <div class="divider"></div>
-            <p class="section-desc">Are you a university student studying ecology or zoology? Terravana offers highly
+            <p class="section-desc">Are you a university student studying ecology or zoology Terravana offers highly
               competitive 8-week field biology internships during the summer. Work alongside our naturalists on camera
               trap data, scat analysis, and biodiversity surveys.</p>
             <a href="mailto:research@terravanawilds.com" class="btn btn-outline-gold" style="margin-top:1.5rem;">Apply
@@ -872,12 +986,11 @@
         </div>
         <div>
           <h3 class="footer-col-title">Connect</h3>
-          <nav class="footer-links"><a href="about.html" class="footer-link">About Us</a><a href="contact.html"
-              class="footer-link">Contact</a></nav><form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required><button class="footer-email-btn" type="submit">Submit</button></form>
+          <nav class="footer-links"><a href="about.html" class="footer-link">About Us</a></nav><form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required><button class="footer-email-btn" type="submit">Submit</button></form>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Terravana Wilds. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2025 Terravana Wilds. All rights reserved.</p>
         <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Eco Charter</a>
         </nav>
       </div>

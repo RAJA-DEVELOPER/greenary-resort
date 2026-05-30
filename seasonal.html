@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seasonal Guide — TERRAVANA WILDS</title>
+  <title>Seasonal Guide - TERRAVANA WILDS</title>
   <meta name="description"
-    content="Plan your perfect Terravana Wilds visit with our complete seasonal guide. Monsoon drama, autumn wildlife, winter stargazing, and summer treks — every season is an adventure." />
+    content="Plan your perfect Terravana Wilds visit with our complete seasonal guide. Monsoon drama, autumn wildlife, winter stargazing, and summer treks - every season is an adventure." />
   <link rel="stylesheet" href="style.css" />
   <style>
     .season-hero-strip {
@@ -86,7 +86,7 @@
       display: grid;
       grid-template-columns: 1fr 1.2fr;
       gap: 6rem;
-      align-items: start;
+      align-items: stretch;
     }
 
     .season-block:nth-child(even) .season-block-inner {
@@ -100,11 +100,14 @@
     .season-img {
       border-radius: 4px;
       overflow: hidden;
+      height: 100%;
+      min-height: 560px;
     }
 
     .season-img img {
       width: 100%;
-      height: 480px;
+      height: 100%;
+      min-height: 560px;
       object-fit: cover;
       transition: transform var(--dur-slow) var(--ease-smooth);
     }
@@ -135,7 +138,7 @@
     }
 
     .season-highlight::before {
-      content: '✨';
+      content: '*';
       color: var(--gold);
       font-size: 0.9rem;
       margin-right: 0.25rem;
@@ -201,6 +204,11 @@
         gap: 3rem;
       }
 
+      .season-img,
+      .season-img img {
+        min-height: 420px;
+      }
+
       .season-block:nth-child(even) .season-block-inner {
         direction: ltr;
       }
@@ -217,6 +225,11 @@
     @media (max-width: 600px) {
       .season-hero-strip {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .season-img,
+      .season-img img {
+        min-height: 300px;
       }
 
       .weather-strip {
@@ -241,7 +254,7 @@
   <div id="cursor-dot" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
   <button id="back-to-top" aria-label="Back to top"
-    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">↑</button>
+    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
 
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
@@ -259,8 +272,7 @@
         <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
         <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
         <a href="about.html" class="nav-link" role="listitem">About</a>
-        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
-      </div>
+        </div>
 
       <div style="display:flex; align-items:center; gap:1rem;">
         <a href="booking.html" class="nav-cta">Book Now</a>
@@ -285,9 +297,7 @@
       href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html" class="nav-link">Waterfalls</a><a
       href="ecoresorts.html" class="nav-link">Eco Resorts</a><a href="seasonal.html"
       class="nav-link active">Seasons</a><a href="gallery.html" class="nav-link">Gallery</a><a href="reviews.html"
-      class="nav-link">Reviews</a><a href="about.html" class="nav-link">About</a><a href="contact.html"
-      class="nav-link">Contact</a>
-    <a href="booking.html" class="nav-cta">Book Your Journey</a>
+      class="nav-link">Reviews</a><a href="about.html" class="nav-link">About</a><a href="booking.html" class="nav-cta">Book Your Journey</a>
   </div>
 
   <main>
@@ -295,17 +305,17 @@
     <section class="hero hero-md" id="hero" aria-label="Seasonal guide hero">
       <div class="hero-media">
         <img src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=1920&q=80"
-          alt="Forest changing with seasons — dramatic light through ancient trees" class="hero-bg" loading="eager"
+          alt="Forest changing with seasons - dramatic light through ancient trees" class="hero-bg" loading="eager"
           fetchpriority="high" />
         <div class="hero-overlay"></div>
       </div>
       <div class="container">
         <div class="hero-content">
-          <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">Four Seasons · One Wild
+          <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">Four Seasons &middot; One Wild
               Heart</span></div>
           <h1 class="hero-title">The Forest<br /><em>Never</em> Rests</h1>
           <p class="hero-subtitle">Every season transforms Terravana into a completely different world. There is no
-            wrong time — only different kinds of right.</p>
+            wrong time - only different kinds of right.</p>
           <div class="hero-actions">
             <a href="#season-guide" class="btn btn-primary" id="seasonal-hero-explore">Explore Seasons</a>
             <a href="booking.html" class="btn btn-ghost" id="seasonal-hero-book">Plan My Visit</a>
@@ -324,8 +334,8 @@
             loading="lazy" />
           <div class="season-panel-overlay"></div>
           <div class="season-panel-content">
-            <div class="season-panel-label">Jun – Sep</div>
-            <div class="season-panel-name"><i class="fa-solid fa-cloud-showers-heavy"></i>️ Monsoon</div>
+            <div class="season-panel-label">Jun - Sep</div>
+            <div class="season-panel-name"><i class="fa-solid fa-cloud-showers-heavy"></i> Monsoon</div>
             <div class="season-panel-months">Maximum drama</div>
           </div>
         </a>
@@ -334,7 +344,7 @@
             loading="lazy" />
           <div class="season-panel-overlay"></div>
           <div class="season-panel-content">
-            <div class="season-panel-label">Oct – Nov</div>
+            <div class="season-panel-label">Oct - Nov</div>
             <div class="season-panel-name"><i class="fa-brands fa-canadian-maple-leaf"></i> Autumn</div>
             <div class="season-panel-months">Peak wildlife sightings</div>
           </div>
@@ -344,8 +354,8 @@
             loading="lazy" />
           <div class="season-panel-overlay"></div>
           <div class="season-panel-content">
-            <div class="season-panel-label">Dec – Feb</div>
-            <div class="season-panel-name"><i class="fa-solid fa-snowflake"></i>️ Winter</div>
+            <div class="season-panel-label">Dec - Feb</div>
+            <div class="season-panel-name"><i class="fa-solid fa-snowflake"></i> Winter</div>
             <div class="season-panel-months">Stargazing perfection</div>
           </div>
         </a>
@@ -354,8 +364,8 @@
             loading="lazy" />
           <div class="season-panel-overlay"></div>
           <div class="season-panel-content">
-            <div class="season-panel-label">Mar – May</div>
-            <div class="season-panel-name"><i class="fa-solid fa-sun"></i>️ Summer</div>
+            <div class="season-panel-label">Mar - May</div>
+            <div class="season-panel-name"><i class="fa-solid fa-sun"></i> Summer</div>
             <div class="season-panel-months">Prime trekking weather</div>
           </div>
         </a>
@@ -369,15 +379,15 @@
           <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">Distinct Seasons</span>
           </div>
           <div class="stat-item"><span class="stat-number">365</span><span class="stat-label">Days Open</span></div>
-          <div class="stat-item"><span class="stat-number" data-counter="22" data-suffix="°C">22°C</span><span
+          <div class="stat-item"><span class="stat-number" data-counter="22" data-suffix="&deg;C">22&deg;C</span><span
               class="stat-label">Year-Round Average</span></div>
-          <div class="stat-item"><span class="stat-number">Oct–Feb</span><span class="stat-label">Peak Season</span>
+          <div class="stat-item"><span class="stat-number">Oct-Feb</span><span class="stat-label">Peak Season</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4–7: SEASON DETAIL BLOCKS -->
+    <!-- SECTION 4-7: SEASON DETAIL BLOCKS -->
     <section class="section bg-coal bg-texture" id="season-guide">
       <div class="container">
 
@@ -386,29 +396,29 @@
           <div class="season-block-inner">
             <div class="season-img reveal-left">
               <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=900&q=80"
-                alt="Monsoon forest — mist and rain" loading="lazy" />
+                alt="Monsoon forest - mist and rain" loading="lazy" />
             </div>
             <div class="reveal-right">
-              <span class="season-emoji-big" aria-hidden="true"><i class="fa-solid fa-cloud-showers-heavy"></i>️</span>
-              <div class="section-label">June – September</div>
-              <h2 class="section-title fs-h2">Monsoon — <em>Maximum</em> Drama</h2>
+              <span class="season-emoji-big" aria-hidden="true"><i class="fa-solid fa-cloud-showers-heavy"></i></span>
+              <div class="section-label">June - September</div>
+              <h2 class="section-title fs-h2">Monsoon - <em>Maximum</em> Drama</h2>
               <div class="divider"></div>
               <p class="section-desc">When the rains arrive, Terravana transforms. The forest turns a shade of green so
                 vivid it seems to generate its own light. Waterfalls roar at full power, mist fills every valley, and
                 the air is thick with the smell of wet earth and petrichor.</p>
               <div class="season-highlights">
-                <div class="season-highlight">Waterfalls at maximum flow — most spectacular displays of the year</div>
-                <div class="season-highlight">Leeches present on some trails — gaiters and insect protection recommended
+                <div class="season-highlight">Waterfalls at maximum flow - most spectacular displays of the year</div>
+                <div class="season-highlight">Leeches present on some trails - gaiters and insect protection recommended
                 </div>
                 <div class="season-highlight">Some high-altitude trails may close during heavy rain windows</div>
-                <div class="season-highlight">Lowest visitor numbers — most intimate experience possible</div>
+                <div class="season-highlight">Lowest visitor numbers - most intimate experience possible</div>
                 <div class="season-highlight">Dramatic cloud formations and storm-light photography opportunities</div>
               </div>
               <div
                 style="margin-top:2rem;padding:1.5rem;background:rgba(198,169,114,0.05);border-radius:4px;border:1px solid rgba(198,169,114,0.12);">
                 <div class="section-label" style="margin-bottom:0.5rem;">Best Activities</div>
-                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Waterfall trails · Valley walks · Forest
-                  bathing · Indoor workshops · Campfire nights · Wildlife photography from hides</p>
+                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Waterfall trails &middot; Valley walks &middot; Forest
+                  bathing &middot; Indoor workshops &middot; Campfire nights &middot; Wildlife photography from hides</p>
               </div>
               <a href="booking.html" class="btn btn-outline-gold" style="margin-top:1.5rem;"
                 id="seasonal-monsoon-book">Book Monsoon Stay</a>
@@ -425,25 +435,25 @@
             </div>
             <div class="reveal-left">
               <span class="season-emoji-big" aria-hidden="true"><i class="fa-brands fa-canadian-maple-leaf"></i></span>
-              <div class="section-label">October – November</div>
-              <h2 class="section-title fs-h2">Autumn — <em>Golden</em> Hours</h2>
+              <div class="section-label">October - November</div>
+              <h2 class="section-title fs-h2">Autumn - <em>Golden</em> Hours</h2>
               <div class="divider"></div>
               <p class="section-desc">Post-monsoon Terravana is the most photogenic version of itself. The forest is
-                still lush but the skies clear, the light becomes golden and lateral, and wildlife — refreshed by months
-                of rain — is everywhere and uninhibited.</p>
+                still lush but the skies clear, the light becomes golden and lateral, and wildlife - refreshed by months
+                of rain - is everywhere and uninhibited.</p>
               <div class="season-highlights">
-                <div class="season-highlight">Peak wildlife activity — elephants, leopards, and deer all highly visible
+                <div class="season-highlight">Peak wildlife activity - elephants, leopards, and deer all highly visible
                 </div>
                 <div class="season-highlight">Clear mountain skies ideal for summit trekking and panoramic views</div>
                 <div class="season-highlight">Golden-hour light creates exceptional photography conditions</div>
-                <div class="season-highlight">All trails open and accessible — best conditions of the year</div>
-                <div class="season-highlight">Migratory bird species arrive in October — birding at its finest</div>
+                <div class="season-highlight">All trails open and accessible - best conditions of the year</div>
+                <div class="season-highlight">Migratory bird species arrive in October - birding at its finest</div>
               </div>
               <div
                 style="margin-top:2rem;padding:1.5rem;background:rgba(198,169,114,0.05);border-radius:4px;border:1px solid rgba(198,169,114,0.12);">
                 <div class="section-label" style="margin-bottom:0.5rem;">Best Activities</div>
-                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Summit treks · Wildlife safaris · Birding ·
-                  Waterfall loops · Campfire nights · Photography expeditions</p>
+                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Summit treks &middot; Wildlife safaris &middot; Birding &middot;
+                  Waterfall loops &middot; Campfire nights &middot; Photography expeditions</p>
               </div>
               <div
                 style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;padding:0.5rem 1rem;background:rgba(94,158,107,0.1);border:1px solid rgba(94,158,107,0.25);border-radius:3px;">
@@ -465,27 +475,27 @@
                 alt="Winter mist in forest" loading="lazy" />
             </div>
             <div class="reveal-right">
-              <span class="season-emoji-big" aria-hidden="true"><i class="fa-solid fa-snowflake"></i>️</span>
-              <div class="section-label">December – February</div>
-              <h2 class="section-title fs-h2">Winter — <em>Crystal</em> Clarity</h2>
+              <span class="season-emoji-big" aria-hidden="true"><i class="fa-solid fa-snowflake"></i></span>
+              <div class="section-label">December - February</div>
+              <h2 class="section-title fs-h2">Winter - <em>Crystal</em> Clarity</h2>
               <div class="divider"></div>
-              <p class="section-desc">Winter at Terravana is a study in contrasts — crisp mornings that warm into
+              <p class="section-desc">Winter at Terravana is a study in contrasts - crisp mornings that warm into
                 perfect trekking weather by mid-day, frost on the high ridges, and nights of absolute clarity that make
                 the dark sky explode with stars.</p>
               <div class="season-highlights">
-                <div class="season-highlight">Best stargazing conditions of the year — Milky Way fully visible</div>
+                <div class="season-highlight">Best stargazing conditions of the year - Milky Way fully visible</div>
                 <div class="season-highlight">Frost formations at altitude create extraordinary photographic subjects
                 </div>
                 <div class="season-highlight">Swimming waterfalls at their most crystal clear and refreshing</div>
                 <div class="season-highlight">Crisp, dry trekking days with maximum visibility and comfort</div>
-                <div class="season-highlight">Campfire nights at their most magical — cold air, hot fire, clear sky
+                <div class="season-highlight">Campfire nights at their most magical - cold air, hot fire, clear sky
                 </div>
               </div>
               <div
                 style="margin-top:2rem;padding:1.5rem;background:rgba(198,169,114,0.05);border-radius:4px;border:1px solid rgba(198,169,114,0.12);">
                 <div class="section-label" style="margin-bottom:0.5rem;">Best Activities</div>
-                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Stargazing · Alpine treks · Campfire nights
-                  · Waterfall swims · Wildlife safaris · Photography</p>
+                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Stargazing &middot; Alpine treks &middot; Campfire nights
+                  &middot; Waterfall swims &middot; Wildlife safaris &middot; Photography</p>
               </div>
               <a href="booking.html" class="btn btn-outline-gold" style="margin-top:1.5rem;"
                 id="seasonal-winter-book">Book Winter Stay</a>
@@ -501,25 +511,25 @@
                 alt="Summer alpine trekking" loading="lazy" />
             </div>
             <div class="reveal-left">
-              <span class="season-emoji-big" aria-hidden="true"><i class="fa-solid fa-sun"></i>️</span>
-              <div class="section-label">March – May</div>
-              <h2 class="section-title fs-h2">Summer — <em>Long</em> Days,<br />Wild Light</h2>
+              <span class="season-emoji-big" aria-hidden="true"><i class="fa-solid fa-sun"></i></span>
+              <div class="section-label">March - May</div>
+              <h2 class="section-title fs-h2">Summer - <em>Long</em> Days,<br />Wild Light</h2>
               <div class="divider"></div>
               <p class="section-desc">Summer brings long days of warm light, the bloom of wildflowers across alpine
                 meadows, and the best conditions for ambitious multi-day treks. The forest hums with insect life and the
                 waterfalls create morning rainbows you can walk through.</p>
               <div class="season-highlights">
-                <div class="season-highlight">Peak trekking season — all routes open, longest daylight hours</div>
+                <div class="season-highlight">Peak trekking season - all routes open, longest daylight hours</div>
                 <div class="season-highlight">Wildflower blooms transform alpine meadows into colour fields</div>
-                <div class="season-highlight">Morning rainbows at most waterfall sites — daily occurrence</div>
-                <div class="season-highlight">Butterfly diversity peaks in April — over 80 species active</div>
+                <div class="season-highlight">Morning rainbows at most waterfall sites - daily occurrence</div>
+                <div class="season-highlight">Butterfly diversity peaks in April - over 80 species active</div>
                 <div class="season-highlight">Warmest swimming conditions at all waterfall plunge pools</div>
               </div>
               <div
                 style="margin-top:2rem;padding:1.5rem;background:rgba(198,169,114,0.05);border-radius:4px;border:1px solid rgba(198,169,114,0.12);">
                 <div class="section-label" style="margin-bottom:0.5rem;">Best Activities</div>
-                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Multi-day treks · River swimming · Butterfly
-                  watching · Wildflower trails · Seven Falls loop</p>
+                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Multi-day treks &middot; River swimming &middot; Butterfly
+                  watching &middot; Wildflower trails &middot; Seven Falls loop</p>
               </div>
               <a href="booking.html" class="btn btn-outline-gold" style="margin-top:1.5rem;"
                 id="seasonal-summer-book">Book Summer Stay</a>
@@ -547,7 +557,7 @@
                   Month</th>
                 <th
                   style="padding:1rem;color:var(--gold);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;">
-                  Temp (°C)</th>
+                  Temp (&deg;C)</th>
                 <th
                   style="padding:1rem;color:var(--gold);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;">
                   Rainfall</th>
@@ -562,40 +572,40 @@
             <tbody>
               <tr style="border-bottom:1px solid rgba(198,169,114,0.07);">
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">January</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">14–22°</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">14-22&deg;</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Low</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">45%</td>
-                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;">Stargazing · Treks</td>
+                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;">Stargazing &middot; Treks</td>
               </tr>
               <tr style="border-bottom:1px solid rgba(198,169,114,0.07);">
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">March</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">18–28°</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">18-28&deg;</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Moderate</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">60%</td>
-                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;">Wildflowers · Swimming
+                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;">Wildflowers &middot; Swimming
                 </td>
               </tr>
               <tr style="border-bottom:1px solid rgba(198,169,114,0.07);">
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">June</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">20–26°</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">20-26&deg;</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Very High</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">88%</td>
-                <td style="padding:0.9rem 1rem;color:var(--gold);font-size:0.75rem;">Waterfalls · Mist</td>
+                <td style="padding:0.9rem 1rem;color:var(--gold);font-size:0.75rem;">Waterfalls &middot; Mist</td>
               </tr>
               <tr style="border-bottom:1px solid rgba(198,169,114,0.07);">
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">October</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">16–24°</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">16-24&deg;</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Low</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">55%</td>
                 <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;"><i
-                    class="fa-solid fa-star"></i> Wildlife · All Activities</td>
+                    class="fa-solid fa-star"></i> Wildlife &middot; All Activities</td>
               </tr>
               <tr>
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">December</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">12–20°</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">12-20&deg;</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Very Low</td>
                 <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">40%</td>
-                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;">Stars · Crystal Clarity
+                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;">Stars &middot; Crystal Clarity
                 </td>
               </tr>
             </tbody>
@@ -615,7 +625,7 @@
         <div class="grid-2" style="gap:3rem;">
           <div class="exp-card reveal">
             <span class="exp-card-icon"><i class="fa-solid fa-umbrella"></i></span>
-            <div class="exp-card-title">Monsoon Pack (Jun–Sep)</div>
+            <div class="exp-card-title">Monsoon Pack (Jun-Sep)</div>
             <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem;">
               <div class="season-highlight">Waterproof jacket & rain trousers</div>
               <div class="season-highlight">Neoprene trail gaiters (leeches)</div>
@@ -626,7 +636,7 @@
           </div>
           <div class="exp-card reveal reveal-delay-1">
             <span class="exp-card-icon"><i class="fa-solid fa-shirt"></i></span>
-            <div class="exp-card-title">Winter Pack (Dec–Feb)</div>
+            <div class="exp-card-title">Winter Pack (Dec-Feb)</div>
             <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem;">
               <div class="season-highlight">Down jacket for ridge camps and stargazing</div>
               <div class="season-highlight">Thermal base layer top and bottom</div>
@@ -637,7 +647,7 @@
           </div>
           <div class="exp-card reveal reveal-delay-2">
             <span class="exp-card-icon"><i class="fa-solid fa-spa"></i></span>
-            <div class="exp-card-title">Summer Pack (Mar–May)</div>
+            <div class="exp-card-title">Summer Pack (Mar-May)</div>
             <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem;">
               <div class="season-highlight">Lightweight breathable hiking clothes</div>
               <div class="season-highlight">High-SPF mineral sunscreen</div>
@@ -648,7 +658,7 @@
           </div>
           <div class="exp-card reveal reveal-delay-3">
             <span class="exp-card-icon"><i class="fa-brands fa-canadian-maple-leaf"></i></span>
-            <div class="exp-card-title">Autumn Pack (Oct–Nov)</div>
+            <div class="exp-card-title">Autumn Pack (Oct-Nov)</div>
             <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem;">
               <div class="season-highlight">Layerable mid-weight clothing</div>
               <div class="season-highlight">Light waterproof shell (occasional showers)</div>
@@ -697,9 +707,9 @@
                 Full Moon</div>
             </div>
             <div>
-              <div class="exp-card-title">Moonfall Night — Devakund by Moonlight</div>
+              <div class="exp-card-title">Moonfall Night - Devakund by Moonlight</div>
               <p class="exp-card-text">Monthly full-moon guided walk to Devakund Waterfall. Limited to 12 participants.
-                Sold out most months — reserve early.</p>
+                Sold out most months - reserve early.</p>
             </div>
             <a href="booking.html" class="btn btn-outline-gold"
               style="padding:0.65rem 1.25rem;font-size:0.68rem;flex-shrink:0;" id="event-moonfall-book">Reserve Spot</a>
@@ -736,8 +746,8 @@
           <div class="review-stars" style="justify-content:center;" aria-label="5 stars"><i
               class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
               class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.5);margin-top:0.75rem;">— The
-            Nakamura Family · Tokyo, Japan · Visited twice in one year</p>
+          <p style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.5);margin-top:0.75rem;">- The
+            Nakamura Family &middot; Tokyo, Japan &middot; Visited twice in one year</p>
         </div>
       </div>
     </section>
@@ -759,8 +769,7 @@
               macro lens and weather sealing.</p>
           </div>
           <div class="exp-card reveal reveal-delay-1" style="padding:2rem;">
-            <div style="font-size:2rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-circle-dot"
-                style="font-size: 0.8em; opacity: 0.5;"></i></div>
+            <div style="font-size:2rem;margin-bottom:1rem;" aria-hidden="true"><i class="fa-solid fa-paw"></i></div>
             <div class="exp-card-title">Autumn Wildlife</div>
             <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:0.75rem;">The clearest air of the year and
               active wildlife makes a 400mm-600mm telephoto essential. The golden hour light in October is legendary
@@ -829,12 +838,12 @@
       <div class="container">
         <div class="cta-banner reveal" style="text-align:center;display:block;">
           <div class="section-label section-label-center" style="margin-bottom:1rem;">Every Season is Perfect</div>
-          <h2 class="section-title fs-h2 text-center">When Will <em>You</em> Visit?</h2>
+          <h2 class="section-title fs-h2 text-center">When Will <em>You</em> Visit</h2>
           <p class="section-desc text-center" style="margin:1.5rem auto 2.5rem;">Choose your season and we'll build the
             perfect itinerary around your travel dates and interests.</p>
           <div style="display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;">
             <a href="booking.html" class="btn btn-primary" id="seasonal-cta-book">Plan My Visit</a>
-            <a href="contact.html" class="btn btn-ghost" id="seasonal-cta-ask">Ask Our Guides</a>
+            <a href="booking.html" class="btn btn-ghost" id="seasonal-cta-ask">Ask Our Guides</a>
           </div>
         </div>
       </div>
@@ -868,12 +877,11 @@
         </div>
         <div>
           <h3 class="footer-col-title">Connect</h3>
-          <nav class="footer-links"><a href="about.html" class="footer-link">About Us</a><a href="contact.html"
-              class="footer-link">Contact</a></nav><form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required><button class="footer-email-btn" type="submit">Submit</button></form>
+          <nav class="footer-links"><a href="about.html" class="footer-link">About Us</a></nav><form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required><button class="footer-email-btn" type="submit">Submit</button></form>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Terravana Wilds. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2025 Terravana Wilds. All rights reserved.</p>
         <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Eco Charter</a>
         </nav>
       </div>

@@ -1,38 +1,38 @@
 /* ============================================================
-   TERRAVANA WILDS — UPGRADE CSS v3
-   ✦ 1000x Premium Editorial Color System
-   ✦ Full Responsive Layout for All 19 Pages
+   TERRAVANA WILDS - UPGRADE CSS v3
+   * 1000x Premium Editorial Color System
+   * Full Responsive Layout for All 19 Pages
    ============================================================ */
 
-/* ══════════════════════════════════════════════════════════════
-   SECTION 1 ── ULTRA-PREMIUM COLOR SYSTEM
-   Deep volcanic night • Wildfire amber • Ancient emerald • Alpine mist
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   SECTION 1 -- ULTRA-PREMIUM COLOR SYSTEM
+   Deep volcanic night &bull; Wildfire amber &bull; Ancient emerald &bull; Alpine mist
+   ============================================================== */
 
 :root {
-  /* ── Volcanic Night Base (deepest, richest darks) ── */
+  /* -- Volcanic Night Base (deepest, richest darks) -- */
   --coal: #030608;
   /* Absolute void-black with blue-forest undertone */
   --coal-soft: #07100C;
   /* Deep forest midnight */
   --graphite: #0C1812;
-  /* Ancient forest — card base */
+  /* Ancient forest - card base */
   --graphite-mid: #142218;
   /* Slightly lifted card surface */
   --card-bg: #172A1E;
   /* Rich mossy card */
   --card-bg-2: #1E3326;
-  /* Elevated card — lighter forest */
+  /* Elevated card - lighter forest */
   --surface: #243D2C;
   /* Section surface */
 
-  /* ── Wildfire Amber — Signature Gold ── */
+  /* -- Wildfire Amber - Signature Gold -- */
   --gold: #ECBA45;
   /* Burnished 24-karat amber */
   --gold-light: #F9D060;
   /* Luminous firelight gold */
   --gold-bright: #FFE180;
-  /* Maximum glow — CTA hover */
+  /* Maximum glow - CTA hover */
   --gold-dim: #A07C28;
   /* Deep ember gold */
   --gold-dark: #6B5018;
@@ -42,7 +42,7 @@
   --gold-glass: rgba(236, 186, 69, 0.07);
   --gold-glass-2: rgba(236, 186, 69, 0.12);
 
-  /* ── Ancient Emerald — Forest Ecosystem ── */
+  /* -- Ancient Emerald - Forest Ecosystem -- */
   --forest: #0A9E62;
   /* Ancient deep emerald */
   --emerald: #12BF78;
@@ -54,7 +54,7 @@
   --forest-glow: rgba(10, 158, 98, 0.18);
   --forest-glass: rgba(10, 158, 98, 0.09);
 
-  /* ── Volcanic Copper — Fire & Energy ── */
+  /* -- Volcanic Copper - Fire & Energy -- */
   --ember: #D96030;
   /* Molten copper-ember */
   --copper: #F0773A;
@@ -64,7 +64,7 @@
   --ember-glow: rgba(217, 96, 48, 0.18);
   --ember-glass: rgba(217, 96, 48, 0.08);
 
-  /* ── Alpine Mist — Sky & Water ── */
+  /* -- Alpine Mist - Sky & Water -- */
   --mist: #3A8FA8;
   /* Deep alpine sky */
   --sky: #50AABF;
@@ -74,14 +74,14 @@
   --mist-glow: rgba(58, 143, 168, 0.15);
   --mist-glass: rgba(58, 143, 168, 0.08);
 
-  /* ── Royal Dusk — Twilight Amethyst ── */
+  /* -- Royal Dusk - Twilight Amethyst -- */
   --dusk: #7B50A8;
   /* Deep royal amethyst */
   --violet: #9A68C5;
   /* Twilight violet */
   --dusk-glass: rgba(123, 80, 168, 0.10);
 
-  /* ── Warm Cream Text System ── */
+  /* -- Warm Cream Text System -- */
   --ivory: #F8F2E8;
   /* Pure warm cream */
   --linen: #EDE4D5;
@@ -93,7 +93,7 @@
   --sienna: #B0724A;
   /* Warm sienna */
 
-  /* ── Glass Morphism — Forest-Night Glass ── */
+  /* -- Glass Morphism - Forest-Night Glass -- */
   --glass-bg: rgba(3, 6, 8, 0.82);
   --glass-card: rgba(12, 24, 18, 0.85);
   --glass-light: rgba(248, 242, 232, 0.045);
@@ -101,7 +101,7 @@
   --glass-border-md: rgba(236, 186, 69, 0.28);
   --glass-border-hi: rgba(236, 186, 69, 0.50);
 
-  /* ── Premium Shadows ── */
+  /* -- Premium Shadows -- */
   --shadow-xs: 0 1px 8px rgba(0, 0, 0, 0.5);
   --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.55);
   --shadow-md: 0 12px 56px rgba(0, 0, 0, 0.65);
@@ -113,7 +113,7 @@
   --shadow-ember: 0 0 80px rgba(217, 96, 48, 0.15);
 }
 
-/* ── Body: Deep volcanic night with ambient forest glow ── */
+/* -- Body: Deep volcanic night with ambient forest glow -- */
 body {
   background-color: #030608 !important;
   background-image:
@@ -124,7 +124,7 @@ body {
   color: var(--linen) !important;
 }
 
-/* ── Section backgrounds deep upgrade ── */
+/* -- Section backgrounds deep upgrade -- */
 .bg-coal,
 .bg-texture {
   background-color: #030608 !important;
@@ -134,9 +134,9 @@ body {
   background: linear-gradient(180deg, #0C1812 0%, #07100C 100%) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   NAVIGATION — Liquid glass forest-night bar
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   NAVIGATION - Liquid glass forest-night bar
+   ============================================================== */
 #navbar {
   background: rgba(3, 6, 8, 0.90) !important;
   border-bottom: 1px solid rgba(236, 186, 69, 0.10) !important;
@@ -176,9 +176,9 @@ body {
   box-shadow: -4px 0 80px rgba(0, 0, 0, 0.90) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   BUTTONS — Editorial luxury CTAs
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   BUTTONS - Editorial luxury CTAs
+   ============================================================== */
 .btn-primary {
   background: linear-gradient(135deg, #ECBA45 0%, #F9D060 60%, #FFE180 100%) !important;
   color: #030608 !important;
@@ -263,9 +263,9 @@ body {
 }
 
 
-/* ══════════════════════════════════════════════════════════════
-   CARDS — Forest-glass surfaces with amber glow borders
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   CARDS - Forest-glass surfaces with amber glow borders
+   ============================================================== */
 .exp-card,
 .glass-card,
 .review-card,
@@ -333,9 +333,9 @@ body {
   border-color: rgba(236, 186, 69, 0.18) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   HERO — Cinematic overlay gradients
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   HERO - Cinematic overlay gradients
+   ============================================================== */
 .hero-overlay {
   background:
     radial-gradient(ellipse 70% 60% at 20% 80%, rgba(217, 96, 48, 0.12) 0%, transparent 60%),
@@ -347,9 +347,9 @@ body {
       rgba(3, 6, 8, 0.90) 100%) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   TYPOGRAPHY — Gold text highlights & labels
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   TYPOGRAPHY - Gold text highlights & labels
+   ============================================================== */
 .section-title em,
 .hero-title em,
 .auth-form-title em,
@@ -390,9 +390,9 @@ body {
   -webkit-text-fill-color: transparent !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   FEATURE STRIP — Rich woodland tones
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   FEATURE STRIP - Rich woodland tones
+   ============================================================== */
 .feature-strip-img {
   filter: brightness(0.72) saturate(1.25) contrast(1.05) !important;
 }
@@ -401,9 +401,9 @@ body {
   background: linear-gradient(145deg, rgba(12, 24, 18, 0.95) 0%, rgba(3, 6, 8, 0.98) 100%) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   MARQUEE — Bold amber marquee items
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   MARQUEE - Bold amber marquee items
+   ============================================================== */
 .marquee-wrap {
   background: linear-gradient(135deg, #0C1812 0%, #07100C 100%) !important;
   border-top: 1px solid rgba(236, 186, 69, 0.08);
@@ -414,9 +414,9 @@ body {
   background: #ECBA45 !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   PULL QUOTE — Amber-accented editorial quote
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   PULL QUOTE - Amber-accented editorial quote
+   ============================================================== */
 .pull-quote {
   border-left: 3px solid #ECBA45 !important;
   background: linear-gradient(135deg, rgba(236, 186, 69, 0.06) 0%, rgba(12, 24, 18, 0.80) 100%) !important;
@@ -427,9 +427,9 @@ body {
   opacity: 0.20 !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   TABS & FILTERS — Crisp amber-gold selection
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   TABS & FILTERS - Crisp amber-gold selection
+   ============================================================== */
 .tabs {
   border-bottom-color: rgba(236, 186, 69, 0.10) !important;
 }
@@ -468,9 +468,9 @@ body {
   color: #ECBA45 !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
+/* ==============================================================
    ADVENTURE TAGS & BADGES
-   ══════════════════════════════════════════════════════════════ */
+   ============================================================== */
 .adventure-card-tag {
   background: rgba(236, 186, 69, 0.12) !important;
   border: 1px solid rgba(236, 186, 69, 0.28) !important;
@@ -482,9 +482,9 @@ body {
   color: #ECBA45 !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   FORM ELEMENTS — Polished forest-night inputs
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   FORM ELEMENTS - Polished forest-night inputs
+   ============================================================== */
 .form-input,
 .form-select,
 .form-textarea,
@@ -559,9 +559,9 @@ textarea::placeholder {
   background: rgba(23, 42, 30, 0.85) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   REVIEWS — Stars & rating
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   REVIEWS - Stars & rating
+   ============================================================== */
 .review-card {
   padding: 2rem !important;
 }
@@ -587,9 +587,9 @@ textarea::placeholder {
   border-color: rgba(236, 186, 69, 0.15) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   GALLERY — Cinematic hover effect
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   GALLERY - Cinematic hover effect
+   ============================================================== */
 .gallery-item img {
   filter: brightness(0.82) saturate(1.10) !important;
   transition: filter 0.6s ease, transform 0.6s ease !important;
@@ -606,9 +606,9 @@ textarea::placeholder {
       transparent 100%) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   FOOTER — Absolute dark luxury
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   FOOTER - Absolute dark luxury
+   ============================================================== */
 .footer {
   background:
     linear-gradient(180deg, #030608 0%, #030608 100%) !important;
@@ -650,9 +650,9 @@ textarea::placeholder {
   box-shadow: 0 4px 20px rgba(236, 186, 69, 0.20) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
+/* ==============================================================
    TIMELINE & BREADCRUMB
-   ══════════════════════════════════════════════════════════════ */
+   ============================================================== */
 .timeline-dot {
   background: linear-gradient(135deg, #ECBA45 0%, #F9D060 100%) !important;
   box-shadow: 0 0 16px rgba(236, 186, 69, 0.55) !important;
@@ -672,9 +672,9 @@ textarea::placeholder {
   color: #ECBA45 !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
+/* ==============================================================
    BOOKING STEPS & TRUST BADGES
-   ══════════════════════════════════════════════════════════════ */
+   ============================================================== */
 .booking-step.active {
   color: #ECBA45 !important;
 }
@@ -697,9 +697,9 @@ textarea::placeholder {
   color: var(--forest) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   DASHBOARD — Admin & User dark luxury UI
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   DASHBOARD - Admin & User dark luxury UI
+   ============================================================== */
 #sidebar {
   background: linear-gradient(180deg, #0C1812 0%, #07100C 100%) !important;
   border-right-color: rgba(236, 186, 69, 0.10) !important;
@@ -796,9 +796,9 @@ textarea::placeholder {
   box-shadow: 0 4px 24px rgba(236, 186, 69, 0.45) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
+/* ==============================================================
    PAGE LOADER
-   ══════════════════════════════════════════════════════════════ */
+   ============================================================== */
 #page-loader {
   background: #030608 !important;
   display: flex !important;
@@ -824,27 +824,27 @@ textarea::placeholder {
   margin: 0 auto !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
+/* ==============================================================
    BACK TO TOP & CURSOR
-   ══════════════════════════════════════════════════════════════ */
+   ============================================================== */
 #back-to-top {
   background: linear-gradient(135deg, #ECBA45 0%, #F9D060 100%) !important;
   color: #030608 !important;
   box-shadow: 0 6px 28px rgba(236, 186, 69, 0.55) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
+/* ==============================================================
    DIVIDER
-   ══════════════════════════════════════════════════════════════ */
+   ============================================================== */
 .divider {
   background: linear-gradient(90deg, #ECBA45, rgba(236, 186, 69, 0)) !important;
   height: 2px !important;
   max-width: 60px;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   SCROLLBAR — Amber-forest themed
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   SCROLLBAR - Amber-forest themed
+   ============================================================== */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -863,19 +863,19 @@ textarea::placeholder {
   background: #F9D060;
 }
 
-/* ══════════════════════════════════════════════════════════════
+/* ==============================================================
    SELECTION
-   ══════════════════════════════════════════════════════════════ */
+   ============================================================== */
 ::selection {
   background: rgba(236, 186, 69, 0.28) !important;
   color: var(--ivory) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   SECTION 2 ── FULL RESPONSIVE CSS FOR ALL 19 PAGES
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   SECTION 2 -- FULL RESPONSIVE CSS FOR ALL 19 PAGES
+   ============================================================== */
 
-/* ── Global overflow prevention ── */
+/* -- Global overflow prevention -- */
 html,
 body {
   max-width: 100% !important;
@@ -897,9 +897,9 @@ iframe {
   max-width: 100%;
 }
 
-/* ─────────────────────────────────────────────
-   ≤1200px  Large Tablet / Small Laptop
-───────────────────────────────────────────── */
+/* ---------------------------------------------
+   <=1200px  Large Tablet / Small Laptop
+--------------------------------------------- */
 @media (max-width: 1200px) {
 
   .container,
@@ -937,9 +937,9 @@ iframe {
   }
 }
 
-/* ─────────────────────────────────────────────
-   ≤900px  Tablet
-───────────────────────────────────────────── */
+/* ---------------------------------------------
+   <=900px  Tablet
+--------------------------------------------- */
 @media (max-width: 900px) {
 
   .container,
@@ -1237,9 +1237,9 @@ iframe {
   }
 }
 
-/* ─────────────────────────────────────────────
-   ≤768px  Mobile
-───────────────────────────────────────────── */
+/* ---------------------------------------------
+   <=768px  Mobile
+--------------------------------------------- */
 @media (max-width: 768px) {
 
   .container,
@@ -1554,9 +1554,9 @@ iframe {
   }
 }
 
-/* ─────────────────────────────────────────────
-   ≤600px  Small Mobile
-───────────────────────────────────────────── */
+/* ---------------------------------------------
+   <=600px  Small Mobile
+--------------------------------------------- */
 @media (max-width: 600px) {
 
   .container,
@@ -1701,9 +1701,9 @@ iframe {
   }
 }
 
-/* ─────────────────────────────────────────────
-   ≤480px  Extra Small
-───────────────────────────────────────────── */
+/* ---------------------------------------------
+   <=480px  Extra Small
+--------------------------------------------- */
 @media (max-width: 480px) {
 
   .container,
@@ -1810,9 +1810,9 @@ iframe {
   }
 }
 
-/* ─────────────────────────────────────────────
-   ≤380px  Micro Mobile
-───────────────────────────────────────────── */
+/* ---------------------------------------------
+   <=380px  Micro Mobile
+--------------------------------------------- */
 @media (max-width: 380px) {
 
   .container,
@@ -1853,9 +1853,9 @@ iframe {
   }
 }
 
-/* ─────────────────────────────────────────────
-   Intermediate Desktop  1181px–1440px
-───────────────────────────────────────────── */
+/* ---------------------------------------------
+   Intermediate Desktop  1181px-1440px
+--------------------------------------------- */
 @media (min-width: 1181px) and (max-width: 1440px) {
   .nav-inner {
     padding: 0 1.75rem !important;
@@ -1871,9 +1871,9 @@ iframe {
   }
 }
 
-/* ─────────────────────────────────────────────
+/* ---------------------------------------------
    PRINT
-───────────────────────────────────────────── */
+--------------------------------------------- */
 @media print {
 
   #navbar,
@@ -1891,13 +1891,13 @@ iframe {
   }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   SECTION 3 ── ELITE TEXT & ELEMENT CENTERING SYSTEM
+/* ==============================================================
+   SECTION 3 -- ELITE TEXT & ELEMENT CENTERING SYSTEM
    Moves all left-aligned text & section elements to the center
    Scoped to main content & auth panels to prevent dashboard interference
-   ══════════════════════════════════════════════════════════════ */
+   ============================================================== */
 
-/* ── Section Headers Centering ── */
+/* -- Section Headers Centering -- */
 main .section-header {
   text-align: center !important;
   display: flex !important;
@@ -1919,7 +1919,7 @@ main .section-header .divider {
   margin: 1.5rem auto !important;
 }
 
-/* ── Hero Vertical Centering & Container Stabilizer ── */
+/* -- Hero Vertical Centering & Container Stabilizer -- */
 main .hero {
   display: flex !important;
   align-items: center !important;
@@ -1940,7 +1940,7 @@ main .hero > .container {
   align-items: center !important;
 }
 
-/* ── Hero Content Centering ── */
+/* -- Hero Content Centering -- */
 main .hero-content {
   text-align: center !important;
   display: flex !important;
@@ -2015,7 +2015,7 @@ main .hero-overlay {
   z-index: 1 !important;
 }
 
-/* ── Section Titles, Descriptions & Labels ── */
+/* -- Section Titles, Descriptions & Labels -- */
 main .section-title {
   text-align: center !important;
 }
@@ -2050,7 +2050,7 @@ main .section-desc {
   margin-right: auto !important;
 }
 
-/* ── Text Columns inside grids ── */
+/* -- Text Columns inside grids -- */
 main .reveal-left,
 main .reveal-right {
   text-align: center !important;
@@ -2081,7 +2081,7 @@ main .reveal-right .btn {
   display: inline-flex !important;
 }
 
-/* ── Card Elements Centering (Experiences, Lodges, Species, etc.) ── */
+/* -- Card Elements Centering (Experiences, Lodges, Species, etc.) -- */
 main .exp-card,
 main .glass-card,
 main .review-card,
@@ -2137,14 +2137,14 @@ main .review-stars {
   justify-content: center !important;
 }
 
-/* ── Safety Cards center alignment updates ── */
+/* -- Safety Cards center alignment updates -- */
 main .safety-card {
   border-left: none !important;
   border-bottom: 3px solid var(--sienna) !important;
   border-radius: 4px !important;
 }
 
-/* ── Auth Pages Centering (Login / Signup) ── */
+/* -- Auth Pages Centering (Login / Signup) -- */
 .auth-form-header {
   text-align: center !important;
   display: flex !important;
@@ -2183,7 +2183,7 @@ main .safety-card {
   text-align: center !important;
 }
 
-/* ── CTA Banner Centering ── */
+/* -- CTA Banner Centering -- */
 main .cta-banner {
   text-align: center !important;
 }
@@ -2193,7 +2193,7 @@ main .cta-banner .btn {
   margin-right: auto !important;
 }
 
-/* ── Mobile/Tablet View Profile Dropdown positioning ── */
+/* -- Mobile/Tablet View Profile Dropdown positioning -- */
 @media (max-width: 1180px) {
   #navbar .nav-profile-dropdown {
     display: flex !important;
@@ -2256,9 +2256,9 @@ main .cta-banner .btn {
   }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   SECTION 4 ── ADVANCED LAYOUT RESPONSIVENESS AND MICRO-INTERACTIONS
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   SECTION 4 -- ADVANCED LAYOUT RESPONSIVENESS AND MICRO-INTERACTIONS
+   ============================================================== */
 
 /* -- Safari Image responsive adjustment (Wildlife Safari view) -- */
 @media (max-width: 900px) {
@@ -2339,9 +2339,9 @@ main .cta-banner .btn {
   box-shadow: 0 0 60px rgba(236, 186, 69, 0.6) !important;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   SECTION 5 ── ADVENTURES NAVBAR DROPDOWN & MOBILE ACCORDION
-   ══════════════════════════════════════════════════════════════ */
+/* ==============================================================
+   SECTION 5 -- ADVENTURES NAVBAR DROPDOWN & MOBILE ACCORDION
+   ============================================================== */
 
 .nav-dropdown {
   position: relative;
@@ -2412,7 +2412,7 @@ main .cta-banner .btn {
   color: #ECBA45;
 }
 
-/* ── Mobile Accordion ── */
+/* -- Mobile Accordion -- */
 .mobile-accordion {
   width: 100%;
 }
@@ -2459,4 +2459,254 @@ main .cta-banner .btn {
 
 .mobile-accordion-item.active {
   color: #ECBA45 !important;
+}
+
+/* ==============================================================
+   REFINED GOLD BUTTONS - less glow, more polish
+   ============================================================== */
+
+.btn-primary,
+.nav-cta,
+.auth-submit,
+.qa-btn.qa-gold,
+#back-to-top,
+.footer-email-btn {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 42%),
+    linear-gradient(135deg, #DCA943 0%, #F0C865 56%, #C9922E 100%) !important;
+  color: #06100B !important;
+  border: 1px solid rgba(255, 225, 128, 0.38) !important;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.24),
+    0 6px 18px rgba(220, 169, 67, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.36),
+    inset 0 -1px 0 rgba(87, 57, 11, 0.22) !important;
+  text-shadow: 0 1px 0 rgba(255, 244, 200, 0.28);
+}
+
+.btn-primary::before,
+.nav-cta::before,
+.auth-submit::before,
+.qa-btn.qa-gold::before,
+.footer-email-btn::before {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0) 48%),
+    linear-gradient(135deg, #E8B64F 0%, #F4D77D 52%, #D19B38 100%) !important;
+  opacity: 0 !important;
+}
+
+.btn-primary:hover,
+.nav-cta:hover,
+.auth-submit:hover,
+.qa-btn.qa-gold:hover,
+#back-to-top:hover,
+.footer-email-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.28),
+    0 8px 22px rgba(220, 169, 67, 0.26),
+    0 0 0 1px rgba(255, 225, 128, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 0 rgba(87, 57, 11, 0.24) !important;
+}
+
+.btn-primary:hover::before,
+.nav-cta:hover::before,
+.auth-submit:hover::before,
+.qa-btn.qa-gold:hover::before,
+.footer-email-btn:hover::before {
+  opacity: 1 !important;
+}
+
+.btn-outline-gold {
+  border-color: rgba(220, 169, 67, 0.42) !important;
+  color: #F0C865 !important;
+  box-shadow: inset 0 0 0 1px rgba(220, 169, 67, 0.06) !important;
+}
+
+.btn-outline-gold:hover {
+  color: #06100B !important;
+  border-color: rgba(255, 225, 128, 0.35) !important;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.24),
+    0 6px 18px rgba(220, 169, 67, 0.20) !important;
+}
+
+#gallery-video-play:hover {
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.28),
+    0 6px 18px rgba(220, 169, 67, 0.24) !important;
+}
+
+/* ==============================================================
+   SITE-WIDE MOTION POLISH
+   ============================================================== */
+
+@keyframes pageHeroDrift {
+  0% { transform: scale(1.04) translate3d(0, 0, 0); }
+  50% { transform: scale(1.09) translate3d(-1.2%, -0.8%, 0); }
+  100% { transform: scale(1.04) translate3d(0, 0, 0); }
+}
+
+@keyframes goldLineSweep {
+  0% { transform: translateX(-120%); opacity: 0; }
+  28% { opacity: 0.7; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+@keyframes softFloatIn {
+  from {
+    opacity: 0;
+    transform: translateY(34px) scale(0.985);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes imageBloom {
+  from {
+    opacity: 0;
+    transform: scale(1.055);
+    filter: saturate(0.75) contrast(0.9) blur(7px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: saturate(1.04) contrast(1.02) blur(0);
+  }
+}
+
+.page-hero .hero-bg,
+.hero .hero-bg {
+  animation: pageHeroDrift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.motion-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion-section.motion-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motion-image {
+  opacity: 0;
+  transform-origin: center;
+}
+
+.motion-image.motion-visible {
+  animation: imageBloom 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.section-label,
+.page-kicker,
+.package-meta {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-label::after,
+.page-kicker::after,
+.package-meta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(236, 186, 69, 0.8), transparent);
+  animation: goldLineSweep 4.8s ease-in-out infinite;
+}
+
+.package-card,
+.amenity-item,
+.faq-item,
+.exp-card,
+.review-card,
+.stay-moment,
+.mini-kpi,
+.compare-cell,
+.itinerary-item {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.45s ease,
+              box-shadow 0.45s ease,
+              background 0.45s ease;
+}
+
+.package-card:hover,
+.amenity-item:hover,
+.faq-item:hover,
+.exp-card:hover,
+.review-card:hover,
+.stay-moment:hover,
+.mini-kpi:hover {
+  transform: translateY(-8px);
+  border-color: rgba(236, 186, 69, 0.32) !important;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.34), 0 0 42px rgba(236, 186, 69, 0.08);
+}
+
+.package-card img,
+.gallery-grid img,
+.image-band img,
+.split-section img,
+.resort-mosaic img,
+.fire-gallery img,
+.season-img img,
+.mosaic-gallery img {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.9s ease;
+}
+
+.package-card:hover img,
+.gallery-grid img:hover,
+.image-band img:hover,
+.split-section img:hover,
+.resort-mosaic img:hover,
+.fire-gallery img:hover,
+.season-img:hover img,
+.mosaic-gallery img:hover {
+  transform: scale(1.055);
+  filter: saturate(1.16) contrast(1.08) brightness(1.03);
+}
+
+.btn,
+.nav-cta,
+.footer-social-link,
+#back-to-top {
+  will-change: transform;
+}
+
+.magnetic-ready {
+  transition: transform 0.18s ease-out, box-shadow 0.3s ease;
+}
+
+body.motion-ready main {
+  animation: softFloatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero .hero-bg,
+  .hero .hero-bg,
+  .section-label::after,
+  .page-kicker::after,
+  .package-meta::after,
+  body.motion-ready main {
+    animation: none !important;
+  }
+
+  .motion-section,
+  .motion-image {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
 }

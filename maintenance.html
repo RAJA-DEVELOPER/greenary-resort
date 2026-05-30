@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Under Maintenance — TERRAVANA WILDS</title>
+  <title>Under Maintenance - TERRAVANA WILDS</title>
   <meta name="description"
     content="Terravana Wilds is currently undergoing scheduled maintenance. We'll be back shortly." />
   <link rel="stylesheet" href="style.css" />
@@ -17,7 +17,7 @@
       overflow-x: hidden;
     }
 
-    /* ── Subtle animated grid background ── */
+    /* -- Subtle animated grid background -- */
     body::before {
       content: '';
       position: fixed;
@@ -30,7 +30,7 @@
       z-index: 0;
     }
 
-    /* ── Ambient glows ── */
+    /* -- Ambient glows -- */
     body::after {
       content: '';
       position: fixed;
@@ -42,7 +42,7 @@
       z-index: 0;
     }
 
-    /* ── Page wrapper ── */
+    /* -- Page wrapper -- */
     .maint-page {
       position: relative;
       z-index: 1;
@@ -55,7 +55,7 @@
       text-align: center;
     }
 
-    /* ── Logo top ── */
+    /* -- Logo top -- */
     .maint-logo {
       position: fixed;
       top: 2.25rem;
@@ -86,7 +86,7 @@
       color: var(--gold);
     }
 
-    /* ── Eco badge top-right ── */
+    /* -- Eco badge top-right -- */
     .maint-eco {
       position: fixed;
       top: 2.25rem;
@@ -108,9 +108,9 @@
       animation: fadeIn 0.6s ease 0.2s both;
     }
 
-    /* ═══════════════════════════════════════
+    /* =======================================
        SVG VECTOR ILLUSTRATION
-    ═══════════════════════════════════════ */
+    ======================================= */
     .maint-svg-wrap {
       width: min(520px, 90vw);
       margin: 0 auto 2.5rem;
@@ -118,7 +118,7 @@
       filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.6));
     }
 
-    /* ── Twinkling stars ── */
+    /* -- Twinkling stars -- */
     .star {
       animation: twinkle ease-in-out infinite;
     }
@@ -137,7 +137,7 @@
       }
     }
 
-    /* ── Smoke puffs from campfire ── */
+    /* -- Smoke puffs from campfire -- */
     .smoke {
       transform-origin: center bottom;
       animation: smokeRise 3s ease-out infinite;
@@ -168,7 +168,7 @@
       }
     }
 
-    /* ── Gear spinning ── */
+    /* -- Gear spinning -- */
     .gear-spin {
       transform-origin: center;
       animation: gearTurn 6s linear infinite;
@@ -185,7 +185,7 @@
       }
     }
 
-    /* ── Moon gentle float ── */
+    /* -- Moon gentle float -- */
     .moon-float {
       animation: moonFloat 6s ease-in-out infinite;
     }
@@ -202,7 +202,7 @@
       }
     }
 
-    /* ── Tent gentle breathe ── */
+    /* -- Tent gentle breathe -- */
     .tent-breathe {
       transform-origin: center bottom;
       animation: tentBreath 4s ease-in-out infinite;
@@ -220,7 +220,7 @@
       }
     }
 
-    /* ── Firefly dots ── */
+    /* -- Firefly dots -- */
     .firefly {
       animation: fireflyBlink ease-in-out infinite alternate;
     }
@@ -235,9 +235,9 @@
       }
     }
 
-    /* ═══════════════════════════════════════
+    /* =======================================
        CONTENT BELOW SVG
-    ═══════════════════════════════════════ */
+    ======================================= */
     .maint-content {
       animation: fadeUp 0.9s var(--ease-expo) 0.4s both;
     }
@@ -281,7 +281,7 @@
       line-height: 1.75;
     }
 
-    /* ── Countdown ── */
+    /* -- Countdown -- */
     .countdown {
       display: flex;
       gap: 1.5rem;
@@ -342,7 +342,7 @@
       margin-bottom: 1.4rem;
     }
 
-    /* ── Progress bar ── */
+    /* -- Progress bar -- */
     .maint-progress-wrap {
       max-width: 420px;
       margin: 0 auto 2.5rem;
@@ -377,7 +377,7 @@
       transition: width 2s var(--ease-expo);
     }
 
-    /* ── Notify form ── */
+    /* -- Notify form -- */
     .maint-notify {
       display: flex;
       gap: 0.75rem;
@@ -432,7 +432,7 @@
       box-shadow: 0 6px 24px rgba(212, 168, 83, 0.4);
     }
 
-    /* ── Notify success state ── */
+    /* -- Notify success state -- */
     .maint-notify-success {
       display: none;
       align-items: center;
@@ -448,7 +448,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* ── Social ── */
+    /* -- Social -- */
     .maint-social {
       display: flex;
       gap: 1rem;
@@ -478,7 +478,7 @@
       box-shadow: 0 6px 20px rgba(212, 168, 83, 0.15);
     }
 
-    /* ── Footer note ── */
+    /* -- Footer note -- */
     .maint-footer {
       position: fixed;
       bottom: 1.75rem;
@@ -493,7 +493,7 @@
       animation: fadeIn 1s ease 1s both;
     }
 
-    /* ── Animations ── */
+    /* -- Animations -- */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -516,7 +516,7 @@
       }
     }
 
-    /* ── Responsive ── */
+    /* -- Responsive -- */
     @media (max-width: 600px) {
       :root {
         --maint-mobile-w: min(calc(100vw - 2.3rem), 342px);
@@ -638,21 +638,21 @@
     <i class="fa-solid fa-leaf"></i> Carbon Neutral Resort
   </div>
 
-  <!-- ═══════════════════════════════════
+  <!-- ===================================
        MAIN PAGE
-  ═══════════════════════════════════ -->
+  =================================== -->
   <main class="maint-page" role="main">
 
-    <!-- ══════════════════════════════
+    <!-- ==============================
          INLINE SVG VECTOR ILLUSTRATION
          Mountain campsite under starry sky
          with gears representing maintenance
-    ══════════════════════════════ -->
+    ============================== -->
     <div class="maint-svg-wrap" aria-hidden="true">
       <svg viewBox="0 0 520 340" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
         aria-label="Illustration of a wilderness campsite at night with maintenance gears">
 
-        <!-- ── Sky gradient ── -->
+        <!-- -- Sky gradient -- -->
         <defs>
           <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#060810" />
@@ -804,7 +804,7 @@
           <!-- Tree 6 (small) -->
           <polygon points="494,277 503,252 512,277" fill="#0D1219" opacity="0.8" />
 
-          <!-- ── TENT ── -->
+          <!-- -- TENT -- -->
           <g class="tent-breathe">
             <!-- Tent body -->
             <path d="M185 275 L260 215 L335 275 Z" fill="url(#tentGrad)" opacity="0.92" />
@@ -825,7 +825,7 @@
               opacity="0.6" />
           </g>
 
-          <!-- ── CAMPFIRE ── -->
+          <!-- -- CAMPFIRE -- -->
           <!-- Fire glow on ground -->
           <ellipse cx="260" cy="295" rx="30" ry="10" fill="url(#fireGlow)" filter="url(#blur4)" />
           <!-- Logs -->
@@ -856,10 +856,10 @@
           <circle class="firefly" cx="420" cy="252" r="1.2" fill="#D4A853" opacity="0.5"
             style="animation-duration:1.8s; animation-delay:0.9s" />
 
-          <!-- ══════════════════════
+          <!-- ======================
              GEAR / MAINTENANCE ICONS
              Overlaid in sky area
-        ══════════════════════ -->
+        ====================== -->
 
           <!-- Large Gear (top-left area) -->
           <g class="gear-spin" style="transform-origin:110px 95px;">
@@ -910,7 +910,7 @@
             <ellipse cx="0" cy="18" rx="5" ry="3" fill="#0F1520" />
           </g>
 
-          <!-- Spanner dots — connection between gears -->
+          <!-- Spanner dots - connection between gears -->
           <circle cx="128" cy="82" r="2" fill="#D4A853" opacity="0.15" />
 
           <!-- Ground glow from fire -->
@@ -929,7 +929,7 @@
         </g><!-- end clip -->
       </svg>
     </div>
-    <!-- ═══════════════════════════════════════ -->
+    <!-- ======================================= -->
 
     <!-- Content -->
     <div class="maint-content">
@@ -945,11 +945,11 @@
 
       <p class="maint-desc">
         Our team is deep in the wilderness, upgrading the trails. Terravana Wilds
-        will be back shortly — better, faster, and more spectacular than ever.
+        will be back shortly - better, faster, and more spectacular than ever.
       </p>
     </div>
 
-    <!-- ── Countdown Timer ── -->
+    <!-- -- Countdown Timer -- -->
     <div class="countdown" role="timer" aria-label="Time remaining">
       <div class="cd-unit">
         <div class="cd-box" id="cd-hours">08</div>
@@ -967,7 +967,7 @@
       </div>
     </div>
 
-    <!-- ── Progress bar ── -->
+    <!-- -- Progress bar -- -->
     <div class="maint-progress-wrap">
       <div class="maint-progress-label">
         <span>Restoration Progress</span>
@@ -978,7 +978,7 @@
       </div>
     </div>
 
-    <!-- ── Notify form ── -->
+    <!-- -- Notify form -- -->
     <div style="animation: fadeUp 0.9s var(--ease-expo) 0.8s both;">
       <p
         style="font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(232,224,213,0.3);margin-bottom:0.85rem;">
@@ -1009,12 +1009,12 @@
 
   <!-- Footer note -->
   <div class="maint-footer" aria-hidden="true">
-    © 2025 Terravana Wilds · Eco &middot; Adventure &middot; Resort · Est. 2008
+    &copy; 2025 Terravana Wilds &middot; Eco &middot; Adventure &middot; Resort &middot; Est. 2008
   </div>
 
   <script src="script.js"></script>
   <script>
-    // ── Countdown — targets 8 hours from now ──
+    // -- Countdown - targets 8 hours from now --
     (function () {
       var target = new Date();
       target.setHours(target.getHours() + 8);
@@ -1039,7 +1039,7 @@
       tick();
     })();
 
-    // ── Progress bar animate in ──
+    // -- Progress bar animate in --
     (function () {
       var pct = 78;
       setTimeout(function () {
@@ -1047,7 +1047,7 @@
       }, 800);
     })();
 
-    // ── Notify button ──
+    // -- Notify button --
     document.getElementById('notify-btn').addEventListener('click', function () {
       var email = document.getElementById('notify-email').value.trim();
       var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -36,9 +36,70 @@
     .contact-form textarea { min-height: 150px; resize: vertical; }
     .not-found { min-height: 100vh; display: grid; place-items: center; text-align: center; background: radial-gradient(circle at center, rgba(212,168,83,0.1), transparent 45%), var(--coal); }
     .not-found-code { font-family: var(--font-display); font-size: clamp(7rem, 22vw, 18rem); line-height: 0.8; color: var(--gold); opacity: 0.9; }
+
+    .wide-intro { max-width: 980px; margin: 0 auto; text-align: center; }
+    .wide-intro .section-desc { margin-left: auto; margin-right: auto; }
+    .mini-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .mini-kpi { border: 1px solid rgba(212,168,83,0.16); background: rgba(250,248,245,0.035); border-radius: 6px; padding: 1.4rem; text-align: center; }
+    .mini-kpi strong { display: block; font-family: var(--font-display); font-size: 2rem; color: var(--gold); line-height: 1; }
+    .mini-kpi span { display: block; margin-top: 0.55rem; font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,229,218,0.58); }
+    .package-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .package-card { border: 1px solid rgba(212,168,83,0.16); background: rgba(250,248,245,0.035); border-radius: 6px; overflow: hidden; }
+    .package-card img, .package-card video { width: 100%; height: 260px; object-fit: cover; }
+    .package-body { padding: 1.5rem; }
+    .package-meta { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.55rem; }
+    .package-title { font-family: var(--font-display); font-size: 1.65rem; color: var(--ivory); margin-bottom: 0.65rem; }
+    .detail-table { display: grid; border: 1px solid rgba(212,168,83,0.16); border-radius: 6px; overflow: hidden; }
+    .detail-row { display: grid; grid-template-columns: 0.8fr 1.2fr; border-bottom: 1px solid rgba(212,168,83,0.1); }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row div { padding: 1.1rem 1.25rem; color: rgba(237,229,218,0.7); }
+    .detail-row div:first-child { font-family: var(--font-ui); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); background: rgba(212,168,83,0.05); }
+    .faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .faq-item { border: 1px solid rgba(212,168,83,0.14); border-radius: 6px; padding: 1.5rem; background: rgba(250,248,245,0.03); }
+    .faq-item h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.35rem; margin-bottom: 0.6rem; }
+    .image-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; }
+    .image-band img { width: 100%; height: 240px; object-fit: cover; border-radius: 5px; border: 1px solid rgba(212,168,83,0.14); }
+    .quote-panel { max-width: 980px; margin: 0 auto; text-align: center; border: 1px solid rgba(212,168,83,0.18); border-radius: 6px; padding: clamp(2rem, 5vw, 4rem); background: rgba(212,168,83,0.045); }
+    .quote-panel p { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.8rem); line-height: 1.05; color: var(--ivory); }
+    .quote-panel span { display: block; margin-top: 1rem; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+    .resort-compare { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid rgba(212,168,83,0.16); border-radius: 6px; overflow: hidden; }
+    .compare-cell { padding: 1.15rem; border-right: 1px solid rgba(212,168,83,0.1); border-bottom: 1px solid rgba(212,168,83,0.1); color: rgba(237,229,218,0.7); min-height: 82px; }
+    .compare-cell:nth-child(4n) { border-right: none; }
+    .compare-head { background: rgba(212,168,83,0.08); color: var(--gold); font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+    .amenity-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .amenity-item { border: 1px solid rgba(212,168,83,0.14); border-radius: 6px; padding: 1.35rem; background: rgba(250,248,245,0.03); min-height: 170px; }
+    .amenity-item i { color: var(--gold); font-size: 1.35rem; margin-bottom: 1rem; }
+    .amenity-item h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.25rem; margin-bottom: 0.55rem; }
+    .itinerary-list { display: grid; gap: 1rem; }
+    .itinerary-item { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 1.25rem; border-bottom: 1px solid rgba(212,168,83,0.12); padding-bottom: 1rem; }
+    .itinerary-time { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+    .resort-journey { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: stretch; }
+    .resort-journey-media { position: relative; min-height: 640px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(212,168,83,0.16); }
+    .resort-journey-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.08) contrast(1.04); }
+    .resort-journey-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,6,8,0.06), rgba(3,6,8,0.78)); }
+    .resort-journey-caption { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; padding: clamp(1.5rem, 4vw, 3rem); }
+    .resort-journey-caption h3 { font-family: var(--font-display); color: var(--ivory); font-size: clamp(2rem, 4vw, 4rem); line-height: 0.98; margin-bottom: 0.8rem; }
+    .resort-journey-caption p { color: rgba(237,229,218,0.72); max-width: 560px; }
+    .stay-moments { display: grid; gap: 1rem; margin-top: 1.75rem; }
+    .stay-moment { display: grid; grid-template-columns: auto 1fr; gap: 1rem; padding: 1.25rem; border: 1px solid rgba(212,168,83,0.14); border-radius: 6px; background: linear-gradient(145deg, rgba(250,248,245,0.045), rgba(3,6,8,0.24)); }
+    .stay-moment i { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; color: var(--gold); background: rgba(212,168,83,0.1); }
+    .stay-moment h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.28rem; margin-bottom: 0.35rem; }
+    .resort-mosaic { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; grid-auto-rows: 190px; gap: 0.75rem; }
+    .resort-mosaic img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; border: 1px solid rgba(212,168,83,0.14); }
+    .resort-mosaic img:first-child { grid-row: span 2; }
+    .resort-mosaic img:nth-child(4) { grid-column: span 2; }
+    .cta-band { border: 1px solid rgba(212,168,83,0.18); border-radius: 6px; padding: clamp(2rem, 5vw, 4rem); background: linear-gradient(135deg, rgba(212,168,83,0.12), rgba(250,248,245,0.03)); display: grid; grid-template-columns: minmax(0, 1.2fr) auto; gap: 2rem; align-items: center; }
     @media (max-width: 900px) {
-      .feature-grid, .split-section, .gallery-grid, .contact-panel { grid-template-columns: 1fr; }
+      .feature-grid, .split-section, .gallery-grid, .contact-panel, .resort-journey, .resort-mosaic { grid-template-columns: 1fr; }
+
+      .mini-kpis, .package-grid, .faq-grid, .image-band, .resort-compare, .amenity-grid, .cta-band { grid-template-columns: 1fr; }
+      .detail-row { grid-template-columns: 1fr; }
+      .compare-cell { border-right: none; }
+      .itinerary-item { grid-template-columns: 1fr; gap: 0.35rem; }
       .split-section img, .split-section video, .gallery-grid img, .gallery-grid video { height: 320px; }
+      .resort-journey-media { min-height: 420px; }
+      .resort-mosaic { grid-auto-rows: 240px; }
+      .resort-mosaic img:first-child, .resort-mosaic img:nth-child(4) { grid-column: auto; grid-row: auto; }
     }
   </style>
 </head>
@@ -65,8 +126,7 @@
         <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
         <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
         <a href="about.html" class="nav-link" role="listitem">About</a>
-        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
-      </div>
+        </div>
       <div style="display:flex; align-items:center; gap:1rem;">
         <a href="booking.html" class="nav-cta">Book Now</a>
         <div class="nav-profile-dropdown" id="nav-profile-dropdown">
@@ -89,13 +149,12 @@
     <a href="gallery.html" class="nav-link">Gallery</a>
     <a href="reviews.html" class="nav-link">Reviews</a>
     <a href="about.html" class="nav-link">About</a>
-    <a href="contact.html" class="nav-link">Contact</a>
     <a href="booking.html" class="nav-cta">Book Your Journey</a>
   </div>
 
   <main>
     <section class="page-hero" id="hero" aria-label="Stay Wild">
-      <img src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=1920&q=80" alt="Stay Wild at Terravana Wilds" class="hero-bg" loading="eager" fetchpriority="high">
+      <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1920&q=80" alt="Nature resort terrace surrounded by tropical greenery" class="hero-bg" loading="eager" fetchpriority="high">
       <div class="container">
         <div class="page-kicker">Stay Wild</div>
         <h1 class="page-title">Eco Lodges With <em>Soul</em></h1>
@@ -106,25 +165,221 @@
         </div>
       </div>
     </section>
+
     <div id="details">
       <section class="section bg-coal">
-        <div class="container feature-grid">
-          <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-house-chimney-window"></i></div><h3 class="feature-title">Canopy Cottage</h3><p class="feature-text">A quiet elevated stay for couples and solo travellers, wrapped in birdsong.</p></div>
-          <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-mountain-sun"></i></div><h3 class="feature-title">Ridge Villa</h3><p class="feature-text">Wide decks, valley light, and easy access to sunrise trails.</p></div>
-          <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-tent"></i></div><h3 class="feature-title">Forest Camp</h3><p class="feature-text">A refined camp setting for adventure groups, students, and photographers.</p></div>
+        <div class="container wide-intro">
+          <div class="section-label section-label-center">Stay Wild</div>
+          <h2 class="section-title fs-h2 text-center">Comfort that stays close to the land.</h2>
+          <p class="section-desc">Terravana lodges are quiet, textured, and deliberately restrained. Expect warm light, natural ventilation, locally made furniture, filtered water, generous decks, and rooms that invite sleep after a day outside.</p>
+          <div class="mini-kpis">
+            <div class="mini-kpi"><strong>24</strong><span>Rooms</span></div>
+            <div class="mini-kpi"><strong>3</strong><span>Lodge Types</span></div>
+            <div class="mini-kpi"><strong>100%</strong><span>Refill Water</span></div>
+            <div class="mini-kpi"><strong>0</strong><span>Plastic Bottles</span></div>
+          </div>
         </div>
       </section>
+
+      <section class="section bg-graphite">
+        <div class="container package-grid">
+          <div class="package-card"><img src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=900&q=80" alt="Canopy cottage exterior surrounded by forest" loading="lazy"><div class="package-body"><div class="package-meta">Couples and solo guests</div><h3 class="package-title">Canopy Cottage</h3><p class="feature-text">Raised rooms with forest views, reading corners, rain showers, and quiet balcony mornings.</p></div></div>
+          <div class="package-card"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80" alt="Ridge resort pool framed by palms and mountains" loading="lazy"><div class="package-body"><div class="package-meta">Families and long stays</div><h3 class="package-title">Ridge Villa</h3><p class="feature-text">Larger rooms, private deck dining, valley light, and easy access to sunrise trails.</p></div></div>
+          <div class="package-card"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=80" alt="Forest camp walkway through lush resort gardens" loading="lazy"><div class="package-body"><div class="package-meta">Groups and students</div><h3 class="package-title">Forest Camp</h3><p class="feature-text">Refined camp comfort for research groups, workshops, photography trips, and adventure teams.</p></div></div>
+        </div>
+      </section>
+
+      <section class="section bg-coal">
+        <div class="container split-section">
+          <div>
+            <div class="section-label">What Is Included</div>
+            <h2 class="section-title fs-h2">Everything you need after the trail.</h2>
+            <ul class="quiet-list">
+              <li>Breakfast with seasonal fruit, local grain, fresh bread, and forest honey.</li>
+              <li>Filtered drinking water, refill bottles, natural bath amenities, and tea station.</li>
+              <li>Guide consultation on arrival to shape your route and pace.</li>
+              <li>Evening housekeeping, warm lighting, insect screens, and quiet hours.</li>
+              <li>Optional add-ons: private campfire, packed trail lunch, photography hide, and spa therapy.</li>
+            </ul>
+          </div>
+          <div class="detail-table">
+            <div class="detail-row"><div>Check-in</div><div>2:00 PM, with early arrival lounge subject to room readiness.</div></div>
+            <div class="detail-row"><div>Check-out</div><div>11:00 AM, late checkout on request when possible.</div></div>
+            <div class="detail-row"><div>Food</div><div>Local, seasonal, vegetarian friendly, and allergy-aware.</div></div>
+            <div class="detail-row"><div>Connectivity</div><div>Wi-Fi in common spaces; rooms are designed for quiet disconnection.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-graphite">
+        <div class="container image-band">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=700&q=80" alt="Eco resort building surrounded by garden greenery" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=700&q=80" alt="Resort terrace wrapped in tropical plants" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80" alt="Nature resort pool and palms" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=80" alt="Lush resort walkway in nature" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=80" alt="Resort suite opening toward greenery" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1615880484746-a134be9a6ecf?w=700&q=80" alt="Beautiful resort pool surrounded by tropical nature" loading="lazy">
+        </div>
+      </section>
+
+      <section class="section bg-coal">
+        <div class="container resort-journey">
+          <div class="resort-journey-media reveal-left">
+            <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=1100&q=80" alt="Luxury eco resort path surrounded by tropical nature" loading="lazy">
+            <div class="resort-journey-caption">
+              <div class="package-meta">Resort Rhythm</div>
+              <h3>Wake slowly, wander deeply, return softer.</h3>
+              <p>Every stay is built around quiet transitions: misty deck mornings, shaded garden paths, slow meals, guided forest time, and evening firelight.</p>
+            </div>
+          </div>
+          <div class="reveal-right">
+            <div class="section-label">Life At The Lodge</div>
+            <h2 class="section-title fs-h2">More than a room in the forest.</h2>
+            <p class="section-desc">The resort is designed as a sequence of small moments, not a single building. Guests move from private decks to garden lounges, from forest kitchens to stargazing clearings, always close to water, leaves, stone, and quiet.</p>
+            <div class="stay-moments">
+              <div class="stay-moment"><i class="fa-solid fa-cloud-sun"></i><div><h3>Dawn Deck Service</h3><p class="feature-text">Tea, fruit, binoculars, and a gentle wake-up rhythm before the first trail or safari.</p></div></div>
+              <div class="stay-moment"><i class="fa-solid fa-water"></i><div><h3>Pool And Rain Garden</h3><p class="feature-text">A cooling swim zone framed by native planting, stone edges, and shaded loungers.</p></div></div>
+              <div class="stay-moment"><i class="fa-solid fa-spa"></i><div><h3>Forest Spa Corner</h3><p class="feature-text">Simple bodywork, herbal oils, foot soaks, and recovery rituals after long walking days.</p></div></div>
+              <div class="stay-moment"><i class="fa-solid fa-star"></i><div><h3>Night Sky Clearing</h3><p class="feature-text">Low lights, warm throws, telescope evenings, and quiet stargazing after dinner.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-graphite">
+        <div class="container">
+          <div class="section-label section-label-center">Nature Resort Gallery</div>
+          <h2 class="section-title fs-h2 text-center" style="margin-bottom:2rem;">The stay feels green from every angle.</h2>
+          <div class="resort-mosaic">
+            <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=900&q=80" alt="Nature resort walkway with tropical planting" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=700&q=80" alt="Beautiful resort pool terrace in nature" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1576675784432-994941412b3d?w=700&q=80" alt="Calm resort lounge with greenery" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=900&q=80" alt="Resort bedroom opening to tropical nature" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?w=700&q=80" alt="Outdoor resort dining under trees" loading="lazy" onerror="this.onerror=null;this.src='assets/home-resort-hero-full.jpg';">
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-coal">
+        <div class="container">
+          <div class="section-label section-label-center">Room Comparison</div>
+          <h2 class="section-title fs-h2 text-center" style="margin-bottom:2rem;">Choose the stay that fits your rhythm.</h2>
+          <div class="resort-compare">
+            <div class="compare-cell compare-head">Stay Type</div>
+            <div class="compare-cell compare-head">Best For</div>
+            <div class="compare-cell compare-head">Sleeps</div>
+            <div class="compare-cell compare-head">Signature Detail</div>
+            <div class="compare-cell">Canopy Cottage</div>
+            <div class="compare-cell">Couples, solo travellers, writers, birders</div>
+            <div class="compare-cell">2 guests</div>
+            <div class="compare-cell">Raised deck, forest-facing bath, morning bird calls</div>
+            <div class="compare-cell">Ridge Villa</div>
+            <div class="compare-cell">Families, long stays, guests who want extra room</div>
+            <div class="compare-cell">4 guests</div>
+            <div class="compare-cell">Private dining deck, valley view, reading lounge</div>
+            <div class="compare-cell">Forest Camp</div>
+            <div class="compare-cell">Groups, student trips, workshops, research stays</div>
+            <div class="compare-cell">6 to 12 guests</div>
+            <div class="compare-cell">Shared fire area, flexible bedding, guide briefing space</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-graphite">
+        <div class="container">
+          <div class="section-label section-label-center">Amenities</div>
+          <h2 class="section-title fs-h2 text-center" style="margin-bottom:2rem;">Small comforts, carefully chosen.</h2>
+          <div class="amenity-grid">
+            <div class="amenity-item"><i class="fa-solid fa-mug-hot"></i><h3>Tea Pantry</h3><p class="feature-text">Local coffee, herbal infusions, forest honey, and evening warmers in every stay zone.</p></div>
+            <div class="amenity-item"><i class="fa-solid fa-shower"></i><h3>Rain Baths</h3><p class="feature-text">Low-flow rain showers with natural bath blends and refillable ceramic dispensers.</p></div>
+            <div class="amenity-item"><i class="fa-solid fa-wifi"></i><h3>Quiet Wi-Fi</h3><p class="feature-text">Reliable connection in shared lounges, with rooms designed to support real rest.</p></div>
+            <div class="amenity-item"><i class="fa-solid fa-seedling"></i><h3>Garden Food</h3><p class="feature-text">Seasonal vegetables, local grains, smoked chutneys, and fresh trail snacks.</p></div>
+            <div class="amenity-item"><i class="fa-solid fa-person-hiking"></i><h3>Guide Desk</h3><p class="feature-text">Daily route advice from naturalists who adjust plans for weather and wildlife.</p></div>
+            <div class="amenity-item"><i class="fa-solid fa-fire-flame-curved"></i><h3>Hearth Evenings</h3><p class="feature-text">Shared campfire nights, private celebrations, and covered monsoon fire kitchens.</p></div>
+            <div class="amenity-item"><i class="fa-solid fa-bottle-water"></i><h3>Refill Stations</h3><p class="feature-text">Filtered water across the property, plus trail bottles for every guest.</p></div>
+            <div class="amenity-item"><i class="fa-solid fa-moon"></i><h3>Sleep Rituals</h3><p class="feature-text">Warm lighting, insect screens, natural linen, and quiet hours after dinner.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-coal">
+        <div class="container split-section">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1000&q=80" alt="Forest conservation around Terravana lodges" loading="lazy">
+          <div>
+            <div class="section-label">How We Stay Low Impact</div>
+            <h2 class="section-title fs-h2">The systems behind the serenity.</h2>
+            <p class="section-desc">The calm you feel in the rooms comes from many quiet decisions: fewer rooms, low-rise structures, shaded paths, native planting, filtered water, and a kitchen that plans around what the region can responsibly provide.</p>
+            <div class="detail-table">
+              <div class="detail-row"><div>Water</div><div>Rainwater harvesting, low-flow fittings, greywater treatment, and refill stations.</div></div>
+              <div class="detail-row"><div>Energy</div><div>Solar hot water, warm low-energy lighting, and passive cooling before mechanical cooling.</div></div>
+              <div class="detail-row"><div>Waste</div><div>Composting, bulk purchasing, refill amenities, and no single-use plastic bottles.</div></div>
+              <div class="detail-row"><div>Habitat</div><div>Native planting, quiet zones, controlled lighting, and wildlife corridor monitoring.</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section bg-graphite">
         <div class="container split-section">
           <div>
-            <div class="section-label">Responsible Comfort</div>
-            <h2 class="section-title fs-h2">Low impact, high care.</h2>
-            <p class="section-desc">Rainwater harvesting, solar heating, filtered refills, local food, and no single-use plastic are standard across every stay.</p>
-            <a href="booking.html" class="btn btn-primary" style="margin-top:2rem;">Book A Lodge</a>
+            <div class="section-label">Forest Kitchen</div>
+            <h2 class="section-title fs-h2">Food that belongs to the season.</h2>
+            <p class="section-desc">Meals at Terravana are generous without being heavy. Breakfasts are built for the trail, lunches are fresh and cooling, and dinners lean into smoke, spice, grain, herbs, and slow conversations.</p>
+            <ul class="quiet-list">
+              <li>Trail breakfast with fruit, millet, eggs or plant-based options, and fresh bread.</li>
+              <li>Packed lunches for waterfall walks, safaris, and long ridge routes.</li>
+              <li>Evening menus with smoked vegetables, local curries, herb teas, and fire breads.</li>
+              <li>Dietary requests handled during booking with advance notice.</li>
+            </ul>
           </div>
-          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1000&q=80" alt="Warm eco lodge interior" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?w=1000&q=80" alt="Seasonal forest kitchen meal" loading="lazy">
         </div>
-      </section></div>
+      </section>
+
+      <section class="section bg-coal">
+        <div class="container split-section">
+          <div>
+            <div class="section-label">Two-Night Flow</div>
+            <h2 class="section-title fs-h2">A sample stay, paced gently.</h2>
+            <p class="section-desc">This is the rhythm many first-time guests love: enough adventure to feel the place, enough space to actually rest.</p>
+          </div>
+          <div class="itinerary-list">
+            <div class="itinerary-item"><div class="itinerary-time">Day 1 PM</div><p class="feature-text">Arrive, settle into your lodge, meet your guide, and join a soft forest orientation walk.</p></div>
+            <div class="itinerary-item"><div class="itinerary-time">Night 1</div><p class="feature-text">Dinner by the hearth, seasonal tasting plates, and optional stargazing from the deck.</p></div>
+            <div class="itinerary-item"><div class="itinerary-time">Day 2 AM</div><p class="feature-text">Sunrise trek or wildlife drive based on season, followed by a slow breakfast.</p></div>
+            <div class="itinerary-item"><div class="itinerary-time">Day 2 PM</div><p class="feature-text">Rest, waterfall walk, spa therapy, or private photography hide depending on energy.</p></div>
+            <div class="itinerary-item"><div class="itinerary-time">Day 3</div><p class="feature-text">Tea on the deck, final birding loop, and checkout with packed snacks for the road.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-graphite">
+        <div class="container faq-grid">
+          <div class="faq-item"><h3>Are the lodges air-conditioned</h3><p class="feature-text">Selected rooms include cooling, but most comfort comes from shade, ventilation, high roofs, and evening temperature drops.</p></div>
+          <div class="faq-item"><h3>Is the resort good for families</h3><p class="feature-text">Yes. Ridge Villas are best for families, and the guide team can plan shorter walks for children.</p></div>
+          <div class="faq-item"><h3>Can I work remotely</h3><p class="feature-text">Common lounges have Wi-Fi and charging points. Rooms are kept quieter and more restorative.</p></div>
+          <div class="faq-item"><h3>What should I pack</h3><p class="feature-text">Comfortable walking shoes, neutral layers, rain protection in monsoon, a refill bottle, and a small daypack.</p></div>
+          <div class="faq-item"><h3>Are pets allowed</h3><p class="feature-text">Pets are not allowed in forest stay zones because of wildlife safety and trail sensitivity.</p></div>
+          <div class="faq-item"><h3>Can I request a private dinner</h3><p class="feature-text">Yes. Deck dinners, private campfires, and celebration menus can be arranged in advance.</p></div>
+        </div>
+      </section>
+
+      <section class="section bg-coal">
+        <div class="container">
+          <div class="cta-band">
+            <div>
+              <div class="section-label">Ready To Stay</div>
+              <h2 class="section-title fs-h2" style="margin-bottom:1rem;">Choose your lodge, then let the forest set the pace.</h2>
+              <p class="section-desc" style="margin-bottom:0;">Our reservations team can help match your room, season, trail plan, and celebration details.</p>
+            </div>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+              <a href="booking.html" class="btn btn-primary">Book Eco Stay</a>
+              <a href="booking.html" class="btn btn-ghost">Ask A Question</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="footer" role="contentinfo">
@@ -167,8 +422,7 @@
           <h3 class="footer-col-title">Connect</h3>
           <nav class="footer-links" aria-label="Connect links">
             <a href="about.html" class="footer-link">About Us</a>
-            <a href="contact.html" class="footer-link">Contact</a>
-          </nav>
+            </nav>
           <form class="footer-email-form" action="#" method="post">
             <input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required>
             <button class="footer-email-btn" type="submit">Submit</button>

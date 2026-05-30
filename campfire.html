@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    html, body { overflow-x: hidden; }
     .page-hero { min-height: 72vh; display: flex; align-items: center; position: relative; overflow: hidden; }
     .page-hero .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .page-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,12,14,0.88), rgba(10,12,14,0.45), rgba(10,12,14,0.82)); }
@@ -36,9 +37,135 @@
     .contact-form textarea { min-height: 150px; resize: vertical; }
     .not-found { min-height: 100vh; display: grid; place-items: center; text-align: center; background: radial-gradient(circle at center, rgba(212,168,83,0.1), transparent 45%), var(--coal); }
     .not-found-code { font-family: var(--font-display); font-size: clamp(7rem, 22vw, 18rem); line-height: 0.8; color: var(--gold); opacity: 0.9; }
+
+    .wide-intro { max-width: 980px; margin: 0 auto; text-align: center; }
+    .wide-intro .section-desc { margin-left: auto; margin-right: auto; }
+    .mini-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .mini-kpi { border: 1px solid rgba(212,168,83,0.16); background: rgba(250,248,245,0.035); border-radius: 6px; padding: 1.4rem; text-align: center; }
+    .mini-kpi strong { display: block; font-family: var(--font-display); font-size: 2rem; color: var(--gold); line-height: 1; }
+    .mini-kpi span { display: block; margin-top: 0.55rem; font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,229,218,0.58); }
+    .package-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .package-card { border: 1px solid rgba(212,168,83,0.16); background: rgba(250,248,245,0.035); border-radius: 6px; overflow: hidden; }
+    .package-card img, .package-card video { width: 100%; height: 260px; object-fit: cover; }
+    .package-body { padding: 1.5rem; }
+    .package-meta { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.55rem; }
+    .package-title { font-family: var(--font-display); font-size: 1.65rem; color: var(--ivory); margin-bottom: 0.65rem; }
+    .detail-table { display: grid; border: 1px solid rgba(212,168,83,0.16); border-radius: 6px; overflow: hidden; }
+    .detail-row { display: grid; grid-template-columns: 0.8fr 1.2fr; border-bottom: 1px solid rgba(212,168,83,0.1); }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row div { padding: 1.1rem 1.25rem; color: rgba(237,229,218,0.7); }
+    .detail-row div:first-child { font-family: var(--font-ui); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); background: rgba(212,168,83,0.05); }
+    .faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .faq-item { border: 1px solid rgba(212,168,83,0.14); border-radius: 6px; padding: 1.5rem; background: rgba(250,248,245,0.03); }
+    .faq-item h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.35rem; margin-bottom: 0.6rem; }
+    .image-band { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+    .image-band img { width: 100%; height: 240px; object-fit: cover; border-radius: 5px; border: 1px solid rgba(212,168,83,0.14); }
+    .quote-panel { max-width: 980px; margin: 0 auto; text-align: center; border: 1px solid rgba(212,168,83,0.18); border-radius: 6px; padding: clamp(2rem, 5vw, 4rem); background: rgba(212,168,83,0.045); }
+    .quote-panel p { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.8rem); line-height: 1.05; color: var(--ivory); }
+    .quote-panel span { display: block; margin-top: 1rem; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+    .page-title, .page-subtitle, .section-title, .section-desc { max-width: 100%; overflow-wrap: break-word; white-space: normal !important; }
+    .campfire-hero-glow { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(circle at 28% 70%, rgba(217,96,48,0.34), transparent 28%), radial-gradient(circle at 65% 80%, rgba(236,186,69,0.20), transparent 26%); mix-blend-mode: screen; animation: firePulse 3.4s ease-in-out infinite alternate; }
+    .campfire-hero::after { background: linear-gradient(90deg, rgba(3,6,8,0.76), rgba(3,6,8,0.16) 48%, rgba(3,6,8,0.70)), linear-gradient(180deg, rgba(3,6,8,0.12), rgba(3,6,8,0.92)); }
+    .campfire-hero .hero-bg { object-position: center 58%; filter: saturate(1.25) contrast(1.08) brightness(0.92); }
+    .campfire-hero-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.62fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    .campfire-hero { align-items: flex-start; padding-top: calc(var(--nav-h, 80px) + 4.5rem); }
+    .camp-hero-photo { position: relative; min-height: 480px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(236,186,69,0.28); box-shadow: 0 32px 120px rgba(0,0,0,0.68), 0 0 80px rgba(217,96,48,0.18); animation: campHeroFloat 6s ease-in-out infinite; }
+    .camp-hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.18) contrast(1.08); }
+    .camp-hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(3,6,8,0.86)); }
+    .camp-hero-badge { position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; z-index: 1; padding: 1rem; border-radius: 6px; border: 1px solid rgba(236,186,69,0.22); background: rgba(3,6,8,0.62); backdrop-filter: blur(14px); }
+    .camp-hero-badge strong { display: block; font-family: var(--font-display); color: var(--ivory); font-size: 1.25rem; margin-bottom: 0.25rem; }
+    .camp-hero-badge span { font-family: var(--font-ui); font-size: 0.65rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+    .camp-photo-credit { margin-top: 0.65rem; font-size: 0.62rem; color: rgba(237,229,218,0.45); }
+    .camp-photo-credit a { color: rgba(236,186,69,0.68); text-decoration: underline; text-underline-offset: 3px; }
+    .ember-field { position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; }
+    .ember-field span { position: absolute; bottom: -8%; width: 5px; height: 5px; border-radius: 50%; background: radial-gradient(circle, #ffe180, #d96030 62%, transparent 70%); box-shadow: 0 0 18px rgba(236,186,69,0.75); animation: emberRise linear infinite; opacity: 0; }
+    .ember-field span:nth-child(1) { left: 8%; animation-duration: 8s; animation-delay: 0s; }
+    .ember-field span:nth-child(2) { left: 18%; animation-duration: 11s; animation-delay: 1.2s; }
+    .ember-field span:nth-child(3) { left: 30%; animation-duration: 9s; animation-delay: 0.4s; }
+    .ember-field span:nth-child(4) { left: 42%; animation-duration: 12s; animation-delay: 2.4s; }
+    .ember-field span:nth-child(5) { left: 55%; animation-duration: 7s; animation-delay: 1.8s; }
+    .ember-field span:nth-child(6) { left: 68%; animation-duration: 10s; animation-delay: 0.9s; }
+    .ember-field span:nth-child(7) { left: 78%; animation-duration: 13s; animation-delay: 2.8s; }
+    .ember-field span:nth-child(8) { left: 88%; animation-duration: 8.5s; animation-delay: 1.6s; }
+    .ember-field span:nth-child(9) { left: 48%; animation-duration: 14s; animation-delay: 3.1s; }
+    .ember-field span:nth-child(10) { left: 24%; animation-duration: 9.5s; animation-delay: 2s; }
+    .campfire-section { position: relative; overflow: hidden; }
+    .campfire-section::before { content: ""; position: absolute; inset: auto -10% -16% -10%; height: 260px; pointer-events: none; background: radial-gradient(ellipse at center, rgba(217,96,48,0.13), transparent 64%); animation: firePulse 4.8s ease-in-out infinite alternate; }
+    .campfire-section > .container { position: relative; z-index: 1; }
+    .ember-card { position: relative; overflow: hidden; transition: transform 0.38s ease, box-shadow 0.38s ease, border-color 0.38s ease; }
+    .ember-card::after { content: ""; position: absolute; inset: -40% -20% auto -20%; height: 160px; background: linear-gradient(90deg, transparent, rgba(236,186,69,0.12), transparent); transform: translateX(-80%) rotate(-8deg); transition: transform 0.7s ease; pointer-events: none; }
+    .ember-card:hover { transform: translateY(-8px); border-color: rgba(236,186,69,0.45); box-shadow: 0 20px 80px rgba(0,0,0,0.65), 0 0 48px rgba(217,96,48,0.12); }
+    .ember-card:hover::after { transform: translateX(80%) rotate(-8deg); }
+    .fire-stage { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.25rem; align-items: stretch; }
+    .fire-feature { position: relative; min-height: 620px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(212,168,83,0.16); }
+    .fire-feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.18) contrast(1.08); }
+    .fire-feature::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,6,8,0.04), rgba(3,6,8,0.88)); }
+    .fire-feature-copy { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; padding: clamp(1.5rem, 4vw, 3rem); }
+    .fire-feature-copy h3 { font-family: var(--font-display); color: var(--ivory); font-size: clamp(2.2rem, 5vw, 4.8rem); line-height: 0.96; margin-bottom: 1rem; }
+    .fire-feature-copy p { color: rgba(237,229,218,0.74); max-width: 620px; }
+    .fire-stack { display: grid; gap: 1rem; }
+    .fire-mini { display: grid; grid-template-columns: 72px 1fr; gap: 1rem; align-items: center; padding: 1.2rem; min-height: 142px; border: 1px solid rgba(212,168,83,0.14); border-radius: 6px; background: linear-gradient(135deg, rgba(217,96,48,0.10), rgba(12,24,18,0.84)); }
+    .fire-mini i { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; color: var(--coal); background: linear-gradient(135deg, var(--gold), var(--copper)); box-shadow: 0 0 34px rgba(217,96,48,0.26); }
+    .fire-mini h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.32rem; margin-bottom: 0.35rem; }
+    .fire-mini p { color: rgba(237,229,218,0.66); font-size: 0.9rem; }
+    .flame-timeline { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+    .flame-step { min-height: 270px; padding: 1.4rem; border-radius: 6px; border: 1px solid rgba(212,168,83,0.14); background: rgba(250,248,245,0.032); }
+    .flame-step span { display: inline-block; margin-bottom: 3rem; font-family: var(--font-ui); font-size: 0.68rem; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+    .flame-step i { display: block; color: rgba(236,186,69,0.22); font-size: 3rem; margin-bottom: 1rem; animation: iconFlicker 2.8s ease-in-out infinite alternate; }
+    .flame-step h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.32rem; margin-bottom: 0.55rem; }
+    .flame-step p { color: rgba(237,229,218,0.64); font-size: 0.9rem; }
+    .fire-menu-grid, .sound-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .menu-card, .sound-card { padding: 1.5rem; min-height: 230px; border-radius: 6px; border: 1px solid rgba(212,168,83,0.14); background: linear-gradient(145deg, rgba(23,42,30,0.58), rgba(3,6,8,0.82)); }
+    .menu-card i, .sound-card i { color: var(--gold); font-size: 1.8rem; margin-bottom: 1rem; animation: iconFlicker 3.2s ease-in-out infinite alternate; }
+    .menu-card h3, .sound-card h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.3rem; margin-bottom: 0.55rem; }
+    .menu-card p, .sound-card p { color: rgba(237,229,218,0.65); font-size: 0.9rem; }
+    .wildfire-band { min-height: 540px; display: flex; align-items: flex-end; border-radius: 6px; overflow: hidden; border: 1px solid rgba(212,168,83,0.16); position: relative; background: url("assets/campfire-night.jpg") center/cover; }
+    .wildfire-band::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 84%, rgba(217,96,48,0.42), transparent 31%), linear-gradient(180deg, rgba(3,6,8,0.10), rgba(3,6,8,0.92)); animation: firePulse 3s ease-in-out infinite alternate; }
+    .wildfire-copy { position: relative; z-index: 1; padding: clamp(1.5rem, 4vw, 3rem); max-width: 780px; }
+    .wildfire-copy h2 { font-family: var(--font-display); color: var(--ivory); font-size: clamp(2.2rem, 5vw, 5rem); line-height: 0.96; margin-bottom: 1rem; }
+    .wildfire-copy p { color: rgba(237,229,218,0.72); }
+    .fire-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+    .fire-gallery img { width: 100%; height: 330px; object-fit: cover; border-radius: 6px; border: 1px solid rgba(212,168,83,0.14); filter: saturate(1.1) contrast(1.05); }
+    .setup-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.25rem; align-items: stretch; }
+    .setup-image { position: relative; min-height: 560px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(212,168,83,0.16); }
+    .setup-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.14) contrast(1.06); }
+    .setup-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,6,8,0.02), rgba(3,6,8,0.86)); }
+    .setup-caption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: clamp(1.5rem, 4vw, 3rem); }
+    .setup-caption h3 { font-family: var(--font-display); color: var(--ivory); font-size: clamp(2rem, 4.4vw, 3.8rem); line-height: 0.98; margin-bottom: 0.8rem; }
+    .setup-caption p { color: rgba(237,229,218,0.72); }
+    .setup-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .setup-card, .addon-card { padding: 1.35rem; border: 1px solid rgba(212,168,83,0.14); border-radius: 6px; background: linear-gradient(145deg, rgba(23,42,30,0.58), rgba(3,6,8,0.84)); min-height: 190px; }
+    .setup-card i, .addon-card i { color: var(--gold); font-size: 1.7rem; margin-bottom: 1rem; animation: iconFlicker 3.2s ease-in-out infinite alternate; }
+    .setup-card h3, .addon-card h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .setup-card p, .addon-card p { color: rgba(237,229,218,0.65); font-size: 0.9rem; }
+    .addon-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .campfire-cta { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: center; padding: clamp(2rem, 5vw, 4rem); border-radius: 6px; border: 1px solid rgba(212,168,83,0.18); background: linear-gradient(135deg, rgba(217,96,48,0.18), rgba(3,6,8,0.94)), url("assets/campfire-people.jpg") center/cover; }
+    .campfire-cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    @keyframes emberRise { 0% { transform: translate3d(0, 0, 0) scale(0.55); opacity: 0; } 12% { opacity: 0.9; } 70% { opacity: 0.65; } 100% { transform: translate3d(42px, -110vh, 0) scale(1.2); opacity: 0; } }
+    @keyframes firePulse { from { opacity: 0.62; filter: saturate(1); } to { opacity: 1; filter: saturate(1.35); } }
+    @keyframes iconFlicker { 0%, 100% { opacity: 0.74; transform: translateY(0) scale(1); } 48% { opacity: 1; transform: translateY(-3px) scale(1.04); } 62% { opacity: 0.82; } }
+    @keyframes campHeroFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
     @media (max-width: 900px) {
-      .feature-grid, .split-section, .gallery-grid, .contact-panel { grid-template-columns: 1fr; }
+      .feature-grid, .split-section, .gallery-grid, .contact-panel, .campfire-hero-grid, .fire-stage, .flame-timeline, .fire-menu-grid, .sound-grid, .fire-gallery, .setup-grid, .setup-list, .addon-grid, .campfire-cta { grid-template-columns: 1fr; }
+
+      .mini-kpis, .package-grid, .faq-grid, .image-band { grid-template-columns: 1fr; }
+      .detail-row { grid-template-columns: 1fr; }
       .split-section img, .split-section video, .gallery-grid img, .gallery-grid video { height: 320px; }
+      .fire-feature { min-height: 460px; }
+      .camp-hero-photo { min-height: 360px; }
+      .setup-image { min-height: 420px; }
+      .fire-gallery img { height: 270px; }
+      .wildfire-band { min-height: 440px; }
+    }
+    @media (max-width: 600px) {
+      .page-hero { min-height: 82vh; }
+      .campfire-hero { padding-top: calc(var(--nav-h, 80px) + 3.5rem); }
+      .page-title { max-width: calc(100vw - 2rem); font-size: clamp(2rem, 9vw, 2.45rem); line-height: 1.08; }
+      .page-subtitle { max-width: calc(100vw - 2rem); font-size: 0.96rem; line-height: 1.65; }
+      .section-title, .wildfire-copy h2 { font-size: clamp(1.85rem, 8.2vw, 2.35rem) !important; line-height: 1.14; }
+      .fire-feature-copy h3 { font-size: clamp(1.8rem, 8.5vw, 2.3rem); line-height: 1.08; }
+      .fire-mini { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .campfire-cta-actions .btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -65,8 +192,7 @@
         <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
         <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
         <a href="about.html" class="nav-link" role="listitem">About</a>
-        <a href="contact.html" class="nav-link" role="listitem">Contact</a>
-      </div>
+        </div>
       <div style="display:flex; align-items:center; gap:1rem;">
         <a href="booking.html" class="nav-cta">Book Now</a>
         <div class="nav-profile-dropdown" id="nav-profile-dropdown">
@@ -89,42 +215,222 @@
     <a href="gallery.html" class="nav-link">Gallery</a>
     <a href="reviews.html" class="nav-link">Reviews</a>
     <a href="about.html" class="nav-link">About</a>
-    <a href="contact.html" class="nav-link">Contact</a>
     <a href="booking.html" class="nav-cta">Book Your Journey</a>
   </div>
 
   <main>
-    <section class="page-hero" id="hero" aria-label="After Dark">
-      <img src="https://images.unsplash.com/photo-1478827387698-1527781a4887?w=1920&q=80" alt="After Dark at Terravana Wilds" class="hero-bg" loading="eager" fetchpriority="high">
-      <div class="container">
-        <div class="page-kicker">After Dark</div>
-        <h1 class="page-title">Campfire <em>Nights</em></h1>
-        <p class="page-subtitle">The forest changes after sunset. Gather close for warm food, local stories, stars, and the low hush of the trees.</p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
-          <a href="booking.html" class="btn btn-primary">Book Now</a>
-          <a href="#details" class="btn btn-ghost">Explore</a>
+    <section class="page-hero campfire-hero" id="hero" aria-label="After Dark">
+      <img src="assets/campfire-people.jpg" alt="Fire camp gathering at Terravana Wilds" class="hero-bg" loading="eager" fetchpriority="high">
+      <div class="campfire-hero-glow" aria-hidden="true"></div>
+      <div class="ember-field" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="container campfire-hero-grid">
+        <div>
+          <div class="page-kicker">After Dark</div>
+          <h1 class="page-title">Campfire<br><em>Nights</em></h1>
+          <p class="page-subtitle">The forest changes after sunset. Gather close for warm food, local stories, stars, and the low hush of the trees.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+            <a href="booking.html" class="btn btn-primary">Book Now</a>
+            <a href="#details" class="btn btn-ghost">Explore</a>
+          </div>
+        </div>
+        <div class="camp-hero-photo" aria-label="Fire camp preview">
+          <img src="assets/campfire-people.jpg" alt="Guests sitting around a glowing fire camp" loading="eager">
+          <div class="camp-hero-badge">
+            <strong>Fire Camp Circle</strong>
+            <span>Hosted nightly under clear skies</span>
+            <div class="camp-photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:People_surrounding_campfire.jpg" target="_blank" rel="noopener noreferrer">V3N0M V1V14N / Wikimedia Commons</a>, CC BY-SA 4.0</div>
+          </div>
         </div>
       </div>
     </section>
+
     <div id="details">
-      <section class="section bg-coal">
-        <div class="container split-section">
-          <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1504851149312-7a075b496cc7?w=1000&q=80">
-            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
-          </video>
-          <div>
-            <div class="section-label">Forest Evenings</div>
-            <h2 class="section-title fs-h2">Slow nights, deep stories.</h2>
-            <p class="section-desc">Our campfire evenings are calm, hosted gatherings with seasonal forest food, tea, folk stories, acoustic music, and guided stargazing when the sky is clear.</p>
-            <ul class="quiet-list">
-              <li>Private and shared fire circles available.</li>
-              <li>Local grain breads, herb teas, and wood-fired dinner menus.</li>
-              <li>Optional night walk with a naturalist before the fire.</li>
-            </ul>
-            <a href="booking.html" class="btn btn-primary" style="margin-top:2rem;">Book Campfire Stay</a>
+      <section class="section bg-coal campfire-section">
+        <div class="container fire-stage">
+          <div class="fire-feature reveal-left">
+            <img src="assets/campfire-night.jpg" alt="Cinematic campfire burning under a dark forest sky" loading="lazy">
+            <div class="fire-feature-copy">
+              <div class="package-meta">Wildfire Glow</div>
+              <h3>The forest turns amber after dark.</h3>
+              <p>Our evening fire circle is cinematic, warm, and carefully controlled: ember light, smoked food, local stories, acoustic quiet, and a night sky that feels close enough to touch.</p>
+            </div>
+          </div>
+          <div class="fire-stack reveal-right">
+            <div class="fire-mini ember-card">
+              <i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>
+              <div><h3>Fire Circle</h3><p>Low seating, safe fire bowls, warm blankets, and a host who sets the rhythm of the night.</p></div>
+            </div>
+            <div class="fire-mini ember-card">
+              <i class="fa-solid fa-utensils" aria-hidden="true"></i>
+              <div><h3>Flame Kitchen</h3><p>Smoked vegetables, charred breads, spiced broths, forest herb tea, and seasonal sweets.</p></div>
+            </div>
+            <div class="fire-mini ember-card">
+              <i class="fa-solid fa-moon" aria-hidden="true"></i>
+              <div><h3>Night Walk</h3><p>Optional pre-fire walk for owls, frogs, cicadas, and the strange music of the dark canopy.</p></div>
+            </div>
+            <div class="fire-mini ember-card">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <div><h3>Stargazing</h3><p>Clear evenings become sky sessions with constellations, folklore, and warm cups in hand.</p></div>
+            </div>
           </div>
         </div>
-      </section></div>
+      </section>
+
+      <section class="section bg-graphite campfire-section">
+        <div class="container">
+          <div class="section-header section-header-center" style="margin-bottom:3rem;">
+            <div class="section-label section-label-center">Choose Your Fire</div>
+            <h2 class="section-title fs-h2">Three ways to gather in the glow.</h2>
+          </div>
+          <div class="package-grid">
+            <div class="package-card ember-card reveal"><img src="assets/campfire-night.jpg" alt="Classic campfire circle" loading="lazy"><div class="package-body"><div class="package-meta">Shared evening</div><h3 class="package-title">Classic Circle</h3><p class="feature-text">A relaxed campfire with local snacks, forest stories, and guide-led conversation.</p></div></div>
+            <div class="package-card ember-card reveal reveal-delay-2"><img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?w=900&q=80" alt="Private celebration fire near forest waterfall" loading="lazy"><div class="package-body"><div class="package-meta">Private setup</div><h3 class="package-title">Celebration Fire</h3><p class="feature-text">An intimate circle for birthdays, proposals, anniversaries, or family milestones.</p></div></div>
+            <div class="package-card ember-card reveal reveal-delay-3"><img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=900&q=80" alt="Stargazing night" loading="lazy"><div class="package-body"><div class="package-meta">Clear skies</div><h3 class="package-title">Stars And Stories</h3><p class="feature-text">A skywatching evening with mythology, constellations, and warm drinks.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-coal campfire-section">
+        <div class="container setup-grid">
+          <div class="setup-image reveal-left">
+            <img src="assets/campfire-people.jpg" alt="Fire camp seating arranged around a bright campfire" loading="lazy">
+            <div class="setup-caption">
+              <div class="package-meta">Fire Camp Setup</div>
+              <h3>Built for warmth, stories, and safe wonder.</h3>
+              <p>Every campfire setup is arranged before sunset, checked by the host, and tuned for comfort: low chairs, warm throws, lantern paths, and enough space for the forest to keep breathing.</p>
+            </div>
+          </div>
+          <div class="setup-list reveal-right">
+            <div class="setup-card ember-card"><i class="fa-solid fa-chair"></i><h3>Circle Seating</h3><p>Low chairs and cushions keep the group close without crowding the fire zone.</p></div>
+            <div class="setup-card ember-card"><i class="fa-solid fa-road"></i><h3>Lantern Path</h3><p>Softly lit trails guide guests from lodge deck to fire camp and back.</p></div>
+            <div class="setup-card ember-card"><i class="fa-solid fa-temperature-three-quarters"></i><h3>Warm Comfort</h3><p>Throws, hot towels, herbal drinks, and ember-side service for cool nights.</p></div>
+            <div class="setup-card ember-card"><i class="fa-solid fa-shield-heart"></i><h3>Hosted Safety</h3><p>Trained hosts monitor wind, fuel, guest distance, ash, and final extinguishing.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-coal campfire-section">
+        <div class="container">
+          <div class="section-header section-header-center" style="margin-bottom:3rem;">
+            <div class="section-label section-label-center">Evening Flow</div>
+            <h2 class="section-title fs-h2">A night choreographed by firelight.</h2>
+          </div>
+          <div class="flame-timeline">
+            <div class="flame-step ember-card reveal"><span>6:30 PM</span><i class="fa-solid fa-mug-hot"></i><h3>Arrival Tea</h3><p>Gather at the lodge deck for spiced tea, shawls, and a short forest briefing.</p></div>
+            <div class="flame-step ember-card reveal reveal-delay-1"><span>7:00 PM</span><i class="fa-solid fa-shoe-prints"></i><h3>Night Walk</h3><p>Move slowly under the canopy, listening for owls, frogs, cicadas, and shifting leaves.</p></div>
+            <div class="flame-step ember-card reveal reveal-delay-2"><span>7:45 PM</span><i class="fa-solid fa-fire"></i><h3>First Spark</h3><p>The fire is lit, seats warm, and the evening host opens the circle with a local story.</p></div>
+            <div class="flame-step ember-card reveal reveal-delay-3"><span>8:15 PM</span><i class="fa-solid fa-bowl-food"></i><h3>Fire Supper</h3><p>Smoked vegetables, flame breads, broth, chutneys, and dessert from the ember kitchen.</p></div>
+            <div class="flame-step ember-card reveal reveal-delay-4"><span>9:30 PM</span><i class="fa-solid fa-star"></i><h3>Sky Quiet</h3><p>Stargazing, final tea, and a lantern walk back through the dark resort paths.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-graphite campfire-section">
+        <div class="container">
+          <div class="section-header section-header-center" style="margin-bottom:3rem;">
+            <div class="section-label section-label-center">Wildfire Kitchen</div>
+            <h2 class="section-title fs-h2">A menu built for smoke, spice, and night air.</h2>
+          </div>
+          <div class="fire-menu-grid">
+            <div class="menu-card ember-card reveal"><i class="fa-solid fa-bread-slice"></i><h3>Charred Flatbreads</h3><p>Fire-blistered breads with forest herb butter, smoked salt, and roasted garlic.</p></div>
+            <div class="menu-card ember-card reveal reveal-delay-1"><i class="fa-solid fa-pepper-hot"></i><h3>Ember Vegetables</h3><p>Root vegetables, peppers, mushrooms, and greens finished with tamarind glaze.</p></div>
+            <div class="menu-card ember-card reveal reveal-delay-2"><i class="fa-solid fa-mortar-pestle"></i><h3>Spiced Broth</h3><p>Slow-simmered seasonal broth served in warm cups as the night cools.</p></div>
+            <div class="menu-card ember-card reveal reveal-delay-3"><i class="fa-solid fa-cookie-bite"></i><h3>Fire Sweets</h3><p>Jaggery fruit, toasted nuts, cocoa, and campfire desserts made for sharing.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-coal campfire-section">
+        <div class="container">
+          <div class="wildfire-band reveal">
+            <div class="ember-field" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="wildfire-copy">
+              <div class="section-label">Cinematic Fire Circle</div>
+              <h2>All glow, no hurry.</h2>
+              <p>The scene is dramatic, but the footprint is careful. Every fire is hosted in a designated zone, monitored by trained staff, and closed with a strict ash, water, and cleanup protocol.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-graphite campfire-section">
+        <div class="container split-section">
+          <div class="reveal-left">
+            <div class="section-label">Soundscape</div>
+            <h2 class="section-title fs-h2">The night has its own soundtrack.</h2>
+            <p class="section-desc">Campfire nights are not loud entertainment. They are designed around forest sound: crackle, insects, night birds, breath, soft conversation, and acoustic music that never fights the place.</p>
+          </div>
+          <div class="sound-grid reveal-right" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+            <div class="sound-card ember-card"><i class="fa-solid fa-music"></i><h3>Acoustic Sets</h3><p>Low-volume folk songs, hand drums, and simple strings around the circle.</p></div>
+            <div class="sound-card ember-card"><i class="fa-solid fa-volume-low"></i><h3>Forest Quiet</h3><p>Silent pauses for night calls, wind shifts, and the tiny clicks of cooling wood.</p></div>
+            <div class="sound-card ember-card"><i class="fa-solid fa-book-open"></i><h3>Local Lore</h3><p>Stories of rivers, old trails, monsoon lights, and the animals that share the valley.</p></div>
+            <div class="sound-card ember-card"><i class="fa-solid fa-binoculars"></i><h3>Night Watch</h3><p>Guides help identify distant calls without disturbing wildlife movement.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-coal campfire-section">
+        <div class="container">
+          <div class="section-header section-header-center" style="margin-bottom:3rem;">
+            <div class="section-label section-label-center">Private Fire Add-Ons</div>
+            <h2 class="section-title fs-h2">Make the campfire yours.</h2>
+            <p class="section-desc">For birthdays, proposals, reunions, and quiet family evenings, the team can build a more personal fire camp with food, music, and details matched to your group.</p>
+          </div>
+          <div class="addon-grid">
+            <div class="addon-card ember-card reveal"><i class="fa-solid fa-guitar"></i><h3>Acoustic Host</h3><p>A soft live set with folk songs, hand percussion, and space for conversation.</p></div>
+            <div class="addon-card ember-card reveal reveal-delay-1"><i class="fa-solid fa-cake-candles"></i><h3>Celebration Table</h3><p>Fire desserts, flowers, warm drinks, and a private seating plan for milestone nights.</p></div>
+            <div class="addon-card ember-card reveal reveal-delay-2"><i class="fa-solid fa-camera-retro"></i><h3>Photo Moment</h3><p>Golden ember portraits and a guided firelight photo stop before dinner service.</p></div>
+            <div class="addon-card ember-card reveal reveal-delay-3"><i class="fa-solid fa-star-and-crescent"></i><h3>Star Guide</h3><p>A focused sky session with constellations, mythology, and telescope time when skies are clear.</p></div>
+            <div class="addon-card ember-card reveal reveal-delay-4"><i class="fa-solid fa-martini-glass-citrus"></i><h3>Botanical Drinks</h3><p>Non-alcoholic forest infusions, spiced cacao, citrus coolers, and herbal nightcaps.</p></div>
+            <div class="addon-card ember-card reveal reveal-delay-5"><i class="fa-solid fa-feather"></i><h3>Story Circle</h3><p>A guide-led evening of local folklore, animal encounters, river myths, and old trail tales.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-coal campfire-section">
+        <div class="container">
+          <div class="section-header section-header-center" style="margin-bottom:3rem;">
+            <div class="section-label section-label-center">Firelight Frames</div>
+            <h2 class="section-title fs-h2">A gallery of amber nights.</h2>
+          </div>
+          <div class="fire-gallery">
+            <img class="reveal" src="https://images.unsplash.com/photo-1487730116645-74489c95b41b?w=800&q=80" alt="Friends gathered around a warm campfire" loading="lazy">
+            <img class="reveal reveal-delay-1" src="assets/campfire-night.jpg" alt="Bright campfire flames at night" loading="lazy">
+            <img class="reveal reveal-delay-2" src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=800&q=80" alt="Starry night above camp" loading="lazy">
+            <img class="reveal reveal-delay-3" src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80" alt="Campfire sparks rising into dark sky" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <section class="section bg-graphite campfire-section">
+        <div class="container faq-grid">
+          <div class="faq-item ember-card reveal"><h3>Is it suitable for children</h3><p class="feature-text">Yes. We keep the early part family friendly and can arrange quieter seating for younger guests.</p></div>
+          <div class="faq-item ember-card reveal reveal-delay-1"><h3>What happens if it rains</h3><p class="feature-text">The experience moves to a covered fire kitchen or lodge hearth depending on weather.</p></div>
+          <div class="faq-item ember-card reveal reveal-delay-2"><h3>Can food be customised</h3><p class="feature-text">Yes. Tell us your dietary needs during booking and the kitchen will plan accordingly.</p></div>
+          <div class="faq-item ember-card reveal reveal-delay-3"><h3>Is the fire low impact</h3><p class="feature-text">We use designated fire areas, controlled fuel, and strict cleanup protocols after every evening.</p></div>
+        </div>
+      </section>
+
+      <section class="section-sm bg-coal campfire-section">
+        <div class="container campfire-cta">
+          <div>
+            <div class="section-label">Reserve The Glow</div>
+            <h2 class="section-title fs-h2">End your wild day beside the fire.</h2>
+            <p class="section-desc">Add a shared campfire night or private celebration fire to your Terravana stay. We will shape the food, seating, story style, and timing around your group.</p>
+          </div>
+          <div class="campfire-cta-actions">
+            <a href="booking.html" class="btn btn-primary">Book Campfire Night</a>
+            <a href="booking.html" class="btn btn-ghost">Plan A Private Fire</a>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="footer" role="contentinfo">
@@ -167,8 +473,7 @@
           <h3 class="footer-col-title">Connect</h3>
           <nav class="footer-links" aria-label="Connect links">
             <a href="about.html" class="footer-link">About Us</a>
-            <a href="contact.html" class="footer-link">Contact</a>
-          </nav>
+            </nav>
           <form class="footer-email-form" action="#" method="post">
             <input class="footer-email-input" type="email" name="email" placeholder="Email address" aria-label="Email address" required>
             <button class="footer-email-btn" type="submit">Submit</button>

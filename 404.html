@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -36,8 +36,37 @@
     .contact-form textarea { min-height: 150px; resize: vertical; }
     .not-found { min-height: 100vh; display: grid; place-items: center; text-align: center; background: radial-gradient(circle at center, rgba(212,168,83,0.1), transparent 45%), var(--coal); }
     .not-found-code { font-family: var(--font-display); font-size: clamp(7rem, 22vw, 18rem); line-height: 0.8; color: var(--gold); opacity: 0.9; }
+
+    .wide-intro { max-width: 980px; margin: 0 auto; text-align: center; }
+    .wide-intro .section-desc { margin-left: auto; margin-right: auto; }
+    .mini-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .mini-kpi { border: 1px solid rgba(212,168,83,0.16); background: rgba(250,248,245,0.035); border-radius: 6px; padding: 1.4rem; text-align: center; }
+    .mini-kpi strong { display: block; font-family: var(--font-display); font-size: 2rem; color: var(--gold); line-height: 1; }
+    .mini-kpi span { display: block; margin-top: 0.55rem; font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,229,218,0.58); }
+    .package-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .package-card { border: 1px solid rgba(212,168,83,0.16); background: rgba(250,248,245,0.035); border-radius: 6px; overflow: hidden; }
+    .package-card img, .package-card video { width: 100%; height: 260px; object-fit: cover; }
+    .package-body { padding: 1.5rem; }
+    .package-meta { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.55rem; }
+    .package-title { font-family: var(--font-display); font-size: 1.65rem; color: var(--ivory); margin-bottom: 0.65rem; }
+    .detail-table { display: grid; border: 1px solid rgba(212,168,83,0.16); border-radius: 6px; overflow: hidden; }
+    .detail-row { display: grid; grid-template-columns: 0.8fr 1.2fr; border-bottom: 1px solid rgba(212,168,83,0.1); }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row div { padding: 1.1rem 1.25rem; color: rgba(237,229,218,0.7); }
+    .detail-row div:first-child { font-family: var(--font-ui); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); background: rgba(212,168,83,0.05); }
+    .faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .faq-item { border: 1px solid rgba(212,168,83,0.14); border-radius: 6px; padding: 1.5rem; background: rgba(250,248,245,0.03); }
+    .faq-item h3 { font-family: var(--font-display); color: var(--ivory); font-size: 1.35rem; margin-bottom: 0.6rem; }
+    .image-band { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+    .image-band img { width: 100%; height: 240px; object-fit: cover; border-radius: 5px; border: 1px solid rgba(212,168,83,0.14); }
+    .quote-panel { max-width: 980px; margin: 0 auto; text-align: center; border: 1px solid rgba(212,168,83,0.18); border-radius: 6px; padding: clamp(2rem, 5vw, 4rem); background: rgba(212,168,83,0.045); }
+    .quote-panel p { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.8rem); line-height: 1.05; color: var(--ivory); }
+    .quote-panel span { display: block; margin-top: 1rem; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
     @media (max-width: 900px) {
       .feature-grid, .split-section, .gallery-grid, .contact-panel { grid-template-columns: 1fr; }
+
+      .mini-kpis, .package-grid, .faq-grid, .image-band { grid-template-columns: 1fr; }
+      .detail-row { grid-template-columns: 1fr; }
       .split-section img, .split-section video, .gallery-grid img, .gallery-grid video { height: 320px; }
     }
   </style>
@@ -48,19 +77,20 @@
   <button id="back-to-top" aria-label="Back to top" style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);"><i class="fa-solid fa-arrow-up"></i></button>
 
 
+
       <main class="not-found">
         <div class="container">
           <div class="not-found-code">404</div>
           <div class="page-kicker">Trail Not Found</div>
           <h1 class="page-title" style="margin-inline:auto;">This path fades into the forest.</h1>
-          <p class="page-subtitle" style="margin-inline:auto;">The page you are looking for is not available. Return to the lodge and choose a fresh route.</p>
+          <p class="page-subtitle" style="margin-inline:auto;">The page you are looking for is not available. Return to the lodge, choose a fresh route, or ask our team for help.</p>
           <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
             <a href="index.html" class="btn btn-primary">Go Home</a>
             <a href="adventures.html" class="btn btn-ghost">Explore Adventures</a>
+            <a href="booking.html" class="btn btn-ghost">Book Support</a>
           </div>
         </div>
       </main>
-
   <script src="script.js"></script>
   <script src="upgrade_script.js"></script>
 </body>

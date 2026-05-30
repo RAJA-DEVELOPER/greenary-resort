@@ -1,11 +1,11 @@
 /* ============================================================
-   TERRAVANA WILDS — script.js
+   TERRAVANA WILDS - script.js
    Ultra-Premium Cinematic Eco-Adventure Resort
    ============================================================ */
 
 'use strict';
 
-/* ── DOM Ready Helper ── */
+/* -- DOM Ready Helper -- */
 const ready = fn => {
   if (document.readyState !== 'loading') fn();
   else document.addEventListener('DOMContentLoaded', fn);
@@ -532,12 +532,12 @@ const initBookingForm = () => {
 
     const btn = form.querySelector('[type="submit"]');
     const original = btn.textContent;
-    btn.textContent = 'Sending…';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
 
     // Simulate async
     setTimeout(() => {
-      btn.textContent = '✓ Request Received';
+      btn.textContent = '&#10003; Request Received';
       btn.style.background = '#5E9E6B';
       btn.style.color = '#fff';
       setTimeout(() => {
@@ -561,11 +561,11 @@ const initContactForm = () => {
   form.addEventListener('submit', e => {
     e.preventDefault();
     const btn = form.querySelector('[type="submit"]');
-    btn.textContent = 'Sending…';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
 
     setTimeout(() => {
-      btn.textContent = '✓ Message Sent!';
+      btn.textContent = '&#10003; Message Sent!';
       btn.style.background = '#5E9E6B';
       setTimeout(() => {
         btn.textContent = 'Send Message';
@@ -643,7 +643,7 @@ const initSoundToggle = () => {
     muted = !muted;
     btn.classList.toggle('active', !muted);
     btn.title = muted ? 'Play ambient sounds' : 'Mute sounds';
-    btn.querySelector('span').textContent = muted ? '🔇' : '🔊';
+    btn.querySelector('span').textContent = muted ? 'Muted' : 'Sound';
   });
 };
 
@@ -727,6 +727,71 @@ const initParticles = () => {
 };
 
 /* ============================================================
+   22. BROKEN IMAGE FALLBACK
+   ============================================================ */
+const initImageFallbacks = () => {
+  const fallbackFor = img => {
+    const text = `${img.alt || ''} ${img.src || ''}`.toLowerCase();
+    if (text.includes('campfire') || text.includes('fire')) return 'assets/campfire-night.jpg';
+    if (text.includes('resort') || text.includes('lodge') || text.includes('stay')) return 'assets/home-resort-hero-full.jpg';
+    return 'assets/home-resort-hero-full.jpg';
+  };
+
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', () => {
+      if (img.dataset.fallbackApplied === 'true') return;
+      img.dataset.fallbackApplied = 'true';
+      img.src = fallbackFor(img);
+    });
+  });
+};
+
+/* ============================================================
+   23. SITE-WIDE MOTION POLISH
+   ============================================================ */
+const initGlobalMotion = () => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.add('motion-ready');
+  if (reduceMotion) return;
+
+  const sectionTargets = document.querySelectorAll('main > section, main > div > section');
+  const imageTargets = document.querySelectorAll('main img:not(.hero-bg)');
+  const magneticTargets = document.querySelectorAll('.btn, .nav-cta, #back-to-top, .footer-social-link');
+
+  sectionTargets.forEach(section => section.classList.add('motion-section'));
+  imageTargets.forEach(img => img.classList.add('motion-image'));
+  magneticTargets.forEach(el => el.classList.add('magnetic-ready'));
+
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('motion-visible');
+      revealObserver.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -70px 0px'
+  });
+
+  document.querySelectorAll('.motion-section, .motion-image').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  magneticTargets.forEach(el => {
+    el.addEventListener('mousemove', event => {
+      const rect = el.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * 0.12}px, ${y * 0.18}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
+};
+
+/* ============================================================
    INIT ALL
    ============================================================ */
 ready(() => {
@@ -734,6 +799,7 @@ ready(() => {
   initCursor();
   initNavbar();
   initProfileDropdown();
+  initGlobalMotion();
   initReveal();
   initParallax();
   initHero();
@@ -752,9 +818,10 @@ ready(() => {
   initCardTilt();
   initPageTransition();
   initParticles();
+  initImageFallbacks();
 });
 
-/* ── Expose globally for inline handlers ── */
+/* -- Expose globally for inline handlers -- */
 window.TerraVana = {
   revealAll: () => {
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {

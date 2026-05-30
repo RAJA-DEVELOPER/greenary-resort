@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Dashboard — TERRAVANA WILDS</title>
+  <title>Admin Dashboard - TERRAVANA WILDS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2family=Playfair+Display:wght@700&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
   <style>
     :root {
@@ -89,7 +89,7 @@
       color: var(--ivory);
     }
 
-    /* ─── SIDEBAR ─── */
+    /* --- SIDEBAR --- */
     #sidebar {
       position: fixed;
       top: 0;
@@ -289,7 +289,7 @@
       background: rgba(232, 100, 60, 0.1);
     }
 
-    /* ─── MAIN AREA ─── */
+    /* --- MAIN AREA --- */
     #main {
       margin-left: var(--sidebar-w);
       min-height: 100vh;
@@ -297,7 +297,7 @@
       flex-direction: column;
     }
 
-    /* ─── TOPBAR ─── */
+    /* --- TOPBAR --- */
     #topbar {
       position: sticky;
       top: 0;
@@ -463,13 +463,13 @@
       cursor: pointer;
     }
 
-    /* ─── CONTENT ─── */
+    /* --- CONTENT --- */
     #content {
       padding: 2rem;
       flex: 1;
     }
 
-    /* ─── KPI CARDS ─── */
+    /* --- KPI CARDS --- */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -613,7 +613,7 @@
       transition: width 1.5s var(--ease-expo);
     }
 
-    /* ─── SECTION TITLE ─── */
+    /* --- SECTION TITLE --- */
     .section-label {
       font-family: var(--font-ui);
       font-size: 0.6rem;
@@ -659,7 +659,7 @@
       border-color: var(--border-hover);
     }
 
-    /* ─── GRID LAYOUTS ─── */
+    /* --- GRID LAYOUTS --- */
     .grid-2-3 {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -681,7 +681,7 @@
       margin-bottom: 1.75rem;
     }
 
-    /* ─── PANEL ─── */
+    /* --- PANEL --- */
     .panel {
       background: var(--card);
       border: 1px solid var(--border);
@@ -691,7 +691,7 @@
       overflow: hidden;
     }
 
-    /* ─── CHART ─── */
+    /* --- CHART --- */
     #revenue-chart {
       width: 100%;
       display: block;
@@ -720,7 +720,7 @@
       flex-shrink: 0;
     }
 
-    /* ─── LIVE FEED ─── */
+    /* --- LIVE FEED --- */
     .live-feed {
       display: flex;
       flex-direction: column;
@@ -827,7 +827,7 @@
       color: var(--ember);
     }
 
-    /* ─── TRAIL STATUS ─── */
+    /* --- TRAIL STATUS --- */
     .trail-list {
       display: flex;
       flex-direction: column;
@@ -944,7 +944,7 @@
       left: 19px;
     }
 
-    /* ─── DATA TABLE ─── */
+    /* --- DATA TABLE --- */
     .data-table {
       width: 100%;
       border-collapse: collapse;
@@ -990,7 +990,7 @@
       font-weight: 600;
     }
 
-    /* ─── PROGRESS BARS ─── */
+    /* --- PROGRESS BARS --- */
     .prog-wrap {
       margin-bottom: 1rem;
     }
@@ -1018,7 +1018,7 @@
       transition: width 1.5s var(--ease-expo);
     }
 
-    /* ─── QUICK ACTIONS ─── */
+    /* --- QUICK ACTIONS --- */
     .quick-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1065,7 +1065,7 @@
       background: rgba(212, 168, 83, 0.1);
     }
 
-    /* ─── NOTIFICATION PANEL ─── */
+    /* --- NOTIFICATION PANEL --- */
     .notif-panel {
       position: fixed;
       top: var(--topbar-h);
@@ -1136,7 +1136,7 @@
       margin-top: 0.3rem;
     }
 
-    /* ─── OVERLAY ─── */
+    /* --- OVERLAY --- */
     #overlay {
       position: fixed;
       inset: 0;
@@ -1149,7 +1149,7 @@
       display: block;
     }
 
-    /* ─── STAT MINI ─── */
+    /* --- STAT MINI --- */
     .mini-stat {
       display: flex;
       flex-direction: column;
@@ -1178,7 +1178,7 @@
       text-align: center;
     }
 
-    /* ─── PAGE HEADER ─── */
+    /* --- PAGE HEADER --- */
     .page-header {
       margin-bottom: 2rem;
     }
@@ -1202,7 +1202,7 @@
       color: rgba(232, 224, 213, 0.45);
     }
 
-    /* ─── HAMBURGER ─── */
+    /* --- HAMBURGER --- */
     #hamburger {
       display: none;
       width: 36px;
@@ -1236,7 +1236,7 @@
       min-width: 680px;
     }
 
-    /* ─── RESPONSIVE ─── */
+    /* --- RESPONSIVE --- */
     @media(max-width:1200px) {
       .kpi-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1354,7 +1354,7 @@
 
 <body>
 
-  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <!-- =============== SIDEBAR =============== -->
   <aside id="sidebar">
     <div class="sidebar-logo">
       <a href="index.html">
@@ -1395,7 +1395,7 @@
     </div>
   </aside>
 
-  <!-- ═══════════════ MAIN ═══════════════ -->
+  <!-- =============== MAIN =============== -->
   <div id="main">
 
     <!-- TOPBAR -->
@@ -1404,7 +1404,7 @@
       <div class="topbar-title">Dashboard</div>
       <div class="topbar-search">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="Search bookings, guests, trails…" id="global-search" />
+        <input type="text" placeholder="Search bookings, guests, trails..." id="global-search" />
       </div>
       <div class="topbar-right">
         <div class="live-dot">Live</div>
@@ -1469,8 +1469,8 @@
 
         <!-- Page Header -->
         <div class="page-header">
-          <div class="page-greeting">Good <em id="greeting-time">Morning</em>, Arjun 👋</div>
-          <div class="page-sub">Here's what's happening at Terravana Wilds today · <span id="today-date"></span></div>
+          <div class="page-greeting">Good <em id="greeting-time">Morning</em>, Arjun</div>
+          <div class="page-sub">Here's what's happening at Terravana Wilds today &middot; <span id="today-date"></span></div>
         </div>
 
         <!-- KPI CARDS -->
@@ -1627,8 +1627,8 @@
                   Announce</button>
                 <button class="qa-btn" onclick="window.location='gallery.html'"><i class="fa-solid fa-images"></i>
                   Gallery</button>
-                <button class="qa-btn" onclick="window.location='contact.html'"><i class="fa-solid fa-envelope"></i>
-                  Contact</button>
+                <button class="qa-btn" onclick="window.location='booking.html'"><i class="fa-solid fa-calendar-plus"></i>
+                  Booking</button>
               </div>
             </div>
             <div class="panel">
@@ -1697,11 +1697,11 @@
       }
     })();
 
-    // ═══════════════════════════════════════════════════════
-    //  TERRAVANA WILDS — ADMIN DASHBOARD  (Real-time JS)
-    // ═══════════════════════════════════════════════════════
+    // =======================================================
+    //  TERRAVANA WILDS - ADMIN DASHBOARD  (Real-time JS)
+    // =======================================================
 
-    /* ── Live Clock & Greeting ── */
+    /* -- Live Clock & Greeting -- */
     function updateClock() {
       const now = new Date();
       const h = String(now.getHours()).padStart(2, '0');
@@ -1715,14 +1715,14 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    /* ── Today Date ── */
+    /* -- Today Date -- */
     const td = document.getElementById('today-date');
     if (td) {
       const d = new Date();
       td.textContent = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     }
 
-    /* ── Animated Counter ── */
+    /* -- Animated Counter -- */
     function animateCounter(el, target, prefix, suffix, duration) {
       prefix = prefix || ''; suffix = suffix || '';
       const start = Date.now(); const from = 0;
@@ -1736,7 +1736,7 @@
       requestAnimationFrame(step);
     }
 
-    /* ── KPI Data (live simulation) ── */
+    /* -- KPI Data (live simulation) -- */
     let kpiData = { bookings: 47, revenue: 6840, guests: 124, trails: 16 };
     function renderKPIs() {
       animateCounter(document.getElementById('kpi-bookings'), kpiData.bookings, '', '', 900);
@@ -1752,7 +1752,7 @@
     }
     renderKPIs();
 
-    /* ── Simulate live KPI updates every 30s ── */
+    /* -- Simulate live KPI updates every 30s -- */
     setInterval(() => {
       kpiData.bookings += Math.floor(Math.random() * 2) + 1;
       kpiData.revenue += Math.floor(Math.random() * 180) + 80;
@@ -1760,7 +1760,7 @@
       renderKPIs();
     }, 30000);
 
-    /* ── Occupancy Bars ── */
+    /* -- Occupancy Bars -- */
     setTimeout(() => {
       document.getElementById('pf-lodge').style.width = '78%';
       document.getElementById('pf-trail').style.width = '62%';
@@ -1768,7 +1768,7 @@
       document.getElementById('pf-dining').style.width = '45%';
     }, 600);
 
-    /* ── Revenue Chart (Canvas) ── */
+    /* -- Revenue Chart (Canvas) -- */
     const chartData = {
       week: {
         labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -1898,7 +1898,7 @@
     window.addEventListener('load', () => drawChart('week'));
     window.addEventListener('resize', () => drawChart(currentChart));
 
-    /* ── Live Activity Feed ── */
+    /* -- Live Activity Feed -- */
     const feedNames = ['Priya S.', 'James T.', 'Akira M.', 'Sara L.', 'Ravi K.', 'Elena V.', 'Omar F.', 'Nadia B.'];
     const feedTrails = ['Grand Ridge Traverse', 'Cloud Forest Walk', 'Valley of Echoes', 'North Face Climb', 'Moss Grove Stroll', 'Eagle\'s Eyrie', 'Wild South Circuit', 'Sunrise Point'];
     const feedTypes = ['Booking', 'Review', 'Check-in', 'Cancellation', 'Enquiry'];
@@ -1936,7 +1936,7 @@
       </div>
       <div class="feed-info">
         <div class="feed-name">${item.name}</div>
-        <div class="feed-detail">${item.type} · ${item.trail}</div>
+        <div class="feed-detail">${item.type} &middot; ${item.trail}</div>
       </div>
       <span class="feed-badge ${item.badge}">${item.type}</span>
       <div class="feed-time">${idx === 0 ? 'now' : idx + 'm ago'}</div>
@@ -1953,11 +1953,11 @@
       time: ''
     });
     renderFeed();
-    /* New item every 6–12 seconds */
+    /* New item every 6-12 seconds */
     function scheduleNext() { setTimeout(() => { addFeedItem(); scheduleNext(); }, Math.random() * 6000 + 6000); }
     scheduleNext();
 
-    /* ── Trail Status Data ── */
+    /* -- Trail Status Data -- */
     const trailsData = [
       { name: 'Grand Ridge Traverse', cap: '7/8', status: 'full' },
       { name: 'Cloud Forest Walk', cap: '9/12', status: 'open' },
@@ -2004,7 +2004,7 @@
     }
     renderTrails();
 
-    /* ── Recent Bookings Table ── */
+    /* -- Recent Bookings Table -- */
     const bookingsData = [
       { guest: 'Priya Sharma', trail: 'Grand Ridge', amount: '$380', 'status': 'confirmed' },
       { guest: 'James Turner', trail: 'Cloud Forest', amount: '$65', 'status': 'confirmed' },
@@ -2038,14 +2038,14 @@
       renderBookingsTable();
     }, 20000);
 
-    /* ── Sidebar nav switching ── */
+    /* -- Sidebar nav switching -- */
     document.querySelectorAll('.nav-item[data-section]').forEach(item => {
       item.addEventListener('click', function () {
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
         this.classList.add('active');
 
         const sectionName = this.textContent.trim().replace(/\d+$/, '').trim();
-        const t = document.getElementById('topbar')?.querySelector('.topbar-title');
+        const t = document.getElementById('topbar').querySelector('.topbar-title');
         if (t) t.textContent = sectionName;
 
         const sectionId = this.getAttribute('data-section');
@@ -2070,7 +2070,7 @@
       });
     });
 
-    /* ── Notifications ── */
+    /* -- Notifications -- */
     function toggleNotif() {
       const p = document.getElementById('notif-panel');
       const o = document.getElementById('overlay');
@@ -2082,12 +2082,12 @@
       document.getElementById('overlay').classList.remove('show');
     }
 
-    /* ── Mobile sidebar ── */
+    /* -- Mobile sidebar -- */
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('mobile-open');
     }
 
-    /* ── Reduce notif count on open ── */
+    /* -- Reduce notif count on open -- */
     document.getElementById('notif-toggle').addEventListener('click', () => {
       document.getElementById('notif-count').textContent = '0';
       document.getElementById('notif-count').style.display = 'none';
