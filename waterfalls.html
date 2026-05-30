@@ -142,6 +142,170 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 768px) {
+      #hero .hero-content {
+        padding-top: 1rem;
+      }
+
+      #hero .breadcrumb {
+        max-width: 100%;
+      }
+
+      #wf-intro .grid-2,
+      #wf-swimming .grid-2,
+      #wf-ecology .grid-2,
+      #wf-mythology .grid-2 {
+        gap: 2rem !important;
+      }
+
+      #wf-intro img,
+      #wf-swimming img,
+      #wf-ecology img,
+      #wf-mythology img {
+        height: clamp(240px, 66vw, 340px) !important;
+      }
+
+      .waterfall-feature {
+        min-height: 480px;
+      }
+
+      .wf-content {
+        padding: 2rem 1.5rem;
+      }
+
+      .wf-content>div {
+        align-items: flex-start !important;
+        flex-direction: column;
+        gap: 1.5rem !important;
+      }
+
+      .wf-content>div>div:last-child {
+        flex-shrink: 1 !important;
+        text-align: left !important;
+        width: 100%;
+      }
+
+      .wf-content .btn,
+      .fall-card .btn,
+      #wf-trails .btn,
+      #wf-cta .btn {
+        justify-content: center;
+      }
+
+      .fall-card-body {
+        padding: 1.35rem;
+      }
+
+      .fall-card-body>div[style*="justify-content:space-between"] {
+        align-items: center !important;
+        gap: 1rem;
+      }
+
+      .water-activity {
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .water-activity:hover {
+        transform: none;
+      }
+
+      #wf-seasonal .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #wf-packing .exp-card[style*="display:flex"] {
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+      }
+
+      main section[style*="background-attachment:fixed"] {
+        background-attachment: scroll !important;
+      }
+    }
+
+    @media (max-width: 520px) {
+      #hero .hero-title {
+        font-size: clamp(2.45rem, 15vw, 3.3rem);
+      }
+
+      #hero .hero-stats {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .waterfall-feature {
+        min-height: 560px;
+      }
+
+      .wf-content {
+        padding: 1.25rem;
+      }
+
+      .wf-content h3 {
+        font-size: clamp(1.85rem, 10vw, 2.45rem) !important;
+      }
+
+      .wf-content .btn,
+      .fall-card .btn,
+      #wf-trails .btn,
+      #wf-cta .btn {
+        width: 100%;
+      }
+
+      .fall-card-img {
+        height: 230px;
+      }
+
+      .fall-card-body>div[style*="justify-content:space-between"] {
+        align-items: flex-start !important;
+        flex-direction: column;
+      }
+
+      .fall-card-body>div[style*="justify-content:space-between"]>div {
+        text-align: left !important;
+      }
+
+      .water-activity {
+        flex-direction: column;
+        padding: 1.15rem;
+        text-align: left;
+      }
+
+      .water-activity-icon {
+        font-size: 2rem;
+      }
+
+      #wf-seasonal .grid-4 {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+
+      #wf-packing .exp-card[style*="display:flex"] {
+        flex-direction: column;
+        padding: 1.2rem !important;
+      }
+
+      #wf-cta .cta-banner>div[style*="display:flex"] {
+        width: 100%;
+      }
+
+      .pull-quote {
+        font-size: clamp(1.45rem, 8vw, 2rem);
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .wf-content {
+        padding: 1rem;
+      }
+
+      .fall-card-height {
+        font-size: 1.75rem;
+      }
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="upgrade.css" />

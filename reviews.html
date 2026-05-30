@@ -212,6 +212,192 @@
       line-height: 1;
       pointer-events: none;
     }
+
+    @media (max-width: 768px) {
+      #hero .hero-content {
+        padding-top: 1rem;
+      }
+
+      #hero .hero-title {
+        font-size: clamp(2.55rem, 14vw, 3.75rem);
+      }
+
+      #overall-rating .grid-2,
+      #video-review .grid-2,
+      #reviews-leaderboard .grid-2 {
+        gap: 2rem !important;
+      }
+
+      .rating-big {
+        font-size: clamp(4.5rem, 22vw, 6rem);
+      }
+
+      .platform-badge {
+        padding: 1rem;
+      }
+
+      .score-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.55rem;
+      }
+
+      .score-bar-label,
+      .score-bar-num,
+      .score-bar-track {
+        width: 100%;
+        min-width: 0;
+        text-align: left;
+      }
+
+      .featured-review {
+        padding: 2rem 1.5rem;
+      }
+
+      .featured-review>div:first-child {
+        align-items: flex-start !important;
+      }
+
+      .featured-review>div:first-child>div:last-child {
+        margin-left: 0 !important;
+        text-align: left !important;
+        width: 100%;
+      }
+
+      .featured-review>div:last-child {
+        align-items: flex-start !important;
+        flex-direction: column;
+      }
+
+      .featured-review>div:last-child>div:first-child {
+        flex-wrap: wrap;
+      }
+
+      .review-card {
+        padding: 1.5rem;
+      }
+
+      .review-card-header {
+        align-items: flex-start;
+      }
+
+      .review-card-header .review-stars-sm {
+        margin-left: 0 !important;
+      }
+
+      #guest-types .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #reviews-photo-wall .container>div[style*="grid-template-columns:repeat(4,1fr)"] {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #reviews-leaderboard .exp-card[style*="justify-content:space-between"] {
+        align-items: flex-start !important;
+        gap: 1rem;
+      }
+
+      #reviews-trust .container>div {
+        gap: 2rem !important;
+      }
+
+      #reviews-trust .container>div>div[style*="width:1px"] {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      #hero .hero-title {
+        font-size: clamp(2.3rem, 15vw, 3.15rem);
+      }
+
+      .platform-badge {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .platform-score {
+        margin-left: 0 !important;
+        width: 100%;
+      }
+
+      .featured-review {
+        padding: 1.35rem;
+      }
+
+      .featured-review::before {
+        font-size: 7rem;
+      }
+
+      .featured-review>p {
+        font-size: 1rem !important;
+        line-height: 1.75 !important;
+      }
+
+      .review-card {
+        padding: 1.25rem;
+      }
+
+      .review-card-header {
+        flex-wrap: wrap;
+      }
+
+      .review-card-header .review-stars-sm {
+        width: 100%;
+      }
+
+      #guest-types .grid-4,
+      #reviews-photo-wall .container>div[style*="grid-template-columns:repeat(4,1fr)"] {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+
+      #leave-review .exp-card {
+        padding: 1.5rem !important;
+      }
+
+      #leave-review .exp-card>div[style*="display:flex"],
+      #reviews-cta .cta-banner>div[style*="display:flex"] {
+        width: 100%;
+      }
+
+      #leave-review .btn,
+      #reviews-view-gallery,
+      #reviews-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      #reviews-staff .exp-card,
+      #reviews-faq .exp-card {
+        padding: 1.35rem !important;
+      }
+
+      #reviews-leaderboard .exp-card[style*="justify-content:space-between"] {
+        flex-direction: column;
+        padding: 1.25rem !important;
+      }
+
+      #reviews-leaderboard .exp-card[style*="justify-content:space-between"]>div:first-child {
+        align-items: flex-start !important;
+        gap: 1rem !important;
+      }
+
+      #reviews-trust .container>div {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .reviewer-avatar {
+        width: 46px;
+        height: 46px;
+      }
+
+      .rating-stars-big {
+        font-size: 1.2rem;
+      }
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="upgrade.css" />

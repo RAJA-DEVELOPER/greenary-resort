@@ -67,6 +67,199 @@
     .accordion-item.open .accordion-panel { padding-bottom: 1.25rem; }
     @media (max-width: 1050px) { .booking-layout { grid-template-columns: 1fr; } .booking-sidebar { position: static; } }
     @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      #hero .hero-content {
+        padding-top: 1rem;
+      }
+
+      #hero .hero-title {
+        font-size: clamp(2.5rem, 14vw, 3.7rem);
+      }
+
+      .booking-layout {
+        gap: 2rem;
+      }
+
+      .booking-steps {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+        margin-bottom: 2rem;
+      }
+
+      .booking-step {
+        align-items: flex-start;
+        line-height: 1.35;
+      }
+
+      .booking-step-sep {
+        display: none;
+      }
+
+      .booking-form,
+      .booking-summary {
+        padding: 1.5rem;
+      }
+
+      .pkg-card {
+        padding: 1.25rem;
+      }
+
+      .pkg-card>div[style*="display:flex"] {
+        align-items: flex-start !important;
+        padding-right: 1.8rem;
+      }
+
+      .summary-line {
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .summary-line span:last-child {
+        text-align: right;
+      }
+
+      #booking-why-direct .grid-4,
+      #booking-packing .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #booking-gallery .container>div[style*="grid-template-columns:repeat(3,1fr)"] {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #booking-gallery .container>div[style*="grid-template-columns:repeat(3,1fr)"]>div {
+        grid-column: auto !important;
+        min-height: 260px !important;
+      }
+
+      #booking-itinerary .exp-card[style*="grid-template-columns:80px"] {
+        grid-template-columns: 64px minmax(0, 1fr) !important;
+        gap: 1rem !important;
+      }
+
+      #booking-policy .exp-card[style*="justify-content:space-between"] {
+        align-items: flex-start !important;
+      }
+
+      #booking-final-cta .container>div[style*="grid-template-columns:1fr 1fr"] {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 2rem !important;
+      }
+
+      #booking-final-cta img {
+        height: clamp(260px, 66vw, 360px) !important;
+      }
+    }
+    @media (max-width: 520px) {
+      .booking-steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .booking-step {
+        font-size: 0.68rem;
+      }
+
+      .booking-form,
+      .booking-summary,
+      .pkg-card {
+        padding: 1.15rem;
+      }
+
+      .form-section-title {
+        margin: 1.6rem 0 1rem;
+        padding-top: 1.5rem;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        padding: 0.85rem 0.95rem;
+      }
+
+      .pkg-card>div[style*="display:flex"] {
+        flex-direction: column;
+        gap: 0.75rem !important;
+      }
+
+      .pkg-card-check {
+        top: 0.85rem;
+        right: 0.85rem;
+      }
+
+      .summary-line {
+        flex-direction: column;
+      }
+
+      .summary-line span:last-child {
+        text-align: left;
+      }
+
+      .booking-sidebar>div[style*="padding:2rem"] {
+        padding: 1.2rem !important;
+      }
+
+      .booking-sidebar div[style*="justify-content:space-between"] {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      #booking-why-direct .grid-4,
+      #booking-packing .grid-4,
+      #booking-gallery .container>div[style*="grid-template-columns:repeat(3,1fr)"] {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+
+      #booking-gallery .container>div[style*="grid-template-columns:repeat(3,1fr)"]>div {
+        min-height: 230px !important;
+      }
+
+      #booking-view-gallery,
+      #booking-seasonal-guide,
+      #booking-all-reviews,
+      #booking-final-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      #booking-itinerary .exp-card[style*="grid-template-columns:80px"] {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+
+      #booking-itinerary .exp-card[style*="grid-template-columns:80px"]>div:first-child {
+        text-align: left !important;
+      }
+
+      #booking-policy .exp-card[style*="justify-content:space-between"] {
+        flex-direction: column;
+        padding: 1.25rem !important;
+      }
+
+      #booking-final-cta .container>div[style*="grid-template-columns:1fr 1fr"]>div:first-child>div[style*="display:flex"] {
+        width: 100%;
+      }
+
+      #booking-final-cta img {
+        height: 260px !important;
+      }
+
+      #booking-final-cta div[style*="position:absolute"][style*="bottom:2rem"] {
+        left: 1rem !important;
+        right: 1rem !important;
+        bottom: 1rem !important;
+        padding: 1rem !important;
+      }
+    }
+    @media (max-width: 380px) {
+      #hero .hero-title {
+        font-size: clamp(2.2rem, 15vw, 3rem);
+      }
+
+      .summary-total {
+        font-size: 1.25rem;
+      }
+    }
   </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="upgrade.css" />

@@ -152,6 +152,157 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 768px) {
+      #hero .hero-content {
+        padding-top: 1rem;
+      }
+
+      #hero .breadcrumb {
+        max-width: 100%;
+      }
+
+      #trek-intro .grid-2,
+      #trek-prep .grid-2,
+      #trek-altitude .grid-2 {
+        gap: 2rem !important;
+      }
+
+      .trail-card {
+        min-height: auto;
+        margin-inline: auto;
+        width: 100%;
+      }
+
+      .trail-card-body {
+        align-items: center;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .trail-card-img {
+        height: clamp(220px, 62vw, 300px);
+      }
+
+      .trail-meta {
+        gap: 0.75rem;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .trail-meta-item {
+        justify-content: flex-start;
+        text-align: left;
+        width: min(9rem, 100%);
+      }
+
+      .trail-meta-icon {
+        display: inline-flex;
+        justify-content: center;
+        width: 1.1rem;
+      }
+
+      .trail-card-body .breadcrumb {
+        justify-content: center;
+      }
+
+      .trail-card-body>div[style*="justify-content:space-between"] {
+        align-items: center !important;
+        flex-direction: column;
+        gap: 1.1rem;
+        width: 100%;
+      }
+
+      .trail-card-body>div[style*="justify-content:space-between"] .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      #trail-compare .tabs {
+        margin-inline: -1.25rem;
+        padding-inline: 1.25rem;
+      }
+
+      #trek-prep .exp-card[style*="flex-direction:row"] {
+        align-items: flex-start !important;
+        gap: 1rem !important;
+      }
+
+      #trek-gallery-strip .container>div[style*="grid-template-columns:repeat(5,1fr)"] {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #trek-gallery-strip .container>div[style*="grid-template-columns:repeat(5,1fr)"]>div:last-child {
+        grid-column: 1 / -1;
+        aspect-ratio: 16 / 9 !important;
+      }
+
+      #trek-safety .featured-story {
+        min-height: auto !important;
+      }
+
+      #trek-safety .fs-content {
+        padding: 2rem 1.25rem !important;
+      }
+    }
+
+    @media (max-width: 520px) {
+      #hero .hero-title {
+        font-size: clamp(2.5rem, 16vw, 3.35rem);
+      }
+
+      #hero .hero-stats {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .trail-card-body {
+        padding: 1.15rem;
+      }
+
+      .trail-meta-item {
+        font-size: 0.68rem;
+      }
+
+      .trail-highlight-item {
+        align-items: flex-start;
+        line-height: 1.5;
+        text-align: left;
+        width: 100%;
+      }
+
+      #trek-intro .btn,
+      #trek-cta .btn,
+      #trek-gallery-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      #trek-intro .reveal-left>div[style*="display:flex"],
+      #trek-cta .cta-banner>div[style*="display:flex"] {
+        width: 100%;
+      }
+
+      #trek-prep .exp-card[style*="flex-direction:row"] {
+        padding: 1.15rem !important;
+      }
+
+      #trek-testimonial .pull-quote {
+        font-size: clamp(1.45rem, 8vw, 2rem);
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      #trek-gallery-strip .container>div[style*="grid-template-columns:repeat(5,1fr)"] {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+
+      #trek-gallery-strip .container>div[style*="grid-template-columns:repeat(5,1fr)"]>div:last-child {
+        aspect-ratio: 2 / 3 !important;
+      }
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="upgrade.css" />

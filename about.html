@@ -95,6 +95,150 @@
       .scene-copy h3 { font-size: clamp(1.9rem, 9vw, 2.55rem); }
       .about-cta-actions .btn { width: 100%; justify-content: center; }
     }
+    @media (max-width: 768px) {
+      .page-hero {
+        min-height: 70vh;
+        padding-top: calc(var(--nav-h, 68px) + 2rem);
+        padding-bottom: 3rem;
+      }
+
+      .page-hero .container>div[style*="display:flex"] {
+        width: 100%;
+      }
+
+      .page-title {
+        font-size: clamp(2.45rem, 12vw, 4.2rem);
+        line-height: 1.02;
+      }
+
+      .page-subtitle {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .split-section,
+      .about-scene,
+      .lab-layout,
+      .about-cta {
+        gap: 2rem;
+      }
+
+      .split-section img,
+      .split-section video,
+      .team-card img {
+        height: clamp(240px, 66vw, 340px);
+      }
+
+      .scene-panel,
+      .lab-image {
+        min-height: clamp(360px, 86vw, 440px);
+      }
+
+      .scene-copy {
+        padding: 1.5rem;
+      }
+
+      .belief-grid[style*="grid-template-columns:repeat(2"] {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      .belief-grid,
+      .ritual-grid,
+      .impact-grid,
+      .team-grid,
+      .partner-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .feature-card,
+      .belief-card,
+      .ritual-card,
+      .impact-card {
+        min-height: auto;
+      }
+
+      .lab-image img {
+        height: 100%;
+      }
+
+      .about-cta {
+        padding: 2rem 1.25rem;
+      }
+
+      .about-cta-actions {
+        width: 100%;
+      }
+    }
+    @media (max-width: 520px) {
+      .page-hero {
+        min-height: auto;
+      }
+
+      .page-hero .btn,
+      .about-cta-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .belief-grid[style*="grid-template-columns:repeat(2"],
+      .belief-grid,
+      .ritual-grid,
+      .impact-grid,
+      .team-grid,
+      .partner-strip {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+
+      .feature-card,
+      .belief-card,
+      .ritual-card,
+      .impact-card,
+      .team-card-body,
+      .lab-note {
+        padding: 1.2rem;
+      }
+
+      .split-section img,
+      .split-section video,
+      .team-card img {
+        height: 230px;
+      }
+
+      .scene-panel,
+      .lab-image {
+        min-height: 360px;
+      }
+
+      .scene-copy {
+        padding: 1.15rem;
+      }
+
+      .scene-copy h3 {
+        font-size: clamp(1.7rem, 9vw, 2.2rem);
+      }
+
+      .timeline-item {
+        padding: 1rem 0;
+      }
+
+      .timeline-year {
+        letter-spacing: 0.12em;
+      }
+
+      .partner-tile {
+        min-height: 110px;
+      }
+    }
+    @media (max-width: 380px) {
+      .page-title {
+        font-size: clamp(2.05rem, 13vw, 2.6rem);
+      }
+
+      .scene-panel,
+      .lab-image {
+        min-height: 320px;
+      }
+    }
   </style>
 </head>
 <body>

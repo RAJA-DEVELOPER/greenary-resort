@@ -101,6 +101,162 @@
       .resort-mosaic { grid-auto-rows: 240px; }
       .resort-mosaic img:first-child, .resort-mosaic img:nth-child(4) { grid-column: auto; grid-row: auto; }
     }
+    @media (max-width: 768px) {
+      .page-hero {
+        min-height: 70vh;
+        padding-top: calc(var(--nav-h, 68px) + 2rem);
+        padding-bottom: 3rem;
+      }
+
+      .page-hero .container>div[style*="display:flex"] {
+        width: 100%;
+      }
+
+      .page-title {
+        font-size: clamp(2.45rem, 12vw, 4.25rem);
+        line-height: 1.02;
+      }
+
+      .page-subtitle {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .split-section,
+      .resort-journey,
+      .cta-band {
+        gap: 2rem;
+      }
+
+      .mini-kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .image-band {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .image-band img,
+      .package-card img,
+      .package-card video {
+        height: 240px;
+      }
+
+      .split-section img,
+      .split-section video {
+        height: clamp(240px, 66vw, 340px) !important;
+      }
+
+      .resort-journey-media {
+        min-height: clamp(380px, 88vw, 460px);
+      }
+
+      .resort-journey-caption {
+        padding: 1.5rem;
+      }
+
+      .stay-moment {
+        align-items: flex-start;
+      }
+
+      .resort-mosaic {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-auto-rows: 210px;
+      }
+
+      .resort-mosaic img:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .resort-compare {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .compare-cell {
+        min-height: auto;
+      }
+
+      .amenity-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cta-band {
+        padding: 2rem 1.25rem;
+      }
+
+      .cta-band>div:last-child {
+        width: 100%;
+      }
+    }
+    @media (max-width: 520px) {
+      .page-hero {
+        min-height: auto;
+      }
+
+      .page-hero .btn,
+      .cta-band .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .mini-kpis,
+      .image-band,
+      .amenity-grid,
+      .resort-mosaic {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+
+      .mini-kpi,
+      .package-body,
+      .faq-item,
+      .amenity-item,
+      .stay-moment,
+      .compare-cell,
+      .detail-row div {
+        padding: 1.15rem;
+      }
+
+      .package-card img,
+      .package-card video,
+      .image-band img,
+      .resort-mosaic img {
+        height: 220px;
+      }
+
+      .resort-journey-media {
+        min-height: 390px;
+      }
+
+      .resort-journey-caption {
+        padding: 1.2rem;
+      }
+
+      .resort-journey-caption h3 {
+        font-size: clamp(1.75rem, 9vw, 2.3rem);
+      }
+
+      .stay-moment {
+        grid-template-columns: 1fr;
+      }
+
+      .itinerary-time {
+        line-height: 1.4;
+      }
+
+      .cta-band>div:last-child {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 380px) {
+      .page-title {
+        font-size: clamp(2.1rem, 13vw, 2.7rem);
+      }
+
+      .resort-journey-media {
+        min-height: 340px;
+      }
+    }
   </style>
 </head>
 <body>

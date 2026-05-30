@@ -581,6 +581,43 @@
       opacity: 0.75;
     }
 
+    .auth-message {
+      display: none;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 168, 83, 0.18);
+      background: rgba(212, 168, 83, 0.07);
+      color: rgba(232, 224, 213, 0.78);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .auth-message.show {
+      display: block;
+    }
+
+    .auth-message.error {
+      border-color: rgba(232, 100, 60, 0.4);
+      background: rgba(232, 100, 60, 0.1);
+      color: rgba(255, 190, 175, 0.95);
+    }
+
+    .auth-message.success {
+      border-color: rgba(94, 158, 107, 0.35);
+      background: rgba(94, 158, 107, 0.1);
+      color: rgba(185, 230, 193, 0.95);
+    }
+
+    .form-input.is-invalid {
+      border-color: #E8643C;
+      box-shadow: 0 0 0 3px rgba(232, 100, 60, 0.15);
+    }
+
+    .form-check input.is-invalid {
+      border-color: #E8643C;
+      box-shadow: 0 0 0 3px rgba(232, 100, 60, 0.15);
+    }
+
     /* -- Decorative grid -- */
     .auth-form-panel .grid-deco {
       position: absolute;
@@ -784,6 +821,7 @@
 
         <!-- Form -->
         <form class="auth-form" id="signup-form" novalidate>
+          <div class="auth-message" id="signup-message" role="status" aria-live="polite"></div>
 
           <!-- Name row -->
           <div class="form-row-2">
@@ -974,28 +1012,102 @@
       });
     })();
 
-    // -- Signup form submit (demo) --
+    const AUTH_USERS_KEY = 'terravanaUsers';
+    const normalizeEmail = email => email.trim().toLowerCase();
+    const getUsers = () => {
+      try {
+        return JSON.parse(localStorage.getItem(AUTH_USERS_KEY)) || [];
+      } catch (error) {
+        return [];
+      }
+    };
+    const saveUsers = users => localStorage.setItem(AUTH_USERS_KEY, JSON.stringify(users));
+
+    const setMessage = (text, type = 'error') => {
+      const message = document.getElementById('signup-message');
+      message.textContent = text;
+      message.className = `auth-message show ${type}`;
+    };
+
+    const clearErrors = () => {
+      document.querySelectorAll('.is-invalid').forEach(input => input.classList.remove('is-invalid'));
+      const message = document.getElementById('signup-message');
+      message.className = 'auth-message';
+      message.textContent = '';
+    };
+
+    const setCurrentUser = user => {
+      const currentUser = {
+        role: 'user',
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        signedInAt: new Date().toISOString()
+      };
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      if (window.TerraVana && typeof window.TerraVana.updateProfileDropdown === 'function') {
+        window.TerraVana.updateProfileDropdown();
+      }
+    };
+
+    const markInvalid = (input, message) => {
+      input.classList.add('is-invalid');
+      setMessage(message);
+      input.focus();
+    };
+
+    // -- Signup form submit --
     document.getElementById('signup-form').addEventListener('submit', function (e) {
       e.preventDefault();
-      const pw = document.getElementById('signup-password').value;
-      const cpw = document.getElementById('signup-confirm').value;
-      const email = document.getElementById('signup-email').value || 'explorer@terravana.com';
+      clearErrors();
 
-      if (pw !== cpw) {
-        const confirmInput = document.getElementById('signup-confirm');
-        confirmInput.style.borderColor = '#E8643C';
-        confirmInput.style.boxShadow = '0 0 0 3px rgba(232,100,60,0.15)';
-        confirmInput.focus();
-        return;
+      const firstInput = document.getElementById('signup-firstname');
+      const lastInput = document.getElementById('signup-lastname');
+      const emailInput = document.getElementById('signup-email');
+      const phoneInput = document.getElementById('signup-phone');
+      const passwordInput = document.getElementById('signup-password');
+      const confirmInput = document.getElementById('signup-confirm');
+      const termsInput = document.getElementById('signup-terms');
+
+      const firstName = firstInput.value.trim();
+      const lastName = lastInput.value.trim();
+      const email = normalizeEmail(emailInput.value);
+      const pw = passwordInput.value;
+      const cpw = confirmInput.value;
+
+      if (!firstName) return markInvalid(firstInput, 'Enter your first name.');
+      if (!lastName) return markInvalid(lastInput, 'Enter your last name.');
+      if (!email || !emailInput.validity.valid) return markInvalid(emailInput, 'Enter a valid email address.');
+      if (pw.length < 8) return markInvalid(passwordInput, 'Use at least 8 characters for your password.');
+      if (pw !== cpw) return markInvalid(confirmInput, 'Passwords do not match.');
+      if (!termsInput.checked) return markInvalid(termsInput, 'Please accept the terms before creating an account.');
+
+      const users = getUsers();
+      if (users.some(user => normalizeEmail(user.email) === email)) {
+        return markInvalid(emailInput, 'An account with this email already exists. Sign in instead.');
       }
+
+      const user = {
+        id: `tw-${Date.now()}`,
+        role: 'user',
+        firstName,
+        lastName,
+        email,
+        phone: phoneInput.value.trim(),
+        password: pw,
+        createdAt: new Date().toISOString()
+      };
 
       const btn = document.getElementById('signup-submit');
       btn.innerHTML = '<span><i class="fa-solid fa-circle-notch fa-spin" style="margin-right:0.5rem;"></i>Creating account...</span>';
       btn.disabled = true;
+      setMessage('Account created. Opening your dashboard...', 'success');
+
       setTimeout(function () {
-        localStorage.setItem('currentUser', JSON.stringify({ role: 'user', email: email }));
-        window.location.href = 'index.html';
-      }, 1800);
+        saveUsers([...users, user]);
+        setCurrentUser(user);
+        window.location.href = 'user-dashboard.html';
+      }, 700);
     });
 
     // -- Social Signups --
@@ -1004,9 +1116,12 @@
       const isGoogle = e.currentTarget.id.includes('google');
       localStorage.setItem('currentUser', JSON.stringify({
         role: 'user',
-        email: isGoogle ? 'google.explorer@terravana.com' : 'facebook.explorer@terravana.com'
+        email: isGoogle ? 'google.explorer@terravana.com' : 'facebook.explorer@terravana.com',
+        firstName: isGoogle ? 'Google' : 'Facebook',
+        lastName: 'Explorer',
+        signedInAt: new Date().toISOString()
       }));
-      window.location.href = 'index.html';
+      window.location.href = 'user-dashboard.html';
     };
 
     document.getElementById('google-signup').addEventListener('click', handleSocialSignup);

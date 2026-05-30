@@ -236,6 +236,200 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    @media (max-width: 768px) {
+      #hero .hero-content {
+        padding-top: 1rem;
+      }
+
+      #hero .hero-title {
+        font-size: clamp(2.5rem, 14vw, 3.7rem);
+      }
+
+      #hero .hero-actions .btn,
+      #seasonal-cta .btn,
+      #seasonal-offpeak .btn {
+        justify-content: center;
+      }
+
+      .season-hero-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .season-panel {
+        height: 240px;
+      }
+
+      .season-panel-content {
+        bottom: 1.25rem;
+        left: 1.25rem;
+        right: 1rem;
+      }
+
+      .season-panel-name {
+        font-size: 1.25rem;
+      }
+
+      .season-block {
+        padding: 3.25rem 0;
+      }
+
+      .season-block-inner {
+        gap: 2rem;
+      }
+
+      .season-img,
+      .season-img img {
+        min-height: 340px;
+      }
+
+      .season-emoji-big {
+        font-size: 3rem;
+      }
+
+      .season-highlight {
+        align-items: flex-start;
+        line-height: 1.5;
+      }
+
+      .weather-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .weather-item {
+        padding: 1.35rem 1rem;
+      }
+
+      #weather-data .container>div[style*="overflow-x:auto"] {
+        margin-inline: -1.25rem;
+        padding-inline: 1.25rem;
+      }
+
+      #weather-data table {
+        min-width: 640px;
+      }
+
+      #packing-guide .grid-2,
+      #seasonal-migration .grid-2 {
+        gap: 1.5rem !important;
+      }
+
+      #events-calendar .ritual-card {
+        align-items: flex-start !important;
+        gap: 1rem !important;
+      }
+
+      #events-calendar .ritual-card>div:nth-child(2) {
+        flex: 1 1 16rem;
+      }
+
+      main section[style*="background-attachment:fixed"] {
+        background-attachment: scroll !important;
+      }
+
+      #seasonal-migration img {
+        height: clamp(240px, 62vw, 330px) !important;
+      }
+    }
+
+    @media (max-width: 520px) {
+      #hero .hero-stats,
+      #hero .hero-actions,
+      #seasonal-cta .cta-banner>div[style*="display:flex"] {
+        width: 100%;
+      }
+
+      #hero .hero-actions .btn,
+      #seasonal-cta .btn,
+      #seasonal-offpeak .btn {
+        width: 100%;
+      }
+
+      .season-hero-strip {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .season-panel {
+        height: 210px;
+      }
+
+      .season-img,
+      .season-img img {
+        min-height: 260px;
+      }
+
+      .season-block {
+        padding: 2.5rem 0;
+      }
+
+      .season-block .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .season-block div[style*="display:inline-flex"] {
+        width: 100%;
+        align-items: flex-start !important;
+      }
+
+      .weather-strip {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .weather-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(198, 169, 114, 0.1);
+      }
+
+      .weather-item:last-child {
+        border-bottom: none;
+      }
+
+      #packing-guide .exp-card,
+      #seasonal-photo .exp-card {
+        padding: 1.25rem !important;
+      }
+
+      #events-calendar .ritual-card {
+        flex-direction: column;
+        padding: 1.25rem !important;
+      }
+
+      #events-calendar .ritual-card>div:first-child {
+        min-width: 0 !important;
+        text-align: left !important;
+      }
+
+      #events-calendar .ritual-card .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .pull-quote {
+        font-size: clamp(1.45rem, 8vw, 2rem);
+        padding-inline: 1rem;
+      }
+
+      #seasonal-migration li[style*="justify-content:space-between"] {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      #hero .hero-title {
+        font-size: clamp(2.25rem, 15vw, 3rem);
+      }
+
+      .season-panel {
+        height: 190px;
+      }
+
+      .season-panel-name {
+        font-size: 1.1rem;
+      }
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="upgrade.css" />
