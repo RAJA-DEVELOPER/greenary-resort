@@ -177,72 +177,100 @@ const initProfileDropdown = () => {
 
   const renderDropdown = () => {
     const userStr = localStorage.getItem('currentUser');
+    let user = null;
     if (userStr) {
       try {
-        const user = JSON.parse(userStr);
-        if (user.role === 'admin') {
-          menu.innerHTML = `
-            <div class="profile-menu-hdr">
-              <div class="profile-menu-welcome">Welcome, Admin</div>
-              <div class="profile-menu-user">${user.email}</div>
-            </div>
-            <a href="admin-dashboard.html" class="profile-menu-item">
-              <i class="fa-solid fa-gauge-high"></i> Admin Dashboard
-            </a>
-            <div class="profile-menu-item logout" id="profile-logout-btn">
-              <i class="fa-solid fa-right-from-bracket"></i> Log Out
-            </div>
-          `;
-        } else {
-          menu.innerHTML = `
-            <div class="profile-menu-hdr">
-              <div class="profile-menu-welcome">Welcome, Explorer</div>
-              <div class="profile-menu-user">${user.email || 'Explorer'}</div>
-            </div>
-            <a href="user-dashboard.html" class="profile-menu-item">
-              <i class="fa-solid fa-compass"></i> User Dashboard
-            </a>
-            <div class="profile-menu-item logout" id="profile-logout-btn">
-              <i class="fa-solid fa-right-from-bracket"></i> Log Out
-            </div>
-          `;
-        }
-        
-        // Wire up logout button in realtime
-        const logoutBtn = document.getElementById('profile-logout-btn');
-        if (logoutBtn) {
-          logoutBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            localStorage.removeItem('currentUser');
-            renderDropdown();
-            menu.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
-            
-            // If we are on a private dashboard page, redirect to index
-            const path = window.location.pathname;
-            if (path.includes('dashboard.html')) {
-              window.location.href = 'index.html';
-            }
-          });
-        }
+        user = JSON.parse(userStr);
       } catch (err) {
         console.error("Error parsing currentUser", err);
-        renderGuestMenu();
       }
-    } else {
-      renderGuestMenu();
     }
-  };
 
-  const renderGuestMenu = () => {
+    let headerHtml = '';
+    let actionBtnHtml = '';
+
+    if (user) {
+      headerHtml = `
+        <div class="profile-menu-hdr">
+          <div class="profile-menu-welcome">Welcome, ${user.role === 'admin' ? 'Admin' : 'Explorer'}</div>
+          <div class="profile-menu-user">${user.email}</div>
+        </div>
+      `;
+      actionBtnHtml = `
+        <div class="profile-menu-item logout" id="profile-logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i> Log Out
+        </div>
+      `;
+    } else {
+      headerHtml = `
+        <div class="profile-menu-hdr">
+          <div class="profile-menu-welcome">Welcome, Explorer</div>
+          <div class="profile-menu-user">Guest Session</div>
+        </div>
+      `;
+      actionBtnHtml = `
+        <a href="login.html" class="profile-menu-item">
+          <i class="fa-solid fa-right-to-bracket"></i> Sign In
+        </a>
+      `;
+    }
+
     menu.innerHTML = `
-      <a href="login.html" class="profile-menu-item">
-        <i class="fa-solid fa-right-to-bracket"></i> Sign In
-      </a>
-      <a href="signup.html" class="profile-menu-item">
-        <i class="fa-solid fa-user-plus"></i> Join Terravana
-      </a>
+      ${headerHtml}
+      ${actionBtnHtml}
+      <div class="profile-menu-item" id="dropdown-user-dashboard" style="cursor: pointer;">
+        <i class="fa-solid fa-compass"></i> User Dashboard
+      </div>
+      <div class="profile-menu-item" id="dropdown-admin-dashboard" style="cursor: pointer;">
+        <i class="fa-solid fa-gauge-high"></i> Admin Dashboard
+      </div>
     `;
+
+    // Wire up event listeners
+    const logoutBtn = document.getElementById('profile-logout-btn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        localStorage.removeItem('currentUser');
+        renderDropdown();
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        
+        // If we are on a private dashboard page, redirect to index
+        const path = window.location.pathname;
+        if (path.includes('dashboard.html')) {
+          window.location.href = 'index.html';
+        }
+      });
+    }
+
+    const userDbBtn = document.getElementById('dropdown-user-dashboard');
+    if (userDbBtn) {
+      userDbBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Log in as a default user without credentials
+        localStorage.setItem('currentUser', JSON.stringify({
+          email: 'explorer@terravana.com',
+          name: 'Priya Sharma',
+          role: 'user'
+        }));
+        window.location.href = 'user-dashboard.html';
+      });
+    }
+
+    const adminDbBtn = document.getElementById('dropdown-admin-dashboard');
+    if (adminDbBtn) {
+      adminDbBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Log in as a default admin without credentials
+        localStorage.setItem('currentUser', JSON.stringify({
+          email: 'admin@terravana.com',
+          name: 'Arjun Rao',
+          role: 'admin'
+        }));
+        window.location.href = 'admin-dashboard.html';
+      });
+    }
   };
 
   // Initial Render

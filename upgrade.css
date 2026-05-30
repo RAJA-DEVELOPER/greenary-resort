@@ -2738,3 +2738,84 @@ body.motion-ready main {
     filter: none !important;
   }
 }
+
+/* ==============================================================
+   SEMANTIC RESPONSIVE GRIDS & CARDS
+   ============================================================== */
+.booking-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+.gallery-featured-card {
+  grid-column: span 2;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 340px;
+}
+
+.gallery-item-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 220px;
+}
+.gallery-item-card.featured-height {
+  min-height: 340px;
+}
+
+.booking-lodge-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0;
+  overflow: hidden;
+}
+
+.final-cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .booking-gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .gallery-featured-card {
+    grid-column: span 1;
+    min-height: 240px;
+  }
+  .gallery-item-card {
+    min-height: 240px;
+  }
+
+  .booking-lodge-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .booking-lodge-card > img {
+    height: 230px !important;
+    width: 100% !important;
+    object-fit: cover;
+  }
+  .booking-lodge-card > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .final-cta-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  .final-cta-grid .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
