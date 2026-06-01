@@ -606,6 +606,39 @@ const initContactForm = () => {
 };
 
 /* ============================================================
+   14b. FOOTER EMAIL FORM
+   ============================================================ */
+const initFooterEmailForm = () => {
+  const forms = document.querySelectorAll('.footer-email-form');
+  forms.forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const input = form.querySelector('.footer-email-input');
+      const btn = form.querySelector('.footer-email-btn');
+      if (!input || !btn) return;
+
+      const original = btn.innerHTML;
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+
+      // Simulate async submit
+      setTimeout(() => {
+        btn.textContent = '✓ Subscribed';
+        btn.style.setProperty('background', '#5E9E6B', 'important');
+        btn.style.setProperty('color', '#fff', 'important');
+        input.value = '';
+        setTimeout(() => {
+          btn.innerHTML = original;
+          btn.disabled = false;
+          btn.style.setProperty('background', '', '');
+          btn.style.setProperty('color', '', '');
+        }, 3000);
+      }, 1000);
+    });
+  });
+};
+
+/* ============================================================
    15. HERO VIDEO / BACKGROUND CYCLE
    ============================================================ */
 const initHeroCycle = () => {
@@ -718,6 +751,19 @@ const initPageTransition = () => {
         window.location.href = href;
       }, 400);
     });
+  });
+
+  // Handle back-forward cache (bfcache) restore to prevent overlay getting stuck
+  window.addEventListener('pageshow', e => {
+    if (e.persisted) {
+      overlay.style.opacity = '0';
+      overlay.style.display = 'none';
+      const loader = document.getElementById('page-loader');
+      if (loader) {
+        loader.classList.add('hidden');
+      }
+      document.body.style.overflow = '';
+    }
   });
 };
 
@@ -871,6 +917,7 @@ ready(() => {
   initSmoothScroll();
   initBookingForm();
   initContactForm();
+  initFooterEmailForm();
   initHeroCycle();
   initStickyLabels();
   initBackToTop();

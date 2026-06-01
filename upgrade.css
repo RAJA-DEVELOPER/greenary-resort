@@ -2558,12 +2558,10 @@ main .cta-banner .btn {
   from {
     opacity: 0;
     transform: translateY(34px) scale(0.985);
-    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: blur(0);
   }
 }
 
@@ -2571,12 +2569,12 @@ main .cta-banner .btn {
   from {
     opacity: 0;
     transform: scale(1.055);
-    filter: saturate(0.75) contrast(0.9) blur(7px);
+    filter: saturate(0.75) contrast(0.9);
   }
   to {
     opacity: 1;
     transform: scale(1);
-    filter: saturate(1.04) contrast(1.02) blur(0);
+    filter: saturate(1.04) contrast(1.02);
   }
 }
 
@@ -2818,4 +2816,74 @@ body.motion-ready main {
     width: 100%;
     margin-bottom: 0.5rem;
   }
+}
+
+/* ==============================================================
+   GLOBAL GOLD SHEEN HOVER EFFECT
+   Sweeps a cinematic amber-gold light sweep across cards on hover.
+   ============================================================== */
+.package-card,
+.adventure-card,
+.lodge-card,
+.trail-card,
+.species-card,
+.fall-card,
+.addon-card,
+.setup-card,
+.menu-card,
+.sound-card,
+.flame-step,
+.booking-lodge-card,
+.gallery-featured-card,
+.gallery-item-card,
+.pkg-card,
+.eco-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.package-card::after,
+.adventure-card::after,
+.lodge-card::after,
+.trail-card::after,
+.species-card::after,
+.fall-card::after,
+.addon-card::after,
+.setup-card::after,
+.menu-card::after,
+.sound-card::after,
+.flame-step::after,
+.booking-lodge-card::after,
+.gallery-featured-card::after,
+.gallery-item-card::after,
+.pkg-card::after,
+.eco-item::after {
+  content: "";
+  position: absolute;
+  inset: -40% -20% auto -20%;
+  height: 160px;
+  background: linear-gradient(90deg, transparent, rgba(236, 186, 69, 0.12), transparent);
+  transform: translateX(-85%) rotate(-8deg);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.package-card:hover::after,
+.adventure-card:hover::after,
+.lodge-card:hover::after,
+.trail-card:hover::after,
+.species-card:hover::after,
+.fall-card:hover::after,
+.addon-card:hover::after,
+.setup-card:hover::after,
+.menu-card:hover::after,
+.sound-card:hover::after,
+.flame-step:hover::after,
+.booking-lodge-card:hover::after,
+.gallery-featured-card:hover::after,
+.gallery-item-card:hover::after,
+.pkg-card:hover::after,
+.eco-item:hover::after {
+  transform: translateX(85%) rotate(-8deg);
 }

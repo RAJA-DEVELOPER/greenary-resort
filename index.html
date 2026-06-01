@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -107,21 +107,38 @@
     }
 
     .eco-item {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 2rem;
-      border-left: 2px solid rgba(198, 169, 114, 0.2);
-      transition: border-color var(--dur-base) var(--ease-smooth);
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      padding: 1.5rem;
+      border: 1px solid rgba(198, 169, 114, 0.15);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(94, 158, 107, 0.08), rgba(10, 12, 14, 0.92));
+      transition: transform 0.38s ease, box-shadow 0.38s ease, border-color 0.38s ease;
+    }
+
+    .eco-item .exp-card-text {
+      text-align: left !important;
     }
 
     .eco-item:hover {
-      border-color: var(--gold);
+      transform: translateY(-6px);
+      border-color: rgba(236, 186, 69, 0.45);
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.65), 0 0 48px rgba(94, 158, 107, 0.12);
     }
 
     .eco-icon {
-      font-size: 2rem;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #06100B;
+      background: linear-gradient(135deg, var(--gold), #5E9E6B);
+      box-shadow: 0 0 34px rgba(94, 158, 107, 0.26);
+      font-size: 1.25rem;
+      flex-shrink: 0;
     }
 
     /* Seasonal Strip */
@@ -1101,52 +1118,64 @@
         <div class="eco-row eco-row-expanded">
           <div class="eco-item reveal">
             <span class="eco-icon" aria-hidden="true"><i class="fa-solid fa-tree"></i></span>
-            <div class="section-label" style="margin:0;">Reforestation</div>
-            <p class="exp-card-text">
-              Every stay contributes to our active planting initiatives, restoring indigenous flora to previously
-              degraded lands surrounding the resort.
-            </p>
+            <div>
+              <div class="section-label" style="margin:0;">Reforestation</div>
+              <p class="exp-card-text" style="margin-top:0.35rem;">
+                Every stay contributes to our active planting initiatives, restoring indigenous flora to previously
+                degraded lands surrounding the resort.
+              </p>
+            </div>
           </div>
           <div class="eco-item reveal reveal-delay-1">
             <span class="eco-icon" aria-hidden="true"><i class="fa-solid fa-water"></i></span>
-            <div class="section-label" style="margin:0;">Water Stewardship</div>
-            <p class="exp-card-text">
-              100% of our greywater is filtered through natural reed beds and returned to the ecosystem cleaner than
-              when we collected it.
-            </p>
+            <div>
+              <div class="section-label" style="margin:0;">Water Stewardship</div>
+              <p class="exp-card-text" style="margin-top:0.35rem;">
+                100% of our greywater is filtered through natural reed beds and returned to the ecosystem cleaner than
+                when we collected it.
+              </p>
+            </div>
           </div>
           <div class="eco-item reveal reveal-delay-2">
             <span class="eco-icon" aria-hidden="true"><i class="fa-solid fa-solar-panel"></i></span>
-            <div class="section-label" style="margin:0;">Renewable Energy</div>
-            <p class="exp-card-text">
-              Our entire off-grid operation is powered by a state-of-the-art micro-hydro and solar array, leaving zero
-              carbon footprint.
-            </p>
+            <div>
+              <div class="section-label" style="margin:0;">Renewable Energy</div>
+              <p class="exp-card-text" style="margin-top:0.35rem;">
+                Our entire off-grid operation is powered by a state-of-the-art micro-hydro and solar array, leaving zero
+                carbon footprint.
+              </p>
+            </div>
           </div>
 
           <div class="eco-item reveal">
             <span class="eco-icon" aria-hidden="true"><i class="fa-solid fa-seedling"></i></span>
-            <div class="section-label" style="margin:0;">Zero-Impact Stays</div>
-            <p class="exp-card-text">
-              Solar-powered lodges, composting waste systems, and locally sourced
-              meals prepared by community chefs using forest-to-table ingredients.
-            </p>
+            <div>
+              <div class="section-label" style="margin:0;">Zero-Impact Stays</div>
+              <p class="exp-card-text" style="margin-top:0.35rem;">
+                Solar-powered lodges, composting waste systems, and locally sourced
+                meals prepared by community chefs using forest-to-table ingredients.
+              </p>
+            </div>
           </div>
           <div class="eco-item reveal reveal-delay-2">
             <span class="eco-icon" aria-hidden="true"><i class="fa-solid fa-paw"></i></span>
-            <div class="section-label" style="margin:0;">Wildlife Conservation</div>
-            <p class="exp-card-text">
-              10% of every booking funds active conservation programs - rewilding
-              corridors, anti-poaching patrols, and endangered species monitoring.
-            </p>
+            <div>
+              <div class="section-label" style="margin:0;">Wildlife Conservation</div>
+              <p class="exp-card-text" style="margin-top:0.35rem;">
+                10% of every booking funds active conservation programs - rewilding
+                corridors, anti-poaching patrols, and endangered species monitoring.
+              </p>
+            </div>
           </div>
           <div class="eco-item reveal reveal-delay-3">
             <span class="eco-icon" aria-hidden="true"><i class="fa-solid fa-handshake-angle"></i></span>
-            <div class="section-label" style="margin:0;">Community Partnership</div>
-            <p class="exp-card-text">
-              80% of our guides are from indigenous communities, preserving
-              generational ecological knowledge while creating sustainable livelihoods.
-            </p>
+            <div>
+              <div class="section-label" style="margin:0;">Community Partnership</div>
+              <p class="exp-card-text" style="margin-top:0.35rem;">
+                80% of our guides are from indigenous communities, preserving
+                generational ecological knowledge while creating sustainable livelihoods.
+              </p>
+            </div>
           </div>
         </div>
       </div>

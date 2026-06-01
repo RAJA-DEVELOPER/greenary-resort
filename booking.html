@@ -1472,16 +1472,85 @@
         padding: 1rem !important;
       }
     }
+
+    /* Toast Notification styles */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      pointer-events: none;
+    }
+
+    .toast-notification {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(17, 19, 21, 0.96);
+      border: 1px solid rgba(198, 169, 114, 0.25);
+      border-left: 4px solid #5E9E6B;
+      padding: 1rem 1.5rem;
+      border-radius: 4px;
+      color: var(--ivory);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(198, 169, 114, 0.05);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      pointer-events: auto;
+      max-width: 380px;
+    }
+
+    .toast-notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-icon {
+      color: #5E9E6B;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .toast-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .toast-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .toast-text {
+      font-size: 0.8rem;
+      color: rgba(232, 224, 213, 0.7);
+    }
+
+    @media (max-width: 520px) {
+      .toast-container {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        align-items: center;
+      }
+      .toast-notification {
+        width: 100%;
+        max-width: none;
+      }
+    }
   </style>
 </head>
 
 <body class="booking-page">
-  <div id="page-loader" aria-hidden="true">
-    <div class="loader-logo">Booking</div>
-    <div class="loader-bar">
-      <div class="loader-bar-fill"></div>
-    </div>
-  </div>
   <div id="page-transition"
     style="position:fixed;inset:0;background:var(--coal);z-index:9998;opacity:0;transition:opacity 0.4s ease;pointer-events:none;"
     aria-hidden="true"></div>
@@ -2584,44 +2653,60 @@
         <div class="footer-brand">
           <div class="footer-logo">Terravana Wilds</div>
           <div class="footer-logo-sub">Eco &middot; Adventure &middot; Resort</div>
-          <p class="footer-tagline">"Where wilderness speaks and every trail tells a story."</p>
+          <p class="footer-tagline">
+            "Where the wilderness speaks and every trail tells a story."
+          </p>
           <div class="eco-badge" style="margin-top:1rem;"><i class="fa-solid fa-leaf"></i> Certified Carbon Neutral
             Resort</div>
-          <div class="footer-social" aria-label="Social media links"><a href="https://www.instagram.com/"
-              class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i
-                class="fa-brands fa-instagram"></i></a><a href="https://www.linkedin.com/" class="footer-social-link"
-              aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i
-                class="fa-brands fa-linkedin-in"></i></a><a href="https://www.facebook.com/" class="footer-social-link"
-              aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i
-                class="fa-brands fa-facebook-f"></i></a><a href="https://x.com/" class="footer-social-link"
-              aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
-          </div>
+          <div class="footer-social" aria-label="Social media links"><a href="https://www.instagram.com/" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a><a href="https://www.linkedin.com/" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://www.facebook.com/" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a><a href="https://x.com/" class="footer-social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a></div>
         </div>
+
         <div>
           <h3 class="footer-col-title">Explore</h3>
-          <nav class="footer-links"><a href="adventures.html" class="footer-link">All Adventures</a><a
-              href="trekking.html" class="footer-link">Trekking Trails</a><a href="wildlife.html"
-              class="footer-link">Wildlife Safaris</a><a href="campfire.html" class="footer-link">Campfire Nights</a><a
-              href="waterfalls.html" class="footer-link">Waterfall Walks</a></nav>
+          <nav class="footer-links" aria-label="Explore links">
+             <a href="index.html" class="footer-link">Home</a>
+            <a href="adventures.html" class="footer-link">All Adventures</a>
+            <a href="trekking.html" class="footer-link">Trekking Trails</a>
+            <a href="wildlife.html" class="footer-link">Wildlife Safaris</a>
+            
+            <a href="waterfalls.html" class="footer-link">Waterfall Walks</a>
+            <a href="campfire.html" class="footer-link">Campfire Nights</a>
+          </nav>
         </div>
+
         <div>
           <h3 class="footer-col-title">Stay</h3>
-          <nav class="footer-links"><a href="ecoresorts.html" class="footer-link">Eco Resorts</a><a href="seasonal.html"
-              class="footer-link">Seasonal Guide</a><a href="booking.html" class="footer-link">Book Now</a><a
-              href="reviews.html" class="footer-link">Guest Reviews</a><a href="gallery.html" class="footer-link">Photo
-              Gallery</a></nav>
+          <nav class="footer-links" aria-label="Stay links">
+            <a href="ecoresorts.html" class="footer-link">Eco Resorts</a>
+            <a href="seasonal.html" class="footer-link">Seasonal Guide</a>
+            <a href="gallery.html" class="footer-link">Photo Gallery</a>         
+            <a href="reviews.html" class="footer-link">Guest Reviews</a>
+           
+            
+          </nav>
         </div>
+
         <div>
           <h3 class="footer-col-title">Connect</h3>
-          <nav class="footer-links"><a href="about.html" class="footer-link">About Us</a></nav>
-          <form class="footer-email-form" action="#" method="post"><input class="footer-email-input" type="email"
-              name="email" placeholder="Email address" aria-label="Email address" required><button
-              class="footer-email-btn" type="submit">Submit</button></form>
+          <nav class="footer-links" aria-label="Connect links">
+            <a href="about.html" class="footer-link">About Us</a>
+             <a href="booking.html" class="footer-link">Book Now</a>
+          </nav>
+          <form class="footer-email-form" action="#" method="post">
+            <input class="footer-email-input" type="email" name="email" placeholder="Email address"
+              aria-label="Email address" required>
+            <button class="footer-email-btn" type="submit">Submit</button>
+          </form>
         </div>
       </div>
+
       <div class="footer-bottom">
         <p class="footer-copy">&copy; 2025 Terravana Wilds. All rights reserved.</p>
-        <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Eco Charter</a>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Eco Charter</a>
+          <a href="#">Cookie Policy</a>
         </nav>
       </div>
     </div>
@@ -2774,6 +2859,33 @@
         input.closest('.form-group, .form-checkbox').appendChild(error);
       };
 
+      const showToast = (title, message) => {
+        let container = document.querySelector('.toast-container');
+        if (!container) {
+          container = document.createElement('div');
+          container.className = 'toast-container';
+          document.body.appendChild(container);
+        }
+
+        const toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.innerHTML = `
+          <div class="toast-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="toast-content">
+            <div class="toast-title">${title}</div>
+            <div class="toast-text">${message}</div>
+          </div>
+        `;
+        container.appendChild(toast);
+
+        setTimeout(() => toast.classList.add('show'), 50);
+
+        setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => toast.remove(), 400);
+        }, 4000);
+      };
+
       form.addEventListener('submit', event => {
         event.preventDefault();
         clearErrors();
@@ -2798,6 +2910,7 @@
         }
 
         const btn = document.getElementById('booking-submit-btn');
+        const originalText = btn.innerHTML;
         btn.textContent = 'Request Sent - We will be in touch within 24 hours';
         btn.disabled = true;
         btn.style.background = '#5E9E6B';
@@ -2810,7 +2923,22 @@
           lodge: summary.lodge.textContent,
           total: summary.total.textContent
         }));
+
+        // Reset the form fields and summary state
+        form.reset();
+        selectPackage(document.getElementById('pkg-trekking'));
+        updateSummary();
         setStepState();
+
+        // Show success toast notification
+        showToast('Request Submitted!', 'We will be in touch within 24 hours to confirm your booking.');
+
+        // Restore button state after a delay
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          btn.style.background = '';
+        }, 4000);
       });
 
       document.querySelectorAll('.accordion-btn').forEach(button => {
