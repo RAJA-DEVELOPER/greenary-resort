@@ -2214,8 +2214,9 @@ main .cta-banner .btn {
 @media (max-width: 1180px) {
   #navbar .nav-profile-dropdown {
     display: flex !important;
-    position: fixed !important;
-    top: 0.8rem !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     right: 4.5rem !important;
     width: 44px !important;
     height: 44px !important;
@@ -2963,6 +2964,26 @@ body.motion-ready main {
   --shadow-xl: 0 48px 160px rgba(18, 22, 26, 0.11);
   --shadow-gold: 0 0 80px rgba(131, 94, 27, 0.08);
   --shadow-glow: 0 0 120px rgba(131, 94, 27, 0.04);
+}
+
+/* Preserve dark mode styling (light text/accent colors) inside locked-dark sections in light theme */
+[data-theme="light"] [style*="background-image"],
+[data-theme="light"] [style*="rgba(27,29,31"]:not(.exp-card):not(.ritual-card),
+[data-theme="light"] [style*="rgba(27, 29, 31"]:not(.exp-card):not(.ritual-card),
+[data-theme="light"] .gallery-cta,
+[data-theme="light"] .about-cta,
+[data-theme="light"] .scene-panel,
+[data-theme="light"] .lab-note,
+[data-theme="light"] body.booking-page .booking-summary,
+[data-theme="light"] body.booking-page #booking-form-section .booking-summary {
+  --ivory: #FAF8F5 !important;
+  --linen: #EDE5DA !important;
+  --linen-dark: #CEC5B8 !important;
+  --gold: #D4A853 !important;
+  --gold-light: #E8C97A !important;
+  --gold-bright: #ECBA45 !important;
+  --gold-dim: #8B7335 !important;
+  --gold-dark: #8B7335 !important;
 }
 
 [data-theme="light"] body {
@@ -3963,7 +3984,7 @@ body.motion-ready main {
 /* Laptop/Tablet Navbar Overlaps & Alignment (LTR & RTL) */
 @media (max-width: 1180px) {
   #navbar .nav-inner {
-    padding-right: 5rem !important;
+    padding-right: 7.5rem !important;
   }
   
   #navbar .nav-controls,
@@ -3971,16 +3992,16 @@ body.motion-ready main {
     margin-left: auto !important;
     margin-right: 0 !important;
     gap: 0.65rem !important;
+    align-items: center !important;
   }
 
-  /* RTL layout alignment fixes */
   [dir="rtl"] #navbar #nav-hamburger {
     left: 1rem !important;
     right: auto !important;
   }
 
   [dir="rtl"] #navbar .nav-inner {
-    padding-left: 5rem !important;
+    padding-left: 7.5rem !important;
     padding-right: clamp(1.5rem, 4vw, 4rem) !important;
   }
 
@@ -4038,6 +4059,7 @@ body.motion-ready main {
     margin-left: 0 !important;
     gap: 0.5rem !important;
     min-width: max-content;
+    align-items: center !important;
   }
 
   /* RTL layout alignment fixes */
@@ -4194,16 +4216,17 @@ body.motion-ready main {
 
   #navbar .nav-controls,
   #navbar .nav-inner > div[style*="display:flex"] {
-    gap: 0 !important;
+    gap: 0.45rem !important;
   }
 
   #navbar .nav-lang-selector {
-    display: block !important;
+    display: flex !important;
+    align-items: center !important;
   }
 
   #navbar .nav-profile-dropdown {
     display: flex !important;
-    position: fixed !important;
+    position: absolute !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     right: 3.6rem !important;
@@ -4593,9 +4616,6 @@ body.motion-ready main {
   color: var(--gold) !important;
 }
 
-[data-theme="light"] .section-desc {
-  color: var(--card2) !important;
-}
 
 [data-theme="light"] .ms-lbl,
 [data-theme="light"] .ac-stat-lbl {
