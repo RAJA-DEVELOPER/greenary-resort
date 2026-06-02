@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <script>(function(){const t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seasonal Guide - TERRAVANA WILDS</title>
@@ -452,8 +453,11 @@
 
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><span class="nav-logo-main">Terravana Wilds</span><span
-          class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span></a>
+      <a href="index.html" class="nav-logo" aria-label="Terravana Wilds Home">
+        <span class="nav-logo-main">Terravana Wilds</span>
+        <span class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span>
+      </a>
+
       <div class="nav-links" role="list" style="gap: clamp(0.5rem, 1.2vw, 1.2rem);">
         <a href="index.html" class="nav-link" role="listitem">Home</a>
         <a href="adventures.html" class="nav-link" role="listitem">Adventures</a>
@@ -468,7 +472,24 @@
         <a href="about.html" class="nav-link" role="listitem">About</a>
         </div>
 
-      <div style="display:flex; align-items:center; gap:1rem;">
+      <div style="display:flex; align-items:center; gap:0.85rem;">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        
+        <!-- Language Switcher (RTL/LTR Toggle) -->
+        <div class="nav-lang-selector">
+          <button id="lang-btn" class="lang-btn" aria-label="Select Language" aria-expanded="false" title="Language / Change Layout Direction">
+            <i class="fa-solid fa-globe"></i>
+            <span class="lang-text">EN</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-opt active" data-lang="en" data-dir="ltr">English (LTR)</button>
+            <button class="lang-opt" data-lang="ar" data-dir="rtl">العربية (RTL)</button>
+          </div>
+        </div>
+
         <a href="booking.html" class="nav-cta">Book Now</a>
         <div class="nav-profile-dropdown" id="nav-profile-dropdown">
           <button id="nav-profile-btn" aria-label="User Profile">
@@ -485,13 +506,18 @@
       </button>
     </div>
   </nav>
-  <div id="nav-mobile" class="nav-mobile">
-    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a><a
-      href="trekking.html" class="nav-link">Trekking</a><a href="wildlife.html" class="nav-link">Wildlife</a><a
-      href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html" class="nav-link">Waterfalls</a><a
-      href="ecoresorts.html" class="nav-link">Eco Resorts</a><a href="seasonal.html"
-      class="nav-link active">Seasons</a><a href="gallery.html" class="nav-link">Gallery</a><a href="reviews.html"
-      class="nav-link">Reviews</a><a href="about.html" class="nav-link">About</a><a href="booking.html" class="nav-cta">Book Your Journey</a>
+  <div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Mobile navigation">
+    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a>
+    <a href="trekking.html" class="nav-link">Trekking</a>
+    <a href="wildlife.html" class="nav-link">Wildlife</a>
+    <a href="campfire.html" class="nav-link">Campfire</a>
+    <a href="waterfalls.html" class="nav-link">Waterfalls</a>
+    <a href="ecoresorts.html" class="nav-link">Eco Resorts</a>
+    <a href="seasonal.html" class="nav-link">Seasons</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="reviews.html" class="nav-link">Reviews</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="booking.html" class="nav-cta">Book Your Journey</a>
   </div>
 
   <main>
@@ -505,6 +531,8 @@
       </div>
       <div class="container">
         <div class="hero-content">
+          <div class="breadcrumb" style="animation:fadeUp 0.6s ease 0.3s both;"><a href="index.html">Home</a><span
+              class="breadcrumb-sep">&rsaquo;</span><span class="breadcrumb-current">Seasonal Guide</span></div>
           <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">Four Seasons &middot; One Wild
               Heart</span></div>
           <h1 class="hero-title">The Forest<br /><em>Never</em> Rests</h1>
@@ -992,16 +1020,16 @@
             <p class="section-desc">Many of our most spectacular wildlife sightings are strictly seasonal. Plan your
               visit around these major ecological events.</p>
             <ul style="list-style:none;padding:0;margin:1.5rem 0;color:rgba(232,224,213,0.7);font-size:0.9rem;">
-              <li style="margin-bottom:0.75rem;display:flex;justify-content:space-between;"><span
+              <li style="margin-bottom:0.75rem;display:flex;justify-content:space-between;gap:3rem;"><span
                   style="color:var(--ivory);font-weight:600;">Butterfly Migration</span> <span
                   style="color:var(--gold);">Oct - Nov</span></li>
-              <li style="margin-bottom:0.75rem;display:flex;justify-content:space-between;"><span
+              <li style="margin-bottom:0.75rem;display:flex;justify-content:space-between;gap:3rem;"><span
                   style="color:var(--ivory);font-weight:600;">Raptor Flyway</span> <span style="color:var(--gold);">Nov
                   - Jan</span></li>
-              <li style="margin-bottom:0.75rem;display:flex;justify-content:space-between;"><span
+              <li style="margin-bottom:0.75rem;display:flex;justify-content:space-between;gap:3rem;"><span
                   style="color:var(--ivory);font-weight:600;">Elephant Herd Crossings</span> <span
                   style="color:var(--gold);">Mar - May</span></li>
-              <li style="margin-bottom:0.75rem;display:flex;justify-content:space-between;"><span
+              <li style="margin-bottom:0.75rem;display:flex;justify-content:space-between;gap:3rem;"><span
                   style="color:var(--ivory);font-weight:600;">Amphibian Emergence</span> <span
                   style="color:var(--gold);">Jun - Jul</span></li>
             </ul>

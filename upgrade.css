@@ -1925,8 +1925,8 @@ main .hero {
   align-items: center !important;
   justify-content: center !important;
   min-height: 100vh !important;
-  padding-top: calc(var(--nav-h, 80px) + 3rem) !important;
-  padding-bottom: 4rem !important;
+  padding-top: calc(var(--nav-h, 80px) + 1rem) !important;
+  padding-bottom: 2.5rem !important;
 }
 
 main .hero-sm {
@@ -1949,6 +1949,10 @@ main .hero-content {
   justify-content: center !important;
   width: 100% !important;
   max-width: 100% !important;
+}
+
+main .hero .breadcrumb {
+  margin-bottom: 1rem !important;
 }
 
 main .hero-eyebrow {
@@ -1989,16 +1993,19 @@ main .hero-subtitle {
   margin-left: auto !important;
   margin-right: auto !important;
   width: 100% !important;
+  margin-top: 1rem !important;
 }
 
 main .hero-actions {
   justify-content: center !important;
   width: 100% !important;
+  margin-top: 1.5rem !important;
 }
 
 main .hero-stats {
   justify-content: center !important;
   width: 100% !important;
+  margin-top: 2rem !important;
 }
 
 main .hero-scroll {
@@ -2887,3 +2894,924 @@ body.motion-ready main {
 .eco-item:hover::after {
   transform: translateX(85%) rotate(-8deg);
 }
+
+/* ==============================================================
+   SECTION 99 -- ADDITIONAL PREMIUM SYSTEM FEATURE UPGRADES
+   * Dark/Light Mode
+   * RTL Support
+   * Accessibility (WCAG 2.1 AA)
+   * Skeleton Loaders & loading states
+   ============================================================== */
+
+/* -- 1. LIGHT THEME OVERRIDES -- */
+[data-theme="light"] {
+  /* Volcanic Night Base -> Light warm linen/cream backgrounds */
+  --coal: #FAF8F5;          /* Light ivory base background */
+  --coal-soft: #F4EFEB;     /* Slightly darker warm base */
+  --graphite: #EDE8DF;      /* Warm linen background */
+  --graphite-mid: #E5DFC8;
+  --card-bg: #FAF8F5;       /* Elevated clean light surfaces */
+  --card-bg-2: #F0EDE6;
+  --surface: #E8E3D9;
+
+  /* Warm Cream Text System -> Dark volcanic charcoal text */
+  --ivory: #12161A;         /* Primary headings */
+  --linen: #22262B;         /* Body copy */
+  --linen-dark: #3C4148;    /* Secondary warm-slate copy (highly readable) */
+  --slate: #4E5951;         /* Muted forest-slate */
+  
+  /* Gold adjustments for light contrast */
+  --gold: #835E1B;          /* Darker rich gold with 4.5:1+ contrast on cream */
+  --gold-light: #9B752D;
+  --gold-bright: #684910;   /* Active states */
+  --gold-dim: #7C5E24;
+  --gold-dark: #CBB998;     /* Muted borders */
+  --gold-glow: rgba(131, 94, 27, 0.05);
+  --gold-glass: rgba(131, 94, 27, 0.03);
+  --gold-glass-2: rgba(131, 94, 27, 0.06);
+
+  /* Glassmorphism updates for light background */
+  --glass-bg: rgba(250, 248, 245, 0.88);
+  --glass-card: rgba(244, 239, 235, 0.90);
+  --glass-light: rgba(18, 22, 26, 0.03);
+  --glass-border: rgba(131, 94, 27, 0.16);
+  --glass-border-md: rgba(131, 94, 27, 0.28);
+  --glass-border-hi: rgba(131, 94, 27, 0.45);
+
+  /* Dashboard specific light overrides */
+  --card: #FFFFFF;          /* Pure white dashboard card background */
+  --card2: #F4EFEB;         /* Slightly warm cream card background */
+  --border: rgba(131, 94, 27, 0.18);
+  --border-soft: rgba(18, 22, 26, 0.08);
+  --border-hover: rgba(131, 94, 27, 0.35);
+
+  /* Premium Shadows adapted for light background */
+  --shadow-xs: 0 1px 8px rgba(18, 22, 26, 0.03);
+  --shadow-sm: 0 4px 20px rgba(18, 22, 26, 0.05);
+  --shadow-md: 0 12px 56px rgba(18, 22, 26, 0.07);
+  --shadow-lg: 0 28px 100px rgba(18, 22, 26, 0.09);
+  --shadow-xl: 0 48px 160px rgba(18, 22, 26, 0.11);
+  --shadow-gold: 0 0 80px rgba(131, 94, 27, 0.08);
+  --shadow-glow: 0 0 120px rgba(131, 94, 27, 0.04);
+}
+
+[data-theme="light"] body {
+  background-color: var(--coal) !important;
+  background-image:
+    radial-gradient(ellipse 100% 70% at 15% 0%, rgba(10, 158, 98, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 60% at 85% 0%, rgba(131, 94, 27, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(217, 96, 48, 0.01) 0%, transparent 55%) !important;
+  color: var(--linen) !important;
+}
+
+[data-theme="light"] .bg-coal,
+[data-theme="light"] .bg-texture {
+  background-color: var(--coal) !important;
+}
+
+[data-theme="light"] .bg-graphite {
+  background: linear-gradient(180deg, var(--graphite) 0%, var(--coal-soft) 100%) !important;
+}
+
+[data-theme="light"] .footer {
+  background: #EDE8DF !important;
+  border-top: 1px solid rgba(131, 94, 27, 0.15) !important;
+}
+
+/* Make cards light and premium in Light Mode */
+[data-theme="light"] .exp-card,
+[data-theme="light"] .glass-card,
+[data-theme="light"] .review-card,
+[data-theme="light"] .pkg-card,
+[data-theme="light"] .night-card,
+[data-theme="light"] .fall-card,
+[data-theme="light"] .species-card,
+[data-theme="light"] .trail-card,
+[data-theme="light"] .lodge-card,
+[data-theme="light"] .adv-detail-card,
+[data-theme="light"] .team-card,
+[data-theme="light"] .feature-card,
+[data-theme="light"] .package-card,
+[data-theme="light"] .resort-lane,
+[data-theme="light"] .belief-card,
+[data-theme="light"] .ritual-card,
+[data-theme="light"] .impact-card,
+[data-theme="light"] .faq-item,
+[data-theme="light"] .planner-card,
+[data-theme="light"] .detail-table,
+[data-theme="light"] .amenity-item,
+[data-theme="light"] .timeline-card,
+[data-theme="light"] .booking-form,
+[data-theme="light"] .sidebar-nav,
+[data-theme="light"] .db-card,
+[data-theme="light"] .stay-moment,
+[data-theme="light"] .home-signal-card,
+[data-theme="light"] .mini-kpi,
+[data-theme="light"] .compare-cell,
+[data-theme="light"] .itinerary-item,
+[data-theme="light"] .setup-card,
+[data-theme="light"] .addon-card,
+[data-theme="light"] .menu-card,
+[data-theme="light"] .sound-card,
+[data-theme="light"] .flame-step,
+[data-theme="light"] .booking-lodge-card,
+[data-theme="light"] .gallery-featured-card,
+[data-theme="light"] .gallery-item-card,
+[data-theme="light"] .eco-item,
+[data-theme="light"] .timeline-item,
+[data-theme="light"] .activity-item,
+[data-theme="light"] .pref-card,
+[data-theme="light"] .help-search-box,
+[data-theme="light"] .feedback-card,
+[data-theme="light"] .notif-panel,
+[data-theme="light"] .weather-widget,
+[data-theme="light"] .promo-card,
+[data-theme="light"] .user-card,
+[data-theme="light"] .admin-profile,
+[data-theme="light"] .wb-stat-card {
+  background: linear-gradient(145deg, var(--coal) 0%, var(--coal-soft) 100%) !important;
+  border: 1px solid rgba(131, 94, 27, 0.18) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+[data-theme="light"] .exp-card:hover,
+[data-theme="light"] .glass-card:hover,
+[data-theme="light"] .review-card:hover,
+[data-theme="light"] .pkg-card:hover,
+[data-theme="light"] .night-card:hover,
+[data-theme="light"] .fall-card:hover,
+[data-theme="light"] .species-card:hover,
+[data-theme="light"] .trail-card:hover,
+[data-theme="light"] .lodge-card:hover,
+[data-theme="light"] .adv-detail-card:hover,
+[data-theme="light"] .team-card:hover,
+[data-theme="light"] .feature-card:hover,
+[data-theme="light"] .package-card:hover,
+[data-theme="light"] .resort-lane:hover,
+[data-theme="light"] .belief-card:hover,
+[data-theme="light"] .ritual-card:hover,
+[data-theme="light"] .impact-card:hover,
+[data-theme="light"] .faq-item:hover,
+[data-theme="light"] .planner-card:hover,
+[data-theme="light"] .db-card:hover,
+[data-theme="light"] .stay-moment:hover,
+[data-theme="light"] .home-signal-card:hover,
+[data-theme="light"] .mini-kpi:hover {
+  border-color: rgba(131, 94, 27, 0.42) !important;
+  box-shadow: var(--shadow-md), var(--shadow-gold) !important;
+}
+
+[data-theme="light"] .form-input,
+[data-theme="light"] .form-select,
+[data-theme="light"] .form-textarea,
+[data-theme="light"] .footer-email-input {
+  background: rgba(18, 22, 26, 0.03) !important;
+  border: 1px solid rgba(18, 22, 26, 0.12) !important;
+  color: var(--ivory) !important;
+}
+
+[data-theme="light"] .form-input:focus,
+[data-theme="light"] .form-select:focus,
+[data-theme="light"] .form-textarea:focus {
+  background: rgba(131, 94, 27, 0.04) !important;
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(131, 94, 27, 0.15) !important;
+}
+
+/* -- 1b. LIGHT THEME DASHBOARD & AUTH SPECIFIC CLASS OVERRIDES -- */
+[data-theme="light"] .nav-section-label {
+  color: rgba(18, 22, 26, 0.5) !important;
+}
+[data-theme="light"] .nav-item {
+  color: rgba(18, 22, 26, 0.68) !important;
+}
+[data-theme="light"] .nav-item:hover {
+  color: var(--ivory) !important;
+  background: rgba(131, 94, 27, 0.08) !important;
+}
+[data-theme="light"] .nav-item.active {
+  color: var(--gold) !important;
+  background: rgba(131, 94, 27, 0.12) !important;
+}
+[data-theme="light"] .sidebar-logout-btn,
+[data-theme="light"] .sidebar-logout {
+  color: rgba(18, 22, 26, 0.55) !important;
+}
+[data-theme="light"] .stat-label {
+  color: rgba(18, 22, 26, 0.65) !important;
+}
+[data-theme="light"] .booking-meta,
+[data-theme="light"] .activity-time,
+[data-theme="light"] .point-desc,
+[data-theme="light"] .notif-time,
+[data-theme="light"] .menu-item-desc,
+[data-theme="light"] .detail-label,
+[data-theme="light"] .detail-note,
+[data-theme="light"] .badge-label,
+[data-theme="light"] .chart-legend,
+[data-theme="light"] .stat-note,
+[data-theme="light"] .pref-desc,
+[data-theme="light"] .help-search-desc,
+[data-theme="light"] .faq-answer,
+[data-theme="light"] .feedback-desc,
+[data-theme="light"] .feedback-label,
+[data-theme="light"] .auth-form-sub,
+[data-theme="light"] .form-label,
+[data-theme="light"] .trail-rec-meta {
+  color: rgba(18, 22, 26, 0.68) !important;
+}
+[data-theme="light"] .form-input::placeholder {
+  color: rgba(18, 22, 26, 0.45) !important;
+}
+[data-theme="light"] .auth-switch {
+  color: rgba(18, 22, 26, 0.68) !important;
+}
+[data-theme="light"] .auth-divider-text {
+  color: rgba(18, 22, 26, 0.5) !important;
+}
+[data-theme="light"] .social-btn {
+  color: rgba(18, 22, 26, 0.75) !important;
+  background: rgba(18, 22, 26, 0.03) !important;
+  border-color: rgba(18, 22, 26, 0.12) !important;
+}
+[data-theme="light"] .social-btn:hover {
+  color: var(--ivory) !important;
+  background: rgba(18, 22, 26, 0.06) !important;
+  border-color: rgba(18, 22, 26, 0.25) !important;
+}
+[data-theme="light"] .topbar-clock {
+  color: rgba(18, 22, 26, 0.68) !important;
+  border-color: rgba(18, 22, 26, 0.12) !important;
+  background: rgba(18, 22, 26, 0.03) !important;
+}
+[data-theme="light"] .welcome-banner {
+  background: linear-gradient(135deg, rgba(131, 94, 27, 0.12) 0%, rgba(10, 158, 98, 0.08) 100%) !important;
+  border: 1px solid rgba(131, 94, 27, 0.2) !important;
+}
+[data-theme="light"] .weather-widget,
+[data-theme="light"] .promo-card,
+[data-theme="light"] .notif-panel {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(131, 94, 27, 0.18) !important;
+}
+[data-theme="light"] .user-card {
+  background: linear-gradient(135deg, rgba(131, 94, 27, 0.12) 0%, rgba(10, 158, 98, 0.08) 100%) !important;
+  border: 1px solid rgba(131, 94, 27, 0.25) !important;
+}
+[data-theme="light"] .user-avatar-lg {
+  color: #FAF8F5 !important;
+}
+
+/* -- 1c. LIGHT THEME GENERAL BUTTON & TEXT CONTRAST OVERRIDES -- */
+/* Lock Navbar, Hero, and any custom dark sections (with inline background images or dark image containers) to always use dark-theme variables */
+[data-theme="light"] #navbar,
+[data-theme="light"] #hero,
+[data-theme="light"] .hero,
+[data-theme="light"] .page-hero,
+[data-theme="light"] #nav-mobile,
+[data-theme="light"] .quote-section,
+[data-theme="light"] [style*="background-image"],
+[data-theme="light"] .resort-journey-media {
+  --coal: #030608;
+  --coal-soft: #07100C;
+  --graphite: #0C1812;
+  --graphite-mid: #142218;
+  --card-bg: #172A1E;
+  --card-bg-2: #1E3326;
+  --surface: #243D2C;
+  --gold: #ECBA45;
+  --gold-light: #F9D060;
+  --gold-bright: #FFE180;
+  --gold-dim: #A07C28;
+  --gold-dark: #6B5018;
+  --ivory: #F8F2E8;
+  --linen: #EDE4D5;
+  --linen-dark: #D4C8B8;
+  --slate: #6E8075;
+  --glass-bg: rgba(3, 6, 8, 0.82);
+  --glass-card: rgba(12, 24, 18, 0.85);
+  --glass-light: rgba(248, 242, 232, 0.045);
+  --glass-border: rgba(236, 186, 69, 0.15);
+}
+
+/* Force links in dark navbar to use ivory/gold */
+[data-theme="light"] #navbar .nav-link,
+[data-theme="light"] #navbar .nav-logo-main,
+[data-theme="light"] #navbar .nav-hamburger span,
+[data-theme="light"] #nav-mobile .nav-link {
+  color: #EDE4D5 !important;
+}
+[data-theme="light"] #navbar .nav-logo-sub {
+  color: #ECBA45 !important;
+}
+[data-theme="light"] #navbar .nav-link:hover,
+[data-theme="light"] #navbar .nav-link.active {
+  color: #ECBA45 !important;
+}
+
+/* General button outline overrides for light backgrounds */
+[data-theme="light"] .btn-outline {
+  border-color: rgba(18, 22, 26, 0.28) !important;
+  color: rgba(18, 22, 26, 0.90) !important;
+  background: transparent !important;
+}
+[data-theme="light"] .btn-outline:hover {
+  background: rgba(18, 22, 26, 0.04) !important;
+  border-color: rgba(18, 22, 26, 0.55) !important;
+  color: rgba(18, 22, 26, 0.98) !important;
+}
+
+/* Gold button outline override for light backgrounds */
+[data-theme="light"] .btn-outline-gold {
+  border-color: rgba(131, 94, 27, 0.45) !important;
+  color: var(--gold) !important;
+}
+[data-theme="light"] .btn-outline-gold:hover {
+  color: #FAF8F5 !important;
+  background: var(--gold) !important;
+  border-color: transparent !important;
+}
+
+/* Override hardcoded light colors for body text and labels in Light Mode */
+[data-theme="light"] .section-desc,
+[data-theme="light"] .section-desc p,
+[data-theme="light"] .exp-card-text,
+[data-theme="light"] .timeline-text,
+[data-theme="light"] .accordion-body-inner,
+[data-theme="light"] .review-text,
+[data-theme="light"] .adventure-card-desc,
+[data-theme="light"] .species-card-desc,
+[data-theme="light"] .bel-card-text,
+[data-theme="light"] .rit-card-text,
+[data-theme="light"] .imp-card-text,
+[data-theme="light"] .feature-text,
+[data-theme="light"] .feature-text p,
+[data-theme="light"] .home-signal-text,
+[data-theme="light"] .species-desc,
+[data-theme="light"] .stay-moment p,
+[data-theme="light"] .conservation-card p,
+[data-theme="light"] .water-activity p,
+[data-theme="light"] .faq-item p,
+[data-theme="light"] .timeline-card p,
+[data-theme="light"] .timeline-item p,
+[data-theme="light"] .timeline-body,
+[data-theme="light"] .timeline-desc,
+[data-theme="light"] .amenity-item p,
+[data-theme="light"] .pkg-body p,
+[data-theme="light"] .pkg-card p,
+[data-theme="light"] .pack-body p,
+[data-theme="light"] .pack-card p,
+[data-theme="light"] .package-card p,
+[data-theme="light"] .package-body p,
+[data-theme="light"] .resort-lane p,
+[data-theme="light"] .resort-mosaic p,
+[data-theme="light"] .setup-card p,
+[data-theme="light"] .addon-card p,
+[data-theme="light"] .menu-card p,
+[data-theme="light"] .sound-card p,
+[data-theme="light"] .flame-step p,
+[data-theme="light"] .booking-lodge-card p,
+[data-theme="light"] .booking-form p,
+[data-theme="light"] .db-card p,
+[data-theme="light"] .score-bar-label,
+[data-theme="light"] .season-highlight {
+  color: rgba(18, 22, 26, 0.85) !important;
+}
+
+[data-theme="light"] .section-label,
+[data-theme="light"] .nav-link-sub,
+[data-theme="light"] .hero-meta-item,
+[data-theme="light"] .review-location,
+[data-theme="light"] .footer-tagline,
+[data-theme="light"] .footer-link,
+[data-theme="light"] .footer-copy,
+[data-theme="light"] .footer-legal a,
+[data-theme="light"] .text-muted,
+[data-theme="light"] .breadcrumb,
+[data-theme="light"] .price-unit,
+[data-theme="light"] .map-placeholder,
+[data-theme="light"] .adv-card-footer,
+[data-theme="light"] .adv-card-footer span,
+[data-theme="light"] .habitat-zone,
+[data-theme="light"] .habitat-metrics,
+[data-theme="light"] .species-meta,
+[data-theme="light"] .water-activity span,
+[data-theme="light"] .weather-detail-lbl,
+[data-theme="light"] .season-panel-months,
+[data-theme="light"] .weather-label,
+[data-theme="light"] .reviewer-meta,
+[data-theme="light"] .review-date,
+[data-theme="light"] .price-from,
+[data-theme="light"] .compare-cell,
+[data-theme="light"] .compare-cell p,
+[data-theme="light"] .compare-cell span,
+[data-theme="light"] .detail-row div:not(:first-child) {
+  color: rgba(18, 22, 26, 0.72) !important;
+}
+
+[data-theme="light"] .footer-link:hover,
+[data-theme="light"] .footer-legal a:hover {
+  color: var(--gold) !important;
+}
+
+[data-theme="light"] .footer-social-link {
+  border-color: rgba(18, 22, 26, 0.18) !important;
+  color: rgba(18, 22, 26, 0.65) !important;
+}
+
+[data-theme="light"] .footer-social-link:hover {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+  background: rgba(131, 94, 27, 0.08) !important;
+}
+
+/* Custom premium badge overrides in Light Mode */
+[data-theme="light"] .eco-badge {
+  color: #1E4E30 !important;
+  background: rgba(30, 78, 48, 0.08) !important;
+  border-color: rgba(30, 78, 48, 0.22) !important;
+}
+
+[data-theme="light"] .adventure-card-tag,
+[data-theme="light"] .t-label,
+[data-theme="light"] .badge,
+[data-theme="light"] .setup-badge,
+[data-theme="light"] .pkg-tag,
+[data-theme="light"] .pack-tag,
+[data-theme="light"] .review-tag {
+  background: rgba(131, 94, 27, 0.08) !important;
+  border-color: rgba(131, 94, 27, 0.25) !important;
+  color: var(--gold) !important;
+}
+
+/* Global override for inline styled elements on light pages */
+[data-theme="light"] [style*="rgba(232,"],
+[data-theme="light"] [style*="rgba(232, "],
+[data-theme="light"] [style*="rgba(237,"],
+[data-theme="light"] [style*="rgba(237, "],
+[data-theme="light"] [style*="rgba(248,"],
+[data-theme="light"] [style*="rgba(248, "],
+[data-theme="light"] [style*="rgba(250,"],
+[data-theme="light"] [style*="rgba(250, "],
+[data-theme="light"] [style*="rgb(232,"],
+[data-theme="light"] [style*="rgb(232, "],
+[data-theme="light"] [style*="rgb(237,"],
+[data-theme="light"] [style*="rgb(237, "],
+[data-theme="light"] [style*="rgb(248,"],
+[data-theme="light"] [style*="rgb(248, "],
+[data-theme="light"] [style*="rgba(237,229,218"],
+[data-theme="light"] [style*="rgba(232,224,213"],
+[data-theme="light"] [style*="rgba(198, 169, 114"],
+[data-theme="light"] [style*="rgba(198,169,114"],
+[data-theme="light"] [style*="232,224,213"],
+[data-theme="light"] [style*="232, 224, 213"],
+[data-theme="light"] [style*="237,229,218"],
+[data-theme="light"] [style*="237, 229, 218"] {
+  color: rgba(18, 22, 26, 0.85) !important;
+}
+
+/* Ensure outline buttons inside always-dark containers (navbar, hero, inline bg images, dark image columns) remain light-colored */
+[data-theme="light"] #hero .btn-outline,
+[data-theme="light"] .hero .btn-outline,
+[data-theme="light"] .page-hero .btn-outline,
+[data-theme="light"] [style*="background-image"] .btn-outline,
+[data-theme="light"] .quote-section .btn-outline,
+[data-theme="light"] .resort-journey-media .btn-outline {
+  border-color: rgba(232, 224, 213, 0.25) !important;
+  color: #F8F2E8 !important;
+  background: transparent !important;
+}
+[data-theme="light"] #hero .btn-outline:hover,
+[data-theme="light"] .hero .btn-outline:hover,
+[data-theme="light"] .page-hero .btn-outline:hover,
+[data-theme="light"] [style*="background-image"] .btn-outline:hover,
+[data-theme="light"] .quote-section .btn-outline:hover,
+[data-theme="light"] .resort-journey-media .btn-outline:hover {
+  background: rgba(232, 224, 213, 0.05) !important;
+  border-color: #ECBA45 !important;
+  color: #ECBA45 !important;
+}
+
+/* Ensure hardcoded text classes inside always-dark containers remain light-colored */
+[data-theme="light"] #hero .section-desc,
+[data-theme="light"] .hero .section-desc,
+[data-theme="light"] .page-hero .section-desc,
+[data-theme="light"] [style*="background-image"] .section-desc,
+[data-theme="light"] .quote-section .section-desc,
+[data-theme="light"] .resort-journey-media .section-desc,
+[data-theme="light"] .resort-journey-media p,
+[data-theme="light"] .resort-journey-media h3,
+[data-theme="light"] .resort-journey-media span,
+[data-theme="light"] [style*="background-image"] .exp-card-text,
+[data-theme="light"] [style*="background-image"] .timeline-text,
+[data-theme="light"] [style*="background-image"] .accordion-body-inner,
+[data-theme="light"] [style*="background-image"] .review-text,
+[data-theme="light"] [style*="background-image"] .adventure-card-desc,
+[data-theme="light"] [style*="background-image"] .species-card-desc {
+  color: rgba(232, 224, 213, 0.75) !important;
+}
+[data-theme="light"] #hero .section-label,
+[data-theme="light"] .hero .section-label,
+[data-theme="light"] .page-hero .section-label,
+[data-theme="light"] [style*="background-image"] .section-label,
+[data-theme="light"] .quote-section .section-label,
+[data-theme="light"] .resort-journey-media .section-label {
+  color: rgba(232, 224, 213, 0.8) !important;
+}
+
+/* Force inline-styled colors inside dark containers back to light */
+[data-theme="light"] #navbar [style*="232,"],
+[data-theme="light"] #hero [style*="232,"],
+[data-theme="light"] .hero [style*="232,"],
+[data-theme="light"] .page-hero [style*="232,"],
+[data-theme="light"] .quote-section [style*="232,"],
+[data-theme="light"] [style*="background-image"] [style*="232,"] {
+  color: rgba(232, 224, 213, 0.75) !important;
+}
+
+/* -- 2. THEME TOGGLE BUTTON & LANG SELECTOR STYLING -- */
+.theme-toggle-btn, .lang-btn {
+  font-size: 1.15rem;
+  color: var(--gold);
+  border: 1px solid rgba(236, 186, 69, 0.2);
+  background: rgba(250, 248, 245, 0.03);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-smooth);
+}
+
+.theme-toggle-btn:hover, .lang-btn:hover {
+  background: rgba(236, 186, 69, 0.1);
+  border-color: var(--gold);
+  transform: scale(1.05);
+}
+
+.nav-lang-selector {
+  position: relative;
+}
+
+.lang-btn {
+  gap: 0.35rem;
+  width: auto;
+  border-radius: 20px;
+  padding: 0 0.85rem;
+}
+
+.lang-text {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--glass-card);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  border-radius: 6px;
+  padding: 0.5rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 140px;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+
+.lang-dropdown.show {
+  display: flex;
+}
+
+.lang-opt {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--linen);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-radius: 4px;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.lang-opt:hover, .lang-opt.active {
+  background: rgba(236, 186, 69, 0.12);
+  color: var(--gold);
+}
+
+/* -- 3. RTL SYSTEM -- */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .nav-inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-logo-sub {
+  letter-spacing: 0.1em;
+}
+
+[dir="rtl"] .hero-eyebrow-line {
+  margin-left: 0.75rem;
+  margin-right: 0;
+}
+
+[dir="rtl"] .hero-title em,
+[dir="rtl"] .section-title em {
+  font-style: normal;
+}
+
+[dir="rtl"] .hero-actions,
+[dir="rtl"] .cta-actions {
+  flex-direction: row-reverse;
+}
+
+/* Sidebar and Main Layout overrides for RTL in dashboards */
+[dir="rtl"] #sidebar {
+  left: auto !important;
+  right: 0 !important;
+  border-right: none !important;
+  border-left: 1px solid var(--border) !important;
+}
+
+[dir="rtl"] #main {
+  margin-left: 0 !important;
+  margin-right: var(--sidebar-w) !important;
+}
+
+[dir="rtl"] #topbar {
+  flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .topbar-right {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .sidebar-user .user-card {
+  text-align: center !important;
+}
+
+[dir="rtl"] .nav-item {
+  border-left: none !important;
+  border-right: 2px solid transparent !important;
+  flex-direction: row-reverse !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .nav-item:hover {
+  border-right-color: rgba(212, 168, 83, 0.3) !important;
+  border-left-color: transparent !important;
+}
+
+[dir="rtl"] .nav-item.active {
+  border-right-color: var(--gold) !important;
+  border-left-color: transparent !important;
+}
+
+[dir="rtl"] .nav-badge,
+[dir="rtl"] .nav-badge-sm {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+[dir="rtl"] .sidebar-logout-btn {
+  flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .admin-profile {
+  flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .admin-info {
+  text-align: right !important;
+}
+
+/* Responsive RTL layout overrides for width <= 900px */
+@media (max-width: 900px) {
+  [dir="rtl"] #sidebar {
+    transform: translateX(100%) !important;
+  }
+
+  [dir="rtl"] #sidebar.mobile-open {
+    transform: translateX(0) !important;
+  }
+
+  [dir="rtl"] #main {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+[dir="rtl"] .notif-panel {
+  right: auto !important;
+  left: 0 !important;
+  border-left: none !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 0 12px 0 !important;
+  transform: translateX(-100%) !important;
+}
+
+[dir="rtl"] .notif-panel.open {
+  transform: translateX(0) !important;
+}
+
+[dir="rtl"] .t-label {
+  letter-spacing: 0.1em;
+}
+
+[dir="rtl"] .breadcrumb-sep {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+[dir="rtl"] .fa-arrow-right,
+[dir="rtl"] .fa-arrow-left,
+[dir="rtl"] .fa-chevron-right,
+[dir="rtl"] .fa-chevron-left {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .reveal-left {
+  animation-name: revealRight;
+}
+
+[dir="rtl"] .reveal-right {
+  animation-name: revealLeft;
+}
+
+/* RTL layout helpers */
+[dir="rtl"] .timeline-item {
+  grid-template-columns: minmax(0, 1fr) 90px;
+}
+
+[dir="rtl"] .timeline-year {
+  text-align: left;
+}
+
+[dir="rtl"] .quiet-list li {
+  padding-right: 1.25rem;
+  padding-left: 0;
+}
+
+[dir="rtl"] .quiet-list li::before {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .lang-dropdown {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .lang-opt {
+  text-align: right;
+}
+
+/* -- 4. ACCESSIBILITY ENHANCEMENTS -- */
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--coal) !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 6px 6px;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 100000;
+  box-shadow: var(--shadow-md);
+  transition: top 0.3s var(--ease-smooth);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
+/* Custom focus ring */
+:focus-visible {
+  outline: 2px solid var(--gold) !important;
+  outline-offset: 4px !important;
+}
+
+/* -- 5. SKELETON LOADERS -- */
+.skeleton-container {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.skeleton-card {
+  border-radius: 6px;
+  padding: 2rem;
+  background: linear-gradient(145deg, var(--coal-soft) 0%, var(--graphite) 100%);
+  border: 1px solid rgba(236, 186, 69, 0.08);
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, var(--graphite) 25%, var(--graphite-mid) 50%, var(--graphite) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.6s infinite ease-in-out;
+  border-radius: 4px;
+}
+
+[data-theme="light"] .skeleton-shimmer {
+  background: linear-gradient(90deg, var(--coal-soft) 25%, var(--graphite) 50%, var(--coal-soft) 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 60%;
+}
+
+.skeleton-text {
+  height: 14px;
+  width: 100%;
+}
+
+.skeleton-text-short {
+  height: 14px;
+  width: 40%;
+}
+
+/* -- 6. FORM VALIDATION TOOLTIPS -- */
+.form-group {
+  position: relative;
+}
+
+.validation-error {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #FF7B54;
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  animation: slideInDown 0.3s var(--ease-spring) both;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-input.is-invalid,
+.form-select.is-invalid,
+.form-textarea.is-invalid {
+  border-color: #E8643C !important;
+  box-shadow: 0 0 0 3px rgba(232, 100, 60, 0.12) !important;
+}
+
+/* Responsive Theme Switch Layout fixes */
+@media (max-width: 900px) {
+  .theme-toggle-btn, .lang-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+

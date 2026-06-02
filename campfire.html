@@ -1,24 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>(function(){const t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Campfire Nights - TERRAVANA WILDS</title>
   <meta name="description" content="Campfire nights at Terravana Wilds with forest cuisine, local stories, music, stargazing, and quiet lodge evenings.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="upgrade.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     html, body { overflow-x: hidden; }
-    .page-hero { min-height: 72vh; display: flex; align-items: center; position: relative; overflow: hidden; }
-    .page-hero .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .page-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,12,14,0.88), rgba(10,12,14,0.45), rgba(10,12,14,0.82)); }
-    .page-hero .container { position: relative; z-index: 1; }
-    .page-kicker { font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 800; margin-bottom: 1rem; }
-    .page-title { max-width: 820px; font-family: var(--font-display); font-size: clamp(3rem, 8vw, 7rem); line-height: 0.95; color: var(--ivory); }
-    .page-title em { color: var(--gold); font-style: italic; }
-    .page-subtitle { max-width: 720px; margin-top: 1.5rem; color: rgba(237,229,218,0.78); font-size: clamp(1rem, 1.6vw, 1.25rem); }
     .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
     .feature-card { border: 1px solid rgba(212,168,83,0.18); background: rgba(250,248,245,0.035); padding: 2rem; border-radius: 6px; min-height: 250px; }
     .feature-icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; background: rgba(212,168,83,0.1); color: var(--gold); font-size: 1.35rem; margin-bottom: 1.25rem; }
@@ -63,12 +58,8 @@
     .quote-panel { max-width: 980px; margin: 0 auto; text-align: center; border: 1px solid rgba(212,168,83,0.18); border-radius: 6px; padding: clamp(2rem, 5vw, 4rem); background: rgba(212,168,83,0.045); }
     .quote-panel p { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.8rem); line-height: 1.05; color: var(--ivory); }
     .quote-panel span { display: block; margin-top: 1rem; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
-    .page-title, .page-subtitle, .section-title, .section-desc { max-width: 100%; overflow-wrap: break-word; white-space: normal !important; }
-    .campfire-hero-glow { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(circle at 28% 70%, rgba(217,96,48,0.34), transparent 28%), radial-gradient(circle at 65% 80%, rgba(236,186,69,0.20), transparent 26%); mix-blend-mode: screen; animation: firePulse 3.4s ease-in-out infinite alternate; }
-    .campfire-hero::after { background: linear-gradient(90deg, rgba(3,6,8,0.76), rgba(3,6,8,0.16) 48%, rgba(3,6,8,0.70)), linear-gradient(180deg, rgba(3,6,8,0.12), rgba(3,6,8,0.92)); }
+    .section-title, .section-desc { max-width: 100%; overflow-wrap: break-word; white-space: normal !important; }
     .campfire-hero .hero-bg { object-position: center 58%; filter: saturate(1.25) contrast(1.08) brightness(0.92); }
-    .campfire-hero-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.62fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-    .campfire-hero { align-items: flex-start; padding-top: calc(var(--nav-h, 80px) + 4.5rem); }
     .camp-hero-photo { position: relative; min-height: 480px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(236,186,69,0.28); box-shadow: 0 32px 120px rgba(0,0,0,0.68), 0 0 80px rgba(217,96,48,0.18); animation: campHeroFloat 6s ease-in-out infinite; }
     .camp-hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.18) contrast(1.08); }
     .camp-hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(3,6,8,0.86)); }
@@ -193,23 +184,12 @@
       }
     }
     @media (max-width: 600px) {
-      .page-hero { min-height: 82vh; }
-      .campfire-hero { padding-top: calc(var(--nav-h, 80px) + 3.5rem); }
-      .page-title { max-width: calc(100vw - 2rem); font-size: clamp(2rem, 9vw, 2.45rem); line-height: 1.08; }
-      .page-subtitle { max-width: calc(100vw - 2rem); font-size: 0.96rem; line-height: 1.65; }
       .section-title, .wildfire-copy h2 { font-size: clamp(1.85rem, 8.2vw, 2.35rem) !important; line-height: 1.14; }
       .fire-feature-copy h3 { font-size: clamp(1.8rem, 8.5vw, 2.3rem); line-height: 1.08; }
       .fire-mini { grid-template-columns: 1fr; justify-items: center; text-align: center; }
       .campfire-cta-actions .btn { width: 100%; justify-content: center; }
     }
     @media (max-width: 520px) {
-      .page-hero {
-        min-height: auto;
-      }
-
-      .campfire-hero {
-        padding-top: calc(var(--nav-h, 68px) + 2rem);
-      }
 
       .campfire-hero-grid>div:first-child>div[style*="display:flex"] {
         width: 100%;
@@ -282,12 +262,9 @@
       .wildfire-band {
         min-height: 340px;
       }
-
-      .page-title {
-        font-size: clamp(1.9rem, 12vw, 2.25rem);
-      }
     }
   </style>
+  <link rel="stylesheet" href="features.css" />
 </head>
 <body>
   <div id="cursor-dot" aria-hidden="true"></div>
@@ -300,37 +277,62 @@
         <span class="nav-logo-main">Terravana Wilds</span>
         <span class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span>
       </a>
+
       <div class="nav-links" role="list" style="gap: clamp(0.5rem, 1.2vw, 1.2rem);">
         <a href="index.html" class="nav-link" role="listitem">Home</a>
         <a href="adventures.html" class="nav-link" role="listitem">Adventures</a>
         <a href="trekking.html" class="nav-link" role="listitem">Trekking</a>
         <a href="wildlife.html" class="nav-link" role="listitem">Wildlife</a>
         <a href="waterfalls.html" class="nav-link" role="listitem">Waterfalls</a>
-        <a href="campfire.html" class="nav-link active" role="listitem">Campfire</a>
+        <a href="campfire.html" class="nav-link" role="listitem">Campfire</a>
         <a href="ecoresorts.html" class="nav-link" role="listitem">Resorts</a>
         <a href="seasonal.html" class="nav-link" role="listitem">Seasons</a>
         <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
         <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
         <a href="about.html" class="nav-link" role="listitem">About</a>
         </div>
-      <div style="display:flex; align-items:center; gap:1rem;">
+
+      <div style="display:flex; align-items:center; gap:0.85rem;">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        
+        <!-- Language Switcher (RTL/LTR Toggle) -->
+        <div class="nav-lang-selector">
+          <button id="lang-btn" class="lang-btn" aria-label="Select Language" aria-expanded="false" title="Language / Change Layout Direction">
+            <i class="fa-solid fa-globe"></i>
+            <span class="lang-text">EN</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-opt active" data-lang="en" data-dir="ltr">English (LTR)</button>
+            <button class="lang-opt" data-lang="ar" data-dir="rtl">العربية (RTL)</button>
+          </div>
+        </div>
+
         <a href="booking.html" class="nav-cta">Book Now</a>
         <div class="nav-profile-dropdown" id="nav-profile-dropdown">
-          <button id="nav-profile-btn" aria-label="User Profile"><i class="fa-solid fa-user-circle"></i></button>
-          <div id="nav-profile-menu" class="nav-profile-menu"></div>
+          <button id="nav-profile-btn" aria-label="User Profile">
+            <i class="fa-solid fa-user-circle"></i>
+          </button>
+          <div id="nav-profile-menu" class="nav-profile-menu">
+            <!-- Populated by JS -->
+          </div>
         </div>
       </div>
-      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
   <div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Mobile navigation">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="adventures.html" class="nav-link">Adventures</a>
+    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a>
     <a href="trekking.html" class="nav-link">Trekking</a>
     <a href="wildlife.html" class="nav-link">Wildlife</a>
+    <a href="campfire.html" class="nav-link">Campfire</a>
     <a href="waterfalls.html" class="nav-link">Waterfalls</a>
-    <a href="campfire.html" class="nav-link active">Campfire</a>
-    <a href="ecoresorts.html" class="nav-link">Resorts</a>
+    <a href="ecoresorts.html" class="nav-link">Eco Resorts</a>
     <a href="seasonal.html" class="nav-link">Seasons</a>
     <a href="gallery.html" class="nav-link">Gallery</a>
     <a href="reviews.html" class="nav-link">Reviews</a>
@@ -339,28 +341,21 @@
   </div>
 
   <main>
-    <section class="page-hero campfire-hero" id="hero" aria-label="After Dark">
-      <img src="assets/campfire-people.jpg" alt="Fire camp gathering at Terravana Wilds" class="hero-bg" loading="eager" fetchpriority="high">
-      <div class="campfire-hero-glow" aria-hidden="true"></div>
-      <div class="ember-field" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
+    <section class="hero hero-md campfire-hero" id="hero" aria-label="After Dark">
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1920&q=80" alt="Campfire Nights at Terravana Wilds" class="hero-bg" loading="eager" fetchpriority="high" />
+        <div class="hero-overlay"></div>
       </div>
-      <div class="container campfire-hero-grid">
-        <div>
-          <div class="page-kicker">After Dark</div>
-          <h1 class="page-title">Campfire<br><em>Nights</em></h1>
-          <p class="page-subtitle">The forest changes after sunset. Gather close for warm food, local stories, stars, and the low hush of the trees.</p>
-          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
-            <a href="booking.html" class="btn btn-primary">Book Now</a>
-            <a href="#details" class="btn btn-ghost">Explore</a>
-          </div>
-        </div>
-        <div class="camp-hero-photo" aria-label="Fire camp preview">
-          <img src="assets/campfire-people.jpg" alt="Guests sitting around a glowing fire camp" loading="eager">
-          <div class="camp-hero-badge">
-            <strong>Fire Camp Circle</strong>
-            <span>Hosted nightly under clear skies</span>
+      <div class="container">
+        <div class="hero-content">
+          <div class="breadcrumb" style="animation:fadeUp 0.6s ease 0.3s both;"><a href="index.html">Home</a><span
+              class="breadcrumb-sep">&rsaquo;</span><span class="breadcrumb-current">Campfire Nights</span></div>
+          <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">After Dark</span></div>
+          <h1 class="hero-title">Campfire<br><em>Nights</em></h1>
+          <p class="hero-subtitle">When the sun sets, the forest takes on a different rhythm. Gather for acoustic sessions, local lore, and skies of absolute clarity.</p>
+          <div class="hero-actions">
+            <a href="booking.html" class="btn btn-primary" id="camp-hero-book">Book Now</a>
+            <a href="#details" class="btn btn-ghost" id="camp-hero-explore">Explore</a>
           </div>
         </div>
       </div>
@@ -618,5 +613,6 @@
   </footer>
   <script src="script.js"></script>
   <script src="upgrade_script.js"></script>
+  <script src="features.js" defer></script>
 </body>
 </html>

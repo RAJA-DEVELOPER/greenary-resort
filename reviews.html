@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <script>(function(){const t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guest Reviews - TERRAVANA WILDS</title>
@@ -420,8 +421,11 @@
 
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><span class="nav-logo-main">Terravana Wilds</span><span
-          class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span></a>
+      <a href="index.html" class="nav-logo" aria-label="Terravana Wilds Home">
+        <span class="nav-logo-main">Terravana Wilds</span>
+        <span class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span>
+      </a>
+
       <div class="nav-links" role="list" style="gap: clamp(0.5rem, 1.2vw, 1.2rem);">
         <a href="index.html" class="nav-link" role="listitem">Home</a>
         <a href="adventures.html" class="nav-link" role="listitem">Adventures</a>
@@ -436,7 +440,24 @@
         <a href="about.html" class="nav-link" role="listitem">About</a>
         </div>
 
-      <div style="display:flex; align-items:center; gap:1rem;">
+      <div style="display:flex; align-items:center; gap:0.85rem;">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        
+        <!-- Language Switcher (RTL/LTR Toggle) -->
+        <div class="nav-lang-selector">
+          <button id="lang-btn" class="lang-btn" aria-label="Select Language" aria-expanded="false" title="Language / Change Layout Direction">
+            <i class="fa-solid fa-globe"></i>
+            <span class="lang-text">EN</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-opt active" data-lang="en" data-dir="ltr">English (LTR)</button>
+            <button class="lang-opt" data-lang="ar" data-dir="rtl">العربية (RTL)</button>
+          </div>
+        </div>
+
         <a href="booking.html" class="nav-cta">Book Now</a>
         <div class="nav-profile-dropdown" id="nav-profile-dropdown">
           <button id="nav-profile-btn" aria-label="User Profile">
@@ -453,13 +474,18 @@
       </button>
     </div>
   </nav>
-  <div id="nav-mobile" class="nav-mobile">
-    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a><a
-      href="trekking.html" class="nav-link">Trekking</a><a href="wildlife.html" class="nav-link">Wildlife</a><a
-      href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html" class="nav-link">Waterfalls</a><a
-      href="ecoresorts.html" class="nav-link">Eco Resorts</a><a href="seasonal.html" class="nav-link">Seasons</a><a
-      href="gallery.html" class="nav-link">Gallery</a><a href="reviews.html" class="nav-link active">Reviews</a><a
-      href="about.html" class="nav-link">About</a><a href="booking.html" class="nav-cta">Book Your Journey</a>
+  <div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Mobile navigation">
+    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a>
+    <a href="trekking.html" class="nav-link">Trekking</a>
+    <a href="wildlife.html" class="nav-link">Wildlife</a>
+    <a href="campfire.html" class="nav-link">Campfire</a>
+    <a href="waterfalls.html" class="nav-link">Waterfalls</a>
+    <a href="ecoresorts.html" class="nav-link">Eco Resorts</a>
+    <a href="seasonal.html" class="nav-link">Seasons</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="reviews.html" class="nav-link">Reviews</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="booking.html" class="nav-cta">Book Your Journey</a>
   </div>
 
   <main>
@@ -472,6 +498,8 @@
       </div>
       <div class="container">
         <div class="hero-content">
+          <div class="breadcrumb" style="animation:fadeUp 0.6s ease 0.3s both;"><a href="index.html">Home</a><span
+              class="breadcrumb-sep">&rsaquo;</span><span class="breadcrumb-current">Reviews</span></div>
           <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">4.9 Stars &middot; 800+
               Verified Reviews</span></div>
           <h1 class="hero-title">Voices from<br />the <em>Wild</em></h1>

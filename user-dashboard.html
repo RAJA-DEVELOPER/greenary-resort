@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <script>(function(){const t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Dashboard - TERRAVANA WILDS</title>
@@ -1520,6 +1521,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="upgrade.css" />
 </head>
 
 <body>
@@ -1573,7 +1575,24 @@
     <header id="topbar">
       <button id="hamburger" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
       <div class="topbar-title">My Dashboard</div>
-      <div class="topbar-right">
+      <div class="topbar-right" style="gap:0.75rem;">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-btn icon-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode" style="width:34px; height:34px; border-radius:50%; font-size:0.9rem; border:1px solid rgba(236,186,69,0.25);">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        
+        <!-- Language Switcher (RTL/LTR Toggle) -->
+        <div class="nav-lang-selector">
+          <button id="lang-btn" class="lang-btn icon-btn" aria-label="Select Language" aria-expanded="false" title="Language / Change Layout Direction" style="width:auto; height:34px; border-radius:17px; font-size:0.8rem; padding: 0 0.65rem; gap: 0.25rem; border:1px solid rgba(236,186,69,0.25);">
+            <i class="fa-solid fa-globe"></i>
+            <span class="lang-text" style="font-size:0.65rem;">EN</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown" style="margin-top:0.25rem;">
+            <button class="lang-opt active" data-lang="en" data-dir="ltr">English (LTR)</button>
+            <button class="lang-opt" data-lang="ar" data-dir="rtl">العربية (RTL)</button>
+          </div>
+        </div>
+
         <div class="live-dot">Online</div>
         <div class="topbar-clock" id="live-clock">--:--:--</div>
         <div class="icon-btn" onclick="toggleNotif()" id="notif-btn" title="Notifications">

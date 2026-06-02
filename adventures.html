@@ -1,24 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>(function(){const t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adventures - TERRAVANA WILDS</title>
   <meta name="description" content="Explore Terravana Wilds adventures: trekking, wildlife safaris, waterfall walks, campfire nights, and seasonal forest journeys.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="upgrade.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     html, body { overflow-x: hidden; }
-    .page-hero { min-height: 72vh; display: flex; align-items: center; position: relative; overflow: hidden; }
-    .page-hero .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .page-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,12,14,0.88), rgba(10,12,14,0.45), rgba(10,12,14,0.82)); }
-    .page-hero .container { position: relative; z-index: 1; }
-    .page-kicker { font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 800; margin-bottom: 1rem; }
-    .page-title { max-width: 820px; font-family: var(--font-display); font-size: clamp(3rem, 8vw, 7rem); line-height: 0.95; color: var(--ivory); }
-    .page-title em { color: var(--gold); font-style: italic; }
-    .page-subtitle { max-width: 720px; margin-top: 1.5rem; color: rgba(237,229,218,0.78); font-size: clamp(1rem, 1.6vw, 1.25rem); }
     .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
     .feature-card { border: 1px solid rgba(212,168,83,0.18); background: rgba(250,248,245,0.035); padding: 2rem; border-radius: 6px; min-height: 250px; }
     .feature-icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; background: rgba(212,168,83,0.1); color: var(--gold); font-size: 1.35rem; margin-bottom: 1.25rem; }
@@ -63,8 +58,8 @@
     .quote-panel { max-width: 980px; margin: 0 auto; text-align: center; border: 1px solid rgba(212,168,83,0.18); border-radius: 6px; padding: clamp(2rem, 5vw, 4rem); background: rgba(212,168,83,0.045); }
     .quote-panel p { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.8rem); line-height: 1.05; color: var(--ivory); }
     .quote-panel span { display: block; margin-top: 1rem; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
-    .page-hero .container, #details .container { min-width: 0; }
-    .page-title, .page-subtitle, .section-title, .section-desc { max-width: 100%; overflow-wrap: break-word; }
+    #details .container { min-width: 0; }
+    .section-title, .section-desc { max-width: 100%; overflow-wrap: break-word; }
     .adventure-planner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 1.25rem; align-items: stretch; }
     .planner-feature { position: relative; min-height: 620px; border-radius: 6px; overflow: hidden; border: 1px solid rgba(212,168,83,0.16); }
     .planner-feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.08) contrast(1.04); }
@@ -125,9 +120,6 @@
       .planner-card { grid-template-columns: 1fr; justify-items: center; text-align: center; }
     }
     @media (max-width: 600px) {
-      .page-hero { min-height: 82vh; }
-      .page-title { font-size: clamp(2.45rem, 11vw, 2.85rem); line-height: 1.02; }
-      .page-subtitle { font-size: 0.98rem; line-height: 1.65; }
       .wide-intro .section-title,
       .section-header .section-title,
       .terrain-copy .section-title,
@@ -138,6 +130,7 @@
       .cta-actions .btn { width: 100%; justify-content: center; }
     }
   </style>
+  <link rel="stylesheet" href="features.css" />
 </head>
 <body>
   <div id="cursor-dot" aria-hidden="true"></div>
@@ -150,9 +143,10 @@
         <span class="nav-logo-main">Terravana Wilds</span>
         <span class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span>
       </a>
+
       <div class="nav-links" role="list" style="gap: clamp(0.5rem, 1.2vw, 1.2rem);">
         <a href="index.html" class="nav-link" role="listitem">Home</a>
-        <a href="adventures.html" class="nav-link active" role="listitem">Adventures</a>
+        <a href="adventures.html" class="nav-link" role="listitem">Adventures</a>
         <a href="trekking.html" class="nav-link" role="listitem">Trekking</a>
         <a href="wildlife.html" class="nav-link" role="listitem">Wildlife</a>
         <a href="waterfalls.html" class="nav-link" role="listitem">Waterfalls</a>
@@ -163,24 +157,48 @@
         <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
         <a href="about.html" class="nav-link" role="listitem">About</a>
         </div>
-      <div style="display:flex; align-items:center; gap:1rem;">
+
+      <div style="display:flex; align-items:center; gap:0.85rem;">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        
+        <!-- Language Switcher (RTL/LTR Toggle) -->
+        <div class="nav-lang-selector">
+          <button id="lang-btn" class="lang-btn" aria-label="Select Language" aria-expanded="false" title="Language / Change Layout Direction">
+            <i class="fa-solid fa-globe"></i>
+            <span class="lang-text">EN</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-opt active" data-lang="en" data-dir="ltr">English (LTR)</button>
+            <button class="lang-opt" data-lang="ar" data-dir="rtl">العربية (RTL)</button>
+          </div>
+        </div>
+
         <a href="booking.html" class="nav-cta">Book Now</a>
         <div class="nav-profile-dropdown" id="nav-profile-dropdown">
-          <button id="nav-profile-btn" aria-label="User Profile"><i class="fa-solid fa-user-circle"></i></button>
-          <div id="nav-profile-menu" class="nav-profile-menu"></div>
+          <button id="nav-profile-btn" aria-label="User Profile">
+            <i class="fa-solid fa-user-circle"></i>
+          </button>
+          <div id="nav-profile-menu" class="nav-profile-menu">
+            <!-- Populated by JS -->
+          </div>
         </div>
       </div>
-      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
   <div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Mobile navigation">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="adventures.html" class="nav-link active">Adventures</a>
+    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a>
     <a href="trekking.html" class="nav-link">Trekking</a>
     <a href="wildlife.html" class="nav-link">Wildlife</a>
-    <a href="waterfalls.html" class="nav-link">Waterfalls</a>
     <a href="campfire.html" class="nav-link">Campfire</a>
-    <a href="ecoresorts.html" class="nav-link">Resorts</a>
+    <a href="waterfalls.html" class="nav-link">Waterfalls</a>
+    <a href="ecoresorts.html" class="nav-link">Eco Resorts</a>
     <a href="seasonal.html" class="nav-link">Seasons</a>
     <a href="gallery.html" class="nav-link">Gallery</a>
     <a href="reviews.html" class="nav-link">Reviews</a>
@@ -189,15 +207,22 @@
   </div>
 
   <main>
-    <section class="page-hero" id="hero" aria-label="All Adventures">
-      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80" alt="All Adventures at Terravana Wilds" class="hero-bg" loading="eager" fetchpriority="high">
+    <section class="hero hero-md" id="hero" aria-label="All Adventures">
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80" alt="All Adventures at Terravana Wilds" class="hero-bg" loading="eager" fetchpriority="high" />
+        <div class="hero-overlay"></div>
+      </div>
       <div class="container">
-        <div class="page-kicker">All Adventures</div>
-        <h1 class="page-title">Choose Your <em>Trail</em></h1>
-        <p class="page-subtitle">From summit mornings to night safaris, every journey is guided, small-scale, and tuned to the season.</p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
-          <a href="booking.html" class="btn btn-primary">Book Now</a>
-          <a href="#details" class="btn btn-ghost">Explore</a>
+        <div class="hero-content">
+          <div class="breadcrumb" style="animation:fadeUp 0.6s ease 0.3s both;"><a href="index.html">Home</a><span
+              class="breadcrumb-sep">&rsaquo;</span><span class="breadcrumb-current">Adventures</span></div>
+          <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="t-label">All Adventures</span></div>
+          <h1 class="hero-title">Choose Your <em>Trail</em></h1>
+          <p class="hero-subtitle">From summit mornings to night safaris, every journey is guided, small-scale, and tuned to the season.</p>
+          <div class="hero-actions">
+            <a href="booking.html" class="btn btn-primary" id="adv-hero-book">Book Now</a>
+            <a href="#details" class="btn btn-ghost" id="adv-hero-explore">Explore</a>
+          </div>
         </div>
       </div>
     </section>
@@ -557,5 +582,6 @@
   </footer>
   <script src="script.js"></script>
   <script src="upgrade_script.js"></script>
+  <script src="features.js" defer></script>
 </body>
 </html>

@@ -2,11 +2,14 @@
 <html lang="en">
 
 <head>
+  <script>(function(){const t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book Your Journey - TERRAVANA WILDS</title>
   <meta name="description"
     content="Reserve your Terravana Wilds eco-adventure experience. Trekking trails, wildlife safaris, eco-lodges, campfire nights, and waterfall walks - all bookable online." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css" />
   <style>
     .booking-layout {
@@ -1548,6 +1551,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="features.css" />
 </head>
 
 <body class="booking-page">
@@ -1559,8 +1563,11 @@
 
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><span class="nav-logo-main">Terravana Wilds</span><span
-          class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span></a>
+      <a href="index.html" class="nav-logo" aria-label="Terravana Wilds Home">
+        <span class="nav-logo-main">Terravana Wilds</span>
+        <span class="nav-logo-sub">Eco &middot; Adventure &middot; Resort</span>
+      </a>
+
       <div class="nav-links" role="list" style="gap: clamp(0.5rem, 1.2vw, 1.2rem);">
         <a href="index.html" class="nav-link" role="listitem">Home</a>
         <a href="adventures.html" class="nav-link" role="listitem">Adventures</a>
@@ -1573,9 +1580,26 @@
         <a href="gallery.html" class="nav-link" role="listitem">Gallery</a>
         <a href="reviews.html" class="nav-link" role="listitem">Reviews</a>
         <a href="about.html" class="nav-link" role="listitem">About</a>
-      </div>
+        </div>
 
-      <div style="display:flex; align-items:center; gap:1rem;">
+      <div style="display:flex; align-items:center; gap:0.85rem;">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        
+        <!-- Language Switcher (RTL/LTR Toggle) -->
+        <div class="nav-lang-selector">
+          <button id="lang-btn" class="lang-btn" aria-label="Select Language" aria-expanded="false" title="Language / Change Layout Direction">
+            <i class="fa-solid fa-globe"></i>
+            <span class="lang-text">EN</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-opt active" data-lang="en" data-dir="ltr">English (LTR)</button>
+            <button class="lang-opt" data-lang="ar" data-dir="rtl">العربية (RTL)</button>
+          </div>
+        </div>
+
         <a href="booking.html" class="nav-cta">Book Now</a>
         <div class="nav-profile-dropdown" id="nav-profile-dropdown">
           <button id="nav-profile-btn" aria-label="User Profile">
@@ -1592,13 +1616,18 @@
       </button>
     </div>
   </nav>
-  <div id="nav-mobile" class="nav-mobile">
-    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a><a
-      href="trekking.html" class="nav-link">Trekking</a><a href="wildlife.html" class="nav-link">Wildlife</a><a
-      href="campfire.html" class="nav-link">Campfire</a><a href="waterfalls.html" class="nav-link">Waterfalls</a><a
-      href="ecoresorts.html" class="nav-link">Eco Resorts</a><a href="seasonal.html" class="nav-link">Seasons</a><a
-      href="gallery.html" class="nav-link">Gallery</a><a href="reviews.html" class="nav-link">Reviews</a><a
-      href="about.html" class="nav-link">About</a><a href="booking.html" class="nav-cta">Book Your Journey</a>
+  <div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Mobile navigation">
+    <a href="index.html" class="nav-link">Home</a><a href="adventures.html" class="nav-link">Adventures</a>
+    <a href="trekking.html" class="nav-link">Trekking</a>
+    <a href="wildlife.html" class="nav-link">Wildlife</a>
+    <a href="campfire.html" class="nav-link">Campfire</a>
+    <a href="waterfalls.html" class="nav-link">Waterfalls</a>
+    <a href="ecoresorts.html" class="nav-link">Eco Resorts</a>
+    <a href="seasonal.html" class="nav-link">Seasons</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="reviews.html" class="nav-link">Reviews</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="booking.html" class="nav-cta">Book Your Journey</a>
   </div>
 
   <main>
@@ -2984,6 +3013,7 @@
       updateSummary();
     })();
   </script>
+  <script src="features.js" defer></script>
 </body>
 
 </html>

@@ -898,6 +898,309 @@ const initGlobalMotion = () => {
 };
 
 /* ============================================================
+   22. THEME & LANGUAGE (RTL) CONTROLLER
+   ============================================================ */
+const initThemeAndLanguage = () => {
+  const htmlEl = document.documentElement;
+  
+  // --- Theme Toggle Logic ---
+  const getTheme = () => localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  const setTheme = (theme) => {
+    htmlEl.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // Update all theme toggle icons
+    const icons = document.querySelectorAll('.theme-toggle-btn i');
+    icons.forEach(icon => {
+      if (theme === 'light') {
+        icon.className = 'fa-solid fa-sun';
+      } else {
+        icon.className = 'fa-solid fa-moon';
+      }
+    });
+  };
+
+  // Initial set
+  setTheme(getTheme());
+
+  // Attach click listener to theme toggles
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.theme-toggle-btn');
+    if (btn) {
+      const nextTheme = htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      setTheme(nextTheme);
+    }
+  });
+
+  // Listen to system preference changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+
+  // --- Language & RTL Dropdown Logic ---
+  const getLang = () => localStorage.getItem('lang') || 'en';
+  const getDir = () => localStorage.getItem('dir') || 'ltr';
+
+  const setLang = (lang, dir) => {
+    htmlEl.setAttribute('lang', lang);
+    htmlEl.setAttribute('dir', dir);
+    localStorage.setItem('lang', lang);
+    localStorage.setItem('dir', dir);
+
+    // Update active dropdown opt
+    document.querySelectorAll('.lang-opt').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+
+    // Update lang button text
+    document.querySelectorAll('.lang-btn .lang-text').forEach(el => {
+      el.textContent = lang.toUpperCase();
+    });
+  };
+
+  // Initial set
+  setLang(getLang(), getDir());
+
+  // Toggle dropdown on click
+  document.addEventListener('click', (e) => {
+    const langBtn = e.target.closest('.lang-btn');
+    if (langBtn) {
+      const dropdown = langBtn.nextElementSibling;
+      if (dropdown) {
+        dropdown.classList.toggle('show');
+        langBtn.setAttribute('aria-expanded', dropdown.classList.contains('show') ? 'true' : 'false');
+      }
+      return;
+    }
+
+    // Close lang dropdown if clicking outside
+    if (!e.target.closest('.nav-lang-selector')) {
+      document.querySelectorAll('.lang-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('show');
+        const trigger = dropdown.previousElementSibling;
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // Handle lang options
+  document.addEventListener('click', (e) => {
+    const opt = e.target.closest('.lang-opt');
+    if (opt) {
+      const lang = opt.dataset.lang;
+      const dir = opt.dataset.dir;
+      setLang(lang, dir);
+      
+      // Close dropdown
+      const dropdown = opt.closest('.lang-dropdown');
+      if (dropdown) dropdown.classList.remove('show');
+    }
+  });
+};
+
+/* ============================================================
+   23. ACCESSIBILITY ENHANCEMENTS (WCAG 2.1 AA)
+   ============================================================ */
+const initAccessibility = () => {
+  // Prepend Skip to Main Content Link
+  if (!document.querySelector('.skip-link')) {
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main-content';
+    skipLink.className = 'skip-link';
+    skipLink.textContent = 'Skip to main content';
+    document.body.insertBefore(skipLink, document.body.firstChild);
+  }
+
+  // Ensure first section or main tag has id="main-content"
+  const main = document.querySelector('main') || document.querySelector('body > section') || document.body.firstElementChild;
+  if (main && !main.id) {
+    main.id = 'main-content';
+  }
+  
+  // Ensure main has tabindex="-1" so it's focusable by skip link
+  if (main) {
+    main.setAttribute('tabindex', '-1');
+    main.style.outline = 'none';
+  }
+};
+
+/* ============================================================
+   24. LOADING STATES (SKELETON LOADERS)
+   ============================================================ */
+const initLoadingStates = () => {
+  const path = window.location.pathname;
+  
+  // 1. Reviews Page Skeleton
+  if (path.includes('reviews.html')) {
+    const reviewsGrid = document.querySelector('.reviews-grid') || document.querySelector('.masonry-grid') || document.querySelector('.mosaic-gallery') || document.querySelector('.package-grid');
+    if (reviewsGrid) {
+      const originalContent = reviewsGrid.innerHTML;
+      
+      reviewsGrid.innerHTML = `
+        <div class="skeleton-card skeleton-shimmer">
+          <div style="display:flex; gap:1rem; align-items:center;">
+            <div class="skeleton-circle skeleton-shimmer"></div>
+            <div style="flex:1; display:flex; flex-direction:column; gap:0.5rem;">
+              <div class="skeleton-title skeleton-shimmer"></div>
+              <div class="skeleton-text-short skeleton-shimmer"></div>
+            </div>
+          </div>
+          <div class="skeleton-text skeleton-shimmer" style="margin-top:1rem;"></div>
+          <div class="skeleton-text skeleton-shimmer"></div>
+          <div class="skeleton-text skeleton-shimmer" style="width:80%;"></div>
+        </div>
+        <div class="skeleton-card skeleton-shimmer">
+          <div style="display:flex; gap:1rem; align-items:center;">
+            <div class="skeleton-circle skeleton-shimmer"></div>
+            <div style="flex:1; display:flex; flex-direction:column; gap:0.5rem;">
+              <div class="skeleton-title skeleton-shimmer"></div>
+              <div class="skeleton-text-short skeleton-shimmer"></div>
+            </div>
+          </div>
+          <div class="skeleton-text skeleton-shimmer" style="margin-top:1rem;"></div>
+          <div class="skeleton-text skeleton-shimmer"></div>
+          <div class="skeleton-text skeleton-shimmer" style="width:60%;"></div>
+        </div>
+        <div class="skeleton-card skeleton-shimmer">
+          <div style="display:flex; gap:1rem; align-items:center;">
+            <div class="skeleton-circle skeleton-shimmer"></div>
+            <div style="flex:1; display:flex; flex-direction:column; gap:0.5rem;">
+              <div class="skeleton-title skeleton-shimmer"></div>
+              <div class="skeleton-text-short skeleton-shimmer"></div>
+            </div>
+          </div>
+          <div class="skeleton-text skeleton-shimmer" style="margin-top:1rem;"></div>
+          <div class="skeleton-text skeleton-shimmer"></div>
+          <div class="skeleton-text skeleton-shimmer" style="width:70%;"></div>
+        </div>
+      `;
+      
+      setTimeout(() => {
+        reviewsGrid.innerHTML = originalContent;
+        initReveal();
+        initCardTilt();
+      }, 1800);
+    }
+  }
+
+  // 2. Dashboards (Admin/User) Skeleton
+  if (path.includes('dashboard.html')) {
+    const statsGrid = document.querySelector('.db-grid') || document.querySelector('.grid-4') || document.querySelector('.grid-3') || document.querySelector('.kpis-grid');
+    if (statsGrid) {
+      const originalContent = statsGrid.innerHTML;
+      
+      statsGrid.innerHTML = Array(statsGrid.children.length || 3).fill(`
+        <div class="skeleton-card skeleton-shimmer" style="min-height:160px; padding:1.5rem; justify-content:center;">
+          <div class="skeleton-text-short skeleton-shimmer" style="width:30%;"></div>
+          <div class="skeleton-title skeleton-shimmer" style="width:70%; height:36px; margin-top:0.75rem;"></div>
+          <div class="skeleton-text skeleton-shimmer" style="width:50%; margin-top:0.5rem;"></div>
+        </div>
+      `).join('');
+      
+      setTimeout(() => {
+        statsGrid.innerHTML = originalContent;
+        initReveal();
+      }, 1800);
+    }
+  }
+};
+
+/* ============================================================
+   25. FORM VALIDATION SYSTEM
+   ============================================================ */
+const initValidation = () => {
+  const showFieldError = (input, message) => {
+    clearFieldError(input);
+    input.classList.add('is-invalid');
+    
+    const errorEl = document.createElement('div');
+    errorEl.className = 'validation-error';
+    errorEl.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> ${message}`;
+    
+    const group = input.closest('.form-group') || input.closest('.form-field') || input.parentElement;
+    group.appendChild(errorEl);
+  };
+
+  const clearFieldError = (input) => {
+    input.classList.remove('is-invalid');
+    const group = input.closest('.form-group') || input.closest('.form-field') || input.parentElement;
+    const error = group.querySelector('.validation-error');
+    if (error) error.remove();
+  };
+
+  const validateInput = (input) => {
+    clearFieldError(input);
+    
+    if (input.hasAttribute('required') && !input.value.trim()) {
+      showFieldError(input, 'This field is required.');
+      return false;
+    }
+
+    if (input.type === 'email' && input.value.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(input.value.trim())) {
+        showFieldError(input, 'Please enter a valid email address.');
+        return false;
+      }
+    }
+
+    if (input.type === 'tel' && input.value.trim()) {
+      const phoneRegex = /^[+]?[0-9\s\-()]{7,18}$/;
+      if (!phoneRegex.test(input.value.trim())) {
+        showFieldError(input, 'Please enter a valid phone number.');
+        return false;
+      }
+    }
+
+    if (input.id === 'booking-departure') {
+      const arrival = document.getElementById('booking-arrival');
+      if (arrival && arrival.value && input.value) {
+        if (new Date(input.value) < new Date(arrival.value)) {
+          showFieldError(input, 'Departure date cannot be before arrival date.');
+          return false;
+        }
+      }
+    }
+
+    return true;
+  };
+
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.setAttribute('novalidate', 'true');
+
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => validateInput(input));
+      input.addEventListener('change', () => validateInput(input));
+      input.addEventListener('blur', () => validateInput(input));
+    });
+
+    form.addEventListener('submit', (e) => {
+      let isFormValid = true;
+      inputs.forEach(input => {
+        if (!validateInput(input)) {
+          isFormValid = false;
+        }
+      });
+
+      if (!isFormValid) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const firstInvalid = form.querySelector('.is-invalid');
+        if (firstInvalid) {
+          firstInvalid.focus();
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+  });
+};
+
+/* ============================================================
    INIT ALL
    ============================================================ */
 ready(() => {
@@ -926,6 +1229,12 @@ ready(() => {
   initPageTransition();
   initParticles();
   initImageFallbacks();
+  
+  // Custom theme, language (RTL), accessibility, loaders & validation initializations
+  initThemeAndLanguage();
+  initAccessibility();
+  initLoadingStates();
+  initValidation();
 });
 
 /* -- Expose globally for inline handlers -- */
@@ -934,5 +1243,6 @@ window.TerraVana = {
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
       el.classList.add('visible');
     });
-  }
+  },
+  updateProfileDropdown: window.TerraVana ? window.TerraVana.updateProfileDropdown : null
 };

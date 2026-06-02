@@ -1,12 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <script>(function(){const t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign Up - TERRAVANA WILDS</title>
   <meta name="description"
     content="Create your Terravana Wilds account and unlock access to exclusive trail bookings, wildlife expeditions, and eco-resort stays." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
@@ -720,6 +723,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="upgrade.css" />
 </head>
 
 <body>
@@ -1127,6 +1131,7 @@
     document.getElementById('google-signup').addEventListener('click', handleSocialSignup);
     document.getElementById('facebook-signup').addEventListener('click', handleSocialSignup);
   </script>
+  <script src="features.js" defer></script>
 </body>
 
 </html>
