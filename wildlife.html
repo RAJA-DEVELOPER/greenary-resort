@@ -28,7 +28,7 @@
     }
 
     .species-card:hover {
-      border-color: rgba(198, 169, 114, 0.35);
+      border-color: var(--gold);
       transform: translateY(-6px);
       box-shadow: var(--shadow-lg);
     }
@@ -69,7 +69,7 @@
 
     .status-endangered {
       background: rgba(220, 80, 60, 0.12);
-      color: #DC503C;
+      color: var(--ember);
       border: 1px solid rgba(220, 80, 60, 0.25);
     }
 
@@ -81,7 +81,7 @@
 
     .status-lc {
       background: rgba(94, 158, 107, 0.12);
-      color: #5E9E6B;
+      color: var(--forest);
       border: 1px solid rgba(94, 158, 107, 0.25);
     }
 
@@ -97,13 +97,13 @@
       font-family: var(--font-serif);
       font-size: 0.85rem;
       font-style: italic;
-      color: rgba(232, 224, 213, 0.4);
+      color: var(--ivory);
       margin-bottom: 0.75rem;
     }
 
     .species-desc {
       font-size: 0.82rem;
-      color: rgba(232, 224, 213, 0.6);
+      color: var(--ivory);
       line-height: 1.6;
     }
 
@@ -142,7 +142,7 @@
     }
 
     .safari-card:hover {
-      border-color: rgba(198, 169, 114, 0.3);
+      border-color: var(--gold);
       box-shadow: var(--shadow-lg);
     }
 
@@ -185,7 +185,7 @@
       align-items: center;
       gap: 0.5rem;
       font-size: 0.8rem;
-      color: rgba(232, 224, 213, 0.55);
+      color: var(--ivory);
     }
 
     /* Habitat zone */
@@ -242,7 +242,7 @@
     .habitat-insight-text {
       font-size: 0.84rem;
       line-height: 1.7;
-      color: rgba(232, 224, 213, 0.62);
+      color: var(--ivory);
       margin-bottom: 1.25rem;
     }
 
@@ -255,7 +255,7 @@
     .habitat-metric {
       padding: 0.85rem;
       border: 1px solid rgba(198, 169, 114, 0.1);
-      background: rgba(250, 248, 245, 0.035);
+      background: var(--glass-light);
     }
 
     .habitat-metric strong {
@@ -274,7 +274,7 @@
       letter-spacing: 0.1em;
       line-height: 1.35;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.5);
+      color: var(--ivory);
     }
 
     /* Conservation */
@@ -287,7 +287,7 @@
     }
 
     .conservation-card:hover {
-      border-color: rgba(94, 158, 107, 0.4);
+      border-color: var(--ivory);
       transform: translateY(-4px);
     }
 
@@ -326,7 +326,7 @@
   <div id="cursor-dot" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
   <button id="back-to-top" aria-label="Back to top"
-    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
+    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color: var(--ivory);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
 
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
@@ -822,7 +822,7 @@
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
               <span class="chip"><i class="fa-solid fa-paw"></i>
                 Leopard</span>
-              <span style="font-size:0.72rem;color:rgba(232,224,213,0.4);">2 days ago</span>
+              <span style="font-size:0.72rem;color: var(--ivory);">2 days ago</span>
             </div>
             <div class="exp-card-title">Eastern Meadow Clearing</div>
             <p class="exp-card-text">Female with two cubs spotted at the salt lick at 6:15am. Present for approximately
@@ -831,7 +831,7 @@
           <div class="exp-card reveal reveal-delay-1" style="border-left:3px solid #5E9E6B;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
               <span class="chip"><i class="fa-solid fa-elephant"></i> Elephant</span>
-              <span style="font-size:0.72rem;color:rgba(232,224,213,0.4);">3 days ago</span>
+              <span style="font-size:0.72rem;color: var(--ivory);">3 days ago</span>
             </div>
             <div class="exp-card-title">Northern River Corridor</div>
             <p class="exp-card-text">Full family group of 18 crossed the river at dawn. One juvenile estimated 6-8
@@ -840,14 +840,14 @@
           <div class="exp-card reveal reveal-delay-2" style="border-left:3px solid #5E6B75;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
               <span class="chip"><i class="fa-solid fa-dove"></i> Great Hornbill</span>
-              <span style="font-size:0.72rem;color:rgba(232,224,213,0.4);">Yesterday</span>
+              <span style="font-size:0.72rem;color: var(--ivory);">Yesterday</span>
             </div>
             <div class="exp-card-title">Fig Tree Cluster, Zone 3</div>
             <p class="exp-card-text">Pair at the ficus tree - possible nesting behaviour observed. Extraordinary close
               encounter at 30m distance.</p>
           </div>
         </div>
-        <p style="text-align:center;font-size:0.8rem;color:rgba(232,224,213,0.35);margin-top:2rem;">Sightings are
+        <p style="text-align:center;font-size:0.8rem;color: var(--ivory);margin-top:2rem;">Sightings are
           recorded daily by our naturalist team. Wildlife activity is subject to natural variation.</p>
       </div>
     </section>
@@ -862,7 +862,7 @@
           the patience to truly witness it."
         </blockquote>
         <div style="text-align:center;margin-top:2rem;">
-          <p style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.5);">- Arjun Rao, Lead Wildlife
+          <p style="font-family:var(--font-ui);font-size:0.8rem;color: var(--ivory);">- Arjun Rao, Lead Wildlife
             Naturalist &middot; Terravana Wilds</p>
         </div>
       </div>
@@ -920,7 +920,7 @@
               <div>
                 <h4 style="font-family:var(--font-display);font-size:1.1rem;color:var(--ivory);margin-bottom:0.25rem;">
                   Zero Interference</h4>
-                <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);margin:0;">We never bait, feed, or call out to
+                <p style="font-size:0.85rem;color: var(--ivory);margin:0;">We never bait, feed, or call out to
                   wildlife. We observe them in their natural state.</p>
               </div>
             </li>
@@ -929,7 +929,7 @@
               <div>
                 <h4 style="font-family:var(--font-display);font-size:1.1rem;color:var(--ivory);margin-bottom:0.25rem;">
                   Maintain Distance</h4>
-                <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);margin:0;">We strictly adhere to minimum
+                <p style="font-size:0.85rem;color: var(--ivory);margin:0;">We strictly adhere to minimum
                   approach distances for all species to prevent stress and habituation.</p>
               </div>
             </li>
@@ -938,7 +938,7 @@
               <div>
                 <h4 style="font-family:var(--font-display);font-size:1.1rem;color:var(--ivory);margin-bottom:0.25rem;">
                   Silence is Golden</h4>
-                <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);margin:0;">Whispers only on the trail. Mobile
+                <p style="font-size:0.85rem;color: var(--ivory);margin:0;">Whispers only on the trail. Mobile
                   phones must be switched to silent mode before entering the forest.</p>
               </div>
             </li>

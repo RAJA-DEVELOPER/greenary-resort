@@ -26,8 +26,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(212, 168, 83, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 168, 83, 0.03) 1px, transparent 1px);
+        linear-gradient(var(--gold-glass) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gold-glass) 1px, transparent 1px);
       background-size: 70px 70px;
       pointer-events: none;
       z-index: 0;
@@ -40,7 +40,7 @@
       inset: 0;
       background:
         radial-gradient(ellipse 60% 50% at 15% 80%, rgba(45, 106, 79, 0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 85% 20%, rgba(212, 168, 83, 0.06) 0%, transparent 60%);
+        radial-gradient(ellipse 50% 40% at 85% 20%, var(--gold-glass) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
     }
@@ -97,8 +97,8 @@
       display: flex;
       align-items: center;
       gap: 0.45rem;
-      background: rgba(212, 168, 83, 0.08);
-      border: 1px solid rgba(212, 168, 83, 0.18);
+      background: var(--gold-glass);
+      border: 1px solid var(--glass-border);
       border-radius: 40px;
       padding: 0.45rem 1rem;
       font-family: var(--font-ui);
@@ -278,7 +278,7 @@
       font-family: var(--font-serif);
       font-size: clamp(1rem, 1.5vw, 1.2rem);
       font-weight: 300;
-      color: rgba(232, 224, 213, 0.6);
+      color: var(--ivory);
       max-width: 500px;
       margin: 0 auto 2.5rem;
       line-height: 1.75;
@@ -303,8 +303,8 @@
     }
 
     .cd-box {
-      background: rgba(212, 168, 83, 0.06);
-      border: 1px solid rgba(212, 168, 83, 0.18);
+      background: var(--gold-glass);
+      border: 1px solid var(--glass-border);
       border-radius: 10px;
       width: 72px;
       height: 72px;
@@ -324,7 +324,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(212, 168, 83, 0.04) 0%, transparent 100%);
+      background: linear-gradient(180deg, var(--gold-glass) 0%, transparent 100%);
     }
 
     .cd-label {
@@ -333,14 +333,14 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.35);
+      color: var(--ivory);
     }
 
     .cd-sep {
       font-family: var(--font-display);
       font-size: 2rem;
       font-weight: 700;
-      color: rgba(212, 168, 83, 0.3);
+      color: var(--gold);
       align-self: center;
       margin-bottom: 1.4rem;
     }
@@ -361,7 +361,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.35);
+      color: var(--ivory);
     }
 
     .maint-progress-track {
@@ -406,12 +406,12 @@
     }
 
     .maint-input::placeholder {
-      color: rgba(232, 224, 213, 0.25);
+      color: var(--ivory);
     }
 
     .maint-input:focus {
-      border-color: rgba(212, 168, 83, 0.45);
-      box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.08);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px var(--gold-glass);
     }
 
     .maint-notify-btn {
@@ -419,7 +419,7 @@
       border-radius: 8px;
       border: none;
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: var(--coal);
+      color: var(--ivory);
       font-family: var(--font-ui);
       font-size: 0.72rem;
       font-weight: 700;
@@ -443,7 +443,7 @@
       font-family: var(--font-ui);
       font-size: 0.78rem;
       font-weight: 600;
-      color: rgba(45, 106, 79, 1);
+      color: var(--ivory);
       background: rgba(45, 106, 79, 0.12);
       border: 1px solid rgba(45, 106, 79, 0.25);
       border-radius: 8px;
@@ -464,21 +464,21 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      border: 1px solid rgba(212, 168, 83, 0.15);
+      border: 1px solid var(--glass-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(232, 224, 213, 0.4);
+      color: var(--ivory);
       font-size: 0.85rem;
       text-decoration: none;
       transition: all 0.25s ease;
     }
 
     .maint-social-link:hover {
-      border-color: rgba(212, 168, 83, 0.5);
+      border-color: var(--gold);
       color: var(--gold);
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(212, 168, 83, 0.15);
+      box-shadow: 0 6px 20px var(--glass-border);
     }
 
     /* -- Footer note -- */
@@ -492,7 +492,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.2);
+      color: var(--ivory);
       animation: fadeIn 1s ease 1s both;
     }
 
@@ -985,7 +985,7 @@
     <!-- -- Notify form -- -->
     <div style="animation: fadeUp 0.9s var(--ease-expo) 0.8s both;">
       <p
-        style="font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(232,224,213,0.3);margin-bottom:0.85rem;">
+        style="font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color: var(--ivory);margin-bottom:0.85rem;">
         Notify me when we're back
       </p>
       <div class="maint-notify" id="notify-form-wrap">

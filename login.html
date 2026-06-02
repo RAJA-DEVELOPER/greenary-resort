@@ -160,7 +160,7 @@
       right: -200px;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(212, 168, 83, 0.05) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--gold-glass) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -220,7 +220,7 @@
     .auth-form-sub {
       font-family: var(--font-body);
       font-size: 0.9rem;
-      color: rgba(232, 224, 213, 0.5);
+      color: var(--ivory);
       line-height: 1.6;
     }
 
@@ -243,7 +243,7 @@
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.6);
+      color: var(--ivory);
       transition: color 0.2s ease;
     }
 
@@ -261,7 +261,7 @@
     .input-icon {
       position: absolute;
       left: 1rem;
-      color: rgba(212, 168, 83, 0.4);
+      color: var(--gold);
       font-size: 0.85rem;
       transition: color 0.2s ease;
       pointer-events: none;
@@ -281,17 +281,17 @@
     }
 
     .form-input::placeholder {
-      color: rgba(232, 224, 213, 0.25);
+      color: var(--ivory);
     }
 
     .form-input:focus {
-      border-color: rgba(212, 168, 83, 0.5);
-      background: rgba(212, 168, 83, 0.04);
-      box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.08), 0 2px 12px rgba(0, 0, 0, 0.2);
+      border-color: var(--gold);
+      background: var(--gold-glass);
+      box-shadow: 0 0 0 3px var(--gold-glass), 0 2px 12px rgba(0, 0, 0, 0.2);
     }
 
     .form-field:focus-within .input-icon {
-      color: rgba(212, 168, 83, 0.8);
+      color: var(--gold);
     }
 
     /* Password toggle eye button */
@@ -301,7 +301,7 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: rgba(232, 224, 213, 0.3);
+      color: var(--ivory);
       font-size: 0.9rem;
       padding: 0.25rem;
       border-radius: 4px;
@@ -371,7 +371,7 @@
     .form-check-label {
       font-family: var(--font-ui);
       font-size: 0.75rem;
-      color: rgba(232, 224, 213, 0.5);
+      color: var(--ivory);
       cursor: pointer;
       user-select: none;
     }
@@ -395,7 +395,7 @@
       border-radius: 8px;
       border: none;
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: var(--coal);
+      color: var(--ivory);
       font-family: var(--font-ui);
       font-size: 0.78rem;
       font-weight: 700;
@@ -423,7 +423,7 @@
 
     .auth-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(212, 168, 83, 0.4), 0 0 50px rgba(212, 168, 83, 0.12);
+      box-shadow: 0 8px 30px rgba(212, 168, 83, 0.4), 0 0 50px var(--glass-border);
     }
 
     .auth-submit:active {
@@ -455,7 +455,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.3);
+      color: var(--ivory);
     }
 
     /* -- Social Login -- */
@@ -475,7 +475,7 @@
       border-radius: 8px;
       border: 1px solid rgba(232, 224, 213, 0.1);
       background: rgba(255, 255, 255, 0.03);
-      color: rgba(232, 224, 213, 0.65);
+      color: var(--ivory);
       font-family: var(--font-ui);
       font-size: 0.72rem;
       font-weight: 600;
@@ -486,7 +486,7 @@
     }
 
     .social-btn:hover {
-      border-color: rgba(212, 168, 83, 0.3);
+      border-color: var(--gold);
       color: var(--ivory);
       background: rgba(255, 255, 255, 0.06);
       transform: translateY(-1px);
@@ -502,7 +502,7 @@
       margin-top: 2rem;
       font-family: var(--font-ui);
       font-size: 0.78rem;
-      color: rgba(232, 224, 213, 0.4);
+      color: var(--ivory);
     }
 
     .auth-switch a {
@@ -521,9 +521,9 @@
       display: none;
       padding: 0.85rem 1rem;
       border-radius: 8px;
-      border: 1px solid rgba(212, 168, 83, 0.18);
-      background: rgba(212, 168, 83, 0.07);
-      color: rgba(232, 224, 213, 0.78);
+      border: 1px solid var(--glass-border);
+      background: var(--gold-glass);
+      color: var(--ivory);
       font-size: 0.82rem;
       line-height: 1.5;
     }
@@ -533,19 +533,19 @@
     }
 
     .auth-message.error {
-      border-color: rgba(232, 100, 60, 0.4);
+      border-color: var(--ivory);
       background: rgba(232, 100, 60, 0.1);
-      color: rgba(255, 190, 175, 0.95);
+      color: var(--ivory);
     }
 
     .auth-message.success {
-      border-color: rgba(94, 158, 107, 0.35);
+      border-color: var(--ivory);
       background: rgba(94, 158, 107, 0.1);
-      color: rgba(185, 230, 193, 0.95);
+      color: var(--ivory);
     }
 
     .form-input.is-invalid {
-      border-color: #E8643C;
+      border-color: var(--ember);
       box-shadow: 0 0 0 3px rgba(232, 100, 60, 0.15);
     }
 
@@ -554,8 +554,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(212, 168, 83, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 168, 83, 0.03) 1px, transparent 1px);
+        linear-gradient(var(--gold-glass) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gold-glass) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
     }

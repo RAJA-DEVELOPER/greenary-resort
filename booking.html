@@ -61,7 +61,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.55);
+      color: var(--ivory);
     }
 
     .form-input,
@@ -88,13 +88,13 @@
     .form-input:focus,
     .form-select:focus,
     .form-textarea:focus {
-      border-color: rgba(198, 169, 114, 0.5);
+      border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(198, 169, 114, 0.08);
     }
 
     .form-input::placeholder,
     .form-textarea::placeholder {
-      color: rgba(232, 224, 213, 0.25);
+      color: var(--ivory);
     }
 
     .form-select {
@@ -102,7 +102,7 @@
     }
 
     .form-select option {
-      background: #1B1D1F;
+      background: var(--graphite);
       color: var(--ivory);
     }
 
@@ -128,7 +128,7 @@
 
     .form-checkbox span {
       font-size: 0.85rem;
-      color: rgba(232, 224, 213, 0.6);
+      color: var(--ivory);
       line-height: 1.5;
     }
 
@@ -181,7 +181,7 @@
       align-items: center;
       gap: 0.75rem;
       font-size: 0.8rem;
-      color: rgba(232, 224, 213, 0.55);
+      color: var(--ivory);
     }
 
     .trust-badge-icon {
@@ -199,7 +199,7 @@
     }
 
     .pkg-card:hover {
-      border-color: rgba(198, 169, 114, 0.35);
+      border-color: var(--gold);
       background: rgba(198, 169, 114, 0.04);
     }
 
@@ -226,7 +226,7 @@
     .pkg-card.selected .pkg-card-check {
       background: var(--gold);
       border-color: var(--gold);
-      color: var(--coal);
+      color: var(--ivory);
     }
 
     /* Steps */
@@ -247,7 +247,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.35);
+      color: var(--ivory);
     }
 
     .booking-step.active {
@@ -255,7 +255,7 @@
     }
 
     .booking-step.complete {
-      color: rgba(94, 158, 107, 0.95);
+      color: var(--ivory);
     }
 
     .booking-step-num {
@@ -278,12 +278,12 @@
 
     .form-input.is-invalid,
     .form-select.is-invalid {
-      border-color: rgba(220, 80, 60, 0.85);
+      border-color: var(--ivory);
       box-shadow: 0 0 0 3px rgba(220, 80, 60, 0.1);
     }
 
     .form-error {
-      color: rgba(255, 130, 110, 0.92);
+      color: var(--ivory);
       font-size: 0.76rem;
       line-height: 1.4;
     }
@@ -307,7 +307,7 @@
     .accordion-panel {
       max-height: 0;
       overflow: hidden;
-      color: rgba(232, 224, 213, 0.68);
+      color: var(--ivory);
       font-size: 0.9rem;
       line-height: 1.7;
       transition: max-height 0.35s ease, padding-bottom 0.35s ease;
@@ -670,7 +670,7 @@
         align-items: center !important;
         justify-content: center !important;
         z-index: 1 !important;
-        background: #030608 !important;
+        background: var(--coal) !important;
       }
 
       #hero .hero-media {
@@ -1514,7 +1514,7 @@
     }
 
     .toast-icon {
-      color: #5E9E6B;
+      color: var(--forest);
       font-size: 1.25rem;
       display: flex;
       align-items: center;
@@ -1535,7 +1535,7 @@
 
     .toast-text {
       font-size: 0.8rem;
-      color: rgba(232, 224, 213, 0.7);
+      color: var(--ivory);
     }
 
     @media (max-width: 520px) {
@@ -1582,7 +1582,7 @@
         <a href="about.html" class="nav-link" role="listitem">About</a>
         </div>
 
-      <div style="display:flex; align-items:center; gap:0.85rem;">
+      <div class="nav-controls" style="display:flex; align-items:center; gap:0.85rem;">
         <!-- Theme Toggle -->
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
           <i class="fa-solid fa-moon"></i>
@@ -1865,7 +1865,7 @@
                 <button type="submit" class="btn btn-primary" id="booking-submit-btn"
                   style="margin-top:2.5rem;width:100%;justify-content:center;font-size:1rem;padding:1.1rem 2rem;">Confirm
                   Booking Request &rarr;</button>
-                <p style="text-align:center;font-size:0.78rem;color:rgba(232,224,213,0.35);margin-top:1rem;">No payment
+                <p style="text-align:center;font-size:0.78rem;color: var(--ivory);margin-top:1rem;">No payment
                   required today. Our team will confirm availability and send you a detailed quote within 24 hours.</p>
               </form>
             </div>
@@ -1888,7 +1888,7 @@
                 <span style="font-size:0.85rem;color:var(--gold);font-weight:600;">Estimated Total</span>
                 <span class="summary-total" id="summary-total" aria-live="polite">From $130</span>
               </div>
-              <p style="font-size:0.75rem;color:rgba(232,224,213,0.35);margin-top:0.75rem;">Final pricing confirmed
+              <p style="font-size:0.75rem;color: var(--ivory);margin-top:0.75rem;">Final pricing confirmed
                 after availability check. No payment required today.</p>
             </div>
 
@@ -1914,7 +1914,7 @@
             <div
               style="margin-top:2rem;padding:2rem;background:rgba(27,29,31,0.7);border:1px solid rgba(198,169,114,0.12);border-radius:4px;">
               <div class="section-label" style="margin-bottom:1rem;">Need Help</div>
-              <p style="font-size:0.85rem;color:rgba(232,224,213,0.6);line-height:1.7;margin-bottom:1.25rem;">Our
+              <p style="font-size:0.85rem;color: var(--ivory);line-height:1.7;margin-bottom:1.25rem;">Our
                 reservations team is available 9am-6pm IST, Monday-Sunday.</p>
               <a href="tel:+919876543210" class="btn btn-ghost"
                 style="width:100%;justify-content:center;font-size:0.8rem;" id="booking-call-btn"><i
@@ -1928,16 +1928,16 @@
               <div class="section-label" style="margin-bottom:1rem;">Cancellation Policy</div>
               <div style="display:flex;flex-direction:column;gap:0.6rem;">
                 <div
-                  style="display:flex;justify-content:space-between;font-size:0.8rem;color:rgba(232,224,213,0.6);padding:0.6rem 0;border-bottom:1px solid rgba(198,169,114,0.07);">
-                  <span>21+ days before</span><span style="color:#5E9E6B;font-weight:600;">Full refund</span>
+                  style="display:flex;justify-content:space-between;font-size:0.8rem;color: var(--ivory);padding:0.6rem 0;border-bottom:1px solid rgba(198,169,114,0.07);">
+                  <span>21+ days before</span><span style="color: var(--forest);font-weight:600;">Full refund</span>
                 </div>
                 <div
-                  style="display:flex;justify-content:space-between;font-size:0.8rem;color:rgba(232,224,213,0.6);padding:0.6rem 0;border-bottom:1px solid rgba(198,169,114,0.07);">
+                  style="display:flex;justify-content:space-between;font-size:0.8rem;color: var(--ivory);padding:0.6rem 0;border-bottom:1px solid rgba(198,169,114,0.07);">
                   <span>8-20 days before</span><span style="color:var(--gold);font-weight:600;">50% refund</span>
                 </div>
                 <div
-                  style="display:flex;justify-content:space-between;font-size:0.8rem;color:rgba(232,224,213,0.6);padding:0.6rem 0;">
-                  <span>Within 7 days</span><span style="color:rgba(220,80,60,0.9);font-weight:600;">No refund</span>
+                  style="display:flex;justify-content:space-between;font-size:0.8rem;color: var(--ivory);padding:0.6rem 0;">
+                  <span>Within 7 days</span><span style="color: var(--ivory);font-weight:600;">No refund</span>
                 </div>
               </div>
             </div>
@@ -2136,19 +2136,19 @@
             <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:1.25rem;">Per person &middot; Half-day to
               5-day options. Includes certified guide, safety equipment, and trail snacks.</p>
             <ul style="display:flex;flex-direction:column;gap:0.5rem;">
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>Certified wilderness guide</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>Safety & first-aid equipment</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>Trail snacks & herbal tea</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>Max 8 per group</li>
             </ul>
           </div>
           <div class="exp-card reveal reveal-delay-1" style="border-top:3px solid var(--gold);position:relative;">
             <div
-              style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--coal);font-family:var(--font-ui);font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:0 0 3px 3px;">
+              style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color: var(--ivory);font-family:var(--font-ui);font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:0 0 3px 3px;">
               Most Popular</div>
             <span style="font-size:2rem;display:block;margin-bottom:1rem;margin-top:1rem;" aria-hidden="true"><i
                 class="fa-solid fa-wand-magic-sparkles"></i></span>
@@ -2159,13 +2159,13 @@
             <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:1.25rem;">Per person &middot; Lodge + 3
               adventure days + all meals. The complete Terravana experience.</p>
             <ul style="display:flex;flex-direction:column;gap:0.5rem;">
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>Eco lodge accommodation</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>3 guided adventure days</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>All meals & forest herb teas</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>Welcome gift & campfire night</li>
             </ul>
           </div>
@@ -2179,13 +2179,13 @@
             <p class="exp-card-text" style="font-size:0.82rem;margin-bottom:1.25rem;">Per night &middot; Eco-lodge
               accommodation with breakfast. Add adventure experiences &agrave; la carte.</p>
             <ul style="display:flex;flex-direction:column;gap:0.5rem;">
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>4 lodge types available</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>Forest-to-table breakfast</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>Add-on adventures available</li>
-              <li style="font-size:0.8rem;color:rgba(232,224,213,0.55);display:flex;gap:0.5rem;"><span
+              <li style="font-size:0.8rem;color: var(--ivory);display:flex;gap:0.5rem;"><span
                   style="color:var(--gold);">&#10003;</span>Minimum 2 nights</li>
             </ul>
           </div>
@@ -2212,7 +2212,7 @@
               <h3
                 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ivory);margin:0.5rem 0;">
                 Canopy Treehouse</h3>
-              <p style="font-size:0.82rem;color:rgba(232,224,213,0.6);line-height:1.6;margin-bottom:1rem;">15m above the
+              <p style="font-size:0.82rem;color: var(--ivory);line-height:1.6;margin-bottom:1rem;">15m above the
                 forest floor. Open deck, king bed, forest shower. The most immersive sleep you'll ever have.</p>
               <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);font-weight:700;">From
                 $380/night</div>
@@ -2226,7 +2226,7 @@
               <h3
                 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ivory);margin:0.5rem 0;">
                 Ridge Villa</h3>
-              <p style="font-size:0.82rem;color:rgba(232,224,213,0.6);line-height:1.6;margin-bottom:1rem;">Panoramic
+              <p style="font-size:0.82rem;color: var(--ivory);line-height:1.6;margin-bottom:1rem;">Panoramic
                 valley views at 2,400m. Stone-and-timber construction, private plunge pool, observation deck.</p>
               <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);font-weight:700;">From
                 $480/night</div>
@@ -2240,7 +2240,7 @@
               <h3
                 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ivory);margin:0.5rem 0;">
                 Luxury Glamping</h3>
-              <p style="font-size:0.82rem;color:rgba(232,224,213,0.6);line-height:1.6;margin-bottom:1rem;">Safari tents
+              <p style="font-size:0.82rem;color: var(--ivory);line-height:1.6;margin-bottom:1rem;">Safari tents
                 with heated stone floors, organic cotton bedding, and private outdoor bathtub. Closer to the forest
                 floor.</p>
               <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);font-weight:700;">From
@@ -2255,7 +2255,7 @@
               <h3
                 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--ivory);margin:0.5rem 0;">
                 Riverside Cabin</h3>
-              <p style="font-size:0.82rem;color:rgba(232,224,213,0.6);line-height:1.6;margin-bottom:1rem;">Reclaimed
+              <p style="font-size:0.82rem;color: var(--ivory);line-height:1.6;margin-bottom:1rem;">Reclaimed
                 timber cabin beside a year-round stream. Fall asleep to the sound of moving water. Private deck.</p>
               <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);font-weight:700;">From
                 $280/night</div>
@@ -2336,7 +2336,7 @@
             <div
               style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">
               Jun - Sep</div>
-            <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Dramatic mist, roaring waterfalls,
+            <p style="font-size:0.8rem;color: var(--ivory);line-height:1.6;">Dramatic mist, roaring waterfalls,
               emerald trails. Best for waterfall treks. Lodge prices at seasonal low.</p>
           </div>
           <div style="padding:2.5rem 2rem;border-right:1px solid rgba(198,169,114,0.1);">
@@ -2348,7 +2348,7 @@
             <div
               style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">
               Oct - Nov</div>
-            <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Peak wildlife sightings. Golden
+            <p style="font-size:0.8rem;color: var(--ivory);line-height:1.6;">Peak wildlife sightings. Golden
               canopies, clear skies. <strong style="color:var(--gold);">Most popular</strong> - book well in advance.
             </p>
           </div>
@@ -2361,7 +2361,7 @@
             <div
               style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">
               Dec - Feb</div>
-            <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Crisp air, frost on the ridges.
+            <p style="font-size:0.8rem;color: var(--ivory);line-height:1.6;">Crisp air, frost on the ridges.
               Perfect for stargazing. Night temperature drops to 8&deg;C - bring layers.</p>
           </div>
           <div style="padding:2.5rem 2rem;">
@@ -2372,7 +2372,7 @@
             <div
               style="font-family:var(--font-ui);font-size:0.65rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">
               Mar - May</div>
-            <p style="font-size:0.8rem;color:rgba(232,224,213,0.5);line-height:1.6;">Long trekking days, river swimming,
+            <p style="font-size:0.8rem;color: var(--ivory);line-height:1.6;">Long trekking days, river swimming,
               peak trail conditions. Wildflowers in full bloom across the meadows.</p>
           </div>
         </div>
@@ -2424,7 +2424,7 @@
             style="display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;">
             <div style="text-align:center;padding-top:0.25rem;">
               <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--gold);">01</div>
-              <div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">
+              <div style="font-size:0.65rem;color: var(--ivory);letter-spacing:0.1em;text-transform:uppercase;">
                 Day</div>
             </div>
             <div>
@@ -2437,7 +2437,7 @@
             style="display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;">
             <div style="text-align:center;padding-top:0.25rem;">
               <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--gold);">02</div>
-              <div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">
+              <div style="font-size:0.65rem;color: var(--ivory);letter-spacing:0.1em;text-transform:uppercase;">
                 Day</div>
             </div>
             <div>
@@ -2451,7 +2451,7 @@
             style="display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;">
             <div style="text-align:center;padding-top:0.25rem;">
               <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--gold);">03</div>
-              <div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">
+              <div style="font-size:0.65rem;color: var(--ivory);letter-spacing:0.1em;text-transform:uppercase;">
                 Day</div>
             </div>
             <div>
@@ -2464,7 +2464,7 @@
             style="display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;">
             <div style="text-align:center;padding-top:0.25rem;">
               <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--gold);">04</div>
-              <div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">
+              <div style="font-size:0.65rem;color: var(--ivory);letter-spacing:0.1em;text-transform:uppercase;">
                 Day</div>
             </div>
             <div>
@@ -2477,7 +2477,7 @@
             style="display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;">
             <div style="text-align:center;padding-top:0.25rem;">
               <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--gold);">05</div>
-              <div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">
+              <div style="font-size:0.65rem;color: var(--ivory);letter-spacing:0.1em;text-transform:uppercase;">
                 Day</div>
             </div>
             <div>
@@ -2605,7 +2605,7 @@
               <div class="exp-card-title" style="font-size:1rem;margin-bottom:0.4rem;">21+ Days Before Arrival</div>
               <p class="exp-card-text" style="font-size:0.82rem;">Cancel with full confidence - no questions asked.</p>
             </div>
-            <div style="font-family:var(--font-display);font-size:1.5rem;color:#5E9E6B;font-weight:700;flex-shrink:0;">
+            <div style="font-family:var(--font-display);font-size:1.5rem;color: var(--forest);font-weight:700;flex-shrink:0;">
               Full Refund</div>
           </div>
           <div class="exp-card reveal reveal-delay-1"
@@ -2627,12 +2627,12 @@
                 visit within 12 months.</p>
             </div>
             <div
-              style="font-family:var(--font-display);font-size:1.5rem;color:rgba(220,80,60,0.9);font-weight:700;flex-shrink:0;">
+              style="font-family:var(--font-display);font-size:1.5rem;color: var(--ivory);font-weight:700;flex-shrink:0;">
               No Refund</div>
           </div>
           <div class="exp-card reveal"
-            style="padding:1.5rem;background:rgba(198,169,114,0.06);border-color:rgba(198,169,114,0.2);">
-            <p style="font-size:0.82rem;color:rgba(232,224,213,0.7);line-height:1.7;"><i class="fa-solid fa-leaf"></i>
+            style="padding:1.5rem;background:rgba(198,169,114,0.06);border-color: var(--gold);">
+            <p style="font-size:0.82rem;color: var(--ivory);line-height:1.7;"><i class="fa-solid fa-leaf"></i>
               <strong style="color:var(--ivory);">Force Majeure:</strong> In the event of extreme weather, natural
               disaster, or government travel advisories, we will reschedule or provide full credit regardless of the
               cancellation window. We believe in doing right by our guests.

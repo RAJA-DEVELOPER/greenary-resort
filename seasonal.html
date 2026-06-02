@@ -69,7 +69,7 @@
 
     .season-panel-months {
       font-size: 0.75rem;
-      color: rgba(232, 224, 213, 0.5);
+      color: var(--ivory);
       margin-top: 0.35rem;
     }
 
@@ -135,7 +135,7 @@
       align-items: center;
       gap: 0.75rem;
       font-size: 0.9rem;
-      color: rgba(232, 224, 213, 0.75);
+      color: var(--ivory);
     }
 
     .season-highlight::before {
@@ -176,7 +176,7 @@
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.4);
+      color: var(--ivory);
       display: block;
       margin-bottom: 0.4rem;
     }
@@ -449,7 +449,7 @@
   <div id="cursor-dot" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
   <button id="back-to-top" aria-label="Back to top"
-    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
+    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color: var(--ivory);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
 
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
@@ -472,7 +472,7 @@
         <a href="about.html" class="nav-link" role="listitem">About</a>
         </div>
 
-      <div style="display:flex; align-items:center; gap:0.85rem;">
+      <div class="nav-controls" style="display:flex; align-items:center; gap:0.85rem;">
         <!-- Theme Toggle -->
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
           <i class="fa-solid fa-moon"></i>
@@ -639,7 +639,7 @@
               <div
                 style="margin-top:2rem;padding:1.5rem;background:rgba(198,169,114,0.05);border-radius:4px;border:1px solid rgba(198,169,114,0.12);">
                 <div class="section-label" style="margin-bottom:0.5rem;">Best Activities</div>
-                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Waterfall trails &middot; Valley walks &middot; Forest
+                <p style="font-size:0.875rem;color: var(--ivory);">Waterfall trails &middot; Valley walks &middot; Forest
                   bathing &middot; Indoor workshops &middot; Campfire nights &middot; Wildlife photography from hides</p>
               </div>
               <a href="booking.html" class="btn btn-outline-gold" style="margin-top:1.5rem;"
@@ -674,13 +674,13 @@
               <div
                 style="margin-top:2rem;padding:1.5rem;background:rgba(198,169,114,0.05);border-radius:4px;border:1px solid rgba(198,169,114,0.12);">
                 <div class="section-label" style="margin-bottom:0.5rem;">Best Activities</div>
-                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Summit treks &middot; Wildlife safaris &middot; Birding &middot;
+                <p style="font-size:0.875rem;color: var(--ivory);">Summit treks &middot; Wildlife safaris &middot; Birding &middot;
                   Waterfall loops &middot; Campfire nights &middot; Photography expeditions</p>
               </div>
               <div
                 style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;padding:0.5rem 1rem;background:rgba(94,158,107,0.1);border:1px solid rgba(94,158,107,0.25);border-radius:3px;">
                 <span
-                  style="color:#5E9E6B;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;"><i
+                  style="color: var(--forest);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;"><i
                     class="fa-solid fa-star"></i> Our Most Recommended Season</span>
               </div>
               <a href="booking.html" class="btn btn-primary" style="margin-top:1.5rem;display:inline-flex;"
@@ -716,7 +716,7 @@
               <div
                 style="margin-top:2rem;padding:1.5rem;background:rgba(198,169,114,0.05);border-radius:4px;border:1px solid rgba(198,169,114,0.12);">
                 <div class="section-label" style="margin-bottom:0.5rem;">Best Activities</div>
-                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Stargazing &middot; Alpine treks &middot; Campfire nights
+                <p style="font-size:0.875rem;color: var(--ivory);">Stargazing &middot; Alpine treks &middot; Campfire nights
                   &middot; Waterfall swims &middot; Wildlife safaris &middot; Photography</p>
               </div>
               <a href="booking.html" class="btn btn-outline-gold" style="margin-top:1.5rem;"
@@ -750,7 +750,7 @@
               <div
                 style="margin-top:2rem;padding:1.5rem;background:rgba(198,169,114,0.05);border-radius:4px;border:1px solid rgba(198,169,114,0.12);">
                 <div class="section-label" style="margin-bottom:0.5rem;">Best Activities</div>
-                <p style="font-size:0.875rem;color:rgba(232,224,213,0.65);">Multi-day treks &middot; River swimming &middot; Butterfly
+                <p style="font-size:0.875rem;color: var(--ivory);">Multi-day treks &middot; River swimming &middot; Butterfly
                   watching &middot; Wildflower trails &middot; Seven Falls loop</p>
               </div>
               <a href="booking.html" class="btn btn-outline-gold" style="margin-top:1.5rem;"
@@ -794,40 +794,40 @@
             <tbody>
               <tr style="border-bottom:1px solid rgba(198,169,114,0.07);">
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">January</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">14-22&deg;</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Low</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">45%</td>
-                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;">Stargazing &middot; Treks</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">14-22&deg;</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">Low</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">45%</td>
+                <td style="padding:0.9rem 1rem;color: var(--ivory);font-size:0.75rem;">Stargazing &middot; Treks</td>
               </tr>
               <tr style="border-bottom:1px solid rgba(198,169,114,0.07);">
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">March</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">18-28&deg;</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Moderate</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">60%</td>
-                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;">Wildflowers &middot; Swimming
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">18-28&deg;</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">Moderate</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">60%</td>
+                <td style="padding:0.9rem 1rem;color: var(--ivory);font-size:0.75rem;">Wildflowers &middot; Swimming
                 </td>
               </tr>
               <tr style="border-bottom:1px solid rgba(198,169,114,0.07);">
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">June</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">20-26&deg;</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Very High</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">88%</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">20-26&deg;</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">Very High</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">88%</td>
                 <td style="padding:0.9rem 1rem;color:var(--gold);font-size:0.75rem;">Waterfalls &middot; Mist</td>
               </tr>
               <tr style="border-bottom:1px solid rgba(198,169,114,0.07);">
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">October</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">16-24&deg;</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Low</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">55%</td>
-                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;"><i
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">16-24&deg;</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">Low</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">55%</td>
+                <td style="padding:0.9rem 1rem;color: var(--ivory);font-size:0.75rem;"><i
                     class="fa-solid fa-star"></i> Wildlife &middot; All Activities</td>
               </tr>
               <tr>
                 <td style="padding:0.9rem 1rem;color:var(--ivory);font-weight:600;">December</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">12-20&deg;</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">Very Low</td>
-                <td style="padding:0.9rem 1rem;text-align:center;color:rgba(232,224,213,0.7);">40%</td>
-                <td style="padding:0.9rem 1rem;color:rgba(94,158,107,0.9);font-size:0.75rem;">Stars &middot; Crystal Clarity
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">12-20&deg;</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">Very Low</td>
+                <td style="padding:0.9rem 1rem;text-align:center;color: var(--ivory);">40%</td>
+                <td style="padding:0.9rem 1rem;color: var(--ivory);font-size:0.75rem;">Stars &middot; Crystal Clarity
                 </td>
               </tr>
             </tbody>
@@ -908,7 +908,7 @@
               <div
                 style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--gold);line-height:1;">
                 Oct</div>
-              <div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">
+              <div style="font-size:0.65rem;color: var(--ivory);letter-spacing:0.1em;text-transform:uppercase;">
                 Annual</div>
             </div>
             <div>
@@ -925,7 +925,7 @@
               <div
                 style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--gold);line-height:1;">
                 Dec</div>
-              <div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">
+              <div style="font-size:0.65rem;color: var(--ivory);letter-spacing:0.1em;text-transform:uppercase;">
                 Full Moon</div>
             </div>
             <div>
@@ -942,7 +942,7 @@
               <div
                 style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--gold);line-height:1;">
                 Mar</div>
-              <div style="font-size:0.65rem;color:rgba(232,224,213,0.4);letter-spacing:0.1em;text-transform:uppercase;">
+              <div style="font-size:0.65rem;color: var(--ivory);letter-spacing:0.1em;text-transform:uppercase;">
                 Spring</div>
             </div>
             <div>
@@ -968,7 +968,7 @@
           <div class="review-stars" style="justify-content:center;" aria-label="5 stars"><i
               class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
               class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.5);margin-top:0.75rem;">- The
+          <p style="font-family:var(--font-ui);font-size:0.8rem;color: var(--ivory);margin-top:0.75rem;">- The
             Nakamura Family &middot; Tokyo, Japan &middot; Visited twice in one year</p>
         </div>
       </div>
@@ -1019,7 +1019,7 @@
             <div class="divider"></div>
             <p class="section-desc">Many of our most spectacular wildlife sightings are strictly seasonal. Plan your
               visit around these major ecological events.</p>
-            <ul style="list-style:none;padding:0;margin:1.5rem 0;color:rgba(232,224,213,0.7);font-size:0.9rem;">
+            <ul style="list-style:none;padding:0;margin:1.5rem 0;color: var(--ivory);font-size:0.9rem;">
               <li style="margin-bottom:0.75rem;display:flex;justify-content:space-between;gap:3rem;"><span
                   style="color:var(--ivory);font-weight:600;">Butterfly Migration</span> <span
                   style="color:var(--gold);">Oct - Nov</span></li>

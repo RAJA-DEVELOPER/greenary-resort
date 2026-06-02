@@ -22,7 +22,7 @@
     }
 
     .review-card:hover {
-      border-color: rgba(198, 169, 114, 0.28);
+      border-color: var(--gold);
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
     }
@@ -60,7 +60,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.4);
+      color: var(--ivory);
       margin-top: 0.2rem;
     }
 
@@ -73,7 +73,7 @@
 
     .review-text {
       font-size: 0.92rem;
-      color: rgba(232, 224, 213, 0.7);
+      color: var(--ivory);
       line-height: 1.8;
       font-style: italic;
     }
@@ -104,7 +104,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(198, 169, 114, 0.7);
+      color: var(--gold);
       background: rgba(198, 169, 114, 0.07);
       border: 1px solid rgba(198, 169, 114, 0.15);
       padding: 0.2rem 0.65rem;
@@ -114,7 +114,7 @@
     .review-date {
       font-family: var(--font-ui);
       font-size: 0.68rem;
-      color: rgba(232, 224, 213, 0.3);
+      color: var(--ivory);
     }
 
     /* Score bar */
@@ -127,7 +127,7 @@
 
     .score-bar-label {
       min-width: 130px;
-      color: rgba(232, 224, 213, 0.6);
+      color: var(--ivory);
     }
 
     .score-bar-track {
@@ -209,7 +209,7 @@
       left: 1.5rem;
       font-family: var(--font-display);
       font-size: 12rem;
-      color: rgba(198, 169, 114, 0.06);
+      color: var(--gold);
       line-height: 1;
       pointer-events: none;
     }
@@ -417,7 +417,7 @@
   <div id="cursor-dot" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
   <button id="back-to-top" aria-label="Back to top"
-    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
+    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color: var(--ivory);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
 
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
@@ -440,7 +440,7 @@
         <a href="about.html" class="nav-link" role="listitem">About</a>
         </div>
 
-      <div style="display:flex; align-items:center; gap:0.85rem;">
+      <div class="nav-controls" style="display:flex; align-items:center; gap:0.85rem;">
         <!-- Theme Toggle -->
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
           <i class="fa-solid fa-moon"></i>
@@ -519,7 +519,7 @@
                 class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                 class="fa-solid fa-star"></i></div>
             <p
-              style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.4);margin-top:1rem;letter-spacing:0.08em;text-transform:uppercase;">
+              style="font-family:var(--font-ui);font-size:0.8rem;color: var(--ivory);margin-top:1rem;letter-spacing:0.08em;text-transform:uppercase;">
               Based on 847 verified guest reviews</p>
             <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:2rem;">
               <div class="platform-badge"><span style="font-size:1.5rem;" aria-hidden="true"><i
@@ -623,7 +623,7 @@
             </div>
           </div>
           <p
-            style="font-family:var(--font-serif);font-size:1.15rem;line-height:1.9;color:rgba(232,224,213,0.8);font-style:italic;position:relative;z-index:1;">
+            style="font-family:var(--font-serif);font-size:1.15rem;line-height:1.9;color: var(--ivory);font-style:italic;position:relative;z-index:1;">
             "I study ecosystems professionally. I have worked in the Serengeti, the Amazon, and the Himalayas. I say
             this not to boast but to provide context for what follows: Terravana Wilds is the single most profound
             wildlife and wilderness experience I have ever had. The guides don't just know the animals - they know their
@@ -636,7 +636,7 @@
             style="display:flex;align-items:center;justify-content:space-between;margin-top:2rem;flex-wrap:wrap;gap:1rem;">
             <div style="display:flex;gap:0.5rem;"><span class="review-tag">Wildlife Encounter</span><span
                 class="review-tag">Trekking</span><span class="review-tag">Lodge</span></div>
-            <div style="font-family:var(--font-ui);font-size:0.72rem;color:rgba(232,224,213,0.3);">Verified via
+            <div style="font-family:var(--font-ui);font-size:0.72rem;color: var(--ivory);">Verified via
               TripAdvisor &middot; Stayed October 2024</div>
           </div>
         </div>
@@ -672,7 +672,7 @@
           <div class="review-card reveal">
             <div class="review-card-header">
               <div class="reviewer-avatar"
-                style="background:linear-gradient(135deg,var(--gold),#D4BB8A);color:var(--coal);">TB</div>
+                style="background:linear-gradient(135deg,var(--gold),#D4BB8A);color: var(--ivory);">TB</div>
               <div>
                 <div class="reviewer-name">Thomas B.</div>
                 <div class="reviewer-meta">Travel Writer &middot; Berlin</div>
@@ -747,7 +747,7 @@
           <div class="review-card reveal reveal-delay-1">
             <div class="review-card-header">
               <div class="reviewer-avatar"
-                style="background:linear-gradient(135deg,#C6A972,#9A6B4A);color:var(--coal);">PS</div>
+                style="background:linear-gradient(135deg,#C6A972,#9A6B4A);color: var(--ivory);">PS</div>
               <div>
                 <div class="reviewer-name">Priya S.</div>
                 <div class="reviewer-meta">Wildlife Photographer &middot; Singapore</div>
@@ -800,7 +800,7 @@
               <div class="review-stars" style="font-size:1.1rem;" aria-label="5 stars"><i
                   class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                   class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              <span style="font-size:0.82rem;color:rgba(232,224,213,0.5);">Mika L. &middot; Adventure Travel Blogger &middot;
+              <span style="font-size:0.82rem;color: var(--ivory);">Mika L. &middot; Adventure Travel Blogger &middot;
                 Tokyo</span>
             </div>
           </div>
@@ -992,9 +992,9 @@
             <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--gold);">Karthik
             </div>
             <div
-              style="font-family:var(--font-ui);font-size:0.75rem;color:rgba(232,224,213,0.5);margin:0.25rem 0 1rem;letter-spacing:0.1em;text-transform:uppercase;">
+              style="font-family:var(--font-ui);font-size:0.75rem;color: var(--ivory);margin:0.25rem 0 1rem;letter-spacing:0.1em;text-transform:uppercase;">
               Head Naturalist</div>
-            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.6;font-style:italic;">"Karthik doesn't
+            <p style="font-size:0.85rem;color: var(--ivory);line-height:1.6;font-style:italic;">"Karthik doesn't
               just spot animals; he reads the forest like a book. He showed us a world we would have walked blindly
               past."</p>
             <div
@@ -1007,9 +1007,9 @@
               aria-hidden="true"><i class="fa-solid fa-seedling"></i></div>
             <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--gold);">Deepa</div>
             <div
-              style="font-family:var(--font-ui);font-size:0.75rem;color:rgba(232,224,213,0.5);margin:0.25rem 0 1rem;letter-spacing:0.1em;text-transform:uppercase;">
+              style="font-family:var(--font-ui);font-size:0.75rem;color: var(--ivory);margin:0.25rem 0 1rem;letter-spacing:0.1em;text-transform:uppercase;">
               Foraging Expert</div>
-            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.6;font-style:italic;">"Deepa's wild
+            <p style="font-size:0.85rem;color: var(--ivory);line-height:1.6;font-style:italic;">"Deepa's wild
               herb tea by the campfire... I can still taste it. She taught my kids the names of ten local plants."</p>
             <div
               style="margin-top:1rem;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);font-weight:700;">
@@ -1022,9 +1022,9 @@
             <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--gold);">Chef Raj
             </div>
             <div
-              style="font-family:var(--font-ui);font-size:0.75rem;color:rgba(232,224,213,0.5);margin:0.25rem 0 1rem;letter-spacing:0.1em;text-transform:uppercase;">
+              style="font-family:var(--font-ui);font-size:0.75rem;color: var(--ivory);margin:0.25rem 0 1rem;letter-spacing:0.1em;text-transform:uppercase;">
               Forest Kitchen</div>
-            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.6;font-style:italic;">"I don't know
+            <p style="font-size:0.85rem;color: var(--ivory);line-height:1.6;font-style:italic;">"I don't know
               how he bakes fresh bread at 2,000 meters in an eco-kitchen, but it's the best I've ever eaten."</p>
             <div
               style="margin-top:1rem;font-family:var(--font-display);font-size:0.9rem;color:var(--gold);font-weight:700;">
@@ -1055,7 +1055,7 @@
                 <div>
                   <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--ivory);font-weight:700;">The
                     Sharma Family</div>
-                  <div style="font-size:0.75rem;color:rgba(232,224,213,0.5);margin-top:0.2rem;">Bangalore</div>
+                  <div style="font-size:0.75rem;color: var(--ivory);margin-top:0.2rem;">Bangalore</div>
                 </div>
               </div>
               <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--gold);font-weight:700;">12 Visits
@@ -1065,12 +1065,12 @@
               style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2rem;">
               <div style="display:flex;align-items:center;gap:1.5rem;">
                 <div
-                  style="font-family:var(--font-display);font-size:2rem;color:rgba(198,169,114,0.7);font-weight:800;width:30px;">
+                  style="font-family:var(--font-display);font-size:2rem;color: var(--gold);font-weight:800;width:30px;">
                   #2</div>
                 <div>
                   <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--ivory);font-weight:700;">
                     David & Elena G.</div>
-                  <div style="font-size:0.75rem;color:rgba(232,224,213,0.5);margin-top:0.2rem;">London</div>
+                  <div style="font-size:0.75rem;color: var(--ivory);margin-top:0.2rem;">London</div>
                 </div>
               </div>
               <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--gold);font-weight:700;">9 Visits
@@ -1080,12 +1080,12 @@
               style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2rem;">
               <div style="display:flex;align-items:center;gap:1.5rem;">
                 <div
-                  style="font-family:var(--font-display);font-size:2rem;color:rgba(198,169,114,0.5);font-weight:800;width:30px;">
+                  style="font-family:var(--font-display);font-size:2rem;color: var(--gold);font-weight:800;width:30px;">
                   #3</div>
                 <div>
                   <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--ivory);font-weight:700;">Dr.
                     Anil V.</div>
-                  <div style="font-size:0.75rem;color:rgba(232,224,213,0.5);margin-top:0.2rem;">Mumbai</div>
+                  <div style="font-size:0.75rem;color: var(--ivory);margin-top:0.2rem;">Mumbai</div>
                 </div>
               </div>
               <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--gold);font-weight:700;">8 Visits
@@ -1107,21 +1107,21 @@
           <div class="exp-card reveal" style="padding:2rem;">
             <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--ivory);margin-bottom:0.75rem;">Are
               these reviews verified</h3>
-            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.7;">Yes. Every review labeled
+            <p style="font-size:0.85rem;color: var(--ivory);line-height:1.7;">Yes. Every review labeled
               "Verified Stay" is cross-checked against our booking database. We do not publish unverified reviews on our
               direct site.</p>
           </div>
           <div class="exp-card reveal reveal-delay-1" style="padding:2rem;">
             <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--ivory);margin-bottom:0.75rem;">Do
               you delete negative reviews</h3>
-            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.7;">No. We display our direct feed
+            <p style="font-size:0.85rem;color: var(--ivory);line-height:1.7;">No. We display our direct feed
               from TripAdvisor and Google, which we cannot edit. We respond to all feedback publicly and use criticism
               to improve the lodge.</p>
           </div>
           <div class="exp-card reveal reveal-delay-2" style="padding:2rem;">
             <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--ivory);margin-bottom:0.75rem;">Can I
               contact a past guest</h3>
-            <p style="font-size:0.85rem;color:rgba(232,224,213,0.7);line-height:1.7;">For privacy reasons, we cannot
+            <p style="font-size:0.85rem;color: var(--ivory);line-height:1.7;">For privacy reasons, we cannot
               share guest contact info. However, many of our guests are active in our Terravana Community Facebook
               group, where you can ask questions directly.</p>
           </div>

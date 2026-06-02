@@ -489,7 +489,7 @@ const initLightbox = () => {
     ">
       <button id="lb-close" style="
         position:absolute;top:2rem;right:2rem;background:none;border:none;
-        color:#C6A972;font-size:2rem;cursor:pointer;opacity:0.7;
+        color: var(--gold);font-size:2rem;cursor:pointer;opacity:0.7;
         transition:opacity 0.2s;
       " aria-label="Close">&times;</button>
       <img id="lb-img" style="

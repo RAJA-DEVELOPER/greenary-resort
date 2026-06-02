@@ -33,7 +33,7 @@
     }
 
     .trail-card:hover {
-      border-color: rgba(198, 169, 114, 0.3);
+      border-color: var(--gold);
       box-shadow: var(--shadow-lg);
     }
 
@@ -76,7 +76,7 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.55);
+      color: var(--ivory);
     }
 
     .trail-meta-icon {
@@ -95,7 +95,7 @@
       align-items: center;
       gap: 0.75rem;
       font-size: 0.875rem;
-      color: rgba(232, 224, 213, 0.7);
+      color: var(--ivory);
     }
 
     .trail-highlight-item::before {
@@ -325,7 +325,7 @@
   <div id="cursor-dot" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
   <button id="back-to-top" aria-label="Back to top"
-    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--coal);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
+    style="position:fixed;bottom:2rem;right:2rem;z-index:500;width:48px;height:48px;border-radius:50%;background:var(--gold);color: var(--ivory);display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transition:opacity 0.3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(198,169,114,0.35);">&uarr;</button>
 
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
@@ -348,7 +348,7 @@
         <a href="about.html" class="nav-link" role="listitem">About</a>
         </div>
 
-      <div style="display:flex; align-items:center; gap:0.85rem;">
+      <div class="nav-controls" style="display:flex; align-items:center; gap:0.85rem;">
         <!-- Theme Toggle -->
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
           <i class="fa-solid fa-moon"></i>
@@ -750,7 +750,7 @@
         <div class="grid-3">
           <div class="exp-card reveal" style="text-align:center;">
             <div
-              style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--sienna),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--coal);margin:0 auto 1.5rem;">
+              style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--sienna),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:700;color: var(--ivory);margin:0 auto 1.5rem;">
               AR</div>
             <div class="exp-card-title">Arjun Rao</div>
             <div class="t-label" style="justify-content:center;margin-bottom:0.75rem;">Lead Summit Guide &middot; 18 yrs</div>
@@ -768,7 +768,7 @@
           </div>
           <div class="exp-card reveal reveal-delay-3" style="text-align:center;">
             <div
-              style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#D4BB8A);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--coal);margin:0 auto 1.5rem;">
+              style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#D4BB8A);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;font-weight:700;color: var(--ivory);margin:0 auto 1.5rem;">
               KS</div>
             <div class="exp-card-title">Kiran Suresh</div>
             <div class="t-label" style="justify-content:center;margin-bottom:0.75rem;">Night Trek Specialist &middot; 9 yrs
@@ -907,7 +907,7 @@
           <div class="review-stars" style="justify-content:center;" aria-label="5 stars"><i
               class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
               class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p style="font-family:var(--font-ui);font-size:0.8rem;color:rgba(232,224,213,0.5);margin-top:0.75rem;">- Priya
+          <p style="font-family:var(--font-ui);font-size:0.8rem;color: var(--ivory);margin-top:0.75rem;">- Priya
             S. &middot; Wildlife Photographer &middot; Singapore</p>
         </div>
       </div>
@@ -1004,7 +1004,7 @@
             <h3
               style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--ivory);line-height:1.2;margin-bottom:1rem;">
               Navigation & Safety Protocol</h3>
-            <p style="font-size:0.9rem;color:rgba(232,224,213,0.7);max-width:600px;margin:0 auto;">While you experience
+            <p style="font-size:0.9rem;color: var(--ivory);max-width:600px;margin:0 auto;">While you experience
               absolute wilderness, our invisible safety net is always active. Every guide carries a satellite
               communicator, comprehensive medical kit, and GPS tracking device. Our base camp operations team monitors
               all deep-wilderness expeditions in real-time.</p>

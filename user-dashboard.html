@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <script>(function(){const t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <script>(function(){const t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);const l=localStorage.getItem("lang")||"en";document.documentElement.setAttribute("lang",l);const d=localStorage.getItem("dir")||"ltr";document.documentElement.setAttribute("dir",d);})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Dashboard - TERRAVANA WILDS</title>
@@ -28,7 +28,7 @@
       --ember: #E8643C;
       --mist: #8EAFC2;
       --dusk: #6B4D8A;
-      --border: rgba(212, 168, 83, 0.12);
+      --border: var(--glass-border);
       --border-soft: rgba(255, 255, 255, 0.05);
       --sidebar-w: 240px;
       --topbar-h: 68px;
@@ -146,8 +146,8 @@
     }
 
     .user-card {
-      background: linear-gradient(135deg, rgba(212, 168, 83, 0.08) 0%, rgba(45, 106, 79, 0.06) 100%);
-      border: 1px solid rgba(212, 168, 83, 0.15);
+      background: linear-gradient(135deg, var(--gold-glass) 0%, rgba(45, 106, 79, 0.06) 100%);
+      border: 1px solid var(--glass-border);
       border-radius: 12px;
       padding: 1rem;
       display: flex;
@@ -167,7 +167,7 @@
       font-family: var(--font-display);
       font-size: 1.4rem;
       font-weight: 700;
-      color: var(--coal);
+      color: var(--ivory);
       border: 2px solid rgba(212, 168, 83, 0.4);
       box-shadow: 0 0 20px rgba(212, 168, 83, 0.2);
     }
@@ -198,7 +198,7 @@
     .user-pts {
       font-family: var(--font-ui);
       font-size: 0.72rem;
-      color: rgba(232, 224, 213, 0.5);
+      color: var(--ivory);
     }
 
     /* Nav */
@@ -213,7 +213,7 @@
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.28);
+      color: var(--ivory);
       padding: 0.65rem 1.5rem 0.35rem;
     }
 
@@ -225,7 +225,7 @@
       font-family: var(--font-ui);
       font-size: 0.78rem;
       font-weight: 600;
-      color: rgba(232, 224, 213, 0.5);
+      color: var(--ivory);
       cursor: pointer;
       border-left: 2px solid transparent;
       letter-spacing: 0.03em;
@@ -240,20 +240,20 @@
 
     .nav-item:hover {
       color: var(--ivory);
-      background: rgba(212, 168, 83, 0.05);
-      border-left-color: rgba(212, 168, 83, 0.25);
+      background: var(--gold-glass);
+      border-left-color: var(--gold);
     }
 
     .nav-item.active {
       color: var(--gold);
-      background: rgba(212, 168, 83, 0.08);
+      background: var(--gold-glass);
       border-left-color: var(--gold);
     }
 
     .nav-badge-sm {
       margin-left: auto;
       background: var(--gold);
-      color: var(--coal);
+      color: var(--ivory);
       border-radius: 20px;
       padding: 0.12rem 0.45rem;
       font-size: 0.58rem;
@@ -277,14 +277,14 @@
       font-family: var(--font-ui);
       font-size: 0.72rem;
       font-weight: 600;
-      color: rgba(232, 224, 213, 0.45);
+      color: var(--ivory);
       transition: all var(--dur);
       letter-spacing: 0.04em;
     }
 
     .sidebar-logout-btn:hover {
       color: var(--ember);
-      border-color: rgba(232, 100, 60, 0.3);
+      border-color: var(--ivory);
       background: rgba(232, 100, 60, 0.05);
     }
 
@@ -343,7 +343,7 @@
       font-family: var(--font-ui);
       font-size: 0.75rem;
       font-weight: 600;
-      color: rgba(232, 224, 213, 0.5);
+      color: var(--ivory);
       letter-spacing: 0.05em;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
@@ -360,7 +360,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #4CAF82;
+      color: var(--forest);
     }
 
     .live-dot::before {
@@ -368,7 +368,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #4CAF82;
+      background: var(--forest);
       box-shadow: 0 0 6px rgba(76, 175, 130, 0.8);
       animation: livePulse 1.5s ease-in-out infinite;
     }
@@ -396,7 +396,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(232, 224, 213, 0.55);
+      color: var(--ivory);
       font-size: 0.85rem;
       cursor: pointer;
       position: relative;
@@ -404,7 +404,7 @@
     }
 
     .icon-btn:hover {
-      border-color: rgba(212, 168, 83, 0.3);
+      border-color: var(--gold);
       color: var(--gold);
     }
 
@@ -419,7 +419,7 @@
       border: 2px solid var(--coal);
       font-size: 0.5rem;
       font-weight: 800;
-      color: #fff;
+      color: var(--ivory);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -436,7 +436,7 @@
       font-family: var(--font-display);
       font-size: 0.82rem;
       font-weight: 700;
-      color: var(--coal);
+      color: var(--ivory);
       cursor: pointer;
     }
 
@@ -448,7 +448,7 @@
 
     /* --- WELCOME BANNER --- */
     .welcome-banner {
-      background: linear-gradient(120deg, rgba(212, 168, 83, 0.1) 0%, rgba(45, 106, 79, 0.08) 50%, rgba(212, 168, 83, 0.05) 100%);
+      background: linear-gradient(120deg, rgba(212, 168, 83, 0.1) 0%, rgba(45, 106, 79, 0.08) 50%, var(--gold-glass) 100%);
       border: 1px solid rgba(212, 168, 83, 0.2);
       border-radius: 16px;
       padding: 2rem 2.5rem;
@@ -465,7 +465,7 @@
       width: 220px;
       height: 220px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(212, 168, 83, 0.07) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--gold-glass) 0%, transparent 70%);
     }
 
     .welcome-banner::after {
@@ -515,7 +515,7 @@
     .wb-sub {
       font-family: var(--font-body);
       font-size: 0.85rem;
-      color: rgba(232, 224, 213, 0.55);
+      color: var(--ivory);
       margin-top: 0.5rem;
       max-width: 400px;
       line-height: 1.6;
@@ -532,7 +532,7 @@
       flex-direction: column;
       align-items: center;
       background: rgba(10, 12, 14, 0.35);
-      border: 1px solid rgba(212, 168, 83, 0.15);
+      border: 1px solid var(--glass-border);
       border-radius: 10px;
       padding: 0.85rem 1.25rem;
       min-width: 80px;
@@ -552,7 +552,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.4);
+      color: var(--ivory);
       margin-top: 0.3rem;
     }
 
@@ -620,8 +620,8 @@
     }
 
     .see-all:hover {
-      background: rgba(212, 168, 83, 0.08);
-      border-color: rgba(212, 168, 83, 0.4);
+      background: var(--gold-glass);
+      border-color: var(--gold);
     }
 
     /* --- PANEL --- */
@@ -654,7 +654,7 @@
 
     .booking-card:hover {
       border-color: var(--border);
-      background: rgba(212, 168, 83, 0.04);
+      background: var(--gold-glass);
       transform: translateX(3px);
     }
 
@@ -675,7 +675,7 @@
       }
 
       50% {
-        box-shadow: 0 0 0 6px rgba(212, 168, 83, 0.05);
+        box-shadow: 0 0 0 6px var(--gold-glass);
       }
     }
 
@@ -714,7 +714,7 @@
     .booking-meta {
       font-family: var(--font-body);
       font-size: 0.7rem;
-      color: rgba(232, 224, 213, 0.45);
+      color: var(--ivory);
       display: flex;
       gap: 0.85rem;
       flex-wrap: wrap;
@@ -750,11 +750,11 @@
 
     .st-upcoming {
       background: rgba(76, 175, 130, 0.12);
-      color: #4CAF82;
+      color: var(--forest);
     }
 
     .st-today {
-      background: rgba(212, 168, 83, 0.15);
+      background: var(--glass-border);
       color: var(--gold);
     }
 
@@ -774,13 +774,13 @@
       font-family: var(--font-ui);
       font-size: 0.62rem;
       font-weight: 700;
-      color: #4CAF82;
+      color: var(--forest);
       letter-spacing: 0.06em;
     }
 
     /* --- COUNTDOWN TO NEXT TREK --- */
     .trek-countdown {
-      background: linear-gradient(135deg, rgba(212, 168, 83, 0.08), rgba(45, 106, 79, 0.06));
+      background: linear-gradient(135deg, var(--gold-glass), rgba(45, 106, 79, 0.06));
       border: 1px solid rgba(212, 168, 83, 0.2);
       border-radius: 12px;
       padding: 1.5rem;
@@ -817,7 +817,7 @@
       align-items: center;
       gap: 0.3rem;
       background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(212, 168, 83, 0.12);
+      border: 1px solid var(--glass-border);
       border-radius: 8px;
       padding: 0.7rem 0.5rem;
     }
@@ -836,7 +836,7 @@
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.3);
+      color: var(--ivory);
     }
 
     .tcd-map-btn {
@@ -849,7 +849,7 @@
       padding: 0.7rem;
       border-radius: 8px;
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: var(--coal);
+      color: var(--ivory);
       font-family: var(--font-ui);
       font-size: 0.72rem;
       font-weight: 700;
@@ -866,7 +866,7 @@
 
     /* --- ECO POINTS --- */
     .eco-points-card {
-      background: linear-gradient(135deg, rgba(45, 106, 79, 0.1), rgba(212, 168, 83, 0.06));
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.1), var(--gold-glass));
       border: 1px solid rgba(45, 106, 79, 0.2);
       border-radius: 12px;
       padding: 1.5rem;
@@ -883,7 +883,7 @@
       font-family: var(--font-display);
       font-size: 2.5rem;
       font-weight: 700;
-      color: #4CAF82;
+      color: var(--forest);
       line-height: 1;
       letter-spacing: -0.02em;
     }
@@ -898,7 +898,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
-      color: #4CAF82;
+      color: var(--forest);
     }
 
     .eco-pts-label {
@@ -907,7 +907,7 @@
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.4);
+      color: var(--ivory);
       margin-top: 0.2rem;
     }
 
@@ -932,7 +932,7 @@
       justify-content: space-between;
       font-family: var(--font-ui);
       font-size: 0.62rem;
-      color: rgba(232, 224, 213, 0.35);
+      color: var(--ivory);
       font-weight: 600;
     }
 
@@ -954,13 +954,13 @@
       font-family: var(--font-ui);
       font-size: 0.65rem;
       font-weight: 600;
-      color: rgba(232, 224, 213, 0.55);
+      color: var(--ivory);
       cursor: pointer;
       transition: all var(--dur);
     }
 
     .eco-reward:hover {
-      border-color: rgba(212, 168, 83, 0.25);
+      border-color: var(--gold);
       color: var(--ivory);
     }
 
@@ -990,7 +990,7 @@
     }
 
     .trail-rec:hover {
-      background: rgba(212, 168, 83, 0.04);
+      background: var(--gold-glass);
       border-color: var(--border);
       transform: translateX(3px);
     }
@@ -1022,7 +1022,7 @@
     .trail-rec-meta {
       font-family: var(--font-body);
       font-size: 0.65rem;
-      color: rgba(232, 224, 213, 0.4);
+      color: var(--ivory);
       display: flex;
       gap: 0.6rem;
       flex-wrap: wrap;
@@ -1042,11 +1042,11 @@
 
     .avail-open {
       background: rgba(76, 175, 130, 0.12);
-      color: #4CAF82;
+      color: var(--forest);
     }
 
     .avail-few {
-      background: rgba(212, 168, 83, 0.12);
+      background: var(--glass-border);
       color: var(--gold);
     }
 
@@ -1076,7 +1076,7 @@
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.4);
+      color: var(--ivory);
       margin-bottom: 0.25rem;
     }
 
@@ -1091,7 +1091,7 @@
     .ww-desc {
       font-family: var(--font-body);
       font-size: 0.75rem;
-      color: rgba(232, 224, 213, 0.5);
+      color: var(--ivory);
       margin-top: 0.2rem;
     }
 
@@ -1135,7 +1135,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.3);
+      color: var(--ivory);
     }
 
     .ww-trail-tip {
@@ -1147,7 +1147,7 @@
       font-family: var(--font-ui);
       font-size: 0.68rem;
       font-weight: 600;
-      color: #4CAF82;
+      color: var(--forest);
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -1186,7 +1186,7 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(232, 224, 213, 0.35);
+      color: var(--ivory);
       margin-bottom: 0.85rem;
     }
 
@@ -1221,7 +1221,7 @@
     .notif-time {
       font-family: var(--font-ui);
       font-size: 0.58rem;
-      color: rgba(232, 224, 213, 0.28);
+      color: var(--ivory);
       margin-top: 0.25rem;
     }
 
@@ -1301,7 +1301,7 @@
 
     /* --- PROMO CARD --- */
     .promo-card {
-      background: linear-gradient(135deg, rgba(212, 168, 83, 0.12) 0%, rgba(232, 100, 60, 0.08) 100%);
+      background: linear-gradient(135deg, var(--glass-border) 0%, rgba(232, 100, 60, 0.08) 100%);
       border: 1px solid rgba(212, 168, 83, 0.2);
       border-radius: 12px;
       padding: 1.5rem;
@@ -1322,7 +1322,7 @@
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(212, 168, 83, 0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--gold-glass) 0%, transparent 70%);
     }
 
     .promo-eyebrow {
@@ -1345,7 +1345,7 @@
     .promo-desc {
       font-family: var(--font-body);
       font-size: 0.78rem;
-      color: rgba(232, 224, 213, 0.5);
+      color: var(--ivory);
       margin-top: 0.3rem;
     }
 
@@ -1356,7 +1356,7 @@
       padding: 0.8rem 1.5rem;
       border-radius: 8px;
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      color: var(--coal);
+      color: var(--ivory);
       font-family: var(--font-ui);
       font-size: 0.72rem;
       font-weight: 700;
@@ -1541,7 +1541,7 @@
         <div class="user-name">Priya Sharma</div>
         <div class="user-level"><i class="fa-solid fa-mountain" style="font-size:0.55rem;"></i> Summit Explorer</div>
         <div class="user-pts"><i class="fa-solid fa-leaf"
-            style="color:#4CAF82;margin-right:0.3rem;font-size:0.7rem;"></i>2,840 Eco Points</div>
+            style="color: var(--forest);margin-right:0.3rem;font-size:0.7rem;"></i>2,840 Eco Points</div>
       </div>
     </div>
 
@@ -1577,15 +1577,15 @@
       <div class="topbar-title">My Dashboard</div>
       <div class="topbar-right" style="gap:0.75rem;">
         <!-- Theme Toggle -->
-        <button class="theme-toggle-btn icon-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode" style="width:34px; height:34px; border-radius:50%; font-size:0.9rem; border:1px solid rgba(236,186,69,0.25);">
+        <button class="theme-toggle-btn icon-btn" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
           <i class="fa-solid fa-moon"></i>
         </button>
         
         <!-- Language Switcher (RTL/LTR Toggle) -->
         <div class="nav-lang-selector">
-          <button id="lang-btn" class="lang-btn icon-btn" aria-label="Select Language" aria-expanded="false" title="Language / Change Layout Direction" style="width:auto; height:34px; border-radius:17px; font-size:0.8rem; padding: 0 0.65rem; gap: 0.25rem; border:1px solid rgba(236,186,69,0.25);">
+          <button id="lang-btn" class="lang-btn icon-btn" aria-label="Select Language" aria-expanded="false" title="Language / Change Layout Direction">
             <i class="fa-solid fa-globe"></i>
-            <span class="lang-text" style="font-size:0.65rem;">EN</span>
+            <span class="lang-text">EN</span>
           </button>
           <div class="lang-dropdown" id="lang-dropdown" style="margin-top:0.25rem;">
             <button class="lang-opt active" data-lang="en" data-dir="ltr">English (LTR)</button>
@@ -1600,7 +1600,7 @@
           <span class="badge-dot" id="notif-dot">3</span>
         </div>
         <a href="booking.html" class="icon-btn" title="New Booking"
-          style="color:var(--gold);border-color:rgba(212,168,83,0.25);">
+          style="color:var(--gold);border-color: var(--gold);">
           <i class="fa-solid fa-plus"></i>
         </a>
         <div class="topbar-avatar-sm">PS</div>
@@ -1611,7 +1611,7 @@
     <div id="notif-panel" class="notif-panel">
       <div class="notif-panel-hdr">Your Notifications</div>
       <div class="notif-item">
-        <div class="notif-ico" style="background:rgba(212,168,83,0.12);color:var(--gold);"><i
+        <div class="notif-ico" style="background:var(--glass-border);color:var(--gold);"><i
             class="fa-solid fa-calendar-check"></i></div>
         <div class="notif-body">
           <div class="notif-msg">Your Grand Ridge Trek starts in <strong>3 days</strong>. Pack check-list sent to your
@@ -1620,7 +1620,7 @@
         </div>
       </div>
       <div class="notif-item">
-        <div class="notif-ico" style="background:rgba(76,175,130,0.12);color:#4CAF82;"><i class="fa-solid fa-leaf"></i>
+        <div class="notif-ico" style="background:rgba(76,175,130,0.12);color: var(--forest);"><i class="fa-solid fa-leaf"></i>
         </div>
         <div class="notif-body">
           <div class="notif-msg">You earned <strong>+150 Eco Points</strong> from your Cloud Forest Walk!</div>
@@ -1660,7 +1660,7 @@
                 <div class="wb-stat-lbl">KM Hiked</div>
               </div>
               <div class="wb-stat">
-                <div class="wb-stat-val" id="ws-pts" style="color:#4CAF82;">0</div>
+                <div class="wb-stat-val" id="ws-pts" style="color: var(--forest);">0</div>
                 <div class="wb-stat-lbl">Eco Points</div>
               </div>
             </div>
@@ -1903,20 +1903,20 @@
             </div>
             <canvas id="activity-chart" height="180"></canvas>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-top:1rem;">
-              <div
+              <div class="ac-stat-box"
                 style="background:rgba(255,255,255,0.02);border:1px solid var(--border-soft);border-radius:8px;padding:0.7rem;text-align:center;">
                 <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--gold);"
                   id="ac-km">0</div>
-                <div
-                  style="font-family:var(--font-ui);font-size:0.55rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(232,224,213,0.35);">
+                <div class="ac-stat-lbl"
+                  style="font-family:var(--font-ui);font-size:0.55rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color: var(--ivory);">
                   KM This Month</div>
               </div>
-              <div
+              <div class="ac-stat-box"
                 style="background:rgba(255,255,255,0.02);border:1px solid var(--border-soft);border-radius:8px;padding:0.7rem;text-align:center;">
-                <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:#4CAF82;"
+                <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color: var(--forest);"
                   id="ac-hrs">0</div>
-                <div
-                  style="font-family:var(--font-ui);font-size:0.55rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(232,224,213,0.35);">
+                <div class="ac-stat-lbl"
+                  style="font-family:var(--font-ui);font-size:0.55rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color: var(--ivory);">
                   Hours Outdoors</div>
               </div>
             </div>
@@ -1992,7 +1992,7 @@
         <h2 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--ivory); margin-bottom: 0.75rem;"
           id="page-placeholder-title">Exploring New Routes</h2>
         <p
-          style="color: rgba(232,224,213,0.5); font-family: var(--font-body); font-size: 0.9rem; max-width: 400px; line-height: 1.6;">
+          style="color: var(--ivory); font-family: var(--font-body); font-size: 0.9rem; max-width: 400px; line-height: 1.6;">
           This section of your dashboard is currently being mapped out. Return soon for new features and updates.</p>
       </div>
 
@@ -2102,19 +2102,22 @@
       const n = days.length;
       const maxV = Math.max(...km, ...hrs) * 1.2;
       ctx.clearRect(0, 0, W, H);
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const gridStyle = isLight ? 'rgba(18, 22, 26, 0.08)' : 'rgba(255, 255, 255, 0.04)';
+      const labelStyle = isLight ? 'rgba(18, 22, 26, 0.65)' : 'rgba(232, 224, 213, 0.35)';
 
       /* Grid */
-      ctx.strokeStyle = 'rgba(255,255,255,0.04)'; ctx.lineWidth = 1;
+      ctx.strokeStyle = gridStyle; ctx.lineWidth = 1;
       for (let i = 0; i <= 4; i++) {
         const y = PAD.top + cH - (cH / 4 * i);
         ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left + cW, y); ctx.stroke();
-        ctx.fillStyle = 'rgba(232,224,213,0.22)'; ctx.font = '600 8px Manrope,sans-serif';
+        ctx.fillStyle = labelStyle; ctx.font = '600 8px Manrope,sans-serif';
         ctx.textAlign = 'right';
         ctx.fillText(Math.round(maxV / 4 * i), PAD.left - 5, y + 3);
       }
 
       /* X labels */
-      ctx.fillStyle = 'rgba(232,224,213,0.35)'; ctx.font = '600 9px Manrope,sans-serif'; ctx.textAlign = 'center';
+      ctx.fillStyle = labelStyle; ctx.font = '600 9px Manrope,sans-serif'; ctx.textAlign = 'center';
       days.forEach((d, i) => ctx.fillText(d, PAD.left + (i / (n - 1)) * cW, H - PAD.bottom + 13));
 
       function px(i) { return PAD.left + (i / (n - 1)) * cW; }
@@ -2209,13 +2212,10 @@
       document.getElementById('notif-panel').classList.remove('open');
       document.getElementById('overlay').classList.remove('show');
     }
-    document.getElementById('notif-btn').addEventListener('click', toggleNotif);
-
     /* -- Mobile sidebar -- */
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('mobile-open');
     }
-
     /* -- Eco point live simulation (gains point every 45s) -- */
     let ecoPoints = 2840;
     setInterval(() => {
@@ -2225,6 +2225,113 @@
       const pct = Math.min(100, (ecoPoints / 3000) * 100).toFixed(1);
       document.getElementById('eco-fill').style.width = pct + '%';
     }, 45000);
+
+    /* -- Theme & Language (RTL) Controller -- */
+    const initThemeAndLanguage = () => {
+      const htmlEl = document.documentElement;
+
+      // --- Theme Toggle Logic ---
+      const getTheme = () => localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      const setTheme = (theme) => {
+        htmlEl.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+
+        // Update all theme toggle icons
+        const icons = document.querySelectorAll('.theme-toggle-btn i');
+        icons.forEach(icon => {
+          if (theme === 'light') {
+            icon.className = 'fa-solid fa-sun';
+          } else {
+            icon.className = 'fa-solid fa-moon';
+          }
+        });
+
+        // Trigger chart redraw
+        if (typeof drawActivityChart === 'function') {
+          drawActivityChart();
+        }
+      };
+
+      // Initial set
+      setTheme(getTheme());
+
+      // Attach click listener to theme toggles
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.theme-toggle-btn');
+        if (btn) {
+          const nextTheme = htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+          setTheme(nextTheme);
+        }
+      });
+
+      // Listen to system preference changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+
+      // --- Language & RTL Dropdown Logic ---
+      const getLang = () => localStorage.getItem('lang') || 'en';
+      const getDir = () => localStorage.getItem('dir') || 'ltr';
+
+      const setLang = (lang, dir) => {
+        htmlEl.setAttribute('lang', lang);
+        htmlEl.setAttribute('dir', dir);
+        localStorage.setItem('lang', lang);
+        localStorage.setItem('dir', dir);
+
+        // Update active dropdown opt
+        document.querySelectorAll('.lang-opt').forEach(opt => {
+          opt.classList.toggle('active', opt.dataset.lang === lang);
+        });
+
+        // Update lang button text
+        document.querySelectorAll('.lang-btn .lang-text').forEach(el => {
+          el.textContent = lang.toUpperCase();
+        });
+      };
+
+      // Initial set
+      setLang(getLang(), getDir());
+
+      // Toggle dropdown on click
+      document.addEventListener('click', (e) => {
+        const langBtn = e.target.closest('.lang-btn');
+        if (langBtn) {
+          const dropdown = langBtn.nextElementSibling;
+          if (dropdown) {
+            dropdown.classList.toggle('show');
+            langBtn.setAttribute('aria-expanded', dropdown.classList.contains('show') ? 'true' : 'false');
+          }
+          return;
+        }
+
+        // Close lang dropdown if clicking outside
+        if (!e.target.closest('.nav-lang-selector')) {
+          document.querySelectorAll('.lang-dropdown').forEach(dropdown => {
+            dropdown.classList.remove('show');
+            const trigger = dropdown.previousElementSibling;
+            if (trigger) trigger.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+
+      // Handle lang options
+      document.addEventListener('click', (e) => {
+        const opt = e.target.closest('.lang-opt');
+        if (opt) {
+          const lang = opt.dataset.lang;
+          const dir = opt.dataset.dir;
+          setLang(lang, dir);
+
+          // Close dropdown
+          const dropdown = opt.closest('.lang-dropdown');
+          if (dropdown) dropdown.classList.remove('show');
+        }
+      });
+    };
+    initThemeAndLanguage();
   </script>
 </body>
 
